@@ -1,7 +1,7 @@
 {
  "built": "2026-09-06",
  "module": "m1",
- "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged.",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted).",
  "source": {
   "file": "dmdm-videos/video-matches.json",
   "built": "2026-09-06",
@@ -14,9 +14,9 @@
   }
  },
  "stats": {
-  "questions_with_video": 126,
-  "matches": 166,
-  "videos_used": 85,
+  "questions_with_video": 183,
+  "matches": 239,
+  "videos_used": 94,
   "source_questions_held_in_this_build": 11
  },
  "matches": {
@@ -1100,6 +1100,485 @@
     "id": "xLtLY9qaQks",
     "at": 385,
     "quote": "this is why carbon dioxide is 20 times more soluble than oxygen is"
+   }
+  ],
+  "q07cd859f25": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 3207,
+    "quote": "branches are this first branch here is what we termed the brachiocephalic"
+   }
+  ],
+  "q0b351b7c79": [
+   {
+    "id": "2BcaALrQ3PU",
+    "at": 1419,
+    "quote": "P wave, the Q, the R, the S, and the T wave on the ECG."
+   }
+  ],
+  "q0f24cfa0f9": [
+   {
+    "id": "uKrgEv7-rVM",
+    "at": 161,
+    "quote": "blood will always flow from atria to ventricles"
+   },
+   {
+    "id": "UPOxrE79uCE",
+    "at": 75,
+    "quote": "blood will always move from the right atrium into the right ventricle"
+   }
+  ],
+  "q140eb82b67": [
+   {
+    "id": "s5UQ_JpvFqc",
+    "at": 188,
+    "quote": "four of them are cetera that oxygen you're a hundred percent saturated"
+   }
+  ],
+  "q1a7ccb04cb": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 311,
+    "quote": "oxygen is 21 of the entire atmosphere and carbon dioxide is 0.03 percent"
+   },
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 2715,
+    "quote": "about 78 79 percent is nitrogen you'll find that around about 21% is oxygen"
+   }
+  ],
+  "q21fcf59f6c": [
+   {
+    "id": "uk0WpLoD8SE",
+    "at": 1428,
+    "quote": "compensation compensation of metabolic acidosis is hyper ventilation"
+   }
+  ],
+  "q24ef255d3e": [
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 130,
+    "quote": "epithelia that lines our nasal cavities what's called pseudo stratified ciliated epithelium"
+   },
+   {
+    "id": "CFHUYTPc7So",
+    "at": 189,
+    "quote": "The epithelia that lines our nasal cavity what's called pseudoratified siliated epithelium."
+   }
+  ],
+  "q2a893cf428": [
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 163,
+    "quote": "artery to the arch of the aorta which goes in the brachioalic the common croted"
+   }
+  ],
+  "q3ee9938b1d": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 1601,
+    "quote": "babies born prior to six months of age can't make surfactant and they need artificial surfactant"
+   }
+  ],
+  "q42a7a7e41e": [
+   {
+    "id": "6FugDyys-9A",
+    "at": 322,
+    "quote": "these are central and now these are picking up CSF"
+   }
+  ],
+  "q44e580932a": [
+   {
+    "id": "WuGMqezV3eo",
+    "at": 814,
+    "quote": "so we had ionotropic before about the force of contraction chronotropic chrono means time"
+   }
+  ],
+  "q48cd527298": [
+   {
+    "id": "VX2Biw_qRoU",
+    "at": 208,
+    "quote": "on top of our tidal volume we can forcefully inhale air"
+   },
+   {
+    "id": "Y9k0K999dlM",
+    "at": 766,
+    "quote": "from the top of your tidal volume all the way up to there"
+   }
+  ],
+  "q5368fb38d0": [
+   {
+    "id": "J49cgFC1uXQ",
+    "at": 571,
+    "quote": "so we look at age sex height and ethnicity and that would be plugged into"
+   }
+  ],
+  "q53aabb598b": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 3458,
+    "quote": "now below the celiac trunk we've got another branch called the superior mesenteric"
+   }
+  ],
+  "q5643e02e13": [
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 4630,
+    "quote": "breathe in oxygen our mitochondria utilize that oxygen and it produces ATP water and carbon dioxide"
+   }
+  ],
+  "q590203b4c5": [
+   {
+    "id": "6FugDyys-9A",
+    "at": 276,
+    "quote": "peripheral chemoreceptors which you have here in the aortic arch and the carotid body"
+   },
+   {
+    "id": "GqkMzds77f8",
+    "at": 322,
+    "quote": "chemo receptors they're based at the aortic arch they're also based in the carotid"
+   }
+  ],
+  "q5fb1eec3c1": [
+   {
+    "id": "UPOxrE79uCE",
+    "at": 348,
+    "quote": "called the inferior vena cava if it's coming back from the upper part"
+   },
+   {
+    "id": "KEfwq5A48kw",
+    "at": 281,
+    "quote": "superior vena cava which is a vein and the inferior vena cava which is"
+   }
+  ],
+  "q6a824d19a5": [
+   {
+    "id": "4wjCLiCCS6w",
+    "at": 165,
+    "quote": "common carotid on each side with the internal jugular"
+   }
+  ],
+  "q7599c785b5": [
+   {
+    "id": "uqWQDVSsbE4",
+    "at": 162,
+    "quote": "When those valves close, it stops the blood from going back. That's called regurgitation."
+   }
+  ],
+  "q7d5529138c": [
+   {
+    "id": "zK2RIOqcuIU",
+    "at": 172,
+    "quote": "showing you that the electrical activity of the whole heart is not firing"
+   }
+  ],
+  "q84719448cd": [
+   {
+    "id": "CQo_if4NEb4",
+    "at": 369,
+    "quote": "dalton's law states that when there's a mixture of inert gases"
+   },
+   {
+    "id": "7z9coEwzn2s",
+    "at": 15,
+    "quote": "dalton's law states that the total atmospheric pressure is the sum of the partial pressure"
+   }
+  ],
+  "q850dd958b9": [
+   {
+    "id": "6cb0eDBO19k",
+    "at": 135,
+    "quote": "transported in our bloodstream mostly as bicarbonate ions"
+   },
+   {
+    "id": "8cOyDn2Myy8",
+    "at": 4454,
+    "quote": "vast majority of those carbon dioxides would be incorporated into bicarbonate ions"
+   }
+  ],
+  "q88b12ffc62": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 3487,
+    "quote": "renal artery that's going to give blood flow to the kidneys the paired renal arteries"
+   }
+  ],
+  "q8d2434450a": [
+   {
+    "id": "eV5efVFaxLU",
+    "at": 64,
+    "quote": "by contracting the diaphragm I get air coming in. That's inspiration"
+   }
+  ],
+  "q8f379a7fe0": [
+   {
+    "id": "zK2RIOqcuIU",
+    "at": 171,
+    "quote": "this is showing you that the electrical activity of the whole heart is not firing"
+   }
+  ],
+  "q8f8aa2ef09": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 626,
+    "quote": "the sympathetic nervous system has an extremely strong effect on increasing blood pressure"
+   }
+  ],
+  "q92e47364d1": [
+   {
+    "id": "3hb_80XwS7Q",
+    "at": 1185,
+    "quote": "to bathe the cells, the interstitium. But as the fluid moves through,"
+   }
+  ],
+  "q93d1649cf3": [
+   {
+    "id": "uAnnFscr4LQ",
+    "at": 34,
+    "quote": "activates the breathing center and the brain stem which increases the breathing rate"
+   }
+  ],
+  "q962112e511": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 3223,
+    "quote": "so this blood vessel is going to go and feed the head and the arm"
+   }
+  ],
+  "q96fe2966b0": [
+   {
+    "id": "uXo62h96zgM",
+    "at": 125,
+    "quote": "this is what we call the Q wave on an ECG"
+   }
+  ],
+  "q9a9c2b34f0": [
+   {
+    "id": "vLSwWBRWekY",
+    "at": 5322,
+    "quote": "that has barrow receptors that measure pressure changes. At the aorta itself"
+   }
+  ],
+  "q9ed20aa288": [
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 82,
+    "quote": "coronary sinus drains the heart itself. These three vessels drop blood into the right atria."
+   }
+  ],
+  "qa592267a7a": [
+   {
+    "id": "NijiLTONHxg",
+    "at": 463,
+    "quote": "p wave which is representative of atrial depolarization atrial depolarization you've then got"
+   }
+  ],
+  "qa6ac8ce2a2": [
+   {
+    "id": "NR8GvLBfABw",
+    "at": 313,
+    "quote": "SA node fires off around about sixty to a hundred times a minute"
+   },
+   {
+    "id": "h2QAey56-Ms",
+    "at": 325,
+    "quote": "sa node fires off around about 60 to 100 times a minute"
+   }
+  ],
+  "qad52d39f34": [
+   {
+    "id": "xLtLY9qaQks",
+    "at": 23,
+    "quote": "coming from the right side of the heart specifically the right ventricle pumping"
+   }
+  ],
+  "qb84e734849": [
+   {
+    "id": "4SeDddlLT3w",
+    "at": 6341,
+    "quote": "accumulate within that space, the pericardial space or pericardial sack space."
+   }
+  ],
+  "qb949a00fe4": [
+   {
+    "id": "6cb0eDBO19k",
+    "at": 795,
+    "quote": "So that's how the lungs stretch or move with the rib cage."
+   }
+  ],
+  "qbe81316f91": [
+   {
+    "id": "9IZGNzj9S0w",
+    "at": 231,
+    "quote": "why is their equivalent amounts because carbon dioxide is far more soluble than oxygen"
+   },
+   {
+    "id": "nBfqDvNJ3LA",
+    "at": 105,
+    "quote": "carbon dioxide is about 20 times more soluble than oxygen."
+   }
+  ],
+  "qbebb57e18c": [
+   {
+    "id": "4wjCLiCCS6w",
+    "at": 164,
+    "quote": "to be the common carotid on each side with the internal jugular"
+   }
+  ],
+  "qc7e3923d97": [
+   {
+    "id": "nh08D29jepg",
+    "at": 1029,
+    "quote": "inhibit its production via ACE inhibitors, then what happens is you reduce blood pressure."
+   }
+  ],
+  "qca33af1cee": [
+   {
+    "id": "CFHUYTPc7So",
+    "at": 1219,
+    "quote": "the cartilage reduces once you hit bronchioles there's no cartilage"
+   }
+  ],
+  "qcba59a0c25": [
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 2338,
+    "quote": "external respiration where gas is exchanged at your alveoli to the capillaries and vice versa"
+   },
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 1942,
+    "quote": "respiratory membrane this is called external respiration"
+   }
+  ],
+  "qccad8996c1": [
+   {
+    "id": "ik9xIeOjHyw",
+    "at": 0,
+    "quote": "the lymphatic system has three broad functions fluid balance immunity and fat absorption"
+   },
+   {
+    "id": "kD8YJvwp9-8",
+    "at": 2023,
+    "quote": "the lymphatic system play three roles. Right? The first one is what we've just"
+   }
+  ],
+  "qcd0a3cbedf": [
+   {
+    "id": "pA7QZUkmErg",
+    "at": 452,
+    "quote": "this white thing is filled with collagen and it's actually a tendon"
+   },
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 2822,
+    "quote": "this white thing is filled with collagen and it's actually a tendon"
+   }
+  ],
+  "qcd6cc3477a": [
+   {
+    "id": "_x8QJr9rkPo",
+    "at": 121,
+    "quote": "elastic recoil snaps back pushes the air back out again"
+   },
+   {
+    "id": "6cb0eDBO19k",
+    "at": 516,
+    "quote": "breath out you just relax and you get the elastic recoil and then the air"
+   }
+  ],
+  "qd168a26788": [
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 79,
+    "quote": "and then the third vessel is the coronary sinus. The coronary sinus drains the heart itself. These three vessels drop blood into the right atria."
+   }
+  ],
+  "qd4a71ab0a1": [
+   {
+    "id": "ik9xIeOjHyw",
+    "at": 0,
+    "quote": "the lymphatic system has three broad functions fluid balance immunity and fat absorption"
+   }
+  ],
+  "qde24b8f42e": [
+   {
+    "id": "vLSwWBRWekY",
+    "at": 5366,
+    "quote": "But if the blood pressure drops, it fires off more slowly."
+   }
+  ],
+  "qde41854d84": [
+   {
+    "id": "cl1B9lwoJTE",
+    "at": 331,
+    "quote": "colloid osmotic pressure colloid means protein because the main pulling force here are the proteins"
+   },
+   {
+    "id": "GnriknE4YRY",
+    "at": 527,
+    "quote": "osmotic or oncotic pressure. And again, this was the hydrostatic. Now, who wins? Well, the"
+   }
+  ],
+  "qe2e45b5cdc": [
+   {
+    "id": "2BcaALrQ3PU",
+    "at": 314,
+    "quote": "So, this is going to be epicardium, this is going to be myocardium,"
+   }
+  ],
+  "qe33cec4d7f": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 3207,
+    "quote": "branches are this first branch here is what we termed the brachiocephalic"
+   }
+  ],
+  "qe534856e4d": [
+   {
+    "id": "nh08D29jepg",
+    "at": 1028,
+    "quote": "Therefore, if you inhibit its production via ACE inhibitors, then what happens"
+   }
+  ],
+  "qea8848f9f4": [
+   {
+    "id": "RkQq23fSRcA",
+    "at": 30,
+    "quote": "their heart rate is usually around about 72 beats per minute"
+   },
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 157,
+    "quote": "on average heart rate is 70 beats per minute on average the volume"
+   }
+  ],
+  "qf118c30eb4": [
+   {
+    "id": "HV-k31vCYvg",
+    "at": 428,
+    "quote": "causing their diameter to decrease, increasing resistance, therefore increasing blood pressure."
+   }
+  ],
+  "qf3c3c8b48f": [
+   {
+    "id": "uKrgEv7-rVM",
+    "at": 58,
+    "quote": "pericardium. And it's actually a pericardial sac, which covers or encases the entire heart."
+   }
+  ],
+  "qf58159da60": [
+   {
+    "id": "nJ44wZ5_TvA",
+    "at": 1078,
+    "quote": "less of an inward pulling force and things stay out in the interstitium"
+   }
+  ],
+  "qfa265e2184": [
+   {
+    "id": "mtKVUC-Gpdg",
+    "at": 108,
+    "quote": "down the aorta you would see the semilunar valves okay but You' also see two little holes now these holes open up and form the coronary arteries"
    }
   ]
  }
