@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HS2 · Paper Sim — Module 1</title>
+<style>
+/* ── estate tokens (house.css contract, dark default) ─────────────── */
+:root{
+  --bg:hsl(225 33% 5%); --fg:hsl(225 31% 95%); --card:hsl(224 44% 10%);
+  --primary:hsl(218 91% 64%); --onprimary:hsl(225 33% 5%);
+  --muted:hsl(220 38% 13%); --muted-fg:hsl(218 19% 67%);
+  --accent:hsl(219 40% 18%); --danger:hsl(0 84% 60%); --ok:hsl(158 64% 42%);
+  --warn:hsl(38 92% 55%); --border:hsl(222 27% 19%); --radius:.625rem;
+  --dur:200ms; --ease:cubic-bezier(.4,0,.2,1);
+}
+:root[data-theme=light]{
+  --bg:hsl(214 47% 97%); --fg:hsl(222 47% 11%); --card:hsl(0 0% 100%);
+  --onprimary:#fff; --muted:hsl(215 40% 93%); --muted-fg:hsl(220 12% 40%);
+  --accent:hsl(216 45% 91%); --border:hsl(215 33% 89%); --warn:hsl(38 92% 40%);
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-text-size-adjust:100%}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;padding:10px 14px}
+header h1{font-size:1rem;margin:0;flex:1;font-weight:700}
+header .d{color:var(--muted-fg);font-size:.8rem;white-space:nowrap}
+main{max-width:720px;margin:0 auto;padding:14px 14px 90px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;margin:0 0 12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  border:1px solid var(--border);background:var(--muted);color:var(--fg);
+  border-radius:var(--radius);padding:10px 14px;font:inherit;font-weight:600;
+  transition:background var(--dur) var(--ease)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--onprimary)}
+.btn.ghost{background:transparent}
+.btn.wide{width:100%;margin-top:8px}
+a.btn{text-decoration:none}
+.btn:disabled{opacity:.45;cursor:default}
+.door h2{margin:.1rem 0 .3rem;font-size:1.02rem}
+.door p{margin:.2rem 0 .6rem;color:var(--muted-fg);font-size:.88rem}
+.qlist{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.qrow{display:flex;align-items:center;gap:8px;border:1px solid var(--border);
+  border-radius:var(--radius);padding:8px 10px;background:var(--muted)}
+.qrow b{flex:1;font-size:.86rem;font-weight:600}
+.qrow .m{color:var(--muted-fg);font-size:.76rem;white-space:nowrap}
+.sysrow{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px}
+.tag{font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--accent);color:var(--muted-fg)}
+.tag.cvs{color:hsl(0 84% 70%)}.tag.resp{color:hsl(199 89% 64%)}.tag.lymph{color:hsl(140 55% 58%)}
+.tag.mixed{color:var(--muted-fg)}
+/* sitting */
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.qhead .n{font-weight:700}
+.qhead .timer{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--muted-fg)}
+.qhead .timer.low{color:var(--danger);font-weight:700}
+.stem{white-space:pre-wrap;margin-bottom:10px}
+.stem img,.qimg{max-width:100%;border-radius:8px;background:#fff;display:block;margin:8px 0}
+/* structured stem: her paragraphs, lists and table rows survive; a Canvas layout
+   table becomes stacked cells at phone width and side-by-side from 560px */
+.stem.rich{white-space:normal;line-height:1.5}
+.stem.rich p{margin:.4em 0}
+.stem.rich ul,.stem.rich ol{margin:.3em 0;padding-left:1.35em}
+.stem.rich li{margin:.15em 0}
+.stem.rich li>p{margin:.1em 0}
+.stem.rich div{margin:.15em 0}
+.stem.rich .tbl{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.stem.rich .tr{display:flex;flex-wrap:wrap;gap:8px 14px;border:1px solid var(--border);border-radius:8px;padding:8px 10px;background:var(--muted)}
+.stem.rich .td{flex:1 1 220px;min-width:0}
+.stem.rich .td>p:first-child{margin-top:0}
+.stem.rich .td img{margin:0 0 4px;max-height:280px;width:auto}
+.stem.rich img{max-height:520px;width:auto}
+.inl{display:inline-block;width:auto;max-width:100%;padding:5px 8px;margin:2px 0;vertical-align:baseline;
+  font-size:.95em;border:1px solid var(--primary);background:var(--card);color:var(--fg);border-radius:6px}
+input.inl{min-width:7ch}
+.inl:focus{outline:2px solid var(--primary);outline-offset:1px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);
+  border-radius:var(--radius);padding:10px;margin:6px 0;cursor:pointer;background:var(--muted)}
+.opt input{margin-top:3px;flex:none}
+.opt.sel{border-color:var(--primary);background:var(--accent)}
+.blankrow{display:flex;flex-direction:column;gap:4px;margin:8px 0}
+.blankrow label{font-size:.82rem;color:var(--muted-fg)}
+select,input[type=text],textarea{font:inherit;color:var(--fg);background:var(--muted);
+  border:1px solid var(--border);border-radius:8px;padding:9px;width:100%}
+textarea{min-height:120px}
+.pips{display:flex;gap:3px;flex-wrap:wrap;margin:10px 0 2px}
+.pip{width:14px;height:6px;border-radius:3px;background:var(--muted);border:1px solid var(--border)}
+.pip.done{background:var(--primary);border-color:var(--primary)}
+.pip.cur{outline:2px solid var(--primary);outline-offset:1px}
+/* marking */
+.mk{border-left:4px solid var(--border);padding-left:10px;margin:14px 0}
+.mk.right{border-color:var(--ok)}.mk.wrong{border-color:var(--danger)}
+.mk .you{color:var(--muted-fg);font-size:.9rem}
+.mk .keyline{color:var(--ok);font-weight:600}
+.mk .marks{font-size:.8rem;color:var(--muted-fg)}
+.steps label{display:flex;gap:8px;align-items:flex-start;margin:6px 0;cursor:pointer}
+.refq{font-size:.85rem;color:var(--muted-fg);margin:8px 0 2px;padding:8px 10px;background:var(--muted);border-radius:8px}
+.refq.slide{padding:6px}
+.slideimg{max-width:100%;background:#fff;border-radius:6px;display:block;margin:0 0 4px}
+.keyrows{margin:6px 0}
+.krow{font-size:.85rem;padding:3px 0;border-bottom:1px dashed var(--border)}
+.krow b{color:var(--ok);font-weight:600}
+.krow.kok{opacity:.55}
+.kyou{color:var(--danger);font-size:.78rem}
+.refsrc{font-size:.74rem;color:var(--muted-fg);opacity:.8}
+.vidrow{font-size:.86rem;margin:6px 0}
+.vidrow a{font-weight:600}
+.askai{padding:3px 10px;font-size:.76rem;margin-top:6px}
+.score-hero{font-size:2.2rem;font-weight:800;text-align:center;margin:.3rem 0 0}
+.score-sub{text-align:center;color:var(--muted-fg);margin:0 0 10px}
+/* chart */
+.spark{width:100%;height:84px;display:block}
+.hist{font-size:.82rem;color:var(--muted-fg)}
+.hist td{padding:2px 8px 2px 0}
+/* chain warmup */
+.chain{display:flex;flex-direction:column;gap:2px;margin:8px 0}
+.bead{background:var(--accent);border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:.9rem}
+.bead.blank{border-style:dashed;color:var(--warn);text-align:center}
+.verb{color:var(--muted-fg);font-size:.78rem;padding:0 12px}
+.note{border:1px solid var(--border);border-left:4px solid var(--warn);border-radius:8px;
+  padding:8px 10px;font-size:.84rem;color:var(--muted-fg);margin:10px 0}
+.src{font-size:.75rem;color:var(--muted-fg);margin-top:6px}
+dialog{background:var(--card);color:var(--fg);border:1px solid var(--border);
+  border-radius:var(--radius);max-width:640px;width:calc(100% - 32px);padding:18px}
+dialog::backdrop{background:rgb(0 0 0 / .6)}
+h3{margin:14px 0 4px;font-size:.95rem}
+.footbar{position:fixed;bottom:0;left:0;right:0;background:var(--bg);
+  border-top:1px solid var(--border);padding:10px 14px;display:none;gap:8px;z-index:5}
+.footbar.on{display:flex}
+.footbar .btn{flex:1}
+a{color:var(--primary)}
+</style>
+</head>
+<body>
+<header>
+  <h1>HS2 · Paper Sim</h1>
+  <span class="d" id="countdown"></span>
+  <a class="btn ghost" href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener" title="Every Dr Matt &amp; Dr Mike video, by topic">▶</a>
+  <button class="btn ghost" id="themeBtn" title="theme">◐</button>
+  <button class="btn ghost" id="helpBtn" title="what is this?">?</button>
+</header>
+<main id="view"></main>
+<div class="footbar" id="footbar"></div>
+<dialog id="help"></dialog>
+
+<script>
+const DATA = /*@BANK@*/;
+/* ── state ─────────────────────────────────────────────────────────── */
+const LS = k => { try { return JSON.parse(localStorage.getItem('hs2m1.'+k)) } catch(e){ return null } };
+const SV = (k,v) => { try { localStorage.setItem('hs2m1.'+k, JSON.stringify(v)) } catch(e){} };
+let S = {
+  scores: LS('scores')||[],   // {t, mode, got, tot, label}
+  miss:   LS('miss')  ||{},   // qid -> wrong count
+  seen:   LS('seen')  ||{},   // qid -> sittings
+};
+/* the HS2 final exam — hub/deadlines.js, which follows the Canvas calendar */
+const EXAMDAY = new Date('2026-11-05T12:30:00+13:00');
+const daysLeft = () => Math.max(0, Math.ceil((EXAMDAY - Date.now())/864e5));
+const $ = s => document.querySelector(s);
+const esc = s => String(s??'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]} return a };
+const SYS = {cvs:'Cardiovascular', resp:'Respiratory', lymph:'Lymphatic', mixed:'Mixed'};
+
+/* ── dealing ───────────────────────────────────────────────────────── */
+const CLOSED = DATA.questions.filter(q=>!q.saq);
+function pickN(pool, n, excl){
+  const fresh = pool.filter(q=>!excl.has(q.id));
+  /* Least-seen first: rank = times dealt, so nothing repeats an (n+1)th time
+     until the whole pool has been dealt n times. Misses jump the queue (-2),
+     Math.random() only breaks ties among equally-seen questions. */
+  const rank = q => (S.miss[q.id]?-2:0) + (S.seen[q.id]||0) + Math.random();
+  return fresh.sort((a,b)=>rank(a)-rank(b)).slice(0,n);
+}
+function dealStratified(n){
+  const out=[], excl=new Set();
+  /* shares are DERIVED from the bank — her revealed question distribution —
+     never typed. Announced emphasis does not get a vote. */
+  const share = {};
+  for(const q of CLOSED) share[q.sys]=(share[q.sys]||0)+1/CLOSED.length;
+  for(const sys of ['cvs','resp','lymph','mixed']){
+    const want=Math.round(n*(share[sys]||0));
+    for(const q of pickN(CLOSED.filter(x=>x.sys===sys), want, excl)){ out.push(q); excl.add(q.id); }
+  }
+  while(out.length<n){
+    const q=pickN(CLOSED, 1, excl)[0]; if(!q)break; out.push(q); excl.add(q.id);
+  }
+  return shuffle(out).slice(0,n);
+}
+function dealMini(){ return dealStratified(12) }
+/* Test 1's own shape (35 Q · 20% SAQ · 65 min): 32 closed + one exam-case question +
+   one of her essays. The exam-case questions rotate in order across full sittings. */
+const CASEQ = DATA.cases.flatMap(c=>c.questions.map(q=>({...q, caseId:c.id, caseName:c.name, scenario:c.scenario, csys:c.sys})));
+function dealFull(){
+  const closed = dealStratified(32);
+  const essays = DATA.questions.filter(q=>q.saq);
+  const other = essays.length? essays[Math.random()*essays.length|0] : null;
+  const saqs=[];
+  if(CASEQ.length) saqs.push(mkCaseQ(CASEQ[(S.scores.filter(s=>s.mode==='full').length) % CASEQ.length]));
+  if(other) saqs.push(other);
+  return closed.concat(saqs);
+}
+function mkCaseQ(cq){
+  return { id:'case-'+cq.caseId+'-'+cq.q.slice(0,24).replace(/\W/g,''), quiz:'case:'+cq.caseId, sys:cq.csys, type:'essay',
+    pts:cq.marks, q:cq.q, imgs:[], saq:{steps:cq.steps, src:cq.src}, scenario: cq.caseName+' — '+cq.scenario };
+}
+function dealMisses(){
+  let ids = Object.keys(S.miss).filter(id=>S.miss[id]>=2);
+  if(ids.length<4) ids = Object.keys(S.miss);
+  const pool = CLOSED.filter(q=>ids.includes(q.id));
+  return shuffle(pool).slice(0,12);
+}
+
+/* ── home ──────────────────────────────────────────────────────────── */
+function home(){
+  $('#footbar').classList.remove('on');
+  const last = S.scores[S.scores.length-1];
+  document.getElementById('view').innerHTML = `
+  ${sparkCard()}
+  <div class="card" style="border-left:4px solid var(--warn)">
+    <details>
+      <summary style="cursor:pointer;font-weight:700">📋 Her Module 1 learning checklist — the only list that limits what she can ask</summary>
+      <div class="hist" style="margin-top:8px">
+        Asked “where is the list of questions that will be in the test?”, she answered: <i>“There is no such list. The closest to such a list is the assessment criteria listed in Module 1: Learning checklist … it limits what I may ask.”</i> This is that checklist, her wording.
+        <br><br><b>Cardiovascular</b>
+        <ol style="margin:.3em 0;padding-left:1.4em">
+          <li>Describe the function of the cardiovascular system</li>
+          <li>Describe the structural and functional differences between the artery, vein and capillary</li>
+          <li>Outline the factors involved in capillary fluid movement – including hydrostatic and oncotic pressures</li>
+          <li>Describe the relationship between blood pressure, blood flow, peripheral resistance, and velocity of blood flow</li>
+          <li>Describe the functional anatomy of the heart and its major vessels: location and orientation · the coverings · the walls, chambers and valves</li>
+          <li>Describe the blood flow through the heart, systemic circuit, pulmonary circuit, and coronary circulation</li>
+          <li>Describe the sounds the heart makes and the best places to detect them</li>
+          <li>Describe the generation and conduction of the basic rhythm in relation to the cardiac cycle and the ECG</li>
+          <li>Discuss the homeostatic control of heart rate, stroke volume and cardiac output (neural and hormonal)</li>
+          <li>Explain the effect of general factors on heart rate, stroke volume and cardiac output</li>
+          <li>Describe the effect of venous return, plasma electrolytes, stress and exercise on cardiac function</li>
+          <li>Discuss the short-term and long-term control of blood pressure (baroreceptors, vasomotor and cardiac centres, reflex control; renal and hormonal control incl. adrenaline and renin-angiotensin-aldosterone)</li>
+          <li>Describe how blood pressure is affected by stress, exercise etc.</li>
+          <li>Define circulatory shock; the types, and the signs and events of hypovolaemic shock</li>
+          <li>Explain the terms: pulse · cardiac output · blood pressure · blood flow · peripheral resistance · tissue perfusion · vasoconstriction/vasodilation · pressure points · ECG · coronary arteries and circulation · heart attack / myocardial infarction · ischaemia · myocardium · atrial and ventricular systole and diastole · pericarditis, myocarditis, endocarditis · angina pectoris · asystole · bradycardia, tachycardia · positive and negative inotropic and chronotropic action · congestive heart failure · ventricular fibrillation · hypertension, hypotension</li>
+        </ol>
+        <b>Respiratory</b>
+        <ol style="margin:.3em 0;padding-left:1.4em">
+          <li>Explain the function of the respiratory system and the processes of respiration: pulmonary ventilation, external and internal respiration, transport of blood gases, cellular respiration</li>
+          <li>Describe the functional anatomy of the nose and sinuses, pharynx, larynx, trachea, bronchial tree, lungs and pleural membranes</li>
+          <li>Differentiate the conducting and respiratory zones, and the upper and lower respiratory tract</li>
+          <li>Describe the pathway of air from the nose to the lungs: conduction, protective mechanisms, production of sound</li>
+          <li>Describe the structure of the alveoli: alveoli, respiratory membrane, surfactant, in relation to protection and gas exchange</li>
+          <li>Define the lung volumes and capacities and their clinical significance</li>
+          <li>Describe pulmonary ventilation in terms of pressure and volume changes, and the factors that affect it: airway resistance, surface tension, lung compliance, negative intrapleural pressure</li>
+          <li>Explain the difference between atmospheric and alveolar air</li>
+          <li>Describe external respiration and the factors that affect gas exchange</li>
+          <li>Describe internal respiration and the factors that affect gas exchange</li>
+          <li>Describe the transport of oxygen in the blood and the factors that affect it</li>
+          <li>Describe the transport of carbon dioxide in the blood and the factors that affect it</li>
+          <li>Describe the generation of the basic respiratory rhythm and its control: the medullary and pontine respiratory groups</li>
+          <li>Discuss the chemical factors that influence rate and depth of ventilation: PCO₂, pH, PO₂</li>
+          <li>Discuss the effect of emotions and conscious control on breathing: hypothalamic and cortical control</li>
+          <li>Discuss the effect of exercise, body temperature, pain and irritation of the air passages on ventilation</li>
+          <li>Explain the terms: alveoli · asthma · chronic bronchitis · bronchodilator · negative and positive pressure · cellular respiration · pleural pressure · atmospheric pressure at sea level · partial pressure · Boyle’s law · Henry’s law · hypoxia · hypocapnia, hypercapnia · dyspnoea · apnoea · emphysema · tuberculosis · eupnoea · tachypnoea · hyperventilation</li>
+        </ol>
+        <b>Lymphatic</b>
+        <ol style="margin:.3em 0;padding-left:1.4em">
+          <li>Describe the functions of the lymphatic system: immunity and body defence, fluid volume, absorption and transport of lipid</li>
+          <li>Functional anatomy of its components: lymphoid organs, lymph nodes, spleen, lymphatic capillaries and vessels</li>
+          <li>Describe the relationship between the cardiovascular and lymphatic systems in the transport and drainage of lymph</li>
+          <li>Explain the terms: buboes · lymphoedema · lymphangitis · Hodgkin’s disease · splenectomy · tonsillitis · sentinel node · swollen glands · ruptured spleen</li>
+        </ol>
+        <div class="refsrc" style="margin-top:6px">Source: her Canvas page “Module 1: Learning checklist” and her post “What will be in Test 1?”, both in the export of 11 Aug 2026. The exam’s Module 1 case studies are the three starred ones: lymph node removal, asthma, panic attack — they are in the full mock test.</div>
+      </div>
+    </details>
+  </div>
+  <div class="card door" style="border-left:4px solid var(--primary)">
+    <h2>📺 Watch first — the whole video shelf</h2>
+    <p>All ${DATA.stats.videos} Dr Matt &amp; Dr Mike videos on the Module 1 shelf, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
+    <a class="btn wide" href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">Open the Module 1 video playlist ↗</a>
+  </div>
+  <div class="card door">
+    <h2>🎯 Deal me a mock test</h2>
+    <p>Practice only — dealt from her whole Module 1 bank. Test 1 is behind you; this is prep for the final exam on 5 Nov, where Module 1 comes back with its three starred case studies.</p>
+    <button class="btn primary wide" data-go="mini">Sit a mini mock test · 12 questions, ~15 min</button>
+    <button class="btn wide" data-go="full">Sit the full mock test · 34 Q incl. written, 65 min — Test 1’s shape</button>
+    <button class="btn wide" data-go="miss" ${Object.keys(S.miss).length? '':'disabled'}>Redo my misses${Object.keys(S.miss).length?` · ${Object.keys(S.miss).length} in the pile`:''}</button>
+  </div>
+  <div class="card door">
+    <h2>🗂 Pick my rep</h2>
+    <p>Her quizzes, unlocked — sit any of them as often as you like. No attempt limits, marked instantly.</p>
+    <div class="sysrow">
+      <button class="btn ghost" data-sys="cvs">All CVS</button>
+      <button class="btn ghost" data-sys="resp">All Resp</button>
+      <button class="btn ghost" data-sys="lymph">All Lymph</button>
+    </div>
+    <div class="qlist">${DATA.quizzes.map(z=>`
+      <div class="qrow"><span class="tag ${z.sys}">${z.sys}</span><b>${esc(z.name)}</b>
+      <span class="m">${z.n} Q</span><button class="btn ghost" data-quiz="${z.id}">Sit</button></div>`).join('')}
+    </div>
+  </div>`;
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>start(b.dataset.go));
+  document.querySelectorAll('[data-quiz]').forEach(b=>b.onclick=()=>start('quiz:'+b.dataset.quiz));
+  document.querySelectorAll('[data-sys]').forEach(b=>b.onclick=()=>start('sys:'+b.dataset.sys));
+}
+function sparkCard(){
+  if(!S.scores.length) return `<div class="card"><b>No sittings yet.</b>
+    <p class="hist" style="margin:.4rem 0 0">Your first mock test is the baseline — the whole game is the climb from there. ${daysLeft()} days to the exam.</p></div>`;
+  const pts=S.scores.slice(-30).map(s=>s.got/s.tot);
+  const W=600,H=70,P=6;
+  const x=i=>P+i*(W-2*P)/Math.max(1,pts.length-1), y=v=>H-P-v*(H-2*P);
+  const path=pts.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+  const last=S.scores[S.scores.length-1], pct=Math.round(100*last.got/last.tot);
+  const best=Math.max(...S.scores.map(s=>s.got/s.tot));
+  return `<div class="card">
+    <div style="display:flex;align-items:baseline;gap:10px">
+      <b style="font-size:1.3rem">${last.got}/${last.tot}</b>
+      <span class="hist">${pct}% · ${esc(last.label)}</span>
+      <span class="hist" style="margin-left:auto">best ${Math.round(best*100)}% · ${S.scores.length} sat</span>
+    </div>
+    <svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="score history">
+      <line x1="${P}" y1="${y(.5)}" x2="${W-P}" y2="${y(.5)}" stroke="var(--border)" stroke-dasharray="4 4"/>
+      <path d="${path}" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="${x(pts.length-1)}" cy="${y(pts[pts.length-1])}" r="4" fill="var(--primary)"/>
+    </svg>
+    <div class="hist">dashed line = 50%. <button class="btn ghost" id="shareBtn" style="padding:2px 10px;font-size:.78rem">Copy score line</button></div>
+  </div>`;
+}
+
+/* ── sitting ───────────────────────────────────────────────────────── */
+let SIT=null;
+function start(mode){
+  let deck,label,timed=false;
+  if(mode==='mini'){deck=dealMini();label='mini mock'}
+  else if(mode==='full'){deck=dealFull();label='full mock';timed=true}
+  else if(mode==='miss'){deck=dealMisses();label='redo misses'}
+  else if(mode.startsWith('quiz:')){const z=DATA.quizzes.find(x=>x.id===mode.slice(5));
+    deck=DATA.questions.filter(q=>q.quiz===z.id);label=z.name}
+  else if(mode.startsWith('sys:')){const s=mode.slice(4);
+    deck=shuffle(CLOSED.filter(q=>q.sys===s)).slice(0,12);label='all '+s}
+  if(!deck||!deck.length){alert('Nothing to deal here yet.');return}
+  SIT={deck,label,mode,i:0,ans:{},t0:Date.now(),timed,end:timed?Date.now()+65*60*1000:null};
+  if(mode==='mini'&&DATA.chains.length){warmup();return}
+  renderQ();
+}
+function warmup(){
+  const ch=DATA.chains[Math.random()*DATA.chains.length|0];
+  const beads=ch.beads.filter(b=>b.t);
+  const bi=1+Math.random()*(beads.length-1)|0;
+  const answer=beads[bi].t;
+  const others=shuffle(DATA.chains.filter(c=>c!==ch).flatMap(c=>c.beads.filter(b=>b.t).map(b=>b.t))).slice(0,3);
+  const opts=shuffle([answer,...others]);
+  $('#view').innerHTML=`<div class="card">
+    <b>30-second warm-up · ${esc(ch.name)}</b>
+    <div class="chain">${ch.beads.map(b=> b.t
+      ? `<div class="bead ${b.t===answer?'blank':''}">${b.t===answer?'?':esc(b.t)}</div>`
+      : `<div class="verb">${esc(b.v)} ↓</div>`).join('')}</div>
+    ${opts.map(o=>`<label class="opt"><input type="radio" name="wu"><span>${esc(o)}</span></label>`).join('')}
+    <div class="src">${esc(ch.src)} — a scaffold built from her decks, not her material.</div>
+    <button class="btn primary wide" id="wuGo">Check → start the mock test</button>
+    <button class="btn ghost wide" id="wuSkip">Skip warm-up</button></div>`;
+  document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');o.querySelector('input').checked=true});
+  $('#wuGo').onclick=()=>{const sel=document.querySelector('.opt.sel span');
+    if(sel){sel.closest('.opt').style.borderColor = sel.textContent===answer?'var(--ok)':'var(--danger)';
+      setTimeout(renderQ, sel.textContent===answer?450:1400);
+      if(sel.textContent!==answer){const right=[...document.querySelectorAll('.opt span')].find(s=>s.textContent===answer);right.closest('.opt').style.borderColor='var(--ok)';}
+    } else renderQ()};
+  $('#wuSkip').onclick=renderQ;
+}
+let timerIv=null;
+function renderQ(){
+  clearInterval(timerIv);
+  const q=SIT.deck[SIT.i];
+  const fb=$('#footbar');fb.classList.add('on');
+  fb.innerHTML=`<button class="btn" id="prevB" ${SIT.i? '':'disabled'}>← Back</button>
+    <button class="btn primary" id="nextB">${SIT.i===SIT.deck.length-1?'Finish & mark':'Next →'}</button>`;
+  $('#prevB').onclick=()=>{saveAns();SIT.i--;renderQ()};
+  setTimeout(()=>{const x=$('#exitB');if(x)x.onclick=()=>{if(confirm('Abandon this mock test? Nothing is saved.')){clearInterval(timerIv);home();window.scrollTo(0,0)}}},0);
+  $('#nextB').onclick=()=>{saveAns();SIT.i===SIT.deck.length-1?mark():(SIT.i++,renderQ())};
+  const a=SIT.ans[q.id];
+  const imgTag=f=>`<img class="qimg" src="img/${f}" alt="question figure" loading="lazy">`;
+  /* the blank widget, inline where Canvas put it: her dropdown stays a dropdown
+     (choices shuffled per sitting), her typed blank stays typed */
+  const widget=(b,i)=> q.bk==='dd'
+    ? `<select class="inl" data-i="${i}" aria-label="blank ${i+1}"><option value="">— choose —</option>${shuffleStable(q.id+i,b.options).map(o=>`<option ${a&&a.pick&&a.pick[i]===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`
+    : `<input type="text" class="inl" data-i="${i}" style="width:${Math.min(26,Math.max(7,Math.max(...b.options.map(o=>o.length))+3))}ch" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type…" aria-label="blank ${i+1}" value="${a&&a.pick?esc(a.pick[i]||''):''}">`;
+  /* structured stem: her paragraphs, lists and table rows, with [[IMG:…]] and
+     [[BLANK:k]] markers resolved in place. Images the stem did not place still show
+     below it, so no figure is ever lost. */
+  const placed=new Set();
+  let stemHTML=q.qh
+    ? q.qh.replace(/\[\[IMG:([^\]]+)\]\]/g,(m,f)=>{placed.add(f);return imgTag(f)})
+          .replace(/\[\[BLANK:(\d+)\]\]/g,(m,k)=>q.type==='cloze'&&q.blanks[+k]?widget(q.blanks[+k],+k):'____')
+    : esc(q.q);
+  const imgs=(q.imgs||[]).filter(f=>!placed.has(f)).map(imgTag).join('');
+  const inlineBlanks=q.type==='cloze'&&q.qh&&/\[\[BLANK:\d+\]\]/.test(q.qh);
+  let body='';
+  if(q.type==='mcq'||q.type==='tf'||q.type==='multi'){
+    const multi=q.type==='multi';
+    body=q.opts.map((o,i)=>`<label class="opt ${a&&a.sel&&a.sel.includes(i)?'sel':''}">
+      <input type="${multi?'checkbox':'radio'}" name="q" value="${i}" ${a&&a.sel&&a.sel.includes(i)?'checked':''}>
+      <span>${esc(optLabel(q,o))}</span></label>`).join('');
+    if(multi)body=`<div class="note">Tick every answer that applies — it may be just one.</div>`+body;
+  } else if(q.type==='match'){
+    const bank=shuffleStable(q.id,[...new Set(q.pairs.map(p=>p.right))]); // a right-hand item used twice is still ONE option
+    body=q.pairs.map((p,i)=>`<div class="blankrow"><label>${esc(p.left)}</label>
+      <select data-i="${i}"><option value="">— choose —</option>
+      ${bank.map(r=>`<option ${a&&a.pick&&a.pick[i]===r?'selected':''}>${esc(r)}</option>`).join('')}</select></div>`).join('');
+  } else if(q.type==='cloze'){
+    body=inlineBlanks
+      ? `<div class="note">${q.bk==='dd'?'Pick from each dropdown in the text.':'Type into each blank in the text — spelling counts, capitals don’t.'}</div>`
+      : q.blanks.map((b,i)=>`<div class="blankrow"><label>${esc(blankLabel(b,i))}${q.bk==='dd'?'':' (type it)'}</label>${widget(b,i)}</div>`).join('');
+  } else if(q.type==='essay'){
+    body=`${q.scenario?`<div class="note">${esc(q.scenario)}</div>`:''}
+      <div class="note">Written question · ${q.pts} marks — write ${q.pts} numbered points, one causal step each. You mark yourself against the model at the end.</div>
+      <textarea data-essay placeholder="1. …&#10;2. …">${a&&a.text?esc(a.text):''}</textarea>`;
+  }
+  $('#view').innerHTML=`<div class="card">
+    <div class="qhead"><span class="n">Q${SIT.i+1}/${SIT.deck.length}</span>
+      <span class="tag ${q.sys}">${q.sys}</span><span class="tag">${q.pts} mk</span>
+      <span class="timer" id="timer"></span>
+      <button class="btn ghost" id="exitB" title="abandon mock test" style="padding:2px 10px">✕</button></div>
+    ${inlineBlanks?body:''}<div class="stem${q.qh?' rich':''}">${stemHTML}</div>${imgs}${inlineBlanks?'':body}
+    <div class="pips">${SIT.deck.map((_,i)=>`<span class="pip ${SIT.ans[SIT.deck[i].id]?'done':''} ${i===SIT.i?'cur':''}"></span>`).join('')}</div>
+  </div>`;
+  document.querySelectorAll('.opt').forEach(o=>o.onclick=e=>{
+    const inp=o.querySelector('input');
+    if(inp.type==='radio'){document.querySelectorAll('.opt').forEach(x=>{x.classList.remove('sel');x.querySelector('input').checked=false});inp.checked=true;o.classList.add('sel')}
+    else{if(e.target.tagName!=='INPUT')inp.checked=!inp.checked;o.classList.toggle('sel',inp.checked)}
+  });
+  if(SIT.timed){const t=$('#timer');const tick=()=>{const s=Math.max(0,(SIT.end-Date.now())/1000|0);
+    t.textContent=`${s/60|0}:${String(s%60).padStart(2,'0')}`;t.classList.toggle('low',s<300);
+    if(s<=0){clearInterval(timerIv);saveAns();mark()}};tick();timerIv=setInterval(tick,1000)}
+}
+function shuffleStable(seed,arr){
+  let h=0;for(const c of String(seed))h=(h*31+c.charCodeAt(0))>>>0;
+  return arr.map((v,i)=>({v,k:(h=(h*1103515245+12345)>>>0)})).sort((a,b)=>a.k-b.k).map(x=>x.v);
+}
+function saveAns(){
+  const q=SIT.deck[SIT.i];
+  if(q.type==='essay'){const t=document.querySelector('[data-essay]');if(t&&t.value.trim())SIT.ans[q.id]={text:t.value};return}
+  if(q.type==='match'||q.type==='cloze'){
+    const pick={};let any=false;
+    document.querySelectorAll('[data-i]').forEach(el=>{if(el.value){pick[el.dataset.i]=el.value;any=true}});
+    if(any)SIT.ans[q.id]={pick};return}
+  const sel=[...document.querySelectorAll('.opt input:checked')].map(i=>+i.value);
+  if(sel.length)SIT.ans[q.id]={sel};
+}
+/* ── marking ───────────────────────────────────────────────────────── */
+function markQ(q,a){
+  if(q.type==='essay')return null; // self-marked
+  if(!a)return{got:0,tot:q.pts,detail:'no answer'};
+  if(q.type==='mcq'||q.type==='tf'||q.type==='multi'){
+    const chosen=(a.sel||[]).map(i=>q.opts[i]);
+    const right=chosen.length===q.key.length&&q.key.every(k=>chosen.includes(k));
+    return{got:right?q.pts:0,tot:q.pts,you:chosen.map(o=>optLabel(q,o)).join(' · ')}}
+  if(q.type==='match'){
+    let got=0;q.pairs.forEach((p,i)=>{if((a.pick||{})[i]===p.right)got++});
+    return{got:got*q.pts/q.pairs.length,tot:q.pts,you:q.pairs.map((p,i)=>(a.pick||{})[i]||'—').join(' · ')}}
+  if(q.type==='cloze'){
+    let got=0;
+    q.blanks.forEach((b,i)=>{if(blankOK(q,b,(a.pick||{})[i]))got++});
+    return{got:got*q.pts/q.blanks.length,tot:q.pts,you:q.blanks.map((b,i)=>(a.pick||{})[i]||'—').join(' · ')}}
+}
+/* dropdown: only her marked option is right. Typed: every accepted spelling is. */
+function blankOK(q,b,v){
+  /* phones type curly quotes; a trailing full stop is not a wrong answer */
+  const nrm=s=>String(s||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().replace(/[.]+$/,'');
+  const x=nrm(v);if(!x)return false;
+  const also=(b.also||[]).some(o=>nrm(o)===x);
+  return q.bk==='dd' ? (x===nrm(b.correct)||also) : (b.options.some(o=>nrm(o)===x)||also);
+}
+function blankLabel(b,i){return b.ctx?`${b.ctx} ___`:(b.label&&!/^Answer \d+:?$/.test(b.label)?b.label.replace(/:$/,''):`Blank ${i+1}`)}
+function mark(){
+  clearInterval(timerIv);$('#footbar').classList.remove('on');
+  let got=0,tot=0;const rows=[];
+  for(const q of SIT.deck){
+    const r=markQ(q,SIT.ans[q.id]);
+    S.seen[q.id]=(S.seen[q.id]||0)+1;
+    if(r){got+=r.got;tot+=r.tot;
+      if(r.got<r.tot)S.miss[q.id]=(S.miss[q.id]||0)+1;
+      else if(S.miss[q.id])delete S.miss[q.id];
+      rows.push({q,r})}
+    else rows.push({q,r:null,saq:true});
+  }
+  SIT.auto={got,tot};
+  const saqs=rows.filter(x=>x.saq);
+  $('#view').innerHTML=`<div class="card">
+    <div class="score-hero" id="hero"></div><div class="score-sub" id="heroSub"></div>
+    ${saqs.length?`<div class="note">Tick each model step your written answer actually hit — the score updates as you go. Model answers are the tool’s unless the source line under them says the words are hers.</div>`:''}
+    ${rows.map(({q,r,saq},i)=>{
+      if(saq){const a=SIT.ans[q.id];
+        return `<div class="mk" id="mk${i}"><b>${esc(flatStem(q))}</b>
+        ${a&&a.text?`<div class="you">You wrote:<br>${esc(a.text).replace(/\n/g,'<br>')}</div>`:'<div class="you">— no answer written —</div>'}
+        <div class="steps">${q.saq.steps.map((s,si)=>`<label><input type="checkbox" data-saq="${i}" data-pt="${q.pts/q.saq.steps.length}"> <span>${esc(s)}</span></label>`).join('')}</div>
+        <div class="src">${esc(q.saq.src)}</div></div>`}
+      const cls=r.got>=r.tot?'right':'wrong';
+      return `<div class="mk ${cls}"><b>${esc(flatStem(q)).slice(0,300)}</b>
+        <div class="marks">${(+r.got.toFixed(1))}/${r.tot} mk · ${esc(DATA.quizzes.find(z=>z.id===q.quiz)?.name||q.quiz)}</div>
+        ${q.type==='mcq'||q.type==='tf'||q.type==='multi'?(r.you?`<div class="you">You: ${esc(r.you)}</div>`:`<div class="you">${r.detail||''}</div>`):''}
+        ${r.got<r.tot?`${keyHTML(q,SIT.ans[q.id])}${explainHTML(q)}`:''}</div>`}).join('')}
+    ${weakSpotsHTML(rows)}
+    <button class="btn primary wide" id="doneB">Save score & finish</button></div>`;
+  const upd=()=>{
+    let s=0;document.querySelectorAll('[data-saq]:checked').forEach(c=>s+=+c.dataset.pt);
+    const saqTot=saqs.reduce((n,{q})=>n+q.pts,0);
+    const g=got+s,t=tot+saqTot;
+    $('#hero').textContent=`${+g.toFixed(1)} / ${t}`;
+    $('#heroSub').textContent=`${Math.round(100*g/t)}% · ${SIT.label} · ${Math.round((Date.now()-SIT.t0)/60000)} min`;
+    SIT.final={got:+g.toFixed(1),tot:t}};
+  document.querySelectorAll('[data-saq]').forEach(c=>c.onchange=upd);upd();
+  $('#doneB').onclick=()=>{
+    S.scores.push({t:Date.now(),mode:SIT.mode,label:SIT.label,got:SIT.final.got,tot:SIT.final.tot});
+    SV('scores',S.scores);SV('miss',S.miss);SV('seen',S.seen);home();window.scrollTo(0,0)};
+  SV('miss',S.miss);SV('seen',S.seen);
+  window.scrollTo(0,0);
+}
+/* the explain row: her material first, then the right-sized video, then Ask AI.
+   Only on wrong answers, never during a sitting. */
+function explainHTML(q){
+  let h='';
+  if(q.ref&&q.ref.slide)h+=`<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
+  else if(q.ref)h+=`<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
+  if(q.vid)h+=vidRowHTML(q.vid,'Dr Matt &amp; Dr Mike · ')+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
+  h+=`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
+  return h;
+}
+/* a video link opens at the moment its captions say the tested point is taught —
+   `at` is where the verifying quote was found, not a guess */
+const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function vidRowHTML(v,who){
+  const at=Number.isInteger(v.at)?v.at:0;
+  return `<div class="vidrow">▶ <a href="https://www.youtube.com/watch?v=${v.id}${at?`&t=${at}s`:''}" target="_blank" rel="noopener">${esc(v.t)}</a> <span class="refsrc">${who}${esc(v.d)}${at?` · from ${mmss(at)}`:''}</span></div>`;
+}
+function weakSpotsHTML(rows){
+  const missed=rows.filter(x=>!x.saq&&x.r&&x.r.got<x.r.tot).map(x=>x.q);
+  if(missed.length<3)return '';
+  const vids=new Map();
+  for(const q of missed) if(q.vid){ if(!vids.has(q.vid.id)) vids.set(q.vid.id,q.vid); if(q.vid.alt&&!vids.has(q.vid.alt.id)) vids.set(q.vid.alt.id,q.vid.alt); }
+  if(!vids.size)return '';
+  const bySys={};for(const q of missed)bySys[q.sys]=(bySys[q.sys]||0)+1;
+  const worst=Object.entries(bySys).sort((a,b)=>b[1]-a[1])[0];
+  return `<div class="note" style="border-left-color:var(--primary)">
+    <b>Weak spots this mock test</b> — ${missed.length} missed, most in ${SYS[worst[0]]||worst[0]}.
+    Watch these before your next sitting:
+    ${[...vids.values()].slice(0,4).map(v=>vidRowHTML(v,'')).join('')}
+    <div class="refsrc">Each video was matched to its question from the video's own captions and checked twice, and the link opens where that point is taught. Where a video and Hannetjie disagree, she wins.
+    <a href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">All ${DATA.stats.videos} by topic ↗</a></div></div>`;
+}
+/* readable key rendering: matching and cloze get one ROW per part, wrong parts
+   annotated with what you picked — never a run-on paragraph */
+function keyHTML(q,a){
+  if(q.type==='match')return `<div class="keyrows">${q.pairs.map((p,i)=>{
+    const yours=(a&&a.pick||{})[i];const wrong=yours&&yours!==p.right;
+    return `<div class="krow ${yours===p.right?'kok':''}">${esc(p.left)} <b>→ ${esc(p.right)}</b>${wrong?` <span class="kyou">you: ${esc(yours)}</span>`:yours?'':' <span class="kyou">unanswered</span>'}</div>`}).join('')}</div>`;
+  if(q.type==='cloze')return `<div class="keyrows">${q.blanks.map((b,i)=>{
+    const yours=(a&&a.pick||{})[i];
+    const right=blankOK(q,b,yours);
+    const alt=q.bk==='fib'&&b.options.length>1?` <span class="refsrc">(also accepted: ${esc(b.options.filter(o=>o!==b.correct).join(', '))})</span>`:'';
+    return `<div class="krow ${right?'kok':''}">${esc(blankLabel(b,i))} <b>→ ${esc(b.correct)}</b>${alt}${yours&&!right?` <span class="kyou">you: ${esc(yours)}</span>`:yours?'':' <span class="kyou">unanswered</span>'}</div>`}).join('')}</div>`;
+  return `<div class="keyline">Key: ${esc(keyText(q))}</div>`;
+}
+function keyText(q){
+  if(q.type==='match')return q.pairs.map(p=>`${p.left} → ${p.right}`).join(' · ');
+  if(q.type==='cloze')return q.blanks.map(b=>b.correct).join(' · ');
+  return (q.key||[]).map(o=>optLabel(q,o)).join(' · ');
+}
+/* bare-letter options carry their text from the stem's lettered list (build-time) */
+function optLabel(q,o){return q.ol&&q.ol[o]?`${o}. ${q.ol[o]}`:o}
+/* the flat stem carries Canvas's literal "[ Select ]" where each dropdown sat */
+const flatStem=q=>q.qt||String(q.q||'').replace(/\[ Select \]/g,'____');
+/* ── chrome ────────────────────────────────────────────────────────── */
+$('#countdown').textContent=`${daysLeft()}d to the exam`;
+$('#themeBtn').onclick=()=>{const r=document.documentElement;
+  const to=r.dataset.theme==='light'?'':'light';
+  to?r.dataset.theme='light':delete r.dataset.theme;SV('theme',to)};
+if(LS('theme')==='light')document.documentElement.dataset.theme='light';
+$('#helpBtn').onclick=()=>{$('#help').innerHTML=`
+  <h2 style="margin-top:0">What is this?</h2>
+  <p>Every practice quiz posted for HS2 Module 1 (Cardiovascular · Respiratory · Lymphatic), unlocked: sit them
+  as often as you like, marked instantly — or let the tool deal you mixed mock tests from the whole bank.
+  Test 1 is behind you; this is prep for the <b>final exam, 5 Nov (50%)</b>, where Module 1 comes back with its
+  three starred case studies: lymph node removal, asthma, panic attack.</p>
+  <h3>Where the questions come from</h3>
+  <p>${DATA.stats.n} questions captured from ${DATA.quizzes.length} of her own Canvas quizzes, answer keys
+  extracted from the graded pages — nothing invented. Written questions have <b>model answers written by
+  this tool</b> (Canvas publishes none) in her one-mark-per-step style, each naming its source; where the
+  source line says the words are hers (her answers deck, her feedback on a quiz), they are. Warm-up chains
+  are the estate's Module 1 guide chains — scaffolds built from her material, not her material.</p>
+  <h3>What’s held out</h3>
+  <p>${DATA.held.length} questions are excluded, each with its reason in the repo's held.json: mostly figures
+  that did not survive the export, and the whole “1.1 &amp; 3.3 Biophysical Principles” quiz, which was
+  captured before submission and so carries no answer key.</p>
+  <h3>Your data</h3>
+  <p>Scores and misses live in this browser only. Nothing is sent anywhere. Clearing site data wipes them.</p>
+  <h3>For whoever maintains this</h3>
+  <p>Built by <code>build.mjs</code> from <code>hs2-anki/m1/questions.json</code> (the Canvas export, reshaped by
+  <code>prep-capture.mjs</code> and parsed by hs2-test1's parser). Rebuild: <code>node build.mjs</code>. Bank built ${DATA.built}.
+  Multi-answer questions mark all-or-nothing; matching and dropdowns mark per part.</p>
+  <button class="btn primary wide" onclick="this.closest('dialog').close()">Close</button>`;
+  $('#help').showModal()};
+document.addEventListener('click',e=>{
+  if(e.target.dataset&&e.target.dataset.ask){
+    const q=SIT.deck.find(x=>x.id===e.target.dataset.ask);
+    const a=SIT.ans[q.id];
+    const you=a?(a.text||((a.sel||[]).map(i=>q.opts[i]).join(', ')||Object.values(a.pick||{}).join(', '))):'(no answer)';
+    const prompt=`I'm a first-year nursing student studying for an anatomy & physiology test. I got this practice question wrong and want to understand the concept, not just the answer.\n\nQuestion: ${flatStem(q)}\n`+(q.opts?`Options: ${q.opts.join(' | ')}\n`:'')+`Correct answer: ${keyText(q)}\nMy answer: ${you}\n\nExplain why the correct answer is right, step by step, and what misconception my answer suggests.`;
+    const btn=e.target, done=ok=>{btn.textContent=ok?'Copied ✓ paste into any AI chat':'Copy blocked — long-press the text to copy';
+      setTimeout(()=>btn.textContent='🤖 Copy for AI',3000)};
+    (navigator.clipboard?navigator.clipboard.writeText(prompt):Promise.reject())
+      .then(()=>done(true))
+      .catch(()=>{const ta=document.createElement('textarea');ta.value=prompt;ta.style.position='fixed';ta.style.opacity='0';
+        document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}
+        ta.remove();done(ok)});
+    return}
+  if(e.target.id==='shareBtn'){
+  const l=S.scores[S.scores.length-1];
+  const line=`HS2 Paper Sim M1 — ${l.got}/${l.tot} (${Math.round(100*l.got/l.tot)}%) · ${l.label} · ${daysLeft()}d to the exam`;
+  navigator.clipboard&&navigator.clipboard.writeText(line);
+  e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy score line',1500)}});
+home();
+</script>
+</body>
+</html>

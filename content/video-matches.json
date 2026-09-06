@@ -1,0 +1,1009 @@
+{
+ "built": "2026-09-06",
+ "module": "m1",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (101 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged.",
+ "source": {
+  "file": "dmdm-videos/video-matches.json",
+  "built": "2026-09-06",
+  "stats": {
+   "questions_with_video": 137,
+   "matches": 180,
+   "videos_used": 90,
+   "videos_on_hub_shelf": 50,
+   "videos_new_from_channel": 40
+  }
+ },
+ "stats": {
+  "questions_with_video": 115,
+  "matches": 151,
+  "videos_used": 83,
+  "source_questions_held_in_this_build": 22
+ },
+ "matches": {
+  "qca83b9fb23": [
+   {
+    "id": "DAuQ3eQrbPE",
+    "at": 19,
+    "quote": "supply the anterior and the lateral surface of the right atrium right ventricle"
+   }
+  ],
+  "q00c31755f8": [
+   {
+    "id": "HiFZQ-pOtmw",
+    "at": 161,
+    "quote": "reduce the amount of carbon dioxide in our bloodstream so hyperventilation"
+   }
+  ],
+  "q4550e37b96": [
+   {
+    "id": "pFQVq6ArdSw",
+    "at": 305,
+    "quote": "carbon oxide doesn't bind to the heme portion like oxygen does"
+   },
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 3862,
+    "quote": "the carbon dioxide doesn't bind to the heme portion like oxygen does"
+   }
+  ],
+  "qd221cb31a4": [
+   {
+    "id": "mAfw4yHtr1k",
+    "at": 196,
+    "quote": "osmosis is the movement of water from an area of low solute concentration to the area of high solute concentration"
+   }
+  ],
+  "q90c609b64f": [
+   {
+    "id": "ibjodC7Ft7U",
+    "at": 413,
+    "quote": "when these macula densa cells pick up a drop in sodium in the distal convoluted tubule they tell the granular cells to release renin"
+   }
+  ],
+  "q6a24b4f4eb": [
+   {
+    "id": "1z9oAe6nn3o",
+    "at": 225,
+    "quote": "from the heart alright and veins all go back towards the heart now"
+   },
+   {
+    "id": "UPOxrE79uCE",
+    "at": 228,
+    "quote": "definition of an artery is something that leaves the heart so both of these two things"
+   }
+  ],
+  "q6ff6ada641": [
+   {
+    "id": "zsPa6oFZcdU",
+    "at": 5106,
+    "quote": "pH that's now below 7.35 and the CO2 levels are high"
+   }
+  ],
+  "q8bbd93a0d8": [
+   {
+    "id": "6cb0eDBO19k",
+    "at": 778,
+    "quote": "Both of those um membranes adhere to each other."
+   }
+  ],
+  "qcd21c2cdf7": [
+   {
+    "id": "WuGMqezV3eo",
+    "at": 427,
+    "quote": "muscles contract around the veins and they squeeze the veins"
+   }
+  ],
+  "qdbcbc7f60d": [
+   {
+    "id": "GqkMzds77f8",
+    "at": 358,
+    "quote": "what we've got here is the neural controller breathing its stimulated predominately by increased carbon dioxide"
+   }
+  ],
+  "q3c179ca1e9": [
+   {
+    "id": "7vPRetkeDjI",
+    "at": 627,
+    "quote": "if I'm holding my breath I'm not breathing out that carbon dioxide that goes up"
+   }
+  ],
+  "q3b8ae7e140": [
+   {
+    "id": "uqWQDVSsbE4",
+    "at": 193,
+    "quote": "that's called the bicuspid valve. Sometimes it's referred to as the mitral valve."
+   },
+   {
+    "id": "uKrgEv7-rVM",
+    "at": 234,
+    "quote": "call it the bicuspid. Tricuspid on this side, bicuspid on the other side. It's also known as the mitral valve."
+   }
+  ],
+  "q830befefd6": [
+   {
+    "id": "_x8QJr9rkPo",
+    "at": 45,
+    "quote": "in somebody with emphysema the walls of these alveoli are destroyed and they end up becoming just big round balls"
+   }
+  ],
+  "q59658364be": [
+   {
+    "id": "uqWQDVSsbE4",
+    "at": 193,
+    "quote": "that's called the bicuspid valve. Sometimes it's referred to as the mitral valve."
+   },
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 140,
+    "quote": "right atrium to the right ventricle through the tricuspid valve this is deoxygenated blood"
+   }
+  ],
+  "q3a5d9ac49e": [
+   {
+    "id": "2BcaALrQ3PU",
+    "at": 406,
+    "quote": "left anterior descending, sometimes known as the anterior interventricular artery"
+   }
+  ],
+  "q57900fcdcf": [
+   {
+    "id": "3wa8jGDyhS8",
+    "at": 17,
+    "quote": "blood pressure drops down it means that the appropriate amount of blood is not reaching your tissues to give it oxygen"
+   }
+  ],
+  "q71dce49f5c": [
+   {
+    "id": "8cOyDn2Myy8",
+    "at": 4454,
+    "quote": "vast majority of those carbon dioxides would be incorporated into bicarbonate ions"
+   }
+  ],
+  "qe559a684ed": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 1594,
+    "quote": "surfactant does that's released by the alveoli breaks that surface tension"
+   }
+  ],
+  "qf41e8746af": [
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 152,
+    "quote": "bicuspid valve also known as the mitral valve"
+   }
+  ],
+  "qc0053416ec": [
+   {
+    "id": "RkQq23fSRcA",
+    "at": 48,
+    "quote": "their heart rate is going to be closer to 50 beats per minute"
+   },
+   {
+    "id": "h2QAey56-Ms",
+    "at": 3225,
+    "quote": "for some individuals like athletes you'll find that their heart rate is significantly lower"
+   }
+  ],
+  "q44cad813d3": [
+   {
+    "id": "WmGn7BlVQkU",
+    "at": 83,
+    "quote": "Now, if it goes too slow, right, or is totally absent, we need another pacemaker."
+   }
+  ],
+  "qa915f2b409": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 123,
+    "quote": "stroke volume is how much blood is ejected with every beat"
+   },
+   {
+    "id": "nh08D29jepg",
+    "at": 246,
+    "quote": "stroke volume is? That's the volume of blood being pumped out per contraction."
+   }
+  ],
+  "q748a1d0d4c": [
+   {
+    "id": "dTqadSSWsZk",
+    "at": 69,
+    "quote": "angiotensin converting enzyme it converts angiotensin 1 to angiotensin 2"
+   }
+  ],
+  "q5250fbe1eb": [
+   {
+    "id": "DAuQ3eQrbPE",
+    "at": 27,
+    "quote": "RCA will give off some ventricular branches, most notably the right marginal branch"
+   }
+  ],
+  "q2ff5cd95db": [
+   {
+    "id": "PzVKE2AkatM",
+    "at": 706,
+    "quote": "AV valves now close cuz we don't want blood to regurgitate back into the atria"
+   }
+  ],
+  "q1b2feb36dd": [
+   {
+    "id": "vLSwWBRWekY",
+    "at": 5321,
+    "quote": "corroted sinus that has barrow receptors that measure pressure changes. At the aorta itself where those corroteds came out of at that aortic arch there's also barrel receptors"
+   }
+  ],
+  "q32bb51088a": [
+   {
+    "id": "0FID5qRGXGg",
+    "at": 676,
+    "quote": "The more blood leaves, the greater the stroke volume."
+   },
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 397,
+    "quote": "if you stimulate the sympathetic nervous system you stimulate contractility increasing stroke volume"
+   }
+  ],
+  "q1257b43f12": [
+   {
+    "id": "S8IMBEYhtUU",
+    "at": 532,
+    "quote": "capillary beds this is the site of exchange this is where where we're going to deliver"
+   },
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 318,
+    "quote": "capillaries porous exchange venules and veins thin walled wider diameter"
+   }
+  ],
+  "q0c785286ff": [
+   {
+    "id": "WuGMqezV3eo",
+    "at": 434,
+    "quote": "exercise increases venous return increasing stroke volume increasing cardiac output"
+   },
+   {
+    "id": "HV-k31vCYvg",
+    "at": 298,
+    "quote": "so increase preload, therefore increase stroke volume, therefore increase cardiac output,"
+   }
+  ],
+  "q64194f2d3a": [
+   {
+    "id": "CFHUYTPc7So",
+    "at": 939,
+    "quote": "particles captured in the mucus upwards. This is known as the muccoiliary escalator."
+   },
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 879,
+    "quote": "particles captured in the mucus upwards this is known as the mucosal iary escalator"
+   }
+  ],
+  "qf8d864e9e9": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 480,
+    "quote": "stroke volume will go down if after load goes up"
+   }
+  ],
+  "q5be4da7842": [
+   {
+    "id": "RkQq23fSRcA",
+    "at": 30,
+    "quote": "their heart rate is usually around about 72 beats per minute and they eject around about 70 milliliters of blood with every beat. That means their cardiac output is around about 5 L per minute."
+   },
+   {
+    "id": "h2QAey56-Ms",
+    "at": 3193,
+    "quote": "heart rate on average is around about 70 beats per minute and the amount of blood that our heart ejects every beat or every contraction that's termed the stroke volume and that's around about 70 mils again this is on average so if you calculate 70 beats per minute times 70 mils what you get is your cardiac output in a minute and that ends up being around about 5 liters per minute"
+   }
+  ],
+  "q535170b50f": [
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 2856,
+    "quote": "the diaphragm when it contracts is the major or main muscle for inspiration"
+   }
+  ],
+  "qc19409af45": [
+   {
+    "id": "7z9coEwzn2s",
+    "at": 198,
+    "quote": "78.6 of the total atmospheric pressure is 597 and that's nitrogen"
+   }
+  ],
+  "qed987e85aa": [
+   {
+    "id": "59knV9PJ3Rs",
+    "at": 283,
+    "quote": "and your abdominals contract so all the muscles of your abdominals contract reducing that thoracic volume"
+   }
+  ],
+  "q7427da6e5c": [
+   {
+    "id": "CFHUYTPc7So",
+    "at": 1370,
+    "quote": "terminal bronchioles are the very end of what we call the conducting pathways"
+   }
+  ],
+  "qce795b1c3c": [
+   {
+    "id": "J5av5Tw5rpk",
+    "at": 847,
+    "quote": "medication which stops the production of angiotensin 2 remember the"
+   }
+  ],
+  "q780aa99ead": [
+   {
+    "id": "nBfqDvNJ3LA",
+    "at": 105,
+    "quote": "carbon dioxide is about 20 times more soluble than oxygen"
+   },
+   {
+    "id": "xLtLY9qaQks",
+    "at": 374,
+    "quote": "same amount of oxygen and carbon dioxide is exchanged"
+   }
+  ],
+  "qdb0eee30d4": [
+   {
+    "id": "i1yC6rcRPeU",
+    "at": 30,
+    "quote": "right atrium that contracts the liver's blood via the tricuspid valve into the right ventricle"
+   },
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 129,
+    "quote": "going from right atrium to the right ventricle The Velvet moves through something called a tricuspid valve"
+   }
+  ],
+  "q39db5b425f": [
+   {
+    "id": "NR8GvLBfABw",
+    "at": 311,
+    "quote": "what's the order of electrical conduction of the heart SA node fires off"
+   },
+   {
+    "id": "o_mWbClDVzI",
+    "at": 99,
+    "quote": "funnel through another node called the AV node. So, this one here is called"
+   }
+  ],
+  "q0f5bd8fee8": [
+   {
+    "id": "uk0WpLoD8SE",
+    "at": 468,
+    "quote": "breaks fats down. And the breaking down of those fats produces ketones, also known as keto acids."
+   }
+  ],
+  "qc6b213acbf": [
+   {
+    "id": "DAuQ3eQrbPE",
+    "at": 113,
+    "quote": "So, the LAD comes down the anterior supplies the anterior wall of the left ventricle,"
+   }
+  ],
+  "q67f10cb5df": [
+   {
+    "id": "GqkMzds77f8",
+    "at": 49,
+    "quote": "relax the external intercostals the ribcage moves back down and the elastic recoil of the lungs"
+   },
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 3659,
+    "quote": "relax the external intercostals the ribcage moves back down and the elastic recoil of the lungs"
+   }
+  ],
+  "q3ef7a912b4": [
+   {
+    "id": "D2t7aHAMxIU",
+    "at": 154,
+    "quote": "so we've got our trachea and our bronchi now we're going to be moving"
+   },
+   {
+    "id": "CFHUYTPc7So",
+    "at": 1191,
+    "quote": "These tubes they go from bronchi and once they hit about half a mill they turn into what's called bronchioles"
+   }
+  ],
+  "q5f899c1227": [
+   {
+    "id": "o_mWbClDVzI",
+    "at": 107,
+    "quote": "the AV node will funnel that electrical signal down into the bundle of His."
+   }
+  ],
+  "qb4c4c68a31": [
+   {
+    "id": "uqWQDVSsbE4",
+    "at": 190,
+    "quote": "left hand side only has two cusps and that's called the bicuspid valve"
+   },
+   {
+    "id": "KEfwq5A48kw",
+    "at": 104,
+    "quote": "on the left hand side there's two so it's called the bicuspid valve"
+   }
+  ],
+  "q8d858145a7": [
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 118,
+    "quote": "through the pulmonary valve and this prevents blood going backwards into the right ventricle."
+   }
+  ],
+  "q0adc1956bd": [
+   {
+    "id": "HV-k31vCYvg",
+    "at": 298,
+    "quote": "increase preload, therefore increase stroke volume, therefore increase cardiac output,"
+   },
+   {
+    "id": "WuGMqezV3eo",
+    "at": 434,
+    "quote": "exercise increases venous return increasing stroke volume increasing cardiac output"
+   }
+  ],
+  "qd3bf05c8e4": [
+   {
+    "id": "pA7QZUkmErg",
+    "at": 922,
+    "quote": "so quiet inspiration diaphragm and external intercostals forced inspiration definitely"
+   }
+  ],
+  "q7c36f41ee6": [
+   {
+    "id": "XlqKNaebMJc",
+    "at": 338,
+    "quote": "up here is the common carotid artery coming down from the head and face is the internal jugular"
+   }
+  ],
+  "q559c794c2c": [
+   {
+    "id": "zK2RIOqcuIU",
+    "at": 42,
+    "quote": "they need to be sent electrical signals and that's what the ECG readouts look at"
+   },
+   {
+    "id": "uXo62h96zgM",
+    "at": 0,
+    "quote": "this is an ECG an ECG electrocardiogram measures the electrical activity of the heart"
+   }
+  ],
+  "qcaa78ffe65": [
+   {
+    "id": "xFukt4Yndgw",
+    "at": 12,
+    "quote": "therefore it's shunted through the liver via the ductus venosus"
+   }
+  ],
+  "q0abc67318d": [
+   {
+    "id": "O7W8jegLokE",
+    "at": 387,
+    "quote": "and the endocardium, which is the inside of the heart."
+   }
+  ],
+  "q9f07d54541": [
+   {
+    "id": "dTqadSSWsZk",
+    "at": 61,
+    "quote": "angiotensinogen that's released from the liver angiotensinogen is now angiotensin one"
+   }
+  ],
+  "q20cd7ac282": [
+   {
+    "id": "OKppt74Vr10",
+    "at": 384,
+    "quote": "coronary vessels and blood filled the space the pericardium this is called a tamponae a cardiac tamponade"
+   },
+   {
+    "id": "4SeDddlLT3w",
+    "at": 6368,
+    "quote": "this the heart will start to compress and that's the tampenade meaning compression"
+   }
+  ],
+  "q605d8b73f0": [
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 1298,
+    "quote": "we're gonna have terminal bronchioles and then at the very end we have respiratory bronchioles"
+   }
+  ],
+  "q86c802fb50": [
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 150,
+    "quote": "through another valve called the bicuspid valve also known as the mitral valve"
+   }
+  ],
+  "q088a134ad7": [
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 765,
+    "quote": "there's a membrane that's most adherent to the lining tissue itself and this membrane is called the visceral pleura"
+   }
+  ],
+  "q30aca20534": [
+   {
+    "id": "5NRVOCBoDyc",
+    "at": 1943,
+    "quote": "when the blood gets caught in the aortic semilunar valves that's when the blood drains out"
+   }
+  ],
+  "q441c19cb56": [
+   {
+    "id": "HM1z1dl-Rxs",
+    "at": 532,
+    "quote": "the kidney releases renin usually in response to low blood pressure"
+   }
+  ],
+  "q44798189ba": [
+   {
+    "id": "RVl1dni2LDQ",
+    "at": 887,
+    "quote": "right which hold things together and then you've got Gap Junctions which allow for communication"
+   },
+   {
+    "id": "lS_9GIEpCe0",
+    "at": 3950,
+    "quote": "intercalated discs and the desmosome are sort of like pot rivets that are holding them together"
+   }
+  ],
+  "q07e9cecaec": [
+   {
+    "id": "nJ44wZ5_TvA",
+    "at": 1082,
+    "quote": "so anything that's going to reduce the oncotic pressure can result in edema"
+   }
+  ],
+  "q7b72ff42d1": [
+   {
+    "id": "xFukt4Yndgw",
+    "at": 97,
+    "quote": "from an ovale to be patent now closes which separates the right"
+   }
+  ],
+  "q444e4c00db": [
+   {
+    "id": "CQo_if4NEb4",
+    "at": 379,
+    "quote": "if you know the percentage of those gases you can easily calculate what's termed the partial pressure"
+   }
+  ],
+  "q89bedfeb5a": [
+   {
+    "id": "Y9k0K999dlM",
+    "at": 1218,
+    "quote": "inspiration to emptying your lung from here all the way down here is vital capacity"
+   }
+  ],
+  "qac000f1f2c": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 1546,
+    "quote": "type 2 pneumocytes or type 2 alveoli cells that are present inside of our alveoli and they secrete something called surfactant and what the surfactant does is it breaks the surface tension"
+   }
+  ],
+  "q12f6d119cb": [
+   {
+    "id": "D2t7aHAMxIU",
+    "at": 505,
+    "quote": "and again this is called our respiratory zones so anywhere in the respiratory zones you can exchange gas"
+   }
+  ],
+  "qe8ba0e3783": [
+   {
+    "id": "yKbyCYAY6fU",
+    "at": 604,
+    "quote": "prevent blood going backwards in veins well you have these things called valves so the valves in the veins"
+   }
+  ],
+  "qdfe62ea8f2": [
+   {
+    "id": "xSGWUrAgTLI",
+    "at": 30,
+    "quote": "vein which comes from the retro mandibular vein coming down and joining the subclavian vein"
+   }
+  ],
+  "q830c03babe": [
+   {
+    "id": "xFukt4Yndgw",
+    "at": 12,
+    "quote": "therefore it's shunted through the liver via the ductus venosus"
+   },
+   {
+    "id": "hlctwXB5ihw",
+    "at": 471,
+    "quote": "that shunt is called the ductus venosus"
+   }
+  ],
+  "q5dd41f30eb": [
+   {
+    "id": "xKIpZ3bGUro",
+    "at": 544,
+    "quote": "the sympathetic nervous system being activated so this is why we kind of become tachycardic so our heart rate goes up would be called become cold and clammy"
+   }
+  ],
+  "q4f54c9b881": [
+   {
+    "id": "0k-YBNQwm7k",
+    "at": 79,
+    "quote": "systolic value it's the maximum pressure in your arterial system"
+   }
+  ],
+  "qcb617f293d": [
+   {
+    "id": "t7DXH8cvYUc",
+    "at": 484,
+    "quote": "there is the blue one which is the visceral pleura and then there's a red one which is the parietal pleura the red one is in contact with the inside of your rib so the inside of your thoracic cavity"
+   },
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 766,
+    "quote": "membrane that's most adherent to the lining tissue itself and this membrane is called the visceral pleura and there's also another membrane that just sits a little bit away from this further away from the lung tissue but closer to the rib cage or the thoracic cavity I should say and this is called it called the parietal pleura"
+   }
+  ],
+  "q240e98cd35": [
+   {
+    "id": "pA7QZUkmErg",
+    "at": 791,
+    "quote": "what else is involved in forced inspiration well we've also got the serratus muscles"
+   }
+  ],
+  "q0043478c2a": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 480,
+    "quote": "so stroke volume will go down if after load goes up"
+   }
+  ],
+  "qc4c1b1c370": [
+   {
+    "id": "VX2Biw_qRoU",
+    "at": 208,
+    "quote": "on top of our tidal volume we can forcefully inhale air"
+   }
+  ],
+  "qbd80478744": [
+   {
+    "id": "i1yC6rcRPeU",
+    "at": 70,
+    "quote": "pushes blood through the mitral or bicuspid valve into the left ventricle"
+   }
+  ],
+  "qb94e544d5b": [
+   {
+    "id": "1OEwneDW6A0",
+    "at": 92,
+    "quote": "specialized myocardium that have what we call automaticity. So, it can automatically fire off."
+   },
+   {
+    "id": "FkGF-at5WtM",
+    "at": 271,
+    "quote": "so that's what automaticity spontaneous depolarization this usually begins at the SA node"
+   }
+  ],
+  "q3ebc77bc2d": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 558,
+    "quote": "dilation results in a decrease in resistance so systemic vascular resistance and if you decrease resistance you decrease blood pressure"
+   },
+   {
+    "id": "0k-YBNQwm7k",
+    "at": 360,
+    "quote": "if the resistance drops drop resistance it's an equation for blood pressure if you drop one value blood pressure is going to drop if you constrict the blood vessel make it really narrow there's heaps of resistance"
+   }
+  ],
+  "q13133915c0": [
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 2856,
+    "quote": "diaphragm when it contracts is the major or main muscle for inspiration"
+   }
+  ],
+  "q70c2ffa9d5": [
+   {
+    "id": "oJ6ebQclqHI",
+    "at": 298,
+    "quote": "most of the blood in the circulation is actually sitting in the venous system"
+   }
+  ],
+  "q0b3ed4f961": [
+   {
+    "id": "D2t7aHAMxIU",
+    "at": 285,
+    "quote": "now we're moving into an area called the respiratory zones and the next set of branching is another set of bronchioles but they're called respiratory bronchioles"
+   }
+  ],
+  "q1748bda12a": [
+   {
+    "id": "aTor6siCllY",
+    "at": 61,
+    "quote": "If the hydrogenion levels are too high, I push the equation this direction and breathe out my excess carbon dioxide,"
+   }
+  ],
+  "q6e3f7b1492": [
+   {
+    "id": "RhBS9ANCVL8",
+    "at": 497,
+    "quote": "the parasympathetic nervous system is responsible for erection and the s is sympathetic nervous system that is responsible for ejaculation the parasympathetic nervous system will tell the blood vessels to dilate"
+   }
+  ],
+  "qbf89f9a887": [
+   {
+    "id": "o_mWbClDVzI",
+    "at": 114,
+    "quote": "bundle of His. Which then splits into left and right bundle branches."
+   }
+  ],
+  "q570d8d5a52": [
+   {
+    "id": "nh08D29jepg",
+    "at": 175,
+    "quote": "Cardiac output is the volume of blood that's being ejected by the heart per minute."
+   }
+  ],
+  "q6c57918df2": [
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 558,
+    "quote": "dilation results in a decrease in resistance so systemic vascular resistance and if you decrease"
+   }
+  ],
+  "q81fd72b9f6": [
+   {
+    "id": "elVAkFENfxI",
+    "at": 967,
+    "quote": "this first wave represented atrial depolarization okay the next big complex"
+   },
+   {
+    "id": "h2QAey56-Ms",
+    "at": 3087,
+    "quote": "atrial depolarization is represented by the p wave"
+   }
+  ],
+  "q279dfeebc0": [
+   {
+    "id": "8cOyDn2Myy8",
+    "at": 4452,
+    "quote": "find that the vast majority of those carbon dioxides would be incorporated into bicarbonate ions"
+   }
+  ],
+  "qc1d6e590b2": [
+   {
+    "id": "uKrgEv7-rVM",
+    "at": 40,
+    "quote": "which is the thickest layer of the heart, is actually called the myocardium."
+   }
+  ],
+  "q55b0adf4b0": [
+   {
+    "id": "OKppt74Vr10",
+    "at": 637,
+    "quote": "neurogenic a good example would be a spinal cord injury particularly above a certain level and there's a dysregulation of the particularly the sympathetic nervous system"
+   }
+  ],
+  "q50b86bf459": [
+   {
+    "id": "uAnnFscr4LQ",
+    "at": 37,
+    "quote": "increases the breathing rate and depth known as kusmal breathing and hopefully this cosmel breathing"
+   }
+  ],
+  "q02071b87ca": [
+   {
+    "id": "o_mWbClDVzI",
+    "at": 144,
+    "quote": "SA node and the AV node are where signals can be produced, right? Electrical signals can be produced. And then the rest, the bundle of His, the bundle branches, and the Purkinje fibers"
+   }
+  ],
+  "q7c06c45075": [
+   {
+    "id": "6FugDyys-9A",
+    "at": 329,
+    "quote": "so this is picking up see yourself particularly for hydrogen and co2"
+   }
+  ],
+  "q5638309942": [
+   {
+    "id": "Y9k0K999dlM",
+    "at": 1218,
+    "quote": "inspiration to emptying your lung from here all the way down here is vital capacity"
+   }
+  ],
+  "q33ecdd0f59": [
+   {
+    "id": "1OEwneDW6A0",
+    "at": 163,
+    "quote": "you've probably only heard of the SA node as being the pacemaker."
+   }
+  ],
+  "qfc03c61d2f": [
+   {
+    "id": "7vPRetkeDjI",
+    "at": 643,
+    "quote": "the carbon dioxide can directly stimulate the brain stem that's called Centro Central uh chemoreceptors"
+   }
+  ],
+  "qadbc1afeed": [
+   {
+    "id": "F51Tg_KNrKY",
+    "at": 18,
+    "quote": "heart itself needs oxygen and nutrients and it gets it via the coronary arteries"
+   },
+   {
+    "id": "5NRVOCBoDyc",
+    "at": 1888,
+    "quote": "heart itself needs oxygen and nutrients and it gets it via the coronary arteries"
+   }
+  ],
+  "q06d531468d": [
+   {
+    "id": "O7W8jegLokE",
+    "at": 325,
+    "quote": "we've got the left coronary artery and the right coronary artery exiting at the base of the aorta."
+   },
+   {
+    "id": "2BcaALrQ3PU",
+    "at": 168,
+    "quote": "Now, at the base of the aorta, we're going to have two little outflows."
+   }
+  ],
+  "q6994c1e695": [
+   {
+    "id": "7vPRetkeDjI",
+    "at": 525,
+    "quote": "and they have chemo receptors and what they can detect are hydrogen ions and carbon dioxide"
+   },
+   {
+    "id": "vLSwWBRWekY",
+    "at": 5320,
+    "quote": "swelling there called the corroted sinus that has barrow receptors that measure pressure changes."
+   }
+  ],
+  "q11c24f9381": [
+   {
+    "id": "0FID5qRGXGg",
+    "at": 676,
+    "quote": "The more blood leaves, the greater the stroke volume."
+   },
+   {
+    "id": "k-BWyBePu8Q",
+    "at": 403,
+    "quote": "increasing stroke volume increasing cardiac output increasing blood pressure"
+   }
+  ],
+  "qc48d3f7a5e": [
+   {
+    "id": "i1yC6rcRPeU",
+    "at": 37,
+    "quote": "the pulmonary trunk via the pulmonary semilunar valves that then sends blood to the lungs"
+   }
+  ],
+  "qf09f3ffd11": [
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 3,
+    "quote": "the heart has four chambers, two superior chambers that receive"
+   },
+   {
+    "id": "UPOxrE79uCE",
+    "at": 21,
+    "quote": "now what we've got are four what we call chambers of the heart"
+   }
+  ],
+  "q4744a0b93e": [
+   {
+    "id": "ZEi-LcsLCvY",
+    "at": 43,
+    "quote": "the nerve that stimulates the diaphragm to contract and pull down is called the phrenic"
+   },
+   {
+    "id": "pA7QZUkmErg",
+    "at": 388,
+    "quote": "now the diaphragm is innervated by a nerve called the phrenic nerve"
+   }
+  ],
+  "q5e2fe89d7f": [
+   {
+    "id": "h2QAey56-Ms",
+    "at": 955,
+    "quote": "sympathetic innovation is going to begin for the heart at the cardio acceleratory center it's a big name but this is the part that controls the speed of the heart it is here at the medulla"
+   }
+  ],
+  "q68e361690d": [
+   {
+    "id": "NijiLTONHxg",
+    "at": 463,
+    "quote": "p wave which is representative of atrial depolarization atrial depolarization you've then got the q r s waves"
+   },
+   {
+    "id": "h2QAey56-Ms",
+    "at": 3005,
+    "quote": "this first wave represented atrial depolarization okay the next big complex here represented overall ventricular depolarization"
+   }
+  ],
+  "q6d6b3a6134": [
+   {
+    "id": "F51Tg_KNrKY",
+    "at": 38,
+    "quote": "both of them come out at the trunk of the aorta"
+   },
+   {
+    "id": "2BcaALrQ3PU",
+    "at": 169,
+    "quote": "at the base of the aorta, we're going to have two little outflows"
+   }
+  ],
+  "qddde17c5e6": [
+   {
+    "id": "VX2Biw_qRoU",
+    "at": 211,
+    "quote": "air of around about two and a half liters and that's our inspiratory reserve volume"
+   }
+  ],
+  "q3274184190": [
+   {
+    "id": "i1yC6rcRPeU",
+    "at": 33,
+    "quote": "via the tricuspid valve into the right ventricle"
+   }
+  ],
+  "qa26946a645": [
+   {
+    "id": "wZTWURpP_As",
+    "at": 364,
+    "quote": "bronchioles don't have any cartilage in their Airway unlike the bronchi"
+   }
+  ],
+  "qf76114e1cc": [
+   {
+    "id": "5NRVOCBoDyc",
+    "at": 2082,
+    "quote": "as we continue with the left coronary artery we've got the circumflex artery"
+   }
+  ],
+  "q262dfd3785": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 1553,
+    "quote": "alveoli and they secrete something called surfactant and what the surfactant does is it breaks"
+   }
+  ],
+  "q4749a6b111": [
+   {
+    "id": "GYZ8ivcBGDw",
+    "at": 296,
+    "quote": "78 percent of our atmosphere is nitrogen"
+   },
+   {
+    "id": "9IZGNzj9S0w",
+    "at": 31,
+    "quote": "78 79 percent of their gases around us being nitrogen"
+   }
+  ],
+  "q2e65fe8737": [
+   {
+    "id": "GnriknE4YRY",
+    "at": 247,
+    "quote": "The hydrostatic pressure in the blood here in the capillary bed is 30 mm of mercury. So what we're doing? We're pushing things out."
+   },
+   {
+    "id": "n2yXVKa1b_Y",
+    "at": 285,
+    "quote": "there's a hydrostatic pressure a push behind the blood pushing stuff out of the capillaries"
+   }
+  ],
+  "q7f6b9f0f58": [
+   {
+    "id": "xLtLY9qaQks",
+    "at": 385,
+    "quote": "this is why carbon dioxide is 20 times more soluble than oxygen is"
+   }
+  ]
+ }
+}
