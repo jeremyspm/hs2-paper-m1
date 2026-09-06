@@ -1,7 +1,7 @@
 {
  "built": "2026-09-06",
  "module": "m1",
- "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (101 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged.",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged.",
  "source": {
   "file": "dmdm-videos/video-matches.json",
   "built": "2026-09-06",
@@ -14,10 +14,10 @@
   }
  },
  "stats": {
-  "questions_with_video": 115,
-  "matches": 151,
-  "videos_used": 83,
-  "source_questions_held_in_this_build": 22
+  "questions_with_video": 126,
+  "matches": 166,
+  "videos_used": 85,
+  "source_questions_held_in_this_build": 11
  },
  "matches": {
   "qca83b9fb23": [
@@ -32,6 +32,13 @@
     "id": "HiFZQ-pOtmw",
     "at": 161,
     "quote": "reduce the amount of carbon dioxide in our bloodstream so hyperventilation"
+   }
+  ],
+  "q401ca9cc16": [
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 139,
+    "quote": "moving blood from the right atrium to the right ventricle through the tricuspid valve"
    }
   ],
   "q4550e37b96": [
@@ -79,6 +86,18 @@
     "quote": "pH that's now below 7.35 and the CO2 levels are high"
    }
   ],
+  "q79a622f2bb": [
+   {
+    "id": "5NRVOCBoDyc",
+    "at": 1673,
+    "quote": "these are those two valves that we term the Atrio ventricular valves because they sit between the atrium and the ventricles"
+   },
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 162,
+    "quote": "these are those two valves that we term the Atrio ventricular valves because they sit between the atrium and the ventricles"
+   }
+  ],
   "q8bbd93a0d8": [
    {
     "id": "6cb0eDBO19k",
@@ -105,6 +124,18 @@
     "id": "7vPRetkeDjI",
     "at": 627,
     "quote": "if I'm holding my breath I'm not breathing out that carbon dioxide that goes up"
+   }
+  ],
+  "q4be7d1967b": [
+   {
+    "id": "pA7QZUkmErg",
+    "at": 525,
+    "quote": "accessory muscles that allow us to do what's called forced inspiration"
+   },
+   {
+    "id": "RbgVg-kbJ3Q",
+    "at": 2895,
+    "quote": "accessory muscles that allow us to do what's called forced inspiration"
    }
   ],
   "q3b8ae7e140": [
@@ -218,6 +249,20 @@
     "quote": "RCA will give off some ventricular branches, most notably the right marginal branch"
    }
   ],
+  "q7b2d2301d1": [
+   {
+    "id": "SOZhlKj7nZ0",
+    "at": 69,
+    "quote": "you get this venous pressure increasing and at the capillaries of the body the pressure is so high that the fluid leaks out here and this causes systemic edema"
+   }
+  ],
+  "q22c0d2b1e5": [
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 251,
+    "quote": "the first heart sound is due to closure of the H R ventricular valves"
+   }
+  ],
   "q2ff5cd95db": [
    {
     "id": "PzVKE2AkatM",
@@ -242,6 +287,13 @@
     "id": "k-BWyBePu8Q",
     "at": 397,
     "quote": "if you stimulate the sympathetic nervous system you stimulate contractility increasing stroke volume"
+   }
+  ],
+  "qd281112b71": [
+   {
+    "id": "TrUaRX-Fd80",
+    "at": 1324,
+    "quote": "allows for the lungs to be compliant which means stretch out"
    }
   ],
   "q1257b43f12": [
@@ -356,6 +408,13 @@
     "id": "XyxuzHX1Grg",
     "at": 129,
     "quote": "going from right atrium to the right ventricle The Velvet moves through something called a tricuspid valve"
+   }
+  ],
+  "q2610b388e1": [
+   {
+    "id": "lS_9GIEpCe0",
+    "at": 5402,
+    "quote": "in most cases something to do with the valve not working as it should either it's partly open stonic"
    }
   ],
   "q39db5b425f": [
@@ -512,6 +571,13 @@
     "quote": "we're gonna have terminal bronchioles and then at the very end we have respiratory bronchioles"
    }
   ],
+  "qf6fc8c5a13": [
+   {
+    "id": "IivVcea01xI",
+    "at": 2837,
+    "quote": "layer that's most adherent to the organ which is the visceral and the one that's uh most furthest away"
+   }
+  ],
   "q86c802fb50": [
    {
     "id": "XyxuzHX1Grg",
@@ -585,6 +651,18 @@
     "id": "GYZ8ivcBGDw",
     "at": 1546,
     "quote": "type 2 pneumocytes or type 2 alveoli cells that are present inside of our alveoli and they secrete something called surfactant and what the surfactant does is it breaks the surface tension"
+   }
+  ],
+  "qfbe2f24241": [
+   {
+    "id": "5NRVOCBoDyc",
+    "at": 1705,
+    "quote": "right ventricle contracts it pushes blood up to go to these pulmonary arteries through the pulmonary valve"
+   },
+   {
+    "id": "XyxuzHX1Grg",
+    "at": 174,
+    "quote": "when the right ventricle contracts it pushes blood out of the heart to the lungs via the pulmonary artery"
    }
   ],
   "q12f6d119cb": [
@@ -698,11 +776,30 @@
     "quote": "if the resistance drops drop resistance it's an equation for blood pressure if you drop one value blood pressure is going to drop if you constrict the blood vessel make it really narrow there's heaps of resistance"
    }
   ],
+  "q7e050a0e92": [
+   {
+    "id": "1OEwneDW6A0",
+    "at": 89,
+    "quote": "conduction network is made up of specialized myocardium that have what we call automaticity."
+   }
+  ],
   "q13133915c0": [
    {
     "id": "RbgVg-kbJ3Q",
     "at": 2856,
     "quote": "diaphragm when it contracts is the major or main muscle for inspiration"
+   }
+  ],
+  "q285888e6a5": [
+   {
+    "id": "1z9oAe6nn3o",
+    "at": 50,
+    "quote": "blood supply that's going to the lungs is going to be deoxygenated"
+   },
+   {
+    "id": "AtsTfVpXDpY",
+    "at": 33,
+    "quote": "systemic circuit which takes blood to the body and returns it back"
    }
   ],
   "q70c2ffa9d5": [

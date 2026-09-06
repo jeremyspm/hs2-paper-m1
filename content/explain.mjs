@@ -51,7 +51,7 @@ export function loadPassages() {
       const joined = buf.join(' ');
       if (joined.split(' ').length >= 30) {
         /* question blocks, reading lists and link cruft ask/point rather than teach */
-        const cruft = /(links to an external site|chapter \d+|check your understanding|scroll through|patton (and|&) thibodeau|\bquiz\b|questions? can you)/i;
+        const cruft = /(links to an external site|chapter \d+|check your understanding|scroll through|patton (and|&) thibodeau|\bquiz\b|questions? can you|_{3,}|\[ select \]|wordlist)/i;
         if (joined.length > 40 && (joined.match(/\?/g) || []).length < 3 && !/\[image:/i.test(joined) && !cruft.test(joined))
           passages.push({ t: joined.replace(/https?:\/\/\S+/g, ' ').slice(0, 420), src, page: true });
         buf = [];
@@ -73,6 +73,7 @@ export function loadPassages() {
       /* objective-list and question slides ASK, they don't TEACH — never quote them */
       if ((clean.match(/\b(Describe|Explain|Identify|Differentiate)\b/g) || []).length >= 2) continue;
       if ((clean.match(/\?/g) || []).length >= 3) continue;
+      if (/_{3,}|\[ Select \]|\bWORDLIST\b/.test(clean)) continue;   // a blank-filling exercise, not teaching
       if (/(links to an external site|chapter \d+|check your understanding|patton box)/i.test(clean)) continue;
       const slug = base.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
       passages.push({ t: clean.replace(/https?:\/\/\S+/g, ' ').slice(0, 420), src: `${base} deck · slide ${n}`, page: false, slug, n: +n });
