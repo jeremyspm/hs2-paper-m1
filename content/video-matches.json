@@ -1,7 +1,7 @@
 {
  "built": "2026-09-06",
  "module": "m1",
- "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted).",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 Ninja Nerd gap-fill (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted).",
  "source": {
   "file": "dmdm-videos/video-matches.json",
   "built": "2026-09-06",
@@ -14,9 +14,9 @@
   }
  },
  "stats": {
-  "questions_with_video": 183,
-  "matches": 239,
-  "videos_used": 94,
+  "questions_with_video": 216,
+  "matches": 274,
+  "videos_used": 108,
   "source_questions_held_in_this_build": 11
  },
  "matches": {
@@ -1579,6 +1579,247 @@
     "id": "mtKVUC-Gpdg",
     "at": 108,
     "quote": "down the aorta you would see the semilunar valves okay but You' also see two little holes now these holes open up and form the coronary arteries"
+   }
+  ],
+  "q0b91c43df2": [
+   {
+    "id": "RlpBOOb8KkU",
+    "at": 487,
+    "quote": "any situation in which there is very little oxygen within the atmosphere"
+   }
+  ],
+  "q0ce08d8258": [
+   {
+    "id": "Wn_f23qus1k",
+    "at": 30,
+    "quote": "respiratory membrane is going to be made up of the alveolar cells"
+   }
+  ],
+  "q158078ab50": [
+   {
+    "id": "moMNBucCew8",
+    "at": 249,
+    "quote": "tunica media and it's important for contracting so it's important for what's called vasoconstriction"
+   }
+  ],
+  "q1bd938db26": [
+   {
+    "id": "moMNBucCew8",
+    "at": 249,
+    "quote": "tunica media and it's important for contracting so it's important for what's called vasoconstriction"
+   }
+  ],
+  "q2aa7bc14cd": [
+   {
+    "id": "YGGG_gKi0m8",
+    "at": 1923,
+    "quote": "in the relaxed State or the r State it's highly has high affinity for oxygen"
+   }
+  ],
+  "q2cddcda7e6": [
+   {
+    "id": "moMNBucCew8",
+    "at": 586,
+    "quote": "remember artery and veins they both have a Tunica interna or Tunica intima"
+   }
+  ],
+  "q2db10ba988": [
+   {
+    "id": "moMNBucCew8",
+    "at": 597,
+    "quote": "more prominent and more abundant in the artery than it is in the veins"
+   }
+  ],
+  "q30391a4bc9": [
+   {
+    "id": "791ZsLSmCjo",
+    "at": 198,
+    "quote": "cells need to go through a relaxation period so they need to depolarize"
+   }
+  ],
+  "q368b31b003": [
+   {
+    "id": "moMNBucCew8",
+    "at": 586,
+    "quote": "remember artery and veins they both have a Tunica interna or Tunica intima"
+   }
+  ],
+  "q3c9a7e7ea8": [
+   {
+    "id": "RlpBOOb8KkU",
+    "at": 1043,
+    "quote": "plural cavity what do you call that you call this a numo thorax"
+   }
+  ],
+  "q465f02cdd3": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 108,
+    "quote": "right atrium it has three big vessels that are emptying blood into this cavity"
+   }
+  ],
+  "q514a96de87": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 1149,
+    "quote": "normally you have a visceral layer covering the organ and a"
+   }
+  ],
+  "q66478f26a0": [
+   {
+    "id": "RlpBOOb8KkU",
+    "at": 2652,
+    "quote": "carbon monoxide actually binds to that site because it has 200 times more Affinity than the oxygen"
+   }
+  ],
+  "q728fc5f303": [
+   {
+    "id": "moMNBucCew8",
+    "at": 595,
+    "quote": "elastic lamina it's just going to be more prominent and more abundant in the artery"
+   }
+  ],
+  "q74b7d701ac": [
+   {
+    "id": "mNadr6bGEMU",
+    "at": 632,
+    "quote": "the volume of air that remains in the lungs to keep the actual alveoli open"
+   }
+  ],
+  "q88a5cbf8cb": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 763,
+    "quote": "it's called the interatrial septum okay just so that we're"
+   }
+  ],
+  "q8a9c549a0e": [
+   {
+    "id": "791ZsLSmCjo",
+    "at": 92,
+    "quote": "SA node fires those impulses throughout the entire internodal pathway and Bachman's bundle"
+   }
+  ],
+  "q8e8d048a4a": [
+   {
+    "id": "BTwgmMfqOW4",
+    "at": 1668,
+    "quote": "whenever air accumulates in the plal cavity you know it's called numo thorax"
+   }
+  ],
+  "q916a79c999": [
+   {
+    "id": "gjLCu8qe2nI",
+    "at": 237,
+    "quote": "the type one are these squamous like epithelial cells the cuboidal like epithelial cells"
+   }
+  ],
+  "q92e5ec6239": [
+   {
+    "id": "bhJarMGNFw4",
+    "at": 1188,
+    "quote": "hemoglobin's affinity for oxygen is going to decrease"
+   },
+   {
+    "id": "6B3TUj2cLgo",
+    "at": 1609,
+    "quote": "all of these things were called leading to the bore effect"
+   }
+  ],
+  "q97035fd683": [
+   {
+    "id": "BTwgmMfqOW4",
+    "at": 1797,
+    "quote": "so now if this is a lung collapse right what is the lung"
+   }
+  ],
+  "q98e787410a": [
+   {
+    "id": "gSVtW1HcV3c",
+    "at": 16,
+    "quote": "let's do stretch receptors let's do that one first herring broiler reflex"
+   }
+  ],
+  "q9b7067d83b": [
+   {
+    "id": "jU9w6w8LwqM",
+    "at": 757,
+    "quote": "they're anchored down by these muscles which are called the papillary muscle"
+   }
+  ],
+  "qa254d0ab06": [
+   {
+    "id": "Wn_f23qus1k",
+    "at": 64,
+    "quote": "these are the ones that are involved in the gas exchange process"
+   }
+  ],
+  "qb27faf3123": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 168,
+    "quote": "there's a hole between the right atrium and the left atrium"
+   },
+   {
+    "id": "jU9w6w8LwqM",
+    "at": 786,
+    "quote": "blood to get shunted from the right atrium all into the left atrium"
+   }
+  ],
+  "qb5c8d5b677": [
+   {
+    "id": "BTwgmMfqOW4",
+    "at": 1779,
+    "quote": "what is lung collapse called whether it be numo thorax or hemothorax"
+   }
+  ],
+  "qbc8a537c1d": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 498,
+    "quote": "these muscles are super super important because they're the ones that are anchoring these actual cord tendine down"
+   }
+  ],
+  "qd576bd0933": [
+   {
+    "id": "moMNBucCew8",
+    "at": 587,
+    "quote": "artery and veins they both have a Tunica interna or Tunica intima"
+   }
+  ],
+  "qdbb40090db": [
+   {
+    "id": "moMNBucCew8",
+    "at": 595,
+    "quote": "elastic lamina it's just going to be more prominent and more abundant in the artery"
+   }
+  ],
+  "qe2ac664d10": [
+   {
+    "id": "BTwgmMfqOW4",
+    "at": 1787,
+    "quote": "this could introduce what's called atal lactases right so ATA lactases okay"
+   }
+  ],
+  "qec3aaaa1fd": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 1035,
+    "quote": "another name that you can give it is called the visceral layer of the Cirrus pericardium"
+   }
+  ],
+  "qee1ee274dc": [
+   {
+    "id": "Yyz0E5CpCNQ",
+    "at": 1048,
+    "quote": "result is to do two things one is to increase the heart rate"
+   }
+  ],
+  "qf1f0a2f075": [
+   {
+    "id": "dgAbpwp9gF8",
+    "at": 1139,
+    "quote": "epicardium or the visceral layer of the serus pericardium"
    }
   ]
  }

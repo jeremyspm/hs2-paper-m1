@@ -273,7 +273,7 @@ function home(){
   </div>
   <div class="card door" style="border-left:4px solid var(--primary)">
     <h2>📺 Watch first — the whole video shelf</h2>
-    <p>All ${DATA.stats.videos} Dr Matt &amp; Dr Mike videos on the Module 1 shelf, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
+    <p>All ${DATA.stats.videos - DATA.stats.videosNN} Dr Matt &amp; Dr Mike videos on the Module 1 shelf${DATA.stats.videosNN?`, plus ${DATA.stats.videosNN} Ninja Nerd videos filling gaps the channel doesn't cover (denser, but they teach the point)`:''}, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
     <a class="btn wide" href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">Open the Module 1 video playlist ↗</a>
   </div>
   <div class="card door">
@@ -518,7 +518,7 @@ function explainHTML(q){
   let h='';
   if(q.ref&&q.ref.slide)h+=`<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
   else if(q.ref)h+=`<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
-  if(q.vid)h+=vidRowHTML(q.vid,'Dr Matt &amp; Dr Mike · ')+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
+  if(q.vid)h+=vidRowHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
   h+=`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
   return h;
 }
@@ -526,6 +526,7 @@ function explainHTML(q){
    `at` is where the verifying quote was found, not a guess */
 const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
 function vidRowHTML(v,who){
+  who=who??(v.ch==='nn'?'Ninja Nerd · ':'Dr Matt &amp; Dr Mike · ');
   const at=Number.isInteger(v.at)?v.at:0;
   return `<div class="vidrow">▶ <a href="https://www.youtube.com/watch?v=${v.id}${at?`&t=${at}s`:''}" target="_blank" rel="noopener">${esc(v.t)}</a> <span class="refsrc">${who}${esc(v.d)}${at?` · from ${mmss(at)}`:''}</span></div>`;
 }
@@ -540,7 +541,7 @@ function weakSpotsHTML(rows){
   return `<div class="note" style="border-left-color:var(--primary)">
     <b>Weak spots this mock test</b> — ${missed.length} missed, most in ${SYS[worst[0]]||worst[0]}.
     Watch these before your next sitting:
-    ${[...vids.values()].slice(0,4).map(v=>vidRowHTML(v,'')).join('')}
+    ${[...vids.values()].slice(0,4).map(v=>vidRowHTML(v)).join('')}
     <div class="refsrc">Each video was matched to its question from the video's own captions and checked twice, and the link opens where that point is taught. Where a video and Hannetjie disagree, she wins.
     <a href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">All ${DATA.stats.videos} by topic ↗</a></div></div>`;
 }
