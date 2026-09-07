@@ -1,7 +1,7 @@
 {
  "built": "2026-09-06",
  "module": "m1",
- "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 Ninja Nerd gap-fill (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted).",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 Ninja Nerd gap-fill (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 gap-fill from AnatomyZone/IHA/Armando (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted, judged clip end).",
  "source": {
   "file": "dmdm-videos/video-matches.json",
   "built": "2026-09-06",
@@ -14,9 +14,9 @@
   }
  },
  "stats": {
-  "questions_with_video": 216,
-  "matches": 274,
-  "videos_used": 108,
+  "questions_with_video": 242,
+  "matches": 302,
+  "videos_used": 132,
   "source_questions_held_in_this_build": 11
  },
  "matches": {
@@ -1820,6 +1820,226 @@
     "id": "dgAbpwp9gF8",
     "at": 1139,
     "quote": "epicardium or the visceral layer of the serus pericardium"
+   }
+  ],
+  "q1e7842553c": [
+   {
+    "id": "xq01MiHIZLs",
+    "at": 448,
+    "end": 495,
+    "quote": "angiogram they'll use an x-ray machine with the use of dye"
+   }
+  ],
+  "q2e1b15bba2": [
+   {
+    "id": "i7lFHlWHt4Y",
+    "at": 5,
+    "end": 30,
+    "quote": "pulmonary ventilation or breathing can increase up to 20 fold"
+   }
+  ],
+  "q38af4647e9": [
+   {
+    "id": "WVCOHGHWSG0",
+    "at": 177,
+    "end": 240,
+    "quote": "on 80 the pulmonary circulation pressure on the other hand is 24 on 12"
+   }
+  ],
+  "q3d74aa2847": [
+   {
+    "id": "9VdHhD1vcDU",
+    "at": 358,
+    "end": 480,
+    "quote": "inspiration during quite normal breathing is called the tidal volume"
+   }
+  ],
+  "q3e84e2f2ec": [
+   {
+    "id": "_iKBD28Y9Cc",
+    "at": 387,
+    "end": 410,
+    "quote": "bracho calic trunk which splits into the right common cred and right subclavian artery"
+   },
+   {
+    "id": "-soBqyJdq40",
+    "at": 164,
+    "end": 195,
+    "quote": "splits into the right common carded artery and the right subclavian artery"
+   }
+  ],
+  "q3fb7ff6821": [
+   {
+    "id": "HYr2NiOvjZE",
+    "at": 96,
+    "end": 140,
+    "quote": "here is again the superior vena cava and the inferior vena cava"
+   }
+  ],
+  "q42d78b7caf": [
+   {
+    "id": "HYr2NiOvjZE",
+    "at": 172,
+    "end": 220,
+    "quote": "blood flows to the right ventricle through a valve known as a tricuspid valve"
+   }
+  ],
+  "q482c474efb": [
+   {
+    "id": "e6snLvE4Zl8",
+    "at": 376,
+    "end": 444,
+    "quote": "chordae tendineae coming on either little flap here"
+   }
+  ],
+  "q4b9d2c0109": [
+   {
+    "id": "x5x19lwPnbo",
+    "at": 807,
+    "end": 885,
+    "quote": "The type one alvola cell which is basically a simple squamus epithelial cell."
+   }
+  ],
+  "q6163782c06": [
+   {
+    "id": "qDrV33rZlyA",
+    "at": 252,
+    "end": 280,
+    "quote": "most oxygen in our body is transported in red blood cells"
+   }
+  ],
+  "q67bd4e2ade": [
+   {
+    "id": "sI6yXy3u2sI",
+    "at": 74,
+    "end": 152,
+    "quote": "underneath the clavicle is called the subclavian vein because it runs underneath the clavicle"
+   }
+  ],
+  "q752f4ada20": [
+   {
+    "id": "aIXF0DBCevk",
+    "at": 120,
+    "end": 150,
+    "quote": "left anterior descending artery. And I mentioned this one because of the story we'll get into a little bit later on about my brother and because it is often nicknamed the widowmaker"
+   },
+   {
+    "id": "PvfOy2Ufijo",
+    "at": 591,
+    "end": 615,
+    "quote": "left anterior descending one that's often referred to as the Widowmaker because it's such a big area the heart that that blood vessel serves"
+   }
+  ],
+  "q8f9393b840": [
+   {
+    "id": "9VdHhD1vcDU",
+    "at": 457,
+    "end": 475,
+    "quote": "this is essentially the residual volume plus the expiratory reserve volume"
+   }
+  ],
+  "q90deec5346": [
+   {
+    "id": "-mL_NQ3pKnA",
+    "at": 878,
+    "end": 900,
+    "quote": "the trachea does not participate in gas exchange"
+   }
+  ],
+  "qa7e317cc22": [
+   {
+    "id": "JIaNFKVG6Og",
+    "at": 213,
+    "end": 260,
+    "quote": "adrenaline levels are going to spike which increases heart rate and blood pressure."
+   }
+  ],
+  "qb1bc002a96": [
+   {
+    "id": "HYr2NiOvjZE",
+    "at": 172,
+    "end": 220,
+    "quote": "blood flows to the right ventricle through a valve known as a tricuspid valve"
+   }
+  ],
+  "qb7d81fe0de": [
+   {
+    "id": "HHCQLB-gXTQ",
+    "at": 108,
+    "end": 140,
+    "quote": "The superficial layer is called the epicardium. The middle thickest muscular layer is called the mocardium"
+   }
+  ],
+  "qc2e14c0f0d": [
+   {
+    "id": "OIU7Mdx4DTg",
+    "at": 191,
+    "end": 217,
+    "quote": "traa has these c-shaped cartilagenous Rings which form its uh help to form its structure"
+   }
+  ],
+  "qd69326a719": [
+   {
+    "id": "kBLrxuDOiIo",
+    "at": 292,
+    "end": 320,
+    "quote": "If we open up this other trachea that's still attached to the lungs here, but if we look at the inside, we can see the inner lining of the trachea."
+   }
+  ],
+  "qd74db826d8": [
+   {
+    "id": "5Vec1jSq1Tc",
+    "at": 1086,
+    "end": 1160,
+    "quote": "dorsal respiratory group specifically controls muscles of normal quiet breathing"
+   }
+  ],
+  "qe3f3703fc5": [
+   {
+    "id": "BYGPkRFvzOc",
+    "at": 584,
+    "end": 712,
+    "quote": "Things that cause this to happen include an increase in carbon dioxide,"
+   }
+  ],
+  "qe8315a6371": [
+   {
+    "id": "9FgpLaCi_KE",
+    "at": 33,
+    "end": 97,
+    "quote": "in a reduced cardiac output and in later stages obstructive shock"
+   }
+  ],
+  "qec9e001306": [
+   {
+    "id": "BYGPkRFvzOc",
+    "at": 584,
+    "end": 680,
+    "quote": "Things that cause this to happen include an increase in carbon dioxide,"
+   }
+  ],
+  "qef65834634": [
+   {
+    "id": "hTCUv7CPMHk",
+    "at": 158,
+    "end": 181,
+    "quote": "a hole in the interatrial septum which allows blood to flow"
+   }
+  ],
+  "qf65610a72d": [
+   {
+    "id": "mOJpmF2h2FU",
+    "at": 197,
+    "end": 270,
+    "quote": "the splenic vein and this vessel here which is the superior misic vein meet and form the hepatic portal vein"
+   }
+  ],
+  "qfdf9b65848": [
+   {
+    "id": "FNsdIuxsrOA",
+    "at": 210,
+    "end": 234,
+    "quote": "literally attaches to the outside of the heart is called the visceral pericardium"
    }
   ]
  }
