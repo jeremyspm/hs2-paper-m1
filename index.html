@@ -511,7 +511,7 @@ function mark(){
   $('#view').innerHTML=`<div class="card">
     <div class="score-hero" id="hero"></div><div class="score-sub" id="heroSub"></div>
     ${saqs.length?`<div class="note">Tick each model step your written answer actually hit — the score updates as you go. Model answers are the tool’s unless the source line under them says the words are hers.</div>`:''}
-    <div class="rev-ctl"><label class="wo"><input type="checkbox" id="wrongOnly"> Wrong only</label><span class="systally" id="systally"></span></div>
+    <div class="rev-ctl"><label class="wo"><input type="checkbox" id="wrongOnly" ${rows.some(x=>x.saq||(x.r&&x.r.got<x.r.tot))?'checked':''}> Wrong only</label><span class="systally" id="systally"></span></div>
     ${rows.map(({q,r,saq},i)=>{
       const btn=(k,lbl)=>`<button class="qa" data-act="${k}">${lbl}</button>`;
       if(saq){const a=SIT.ans[q.id];
@@ -535,7 +535,7 @@ function mark(){
     $('#heroSub').textContent=`${Math.round(100*g/t)}% · ${SIT.label} · ${Math.round((Date.now()-SIT.t0)/60000)} min`;
     SIT.final={got:+g.toFixed(1),tot:t}};
   document.querySelectorAll('[data-saq]').forEach(c=>c.onchange=upd);upd();
-  const wo=$('#wrongOnly'); if(wo)wo.onchange=()=>document.querySelectorAll('.qr').forEach(r=>{r.hidden=wo.checked&&r.dataset.wrong==='0'});
+  const wo=$('#wrongOnly'); if(wo){const f=()=>document.querySelectorAll('.qr').forEach(r=>{r.hidden=wo.checked&&r.dataset.wrong==='0'});wo.onchange=f;f();}
   {const ms={};rows.forEach(({q,r,saq})=>{if(!saq&&r&&r.got<r.tot)ms[q.sys]=(ms[q.sys]||0)+1});
    const t=$('#systally');if(t)t.innerHTML=Object.entries(ms).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<span class="tag">${SYS[s]||s} · ${n} missed</span>`).join('')||'<span class="tag ok">clean sweep ✓</span>';}
   $('#doneB').onclick=()=>{
