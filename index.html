@@ -115,6 +115,24 @@ textarea{min-height:120px}
 .vmeta{font-size:.82rem;margin-top:5px;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
 .vch{font-weight:600}
 .vfull{padding:2px 8px;font-size:.74rem}
+.rev-ctl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:6px 0 10px;font-size:.85rem}
+.rev-ctl .wo{display:flex;gap:6px;align-items:center;cursor:pointer;user-select:none}
+.systally{display:flex;flex-wrap:wrap}
+.systally .tag{display:inline-block;background:var(--muted);padding:2px 9px;border-radius:11px;margin:2px 5px 2px 0;font-size:.74rem}
+.systally .tag.ok{color:var(--ok)}
+.qr{border:1px solid var(--muted);border-left-width:4px;border-radius:9px;margin:6px 0;background:var(--card)}
+.qr.right{border-left-color:var(--ok)} .qr.partial{border-left-color:var(--warn)} .qr.wrong{border-left-color:var(--danger)} .qr.saq{border-left-color:var(--primary)}
+.qr-head{display:flex;gap:10px;align-items:flex-start;padding:9px 11px 7px}
+.qr-mk{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding:2px 8px;border-radius:6px;font-size:.82rem;background:var(--muted)}
+.qr.right .qr-mk{background:var(--ok);color:var(--onprimary)} .qr.partial .qr-mk{background:var(--warn);color:var(--onprimary)} .qr.wrong .qr-mk{background:var(--danger);color:#fff}
+.qr-stem{font-size:.9rem;line-height:1.35;flex:1}
+.qr-acts{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:0 11px 9px}
+.qa{padding:3px 11px;font-size:.77rem;border:1px solid var(--muted);border-radius:14px;background:transparent;color:inherit;cursor:pointer}
+.qa:hover{border-color:var(--primary)} .qa.on{background:var(--primary);color:var(--onprimary);border-color:var(--primary)}
+.qr-pane{padding:2px 11px 11px}
+.qr .src{font-size:.72rem;color:var(--primary);margin-right:auto;opacity:.85}
+.qr .you{font-size:.8rem;padding:2px 11px 4px;opacity:.85}
+.qr .steps{padding:2px 11px 6px}
 .score-hero{font-size:2.2rem;font-weight:800;text-align:center;margin:.3rem 0 0}
 .score-sub{text-align:center;color:var(--muted-fg);margin:0 0 10px}
 /* chart */
@@ -493,17 +511,20 @@ function mark(){
   $('#view').innerHTML=`<div class="card">
     <div class="score-hero" id="hero"></div><div class="score-sub" id="heroSub"></div>
     ${saqs.length?`<div class="note">Tick each model step your written answer actually hit — the score updates as you go. Model answers are the tool’s unless the source line under them says the words are hers.</div>`:''}
+    <div class="rev-ctl"><label class="wo"><input type="checkbox" id="wrongOnly"> Wrong only</label><span class="systally" id="systally"></span></div>
     ${rows.map(({q,r,saq},i)=>{
+      const btn=(k,lbl)=>`<button class="qa" data-act="${k}">${lbl}</button>`;
       if(saq){const a=SIT.ans[q.id];
-        return `<div class="mk" id="mk${i}"><b>${esc(flatStem(q))}</b>
-        ${a&&a.text?`<div class="you">You wrote:<br>${esc(a.text).replace(/\n/g,'<br>')}</div>`:'<div class="you">— no answer written —</div>'}
-        <div class="steps">${q.saq.steps.map((s,si)=>`<label><input type="checkbox" data-saq="${i}" data-pt="${q.pts/q.saq.steps.length}"> <span>${esc(s)}</span></label>`).join('')}</div>
-        <div class="src">${esc(q.saq.src)}</div></div>`}
-      const cls=r.got>=r.tot?'right':'wrong';
-      return `<div class="mk ${cls}"><b>${esc(flatStem(q)).slice(0,300)}</b>
-        <div class="marks">${(+r.got.toFixed(1))}/${r.tot} mk · ${esc(DATA.quizzes.find(z=>z.id===q.quiz)?.name||q.quiz)}</div>
-        ${q.type==='mcq'||q.type==='tf'||q.type==='multi'?(r.you?`<div class="you">You: ${esc(r.you)}</div>`:`<div class="you">${r.detail||''}</div>`):''}
-        ${r.got<r.tot?`${keyHTML(q,SIT.ans[q.id])}${explainHTML(q)}`:''}</div>`}).join('')}
+        return `<div class="qr saq" data-qid="${q.id}" data-sys="${q.sys}" data-wrong="1">
+        <div class="qr-head"><span class="qr-mk mk-p" id="mk${i}">✍ /${q.pts}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
+        ${a&&a.text?`<div class="you">You wrote: ${esc(a.text.slice(0,240)).replace(/\n/g,' ')}${a.text.length>240?'…':''}</div>`:'<div class="you">— no answer written —</div>'}
+        <div class="steps">${q.saq.steps.map(s=>`<label><input type="checkbox" data-saq="${i}" data-pt="${q.pts/q.saq.steps.length}"> <span>${esc(s)}</span></label>`).join('')}</div>
+        <div class="qr-acts"><span class="src">${esc(q.saq.src)}</span>${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div><div class="qr-pane" hidden></div></div>`}
+      const pct=r.got/r.tot, cls=pct>=1?'right':pct>0?'partial':'wrong';
+      return `<div class="qr ${cls}" data-qid="${q.id}" data-sys="${q.sys}" data-wrong="${pct<1?1:0}">
+        <div class="qr-head"><span class="qr-mk">${(+r.got.toFixed(1))}/${r.tot}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
+        <div class="qr-acts">${btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div>
+        <div class="qr-pane" hidden></div></div>`}).join('')}
     ${weakSpotsHTML(rows)}
     <button class="btn primary wide" id="doneB">Save score & finish</button></div>`;
   const upd=()=>{
@@ -514,6 +535,9 @@ function mark(){
     $('#heroSub').textContent=`${Math.round(100*g/t)}% · ${SIT.label} · ${Math.round((Date.now()-SIT.t0)/60000)} min`;
     SIT.final={got:+g.toFixed(1),tot:t}};
   document.querySelectorAll('[data-saq]').forEach(c=>c.onchange=upd);upd();
+  const wo=$('#wrongOnly'); if(wo)wo.onchange=()=>document.querySelectorAll('.qr').forEach(r=>{r.hidden=wo.checked&&r.dataset.wrong==='0'});
+  {const ms={};rows.forEach(({q,r,saq})=>{if(!saq&&r&&r.got<r.tot)ms[q.sys]=(ms[q.sys]||0)+1});
+   const t=$('#systally');if(t)t.innerHTML=Object.entries(ms).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<span class="tag">${SYS[s]||s} · ${n} missed</span>`).join('')||'<span class="tag ok">clean sweep ✓</span>';}
   $('#doneB').onclick=()=>{
     S.scores.push({t:Date.now(),mode:SIT.mode,label:SIT.label,got:SIT.final.got,tot:SIT.final.tot});
     SV('scores',S.scores);SV('miss',S.miss);SV('seen',S.seen);home();window.scrollTo(0,0)};
@@ -522,13 +546,17 @@ function mark(){
 }
 /* the explain row: her material first, then the right-sized video, then Ask AI.
    Only on wrong answers, never during a sitting. */
-function explainHTML(q){
-  let h='';
-  if(q.ref&&q.ref.slide)h+=`<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
-  else if(q.ref)h+=`<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
-  if(q.vid)h+=vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
-  h+=`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
-  return h;
+/* the review is an accordion: each question collapses to a mark + one-line stem, and
+   the answer / video / slide open ON DEMAND below the row — never all at once. */
+function slideHTML(q){
+  if(q.ref&&q.ref.slide)return `<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
+  if(q.ref)return `<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
+  return '<div class="refsrc">No slide or passage matched this one.</div>';
+}
+function paneHTML(q,act){
+  if(act==='vid')return q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):'';
+  if(act==='slide')return slideHTML(q);
+  return keyHTML(q,SIT.ans[q.id])+`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
 }
 /* a video link opens at the moment its captions say the tested point is taught —
    `at` is where the verifying quote was found, not a guess */
@@ -624,6 +652,7 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
 document.addEventListener('click',e=>{
   const vf=e.target.closest('.vfull'); if(vf){const c=vf.closest('.vclip');loadVid(c,+c.dataset.at,null);return}
   const fr=e.target.closest('.vframe'); if(fr&&!fr.querySelector('iframe')){const c=fr.closest('.vclip');loadVid(c,+c.dataset.at,+c.dataset.end);return}
+  const qa=e.target.closest('.qa'); if(qa){const row=qa.closest('.qr'),pane=row.querySelector('.qr-pane'),act=qa.dataset.act,open=pane.dataset.act===act&&!pane.hidden;row.querySelectorAll('.qa').forEach(b=>b.classList.toggle('on',b===qa&&!open));if(open){pane.hidden=true;pane.dataset.act='';return}pane.innerHTML=paneHTML(SIT.deck.find(x=>x.id===row.dataset.qid),act);pane.hidden=false;pane.dataset.act=act;return}
   if(e.target.dataset&&e.target.dataset.ask){
     const q=SIT.deck.find(x=>x.id===e.target.dataset.ask);
     const a=SIT.ans[q.id];
