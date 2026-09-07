@@ -107,6 +107,14 @@ textarea{min-height:120px}
 .vidrow{font-size:.86rem;margin:6px 0}
 .vidrow a{font-weight:600}
 .askai{padding:3px 10px;font-size:.76rem;margin-top:6px}
+.vclip{margin:.5rem 0}
+.vframe{position:relative;aspect-ratio:16/9;width:100%;max-width:460px;background:#000;border-radius:8px;overflow:hidden;cursor:pointer}
+.vframe img,.vframe iframe{width:100%;height:100%;display:block;border:0;object-fit:cover}
+.vplay{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:rgba(20,20,28,.72);color:#fff;border:2px solid #fff;font-size:1.3rem;cursor:pointer;line-height:1}
+.vbadge{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.8);color:#fff;font-size:.72rem;padding:2px 6px;border-radius:4px;pointer-events:none}
+.vmeta{font-size:.82rem;margin-top:5px;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.vch{font-weight:600}
+.vfull{padding:2px 8px;font-size:.74rem}
 .score-hero{font-size:2.2rem;font-weight:800;text-align:center;margin:.3rem 0 0}
 .score-sub{text-align:center;color:var(--muted-fg);margin:0 0 10px}
 /* chart */
@@ -273,7 +281,7 @@ function home(){
   </div>
   <div class="card door" style="border-left:4px solid var(--primary)">
     <h2>📺 Watch first — the whole video shelf</h2>
-    <p>All ${DATA.stats.videos - DATA.stats.videosNN} Dr Matt &amp; Dr Mike videos on the Module 1 shelf${DATA.stats.videosNN?`, plus ${DATA.stats.videosNN} Ninja Nerd videos filling gaps the channel doesn't cover (denser, but they teach the point)`:''}, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
+    <p>All ${DATA.stats.videos - DATA.stats.videosFill} Dr Matt &amp; Dr Mike videos on the Module 1 shelf${DATA.stats.videosFill?`, plus ${DATA.stats.videosFill} gap-filler videos from other channels (each labelled by channel on its own row)`:''}, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
     <a class="btn wide" href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">Open the Module 1 video playlist ↗</a>
   </div>
   <div class="card door">
@@ -518,15 +526,31 @@ function explainHTML(q){
   let h='';
   if(q.ref&&q.ref.slide)h+=`<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
   else if(q.ref)h+=`<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
-  if(q.vid)h+=vidRowHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
+  if(q.vid)h+=vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):'');
   h+=`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
   return h;
 }
 /* a video link opens at the moment its captions say the tested point is taught —
    `at` is where the verifying quote was found, not a guess */
 const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+const CHAN={nn:'Ninja Nerd',iha:'Institute of Human Anatomy',az:'AnatomyZone',ah:'Armando Hasudungan'};
+/* after a wrong answer the matched video is embedded and CUED to the ~2-min stretch
+   that teaches the point; it stops at `end`. A button reloads it as the full video so
+   you never have to leave for the playlist page. */
+function vidClipHTML(v){
+  const at=Number.isInteger(v.at)?v.at:0, end=Number.isInteger(v.end)&&v.end>at?v.end:at+120;
+  const who=CHAN[v.ch]||'Dr Matt &amp; Dr Mike', cm=Math.max(1,Math.round((end-at)/60));
+  return `<div class="vclip" data-id="${v.id}" data-at="${at}" data-end="${end}">
+    <div class="vframe"><img class="vposter" loading="lazy" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt=""><button class="vplay" aria-label="Play the clip">▶</button><span class="vbadge">▶ ${mmss(at)}–${mmss(end)} · ~${cm} min</span></div>
+    <div class="vmeta"><span class="vch">${who}</span><a href="https://www.youtube.com/watch?v=${v.id}&t=${at}s" target="_blank" rel="noopener">${esc(v.t)}</a><span class="refsrc">${esc(v.d)}</span><button class="btn ghost vfull">▶ Watch the full video</button></div>
+  </div>`;
+}
+function loadVid(c,at,end){
+  const src='https://www.youtube.com/embed/'+c.dataset.id+'?start='+at+(end?'&end='+end:'')+'&rel=0&modestbranding=1&autoplay=1';
+  c.querySelector('.vframe').innerHTML='<iframe src="'+src+'" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+}
 function vidRowHTML(v,who){
-  who=who??(v.ch==='nn'?'Ninja Nerd · ':'Dr Matt &amp; Dr Mike · ');
+  who=who??(({nn:'Ninja Nerd',iha:'Institute of Human Anatomy',az:'AnatomyZone',ah:'Armando Hasudungan'}[v.ch]||'Dr Matt &amp; Dr Mike')+' · ');
   const at=Number.isInteger(v.at)?v.at:0;
   return `<div class="vidrow">▶ <a href="https://www.youtube.com/watch?v=${v.id}${at?`&t=${at}s`:''}" target="_blank" rel="noopener">${esc(v.t)}</a> <span class="refsrc">${who}${esc(v.d)}${at?` · from ${mmss(at)}`:''}</span></div>`;
 }
@@ -598,6 +622,8 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   <button class="btn primary wide" onclick="this.closest('dialog').close()">Close</button>`;
   $('#help').showModal()};
 document.addEventListener('click',e=>{
+  const vf=e.target.closest('.vfull'); if(vf){const c=vf.closest('.vclip');loadVid(c,+c.dataset.at,null);return}
+  const fr=e.target.closest('.vframe'); if(fr&&!fr.querySelector('iframe')){const c=fr.closest('.vclip');loadVid(c,+c.dataset.at,+c.dataset.end);return}
   if(e.target.dataset&&e.target.dataset.ask){
     const q=SIT.deck.find(x=>x.id===e.target.dataset.ask);
     const a=SIT.ans[q.id];

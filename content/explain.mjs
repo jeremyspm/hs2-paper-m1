@@ -138,7 +138,7 @@ export function matchVideo(q, videos, matches) {
   const list = matches[q.id];
   if (!list) return null;
   const byId = new Map(videos.map(v => [v.id, v]));
-  const shape = (m) => { const v = byId.get(m.id); return { id: v.id, t: v.t.slice(0, 70), d: v.d, at: m.at, ...(v.ch ? { ch: v.ch } : {}) }; };
+  const shape = (m) => { const v = byId.get(m.id); return { id: v.id, t: v.t.slice(0, 70), d: v.d, at: m.at, ...(Number.isInteger(m.end) ? { end: m.end } : {}), ...(v.ch ? { ch: v.ch } : {}) }; };
   return { ...shape(list[0]), ...(list[1] ? { alt: shape(list[1]) } : {}) };
 }
 
