@@ -1,7 +1,7 @@
 {
  "built": "2026-09-06",
  "module": "m1",
- "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 Ninja Nerd gap-fill (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 gap-fill from AnatomyZone/IHA/Armando (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted, judged clip end).",
+ "method": "For each of the 396 captured Module 1 quiz questions, key + stem terms BM25-scored against 90-second windows of every captioned video on the Dr Matt & Dr Mike channel (691 of 708 tracks, pulled 2026-09-06). Top candidates judged from the caption text by Gemini Flash (OpenRouter), every 'yes' carrying a 6-15 word verbatim quote that was then re-found mechanically in the track (all exact or >=85% fuzzy); `at` is that position minus 3 s. Claude re-read 105 of the 193 accepted matches (every multi-part question, every video outside the keyword shortlist, every low-coverage or short-quote case, plus every tenth of the rest) and struck none. Captions are not shipped. Questions absent from `matches` have no video whose captions teach them. Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (112 joined on the exact stem, 14 on stem + quiz, 0 on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged. | 2026-09-07 rescue pass (top-8 over unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 Ninja Nerd gap-fill (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted). | 2026-09-07 gap-fill from AnatomyZone/IHA/Armando (top-8 over the still-unmatched, Flash-judged, quote-gated + refuted, judged clip end). | 2026-09-07 relevance scrutiny: dropped qb84e734849 (pericardial space) whose lone match was a TV-drama clip (The Pitt) rather than a teaching video (no video beats a wrong one).",
  "source": {
   "file": "dmdm-videos/video-matches.json",
   "built": "2026-09-06",
@@ -14,8 +14,8 @@
   }
  },
  "stats": {
-  "questions_with_video": 242,
-  "matches": 302,
+  "questions_with_video": 241,
+  "matches": 301,
   "videos_used": 132,
   "source_questions_held_in_this_build": 11
  },
@@ -1390,13 +1390,6 @@
     "id": "xLtLY9qaQks",
     "at": 23,
     "quote": "coming from the right side of the heart specifically the right ventricle pumping"
-   }
-  ],
-  "qb84e734849": [
-   {
-    "id": "4SeDddlLT3w",
-    "at": 6341,
-    "quote": "accumulate within that space, the pericardial space or pericardial sack space."
    }
   ],
   "qb949a00fe4": [
