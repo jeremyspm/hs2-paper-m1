@@ -42,10 +42,13 @@ a.btn{text-decoration:none}
 .door h2{margin:.1rem 0 .3rem;font-size:1.02rem}
 .door p{margin:.2rem 0 .6rem;color:var(--muted-fg);font-size:.88rem}
 .qlist{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.qrow{display:flex;align-items:center;gap:8px;border:1px solid var(--border);
+/* a quiz row: tag + name, then count + Learn + Sit as one group that drops to a
+   second line at phone width instead of squeezing the name into four lines */
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;border:1px solid var(--border);
   border-radius:var(--radius);padding:8px 10px;background:var(--muted)}
-.qrow b{flex:1;font-size:.86rem;font-weight:600}
+.qrow b{flex:1 1 150px;font-size:.86rem;font-weight:600}
 .qrow .m{color:var(--muted-fg);font-size:.76rem;white-space:nowrap}
+.qrow .acts{margin-left:auto;display:flex;gap:6px;align-items:center}
 .sysrow{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px}
 .tag{font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--accent);color:var(--muted-fg)}
 .tag.cvs{color:hsl(0 84% 70%)}.tag.resp{color:hsl(199 89% 64%)}.tag.lymph{color:hsl(140 55% 58%)}
@@ -79,6 +82,18 @@ input.inl{min-width:7ch}
   border-radius:var(--radius);padding:10px;margin:6px 0;cursor:pointer;background:var(--muted)}
 .opt input{margin-top:3px;flex:none}
 .opt.sel{border-color:var(--primary);background:var(--accent)}
+/* learn mode: a checked question locks and colours itself in place */
+.opt.k{border-color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+.opt.x{border-color:var(--danger);box-shadow:inset 0 0 0 1px var(--danger)}
+.opt.lock{cursor:default}
+.lres{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 0}
+.lres .hint{font-size:.76rem;color:var(--muted-fg)}
+.lres .qr-pane{flex-basis:100%;padding:6px 0 0}
+.mk .verdict{font-weight:700;margin:0 0 4px}
+.mk.right .verdict{color:var(--ok)} .mk.wrong .verdict{color:var(--danger)} .mk.saq{border-color:var(--primary)}
+.pip.ok{background:var(--ok);border-color:var(--ok)} .pip.bad{background:var(--danger);border-color:var(--danger)}
+.qrow .btn{padding:6px 10px;font-size:.8rem}
+.qrow .btn.learn{border-color:var(--primary);color:var(--primary)}
 .blankrow{display:flex;flex-direction:column;gap:4px;margin:8px 0}
 .blankrow label{font-size:.82rem;color:var(--muted-fg)}
 select,input[type=text],textarea{font:inherit;color:var(--fg);background:var(--muted);
@@ -297,9 +312,20 @@ function home(){
       </div>
     </details>
   </div>
+  <div class="card door" style="border-left:4px solid var(--ok)">
+    <h2>📖 Learn as you go</h2>
+    <p>Not a test. Every question marks itself the moment you press <b>Check</b>, and the answer, her notes and the matched video open right under it before you move on — you can open the notes or video <i>before</i> you answer, too. Press Check with nothing picked and it just shows you. Nothing here goes on the score chart; a wrong or skipped one still joins your misses pile. Start here when the quizzes feel like deep water.</p>
+    <button class="btn primary wide" data-go="mini" data-learn="1">Learn through 12 · dealt from the whole Module 1 bank</button>
+    <div class="sysrow">
+      <button class="btn ghost" data-sys="cvs" data-learn="1">Learn CVS</button>
+      <button class="btn ghost" data-sys="resp" data-learn="1">Learn Resp</button>
+      <button class="btn ghost" data-sys="lymph" data-learn="1">Learn Lymph</button>
+      <button class="btn ghost" data-go="miss" data-learn="1" ${Object.keys(S.miss).length? '':'disabled'}>Learn my misses${Object.keys(S.miss).length?` · ${Object.keys(S.miss).length}`:''}</button>
+    </div>
+  </div>
   <div class="card door" style="border-left:4px solid var(--primary)">
     <h2>📺 Watch first — the whole video shelf</h2>
-    <p>All ${DATA.stats.videos - DATA.stats.videosFill} Dr Matt &amp; Dr Mike videos on the Module 1 shelf${DATA.stats.videosFill?`, plus ${DATA.stats.videosFill} gap-filler videos from other channels (each labelled by channel on its own row)`:''}, by topic. In <i>here</i> a video only shows up once you have already got something wrong — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
+    <p>All ${DATA.stats.videos - DATA.stats.videosFill} Dr Matt &amp; Dr Mike videos on the Module 1 shelf${DATA.stats.videosFill?`, plus ${DATA.stats.videosFill} gap-filler videos from other channels (each labelled by channel on its own row)`:''}, by topic. In a <b>mock test</b> a video only shows up once you have got something wrong; in <b>Learn as you go</b> it sits under the question from the start — ${DATA.stats.withVideo} of the ${DATA.stats.n} questions have one, matched from the video's own captions (judged from the caption text, every quote re-found in the track, a review slice read again by hand), and the link opens where the point is taught. The other ${DATA.stats.videos - DATA.stats.videosReached} videos teach nothing a captured quiz asks, so no amount of sitting will ever surface them. That page is the only way to see the set before you attempt anything.</p>
     <a class="btn wide" href="https://jeremyspm.github.io/hs2-m1-videos.html" target="_blank" rel="noopener">Open the Module 1 video playlist ↗</a>
   </div>
   <div class="card door">
@@ -311,20 +337,20 @@ function home(){
   </div>
   <div class="card door">
     <h2>🗂 Pick my rep</h2>
-    <p>Her quizzes, unlocked — sit any of them as often as you like. No attempt limits, marked instantly.</p>
+    <p>Her quizzes, unlocked — <b>Learn</b> through one with the answer, notes and video under every question, or <b>Sit</b> it as a test and see them at the end. No attempt limits, marked instantly.</p>
     <div class="sysrow">
-      <button class="btn ghost" data-sys="cvs">All CVS</button>
-      <button class="btn ghost" data-sys="resp">All Resp</button>
-      <button class="btn ghost" data-sys="lymph">All Lymph</button>
+      <button class="btn ghost" data-sys="cvs">Sit 12 CVS</button>
+      <button class="btn ghost" data-sys="resp">Sit 12 Resp</button>
+      <button class="btn ghost" data-sys="lymph">Sit 12 Lymph</button>
     </div>
     <div class="qlist">${DATA.quizzes.map(z=>`
       <div class="qrow"><span class="tag ${z.sys}">${z.sys}</span><b>${esc(z.name)}</b>
-      <span class="m">${z.n} Q</span><button class="btn ghost" data-quiz="${z.id}">Sit</button></div>`).join('')}
+      <span class="acts"><span class="m">${z.n} Q</span><button class="btn ghost learn" data-quiz="${z.id}" data-learn="1">Learn</button><button class="btn ghost" data-quiz="${z.id}">Sit</button></span></div>`).join('')}
     </div>
   </div>`;
-  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>start(b.dataset.go));
-  document.querySelectorAll('[data-quiz]').forEach(b=>b.onclick=()=>start('quiz:'+b.dataset.quiz));
-  document.querySelectorAll('[data-sys]').forEach(b=>b.onclick=()=>start('sys:'+b.dataset.sys));
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>start(b.dataset.go,!!b.dataset.learn));
+  document.querySelectorAll('[data-quiz]').forEach(b=>b.onclick=()=>start('quiz:'+b.dataset.quiz,!!b.dataset.learn));
+  document.querySelectorAll('[data-sys]').forEach(b=>b.onclick=()=>start('sys:'+b.dataset.sys,!!b.dataset.learn));
 }
 function sparkCard(){
   if(!S.scores.length) return `<div class="card"><b>No sittings yet.</b>
@@ -352,17 +378,20 @@ function sparkCard(){
 
 /* ── sitting ───────────────────────────────────────────────────────── */
 let SIT=null;
-function start(mode){
+/* `learn` sits the same deck in Learn mode: marked per question, resources in place,
+   never timed, never on the score chart (see the learn-mode block below) */
+function start(mode,learn=false){
   let deck,label,timed=false;
-  if(mode==='mini'){deck=dealMini();label='mini mock'}
+  if(mode==='mini'){deck=dealMini();label=learn?'12 from the bank':'mini mock'}
   else if(mode==='full'){deck=dealFull();label='full mock';timed=true}
-  else if(mode==='miss'){deck=dealMisses();label='redo misses'}
+  else if(mode==='miss'){deck=dealMisses();label=learn?'my misses':'redo misses'}
   else if(mode.startsWith('quiz:')){const z=DATA.quizzes.find(x=>x.id===mode.slice(5));
     deck=DATA.questions.filter(q=>q.quiz===z.id);label=z.name}
   else if(mode.startsWith('sys:')){const s=mode.slice(4);
     deck=shuffle(CLOSED.filter(q=>q.sys===s)).slice(0,12);label='all '+s}
   if(!deck||!deck.length){alert('Nothing to deal here yet.');return}
-  SIT={deck,label,mode,i:0,ans:{},t0:Date.now(),timed,end:timed?Date.now()+65*60*1000:null};
+  if(learn)timed=false;
+  SIT={deck,label,mode,i:0,ans:{},t0:Date.now(),timed,end:timed?Date.now()+65*60*1000:null,learn,chk:{},peek:{}};
   if(mode==='mini'&&DATA.chains.length){warmup();return}
   renderQ();
 }
@@ -380,7 +409,7 @@ function warmup(){
       : `<div class="verb">${esc(b.v)} ↓</div>`).join('')}</div>
     ${opts.map(o=>`<label class="opt"><input type="radio" name="wu"><span>${esc(o)}</span></label>`).join('')}
     <div class="src">${esc(ch.src)} — a scaffold built from her decks, not her material.</div>
-    <button class="btn primary wide" id="wuGo">Check → start the mock test</button>
+    <button class="btn primary wide" id="wuGo">${SIT.learn?'Check → start learning':'Check → start the mock test'}</button>
     <button class="btn ghost wide" id="wuSkip">Skip warm-up</button></div>`;
   document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');o.querySelector('input').checked=true});
   $('#wuGo').onclick=()=>{const sel=document.querySelector('.opt.sel span');
@@ -395,11 +424,22 @@ function renderQ(){
   clearInterval(timerIv);
   const q=SIT.deck[SIT.i];
   const fb=$('#footbar');fb.classList.add('on');
-  fb.innerHTML=`<button class="btn" id="prevB" ${SIT.i? '':'disabled'}>← Back</button>
-    <button class="btn primary" id="nextB">${SIT.i===SIT.deck.length-1?'Finish & mark':'Next →'}</button>`;
-  $('#prevB').onclick=()=>{saveAns();SIT.i--;renderQ()};
-  setTimeout(()=>{const x=$('#exitB');if(x)x.onclick=()=>{if(confirm('Abandon this mock test? Nothing is saved.')){clearInterval(timerIv);home();window.scrollTo(0,0)}}},0);
-  $('#nextB').onclick=()=>{saveAns();SIT.i===SIT.deck.length-1?mark():(SIT.i++,renderQ())};
+  const last=SIT.i===SIT.deck.length-1, chk=SIT.learn?SIT.chk[q.id]:null;
+  if(SIT.learn){
+    /* learn mode: Check marks THIS question in place; Next only appears once it is marked */
+    fb.innerHTML=`<button class="btn" id="prevB" ${SIT.i? '':'disabled'}>← Back</button>`+
+      (chk?`<button class="btn primary" id="nextB">${last?'Finish':'Next →'}</button>`
+          :`<button class="btn primary" id="chkB">Check ✓</button>`);
+    $('#prevB').onclick=()=>{if(chk)saveLearnSaq();else saveAns();SIT.i--;renderQ()};
+    if(chk)$('#nextB').onclick=()=>{saveLearnSaq();last?learnDone():(SIT.i++,renderQ())};
+    else $('#chkB').onclick=learnCheck;
+  } else {
+    fb.innerHTML=`<button class="btn" id="prevB" ${SIT.i? '':'disabled'}>← Back</button>
+      <button class="btn primary" id="nextB">${last?'Finish & mark':'Next →'}</button>`;
+    $('#prevB').onclick=()=>{saveAns();SIT.i--;renderQ()};
+    $('#nextB').onclick=()=>{saveAns();last?mark():(SIT.i++,renderQ())};
+  }
+  setTimeout(()=>{const x=$('#exitB');if(x)x.onclick=()=>{if(confirm(SIT.learn?'Stop here? Everything you checked is already in your misses pile.':'Abandon this mock test? Nothing is saved.')){clearInterval(timerIv);home();window.scrollTo(0,0)}}},0);
   const a=SIT.ans[q.id];
   const imgTag=f=>`<img class="qimg" src="img/${f}" alt="question figure" loading="lazy">`;
   /* the blank widget, inline where Canvas put it: her dropdown stays a dropdown
@@ -438,19 +478,26 @@ function renderQ(){
       <div class="note">Written question · ${q.pts} marks — write ${q.pts} numbered points, one causal step each. You mark yourself against the model at the end.</div>
       <textarea data-essay placeholder="1. …&#10;2. …">${a&&a.text?esc(a.text):''}</textarea>`;
   }
+  /* learn mode: once checked, a wrong/skipped/written question already has its slide and
+     video open inside the mark block, so the chips row is only shown while they are not */
+  const open=chk&&learnOpen(q,chk);
   $('#view').innerHTML=`<div class="card">
     <div class="qhead"><span class="n">Q${SIT.i+1}/${SIT.deck.length}</span>
-      <span class="tag ${q.sys}">${q.sys}</span><span class="tag">${q.pts} mk</span>
+      <span class="tag ${q.sys}">${q.sys}</span><span class="tag">${q.pts} mk</span>${SIT.learn?'<span class="tag" style="color:var(--ok)">learn</span>':''}
       <span class="timer" id="timer"></span>
-      <button class="btn ghost" id="exitB" title="abandon mock test" style="padding:2px 10px">✕</button></div>
+      <button class="btn ghost" id="exitB" title="${SIT.learn?'stop learning':'abandon mock test'}" style="padding:2px 10px">✕</button></div>
     ${inlineBlanks?body:''}<div class="stem${q.qh?' rich':''}">${stemHTML}</div>${imgs}${inlineBlanks?'':body}
-    <div class="pips">${SIT.deck.map((_,i)=>`<span class="pip ${SIT.ans[SIT.deck[i].id]?'done':''} ${i===SIT.i?'cur':''}"></span>`).join('')}</div>
+    ${chk?learnMkHTML(q,chk):''}${SIT.learn&&!open?learnChipsHTML(q):''}
+    <div class="pips">${SIT.deck.map((_,i)=>{const id=SIT.deck[i].id,c=SIT.learn&&SIT.chk[id];
+      const cls=c?(c.r?(c.r.got>=c.r.tot&&SIT.ans[id]?'ok':'bad'):'done'):(SIT.ans[id]?'done':'');
+      return `<span class="pip ${cls} ${i===SIT.i?'cur':''}"></span>`}).join('')}</div>
   </div>`;
-  document.querySelectorAll('.opt').forEach(o=>o.onclick=e=>{
-    const inp=o.querySelector('input');
-    if(inp.type==='radio'){document.querySelectorAll('.opt').forEach(x=>{x.classList.remove('sel');x.querySelector('input').checked=false});inp.checked=true;o.classList.add('sel')}
-    else{if(e.target.tagName!=='INPUT')inp.checked=!inp.checked;o.classList.toggle('sel',inp.checked)}
-  });
+  if(chk)paintChecked(q);
+  /* the label's own activation checks the box; we only mirror it on change. The old
+     handler also flipped it by hand, and the two flips cancelled: tapping the WORDS of a
+     "tick every answer that applies" option never ticked it (only the box itself did). */
+  else document.querySelectorAll('.opt').forEach(o=>{const inp=o.querySelector('input');
+    inp.onchange=()=>{if(inp.type==='radio')document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.toggle('sel',inp.checked)}});
   if(SIT.timed){const t=$('#timer');const tick=()=>{const s=Math.max(0,(SIT.end-Date.now())/1000|0);
     t.textContent=`${s/60|0}:${String(s%60).padStart(2,'0')}`;t.classList.toggle('low',s<300);
     if(s<=0){clearInterval(timerIv);saveAns();mark()}};tick();timerIv=setInterval(tick,1000)}
@@ -468,6 +515,98 @@ function saveAns(){
     if(any)SIT.ans[q.id]={pick};return}
   const sel=[...document.querySelectorAll('.opt input:checked')].map(i=>+i.value);
   if(sel.length)SIT.ans[q.id]={sel};
+}
+/* ── learn mode ────────────────────────────────────────────────────────
+   The same deck and the same marking, but per question: Check marks it in place and
+   the answer, her slide and the matched video sit right under it — the results
+   accordion brought forward to the moment you still care. Slide and video can be
+   opened BEFORE answering; that counts as a peek, and a right answer after a peek
+   does not clear a miss. Check with nothing picked = "show me" = a miss. Learn
+   sittings feed the misses pile and the least-seen dealer, never the score chart. */
+function learnChipsHTML(q){
+  const chips=[];
+  if(q.vid)chips.push(`<button class="qa" data-act="vid">▶ Video · from ${mmss(Number.isInteger(q.vid.at)?q.vid.at:0)}</button>`);
+  if(q.ref)chips.push(`<button class="qa" data-act="slide">📖 ${q.ref.slide?'Her slide':'Her notes'}</button>`);
+  const hint=chips.length?(SIT.chk[q.id]?'':'<span class="hint">open before or after you answer</span>')
+    :'<span class="hint">no video or slide matched this one — the answer shows on Check</span>';
+  return `<div class="lres" data-qid="${q.id}">${chips.join('')}${hint}<div class="qr-pane" hidden></div></div>`;
+}
+/* resources open by themselves for: written questions, skipped ones, anything not fully right */
+const learnOpen=(q,chk)=>!chk.r||!SIT.ans[q.id]||chk.r.got<chk.r.tot;
+function learnCheck(){
+  saveAns();
+  const q=SIT.deck[SIT.i], a=SIT.ans[q.id];
+  const r=markQ(q,a), peeked=!!SIT.peek[q.id];
+  SIT.chk[q.id]={r,peeked,ticks:[]};
+  S.seen[q.id]=(S.seen[q.id]||0)+1;
+  if(r){ if(!a||r.got<r.tot)S.miss[q.id]=(S.miss[q.id]||0)+1; else if(!peeked&&S.miss[q.id])delete S.miss[q.id]; }
+  SV('miss',S.miss);SV('seen',S.seen);
+  renderQ();
+  const m=document.querySelector('.mk');if(m)window.scrollTo({top:m.getBoundingClientRect().top+window.scrollY-64,behavior:'smooth'});
+}
+function saveLearnSaq(){
+  const q=SIT.deck[SIT.i],chk=SIT.chk[q.id];
+  if(!chk||q.type!=='essay')return;
+  chk.ticks=[...document.querySelectorAll('[data-lsaq]')].map((c,i)=>c.checked?i:-1).filter(i=>i>=0);
+}
+function learnMkHTML(q,chk){
+  const a=SIT.ans[q.id],r=chk.r;
+  let verdict,cls;
+  if(!r){verdict='✍ Tick each model step you actually wrote';cls='saq'}
+  else if(!a){verdict='Skipped — read this one';cls='wrong'}
+  else if(r.got>=r.tot){verdict=chk.peeked?'✓ Right (after a peek)':'✓ Right';cls='right'}
+  else if(r.got>0){verdict=`Partly right · ${+r.got.toFixed(1)}/${r.tot}`;cls='wrong'}
+  else{verdict='✗ Not quite';cls='wrong'}
+  const body=!r
+    ? `${a&&a.text?'':'<div class="you">— nothing written — read the model, then say it out loud</div>'}<div class="steps">${q.saq.steps.map((s,i)=>`<label><input type="checkbox" data-lsaq ${chk.ticks.includes(i)?'checked':''}> <span>${esc(s)}</span></label>`).join('')}</div><div class="refsrc">${esc(q.saq.src)}</div>`
+    : keyHTML(q,a);
+  const res=learnOpen(q,chk)?(q.ref?slideHTML(q):'')+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
+  return `<div class="mk ${cls}"><div class="verdict">${verdict}</div>${body}${res}${r?`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`:''}</div>`;
+}
+/* lock the widgets and colour them: the key green, a wrong pick red, per part for matching and blanks */
+function paintChecked(q){
+  const a=SIT.ans[q.id]||{};
+  if(q.type==='mcq'||q.type==='tf'||q.type==='multi'){
+    document.querySelectorAll('.opt').forEach(o=>{const inp=o.querySelector('input'),opt=q.opts[+inp.value];
+      inp.disabled=true;o.classList.add('lock');
+      if(q.key.includes(opt))o.classList.add('k');else if(inp.checked)o.classList.add('x')});
+  } else if(q.type==='match'||q.type==='cloze'){
+    document.querySelectorAll('[data-i]').forEach(el=>{const i=+el.dataset.i,v=(a.pick||{})[i];el.disabled=true;
+      const ok=q.type==='match'?v===q.pairs[i].right:blankOK(q,q.blanks[i],v);
+      el.style.borderColor=ok?'var(--ok)':'var(--danger)'});
+  } else if(q.type==='essay'){const t=document.querySelector('[data-essay]');if(t)t.readOnly=true}
+}
+function learnDone(){
+  saveLearnSaq();
+  $('#footbar').classList.remove('on');
+  const rows=SIT.deck.map(q=>({q,chk:SIT.chk[q.id]}));
+  const closed=rows.filter(x=>x.chk&&x.chk.r);
+  const first=closed.filter(x=>SIT.ans[x.q.id]&&x.chk.r.got>=x.chk.r.tot&&!x.chk.peeked);
+  const peek=closed.filter(x=>SIT.ans[x.q.id]&&x.chk.r.got>=x.chk.r.tot&&x.chk.peeked);
+  const missed=closed.filter(x=>!SIT.ans[x.q.id]||x.chk.r.got<x.chk.r.tot);
+  const saqs=rows.filter(x=>x.chk&&!x.chk.r);
+  const skipped=rows.filter(x=>!x.chk).length;
+  const btn=(k,lbl)=>`<button class="qa" data-act="${k}">${lbl}</button>`;
+  const row=(q,cls,mk)=>`<div class="qr ${cls}" data-qid="${q.id}">
+      <div class="qr-head"><span class="qr-mk">${mk}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
+      <div class="qr-acts">${q.type==='essay'?'':btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div><div class="qr-pane" hidden></div></div>`;
+  $('#view').innerHTML=`<div class="card">
+    <div class="score-hero">${closed.length?`${first.length} / ${closed.length}`:`✍ ${saqs.length} written`}</div>
+    <div class="score-sub">${closed.length?'right first go':'self-marked'} · learn mode · ${esc(SIT.label)} · ${Math.round((Date.now()-SIT.t0)/60000)} min</div>
+    <div class="systally" style="justify-content:center;margin-bottom:10px">
+      ${peek.length?`<span class="tag">${peek.length} right after a peek</span>`:''}
+      ${missed.length?`<span class="tag">${missed.length} to revisit</span>`:'<span class="tag ok">nothing missed ✓</span>'}
+      ${saqs.length?`<span class="tag">${saqs.length} written, self-marked</span>`:''}
+      ${skipped?`<span class="tag">${skipped} not checked</span>`:''}
+    </div>
+    <div class="note">Learn mode never goes on the score chart — that line is for mock tests sat without help. ${missed.length?`The ${missed.length} you missed or skipped ${missed.length===1?'is':'are'} in your misses pile now (“Learn my misses” / “Redo my misses”); `:''}a right answer after a peek leaves the pile as it was.</div>
+    ${missed.map(({q,chk})=>row(q,chk.r.got>0&&SIT.ans[q.id]?'partial':'wrong',SIT.ans[q.id]?`${+chk.r.got.toFixed(1)}/${chk.r.tot}`:'skip')).join('')}
+    ${peek.map(({q})=>row(q,'partial','peek')).join('')}
+    ${saqs.map(({q,chk})=>row(q,'saq',`✍ ${+(chk.ticks.length*q.pts/q.saq.steps.length).toFixed(1)}/${q.pts}`)).join('')}
+    <button class="btn primary wide" id="doneB">Back to home</button></div>`;
+  $('#doneB').onclick=()=>{SV('miss',S.miss);SV('seen',S.seen);home();window.scrollTo(0,0)};
+  SV('miss',S.miss);SV('seen',S.seen);
+  window.scrollTo(0,0);
 }
 /* ── marking ───────────────────────────────────────────────────────── */
 function markQ(q,a){
@@ -545,7 +684,8 @@ function mark(){
   window.scrollTo(0,0);
 }
 /* the explain row: her material first, then the right-sized video, then Ask AI.
-   Only on wrong answers, never during a sitting. */
+   In a mock sitting only on wrong answers, never before the end; Learn mode brings
+   the same row forward to the question itself. */
 /* the review is an accordion: each question collapses to a mark + one-line stem, and
    the answer / video / slide open ON DEMAND below the row — never all at once. */
 function slideHTML(q){
@@ -637,6 +777,12 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   this tool</b> (Canvas publishes none) in her one-mark-per-step style, each naming its source; where the
   source line says the words are hers (her answers deck, her feedback on a quiz), they are. Warm-up chains
   are the estate's Module 1 guide chains — scaffolds built from her material, not her material.</p>
+  <h3>Learn mode</h3>
+  <p><b>Learn as you go</b> (and the <b>Learn</b> button beside each quiz) marks every question the moment you
+  press Check and shows the answer, her notes and the matched video right there — you can open the notes or
+  video before answering. Check with nothing picked just shows you. Nothing from Learn mode goes on the score
+  chart; a wrong or skipped question still joins your misses pile, and a right answer after a peek does not
+  clear it. <b>Sit</b> is the test version: the same questions, nothing shown until the end.</p>
   <h3>What’s held out</h3>
   <p>${DATA.held.length} questions are excluded, each with its reason in the repo's held.json: mostly figures
   that did not survive the export, and the whole “1.1 &amp; 3.3 Biophysical Principles” quiz, which was
@@ -652,7 +798,11 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
 document.addEventListener('click',e=>{
   const vf=e.target.closest('.vfull'); if(vf){const c=vf.closest('.vclip');loadVid(c,+c.dataset.at,null);return}
   const fr=e.target.closest('.vframe'); if(fr&&!fr.querySelector('iframe')){const c=fr.closest('.vclip');loadVid(c,+c.dataset.at,+c.dataset.end);return}
-  const qa=e.target.closest('.qa'); if(qa){const row=qa.closest('.qr'),pane=row.querySelector('.qr-pane'),act=qa.dataset.act,open=pane.dataset.act===act&&!pane.hidden;row.querySelectorAll('.qa').forEach(b=>b.classList.toggle('on',b===qa&&!open));if(open){pane.hidden=true;pane.dataset.act='';return}pane.innerHTML=paneHTML(SIT.deck.find(x=>x.id===row.dataset.qid),act);pane.hidden=false;pane.dataset.act=act;return}
+  const qa=e.target.closest('.qa'); if(qa){const row=qa.closest('.qr,.lres'),pane=row.querySelector('.qr-pane'),act=qa.dataset.act,open=pane.dataset.act===act&&!pane.hidden;row.querySelectorAll('.qa').forEach(b=>b.classList.toggle('on',b===qa&&!open));if(open){pane.hidden=true;pane.dataset.act='';return}
+    const q=SIT.deck.find(x=>x.id===row.dataset.qid);
+    /* opening a resource on an unchecked learn-mode question is a peek */
+    if(row.classList.contains('lres')&&!SIT.chk[q.id])SIT.peek[q.id]=true;
+    pane.innerHTML=paneHTML(q,act);pane.hidden=false;pane.dataset.act=act;return}
   if(e.target.dataset&&e.target.dataset.ask){
     const q=SIT.deck.find(x=>x.id===e.target.dataset.ask);
     const a=SIT.ans[q.id];

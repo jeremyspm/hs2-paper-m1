@@ -76,6 +76,16 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
 - Passages: the explain row quotes her CVS 1–4, RESP 1–4 and Lymphatic learning pages,
   her shock page, and the 2026 Module 1 decks. No Module 1 deck is rendered to slide
   images (Module 2's were), so a deck hit is quoted as its text.
+- **Learn mode** (home door “Learn as you go”, and the Learn button beside every quiz): the same
+  decks and the same marking, but per question — **Check** marks it in place and the answer, her
+  passage and the matched video (the model steps, for written questions) open right under it.
+  Notes and video can be opened *before* answering; that is a peek, and a right answer after a peek
+  does not clear a miss. Check with nothing picked = “show me” = a miss. Learn sittings feed the
+  misses pile and the least-seen dealer, never the score chart. Ported from hs2-test2 on 2026-09-08,
+  same code apart from the system names and the door copy.
+- `resplice.mjs` — re-splices `template.html` onto the bank already inside `index.html` (a
+  chrome-only change, no export needed), and fails if the bank is not one JSON value, the marker is
+  not exactly once, or the page script does not parse.
 - Rebuild: `node prep-capture.mjs` (only when the export changes) → the parser
   (`HS2_EXPORT="…/HS2 Module 1 Capture" HS2_OUT="…/hs2-anki/m1" node ../hs2-test1/audit/parse-quizzes.mjs`)
   → `node bind-images.mjs` → `node port-shelf.mjs && node port-chains.mjs` (when the hub
