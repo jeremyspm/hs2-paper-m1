@@ -73,14 +73,26 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
   repo's built `index.html` by `hs2-m1-videos.build.mjs` in `jeremyspm.github.io`; the ▶
   in the header and the "Watch first" door point there. `content/dmdm-all.json` is the
   shelf as `hs2-module1/index.html` declares it, flattened by `port-shelf.mjs`.
-- Passages: the explain row quotes her CVS 1–4, RESP 1–4 and Lymphatic learning pages,
-  her shock page, and the 2026 Module 1 decks. No Module 1 deck is rendered to slide
-  images (Module 2's were), so a deck hit is quoted as its text.
+- References: `content/ref-matches.json` is the ONLY source of the slide / notes / Patton shown
+  with a question. Built 2026-09-09 by the estate's `scripts/text-refs/` the same way the videos
+  were: every unit of her 19 CVS / respiratory / lymphatic decks (rendered to slide images the same
+  day by `render-decks.ps1` — 618 slides), her CVS 1–4, RESP 1–4, Lymphatic and shock pages,
+  Anatomy Mondays 1–4 (+ answer pages), the 2026 lab workbook and Patton 9e chapters 27–37 was
+  BM25-shortlisted per question (two lanes, hers and Patton's), a model judged from the unit's
+  text whether it STATES the keyed fact, every "yes" carried a 6–15 word quote re-found verbatim
+  in the unit, and an adversarial pass struck 14 + 8. Result: 206 of 363 questions carry a judged
+  reference (81 her slide images, 52 her prose, 130 Patton excerpts; 85 have Patton only), at most
+  one per lane, her material above Patton. The term-overlap matcher it replaced attached 280 text
+  passages, none of them a slide image. Patton ships as the sentence(s) around the quote, ≤70
+  words, with chapter, printed page and figure number — never the paragraph; the copy on disk is
+  the 9th ed. (2016), the course's ClinicalKey copy is the 2019 ed. A question with no entry has
+  nothing that states its answer outright in any of those sources. The same build gates as
+  hs2-test2 apply; a deck without a rendered slide would be quoted as its own words instead.
 - **Learn mode** (home door “Learn as you go”, and the Learn button beside every quiz): the same
   decks and the same marking, but per question — **Check** marks it in place and the answer, her
-  passage and the matched video (the model steps, for written questions) open right under it.
-  Notes and video can be opened *before* answering; that is a peek, and a right answer after a peek
-  does not clear a miss. Check with nothing picked = “show me” = a miss. Learn sittings feed the
+  slide, her notes, the Patton passage and the matched video (the model steps, for written
+  questions) open right under it, each also a chip you can open *before* answering; that is a peek,
+  and a right answer after a peek does not clear a miss. Check with nothing picked = “show me” = a miss. Learn sittings feed the
   misses pile and the least-seen dealer, never the score chart. Ported from hs2-test2 on 2026-09-08,
   same code apart from the system names and the door copy.
 - `resplice.mjs` — re-splices `template.html` onto the bank already inside `index.html` (a
@@ -98,6 +110,6 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
 |---|---|---|
 | `prep-capture.mjs` | exists | the capture is an export tree, not saved result pages |
 | `stem-html.mjs` | `answer_for_<id>` fallback for the blank id | the raw export has no `blank_id` span |
-| `build.mjs` | paths, QUIZ map, cvs/resp/lymph routing, `cases` for `case7`, deck text when no slide, "Her own answer" label | Module 1 inputs; three exam cases instead of one; no rendered decks; most answers are hers |
-| `content/explain.mjs` | her Module 1 pages/decks; deck text kept; fill-in exercises never quoted | same |
+| `build.mjs` | paths, QUIZ map, cvs/resp/lymph routing, `cases` for `case7`, a slide quoted as text if its deck were unrendered (none is, since 2026-09-09), "Her own answer" label | Module 1 inputs; three exam cases instead of one; most answers are hers |
+| `content/explain.mjs` | identical to hs2-test2's (a lookup into `ref-matches.json`; the module's sources live in the estate pipeline, not here) | — |
 | `template.html` | chrome only: titles, her learning checklist card, systems, Test 1's 34-question shape, exam-case rotation, `hs2m1.` keys, exam countdown | Module 1 has no upcoming test; the exam is the target |

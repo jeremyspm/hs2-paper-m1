@@ -1,0 +1,2831 @@
+{
+ "matches": {
+  "q00c31755f8": [
+   {
+    "k": "her",
+    "uid": "page:RESP 3#9",
+    "src": "RESP 3 learning page",
+    "quote": "the blood increases (become more alkaline) -a condition known as respiratory alkalosis.",
+    "t": "Hyperventilation causes the amount of carbon dioxide (CO2) in the blood to drop. more CO2 is puffed out than is produced by the body. the pH of the blood increases (become more alkaline) -a condition known as respiratory alkalosis."
+   }
+  ],
+  "q02437916dd": [
+   {
+    "k": "patton",
+    "uid": "patton:748#2",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 708",
+    "quote": "centers then send more impulses by way of the sympathetic fibers to stimulate vascular smooth muscle and cause vasoconstriction",
+    "t": "These centers then send more impulses by way of the sympathetic fibers to stimulate vascular smooth muscle and cause vasoconstriction.",
+    "pg": 748,
+    "pp": 708,
+    "ch": 30
+   }
+  ],
+  "q06d531468d": [
+   {
+    "k": "patton",
+    "uid": "patton:687#10",
+    "src": "Patton 9e · Ch 28 Heart · p. 647",
+    "quote": "they come off the aorta at its very beginning and are its first branches.",
+    "t": "Because the openings into these vitally important vessels lie behind leaflets of the aortic semilunar valve, they come off the aorta at its very beginning and are its first branches.",
+    "pg": 687,
+    "pp": 647,
+    "ch": 28
+   }
+  ],
+  "q07cd859f25": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#32",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 32",
+    "quote": "Aortic arch (With Brachiocephalic, left common carotid and left subclavian artery)",
+    "t": "THE AORTA (Patton & Thibodeau, 2019, FIGURE 29-7). 4 PARTS Ascending aorta (with ostia for coronary arteries) Aortic arch (With Brachiocephalic, left common carotid and left subclavian artery) Thoracic aorta Abdominal aorta (with renal artery, etc. and finally splitting into tow iliac arteries)",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 32
+   },
+   {
+    "k": "her",
+    "uid": "lab:2026#59",
+    "src": "Lab workbook 2026",
+    "quote": "arteries arise from the arch of the aorta. What major area/s of the body is supplied by each artery? Artery Brachiocephalic artery Left common carotid artery Left subclavian artery",
+    "t": "The following arteries arise from the arch of the aorta. What major area/s of the body is supplied by each artery? Artery Brachiocephalic artery Left common carotid artery Left subclavian artery Area supplied"
+   },
+   {
+    "k": "patton",
+    "uid": "patton:715#22",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 675",
+    "quote": "left subclavian artery and the left common carotid artery branch directly from the arch of the aorta—without an intervening brachiocephalic artery",
+    "t": "On the left, however, the left subclavian artery and the left common carotid artery branch directly from the arch of the aorta—without an intervening brachiocephalic artery.",
+    "pg": 715,
+    "pp": 675,
+    "ch": 29
+   }
+  ],
+  "q0adc1956bd": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#32",
+    "src": "2026 CVS 3 deck · slide 32",
+    "quote": "Stroke volume is increased by an increase in: Venous return to heart",
+    "t": "32 STROKE VOLUME Stroke volume is increased by an increase in: Venous return to heart Blood volume Sympathetic nerves to heart Hormones & ions – adrenaline and noradrenaline, and calcium ions",
+    "slug": "2026-CVS-3",
+    "n": 32
+   },
+   {
+    "k": "her",
+    "uid": "page:CVS 4#15",
+    "src": "CVS 4 learning page",
+    "quote": "Stroke Volume = blood ejected by heart per beat (increases with high blood volume, more powerful heart contractions and increased venous return",
+    "t": "SV = Stroke Volume = blood ejected by heart per beat (increases with high blood volume, more powerful heart contractions and increased venous return (blood volume)) HR = Heart Rate = beats per minute (increases with exercise and when stimulated by acceleratory centre in brain - sympathetic nervous impulses)"
+   }
+  ],
+  "q0b3ed4f961": [
+   {
+    "k": "her",
+    "uid": "page:RESP 1#12",
+    "src": "RESP 1 learning page",
+    "quote": "Pharynx, Larynx, Trachea, Bronchi, to terminal Bronchiole",
+    "t": "Lungs for Conduction of air Ventilation: Nasal cavities (with conchae), Sinuses, Pharynx, Larynx, Trachea, Bronchi, to terminal Bronchiole Air conditioning and self cleaning (muco-ciliary escalator, cough reflex (carina & trachealis muscle))"
+   }
+  ],
+  "q0c785286ff": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#32",
+    "src": "2026 CVS 3 deck · slide 32",
+    "quote": "Stroke volume is increased by an increase in: Venous return",
+    "t": "32 STROKE VOLUME Stroke volume is increased by an increase in: Venous return to heart Blood volume Sympathetic nerves to heart Hormones & ions – adrenaline and noradrenaline, and calcium ions",
+    "slug": "2026-CVS-3",
+    "n": 32
+   },
+   {
+    "k": "her",
+    "uid": "page:CVS 4#15",
+    "src": "CVS 4 learning page",
+    "quote": "increases with high blood volume, more powerful heart contractions and increased venous return",
+    "t": "SV = Stroke Volume = blood ejected by heart per beat (increases with high blood volume, more powerful heart contractions and increased venous return (blood volume)) HR = Heart Rate = beats per minute (increases with exercise and when stimulated by acceleratory centre in brain - sympathetic nervous impulses)"
+   },
+   {
+    "k": "patton",
+    "uid": "patton:743#7",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 703",
+    "quote": "increased amounts of blood returned to the heart will be pumped out of it",
+    "t": "Operation of Starling’s law of the heart ensures that increased amounts of blood returned to the heart will be pumped out of it.",
+    "pg": 743,
+    "pp": 703,
+    "ch": 30
+   }
+  ],
+  "q0ce08d8258": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-1#28",
+    "src": "2026 RESP 1 deck · slide 28",
+    "quote": "Respiratory Membrane - air-blood barrier is composed of: alveolar epithelium and capillary endothelium",
+    "t": "Alveoli - air sacs L.O. 5 Respiratory Membrane - air-blood barrier is composed of: alveolar epithelium and capillary endothelium their fused basal laminas Respiratory membrane Explain how surfactant prevents the alveoli from collapsing during expiration.",
+    "slug": "2026-RESP-1",
+    "n": 28
+   },
+   {
+    "k": "patton",
+    "uid": "patton:852#28",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 812",
+    "quote": "respiratory membrane composed of the alveolar wall (fluid coating, epithelial cells, and basement membrane), interstitial",
+    "t": "The inset shows a magnified view of the respiratory membrane composed of the alveolar wall (fluid coating, epithelial cells, and basement membrane), interstitial fluid, and the wall of a pulmonary capillary (basement membrane and endothelial cells).",
+    "pg": 852,
+    "pp": 812,
+    "ch": 35,
+    "fig": "35-15"
+   }
+  ],
+  "q0f24cfa0f9": [
+   {
+    "k": "patton",
+    "uid": "patton:683#14",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "Because the ventricles receive blood from the atria and pump blood out",
+    "t": "Because the ventricles receive blood from the atria and pump blood out of the heart into arteries, the ventricles are considered to be the primary “pumping chambers” of the heart.",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "q0f5bd8fee8": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#32",
+    "src": "2026 RESP 3 deck · slide 32",
+    "quote": "Metabolic (HCO 3 ) Acidosis (low pH) Diabetic ketoacidosis",
+    "t": "…3 PaCO 2 Acid Normal Base HCO 3 pH PaCO 2 Normal pH acidotic  7.35-7.45  alkalotic PaCO 2 acidotic  45-35  alkalotic HCO 3 acidotic 22-26 alkalotic Metabolic (HCO 3 ) Acidosis (low pH) Diabetic ketoacidosis Lactic acidosis Alcohol Metabolic (HCO 3 ) Alkalosis(high pH) Severe vomiting-loss of acid Loss of Potassium Respiratory (PaCO 2 ) acidosis (low pH) e.g. severe Asthma, Pneumonia, Hypoventilation Respiratory (PaCO 2…",
+    "slug": "2026-RESP-3",
+    "n": 32
+   }
+  ],
+  "q11c24f9381": [
+   {
+    "k": "patton",
+    "uid": "patton:743#8",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 703",
+    "quote": "This increased contractility of heart muscle pushes more blood out of the heart per cardiac stroke—thus increasing the stroke volume.",
+    "t": "You already know from our discussions in earlier chapters that norepinephrine (NE) released by sympathetic fibers in the cardiac nerve and epinephrine released into the blood by the adrenal medulla can both increase the strength of contraction, or contractility, of the myocardium. This increased contractility of heart muscle pushes more blood out of the heart per cardiac stroke—thus increasing the stroke volume.",
+    "pg": 743,
+    "pp": 703,
+    "ch": 30
+   }
+  ],
+  "q1257b43f12": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#16",
+    "src": "CVS 1 learning page",
+    "quote": "Nutrient absorption, filtration in the kidneys, gaseous exchange in the lungs and tissues,",
+    "t": "CAPILLARIES Capillaries connect the arteries and the veins. Nutrient absorption, filtration in the kidneys, gaseous exchange in the lungs and tissues, waste and hormones are up and offloaded in capillary beds."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:706#12",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 666",
+    "quote": "capillaries are sometimes known as the primary exchange vessels of the cardiovascular system.",
+    "t": "It is for this reason that capillaries are sometimes known as the primary exchange vessels of the cardiovascular system.",
+    "pg": 706,
+    "pp": 666,
+    "ch": 29
+   }
+  ],
+  "q13133915c0": [
+   {
+    "k": "patton",
+    "uid": "patton:868#35",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 828",
+    "quote": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity. This increase in volume results in a decrease in pressure",
+    "t": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity. This increase in volume results in a decrease in pressure, which causes air to rush into the lungs.",
+    "pg": 868,
+    "pp": 828,
+    "ch": 36,
+    "fig": "36-4"
+   }
+  ],
+  "q140eb82b67": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#14",
+    "src": "2026 RESP 3 deck · slide 14",
+    "quote": "Saturated hemoglobin – all 4 hemes bound to O 2",
+    "t": "Transport of O 2 in blood Lung capillaries O 2 + Hb Hb O 2 Tissue capillaries   Saturated hemoglobin – all 4 hemes bound to O 2 Partially saturated haemoglobin 1 to 3 hemes bound to O 2 Arterial blood - Hb is 98% saturated with O 2 Venous blood - Hb is 75% saturated with O 2 Haemoglobin-O 2 Saturation",
+    "slug": "2026-RESP-3",
+    "n": 14
+   }
+  ],
+  "q15a4a4a564": [
+   {
+    "k": "her",
+    "uid": "lab:2026#90",
+    "src": "Lab workbook 2026",
+    "quote": "Bronchi with Columnar epithelium C. Bronchiole with Cuboidal epithelium",
+    "t": "Bronchi with Columnar epithelium C. Bronchiole with Cuboidal epithelium D."
+   }
+  ],
+  "q16f909135f": [
+   {
+    "k": "her",
+    "uid": "lab:2026#90",
+    "src": "Lab workbook 2026",
+    "quote": "Bronchi with Columnar epithelium C. Bronchiole with Cuboidal epithelium",
+    "t": "Bronchi with Columnar epithelium C. Bronchiole with Cuboidal epithelium D."
+   }
+  ],
+  "q1748bda12a": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#17",
+    "src": "2026 RESP4-1 deck · slide 17",
+    "quote": "Increases the rate and depth of breathing. Blows off carbon dioxide Reduces H + levels",
+    "t": "Periods of apnea may occur until arterial P CO2 rises again & stimulates respiration. 1.2 Arterial pH changes Acidosis (excess H + ions - low arterial blood pH ) Excites inspiratory centre Increases the rate and depth of breathing. Blows off carbon dioxide Reduces H + levels in the blood.",
+    "slug": "2026-RESP4-1",
+    "n": 17
+   }
+  ],
+  "q1a7ccb04cb": [
+   {
+    "k": "patton",
+    "uid": "patton:889#12",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 849",
+    "quote": "Total atmospheric pressure PN2 PO2 PCO2 Pother 760 mm 592.8 mm 159.6 mm 0.2 mm 7.4 mm (100%) (78%) (21%)",
+    "t": "Total atmospheric pressure PN2 PO2 PCO2 Pother 760 mm 592.8 mm 159.6 mm 0.2 mm 7.4 mm (100%) (78%) (21%) (0.03%) (0.97%)",
+    "pg": 889,
+    "pp": 849,
+    "ch": 37
+   }
+  ],
+  "q1b2feb36dd": [
+   {
+    "k": "her",
+    "uid": "page:CVS 4#30",
+    "src": "CVS 4 learning page",
+    "quote": "Carotid sinus and aortic baroreceptors detect changes in blood pressure and feed the information back to the INTEGRATION: cardiac control centre",
+    "t": "RECEPTORS: Carotid sinus and aortic baroreceptors detect changes in blood pressure and feed the information back to the INTEGRATION: cardiac control centre and the vasomotor centre in the medulla."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:744#2",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 704",
+    "quote": "stretch receptors, located in the aorta and carotid sinus, constitute a very important heart rate control mechanism because of their effect on the autonomic cardiac control centers",
+    "t": "These stretch receptors, located in the aorta and carotid sinus, constitute a very important heart rate control mechanism because of their effect on the autonomic cardiac control centers—and therefore on parasympathetic and sympathetic outflow.",
+    "pg": 744,
+    "pp": 704,
+    "ch": 30
+   }
+  ],
+  "q1bd938db26": [
+   {
+    "k": "patton",
+    "uid": "patton:710#2",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 670",
+    "quote": "encircling smooth muscles of the tunica media permit changes in blood vessel diameter.",
+    "t": "The encircling smooth muscles of the tunica media permit changes in blood vessel diameter.",
+    "pg": 710,
+    "pp": 670,
+    "ch": 29
+   }
+  ],
+  "q1e7842553c": [
+   {
+    "k": "patton",
+    "uid": "patton:688#17",
+    "src": "Patton 9e · Ch 28 Heart · p. 648",
+    "quote": "radiography called angiography is often used to visualize arteries, including the coronary arteries.",
+    "t": "BOX 28-1 diagnostic study | Angiography of the Heart A special type of radiography called angiography is often used to visualize arteries, including the coronary arteries.",
+    "pg": 688,
+    "pp": 648,
+    "ch": 28
+   }
+  ],
+  "q20cd7ac282": [
+   {
+    "k": "patton",
+    "uid": "patton:696#14",
+    "src": "Patton 9e · Ch 28 Heart · p. 656",
+    "quote": "may develop into a serious compression of the heart called cardiac tamponade.",
+    "t": "This is termed pericardial effusion and may develop into a serious compression of the heart called cardiac tamponade.",
+    "pg": 696,
+    "pp": 656,
+    "ch": 28
+   }
+  ],
+  "q22c0d2b1e5": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#27",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 27",
+    "quote": "First heart sound - closure of the atrioventricular valves - sounds like ‘LUB’",
+    "t": "Heart Sounds – caused by the closure of the heart valves First heart sound - closure of the atrioventricular valves - sounds like ‘LUB’ Heart Sounds L.O. 2 Second heart sound - closure of the semilunar valves - sounds like ‘DUB’ Murmurs - abnormal heart sounds",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 27
+   }
+  ],
+  "q24ef255d3e": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-1#15",
+    "src": "2026 RESP 1 deck · slide 15",
+    "quote": "Nasal Cavity mucosa Respiratory mucosa – ciliated pseudo-stratified columnar epithelium",
+    "t": "Nasal Cavity mucosa Respiratory mucosa – ciliated pseudo-stratified columnar epithelium - cleaning (mucus trapping dust, cilia sweeping upwards), moistening & warming air       Olfactory mucosa – found in the roof of the nasal cavity – chemoreceptors for smell",
+    "slug": "2026-RESP-1",
+    "n": 15
+   },
+   {
+    "k": "patton",
+    "uid": "patton:842#30",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 802",
+    "quote": "nasal passage, it passes over the respiratory mucosa. This mucous membrane has a pseudostratified ciliated columnar epithelium",
+    "t": "…the roof of the mouth where the palatine bones, which form the floor of the nose and the roof of the mouth, separate the nasal cavities from the Nasal Mucosa Once air has passed over the skin of the vestibule and enters the respiratory portion of the nasal passage, it passes over the respiratory mucosa. This mucous membrane has a pseudostratified ciliated columnar epithelium rich in goblet cells (Figure 35-4).",
+    "pg": 842,
+    "pp": 802,
+    "ch": 35
+   }
+  ],
+  "q262dfd3785": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#24",
+    "src": "2026 RESP2 deck · slide 24",
+    "quote": "reduces surface tension and helps keep the alveoli from collapsing",
+    "t": "Alveolar Surface Tension - attraction of liquid molecules to one another at the liquid-air interface Surfactant, a detergent-like complex, reduces surface tension and helps keep the alveoli from collapsing Deficiency of surfactant will cause the alveoli to collapse, e.g. premature infants What is infant respiratory distress syndrome (IRDS)?",
+    "slug": "2026-RESP2",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:851#3",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 811",
+    "quote": "surface of the respiratory membrane inside each alveolus is coated with a fluid containing surfactant",
+    "t": "The surface of the respiratory membrane inside each alveolus is coated with a fluid containing surfactant produced by type II cells of the alveolar wall.",
+    "pg": 851,
+    "pp": 811,
+    "ch": 35
+   }
+  ],
+  "q279dfeebc0": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#22",
+    "src": "2026 RESP 3 deck · slide 22",
+    "quote": "1. Bicarbonate ions in plasma – 70% is transported as bicarbonate (HCO 3 – )",
+    "t": "Carbon Dioxide Transport 1. Bicarbonate ions in plasma – 70% is transported as bicarbonate (HCO 3 – ) 2 .",
+    "slug": "2026-RESP-3",
+    "n": 22
+   },
+   {
+    "k": "her",
+    "uid": "page:RESP 3#4",
+    "src": "RESP 3 learning page",
+    "quote": "70% of carbon dioxide is transported as Bicarbonate ions (HCO3-- = 60-70%),",
+    "t": "In words: Carbon dioxide + water <--> Carbonic acid <---> Bicarbonate ions + Hydrogen ions 70% of carbon dioxide is transported as Bicarbonate ions (HCO3-- = 60-70%), Hemoglobin's amino groups also bind to carbon dioxide: Carbon dioxide carried as carbaminohemoglobin (CO2Hb = 30-40%)"
+   },
+   {
+    "k": "patton",
+    "uid": "patton:895#24",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 855",
+    "quote": "70% transported as HCO3 (bicarbonate) dissolved in plasma",
+    "t": "70% transported as HCO3 (bicarbonate) dissolved in plasma 10% transported as CO2 dissolved in plasma 20% transported as HbCO2 (carbaminohemoglobin)",
+    "pg": 895,
+    "pp": 855,
+    "ch": 37
+   }
+  ],
+  "q2d57fdd503": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Resp-2-2#26",
+    "src": "2026 Resp 2-2 deck · slide 26",
+    "quote": "solubility (S) of the gas, membrane thickness (t), and the partial pressure",
+    "t": "…Respiratory Membrane Respiratory membrane is 0.5 to 1  m thick, allowing for efficient gas exchange increase thickness of the respiratory membrane e.g. pneumonia, reduces the efficiency of external respiration decrease in surface area reduce gas exchange, e.g. emphysema, the walls of adjacent alveoli break down the membrane diffusion rate is affected by surface area (A), solubility (S) of the gas, membrane thickness (t), and the partial pressure (P) gradient.",
+    "slug": "2026-Resp-2-2",
+    "n": 26
+   }
+  ],
+  "q2db10ba988": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#3",
+    "src": "2024 Revision mod 1 16 slide deck · slide 3",
+    "quote": "Vein Relatively large lumen Artery Relatively small lumen TUNICA INTIMA Often prominent internal elastic membrane TUNICA INTIMA Internal elastic membrane less pronounced TUNICA MEDIA Thick layer of layer of smooth muscle TUNICA MEDIA Relative thin layer",
+    "t": "Vein Relatively large lumen Artery Relatively small lumen TUNICA INTIMA Often prominent internal elastic membrane TUNICA INTIMA Internal elastic membrane less pronounced TUNICA MEDIA Thick layer of layer of smooth muscle TUNICA MEDIA Relative thin layer of layer of smooth muscle TUNICA EXTERN A relatively thin layer of connective tissue to bind vessels to surrounding tissue own blood vessels- vasa vasorum TUNICA EXTERNA Relative thick layer of connective tissue to…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 3
+   }
+  ],
+  "q2e1b15bba2": [
+   {
+    "k": "patton",
+    "uid": "patton:865#5",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 825",
+    "quote": "Pulmonary ventilation is a technical term for what most of us call breathing.",
+    "t": "MECHANISM OF VENTILATION Primary PrinciPle of Ventilation Pulmonary ventilation is a technical term for what most of us call breathing.",
+    "pg": 865,
+    "pp": 825,
+    "ch": 36
+   }
+  ],
+  "q2e65fe8737": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#23",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 23",
+    "quote": "DRIVES FILTRATION INTO TISSUE CAPILLARY BLOOD PRESSURE",
+    "t": "FLUID Movement in & out of capillaries   DRIVES FILTRATION INTO TISSUE CAPILLARY BLOOD PRESSURE DRIVES REABSORPTION FROM TISSUE TO BLOODVESSEL ONCOTIC PRESSURE",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 23
+   },
+   {
+    "k": "patton",
+    "uid": "patton:753#3",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 713",
+    "quote": "hydrostatic pressure gradients promote filtration across a barrier with filtration pores, such as the capillary wall.",
+    "t": "Recall from Chapter 6 that hydrostatic pressure gradients promote filtration across a barrier with filtration pores, such as the capillary wall.",
+    "pg": 753,
+    "pp": 713,
+    "ch": 30
+   }
+  ],
+  "q2ff5cd95db": [
+   {
+    "k": "patton",
+    "uid": "patton:685#3",
+    "src": "Patton 9e · Ch 28 Heart · p. 645",
+    "quote": "the atrioventricular valves prevent blood from flowing back up into the atria from the ventricles",
+    "t": "Whereas the atrioventricular valves prevent blood from flowing back up into the atria from the ventricles, the semilunar valves prevent it from flowing back down into the ventricles from the aorta and pulmonary trunk.",
+    "pg": 685,
+    "pp": 645,
+    "ch": 28
+   }
+  ],
+  "q30391a4bc9": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#14",
+    "src": "2026 CVS 3 deck · slide 14",
+    "quote": "atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation causes contraction",
+    "t": "14 Electrocardiogram (ECG) P- wave – atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation causes contraction T -wave – ventricular re polarisation (electrical inactivation) causes relaxation A normal ECG with U-wave Patton: FIGURE 28-17 The U wave.",
+    "slug": "2026-CVS-3",
+    "n": 14
+   }
+  ],
+  "q30aca20534": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#24",
+    "src": "CVS 2 learning page",
+    "quote": "and the aortic valve is closed, opening the ostia (0.5).",
+    "t": "The heart is provided with blood when it goes into diastole (relaxes) (0.5), and the aortic valve is closed, opening the ostia (0.5)."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:687#11",
+    "src": "Patton 9e · Ch 28 Heart · p. 647",
+    "quote": "blood flow is diverted into the coronary artery openings by the closing of the aortic valve",
+    "t": "During ventricular relaxation, when the coronary arteries expand somewhat, blood flow is diverted into the coronary artery openings by the closing of the aortic valve—allowing the coronary arteries to fill.",
+    "pg": 687,
+    "pp": 647,
+    "ch": 28
+   }
+  ],
+  "q3256b6b9c6": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#20",
+    "src": "2026 RESP4-1 deck · slide 20",
+    "quote": "allow forceful expiration (cough- trachealis muscle contracts)",
+    "t": "…(PRG) Inflation reflex -a protective mechanism to prevent over-inflation of lungs Pulmonary stretch receptors on wall of bronchi & bronchioles are stimulated by lung inflation Inhibit inspiratory center & allow expiration Pulmonary irritant reflexes –involves Carina irritants like dust, mucus, fumes, etc. in the lungs stimulate receptors in the lungs inhibit inspiratory centre allow forceful expiration (cough- trachealis muscle contracts) causes constriction of air passages ( bronchoconstriction ) increase ventilation",
+    "slug": "2026-RESP4-1",
+    "n": 20
+   }
+  ],
+  "q32bb51088a": [
+   {
+    "k": "patton",
+    "uid": "patton:743#8",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 703",
+    "quote": "increased contractility of heart muscle pushes more blood out of the heart per cardiac stroke—thus increasing the stroke volume.",
+    "t": "You already know from our discussions in earlier chapters that norepinephrine (NE) released by sympathetic fibers in the cardiac nerve and epinephrine released into the blood by the adrenal medulla can both increase the strength of contraction, or contractility, of the myocardium. This increased contractility of heart muscle pushes more blood out of the heart per cardiac stroke—thus increasing the stroke volume.",
+    "pg": 743,
+    "pp": 703,
+    "ch": 30
+   }
+  ],
+  "q33ecdd0f59": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#3",
+    "src": "2026 CVS 3 deck · slide 3",
+    "quote": "initiated by the SA node (pacemaker)",
+    "t": "3 Specialized cardiac muscle cells in the wall of the heart rapidly initiate or conduct an electrical impulse throughout the myocardium. initiated by the SA node (pacemaker)  spreads to rest of R atrial myocardium directly,  bundle of interatrial conducting fibres to the L atrial myocardium  AV node by way of 3 internodal bundles .",
+    "slug": "2026-CVS-3",
+    "n": 3
+   },
+   {
+    "k": "patton",
+    "uid": "patton:689#5",
+    "src": "Patton 9e · Ch 28 Heart · p. 649",
+    "quote": "The SA node acts as the heart’s pacemaker",
+    "t": "The SA node acts as the heart’s pacemaker and is part of the heart’s own conduction system, a concept we explore in the next section of this chapter.",
+    "pg": 689,
+    "pp": 649,
+    "ch": 28
+   }
+  ],
+  "q366b2072f0": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#32",
+    "src": "2026 CVS 3 deck · slide 32",
+    "quote": "Stroke volume is increased by an increase in: Venous return to heart Blood volume",
+    "t": "32 STROKE VOLUME Stroke volume is increased by an increase in: Venous return to heart Blood volume Sympathetic nerves to heart Hormones & ions – adrenaline and noradrenaline, and calcium ions",
+    "slug": "2026-CVS-3",
+    "n": 32
+   }
+  ],
+  "q368b31b003": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#14",
+    "src": "CVS 1 learning page",
+    "quote": "veins also have an internal tunica intima, a middle tunica media (D) and an external",
+    "t": "Like the artery, veins also have an internal tunica intima, a middle tunica media (D) and an external adventitia or tunica externa (F)."
+   }
+  ],
+  "q36a2b4a8e2": [
+   {
+    "k": "her",
+    "uid": "lab:2026#40",
+    "src": "Lab workbook 2026",
+    "quote": "mediastinum (the potential space between the lungs).",
+    "t": "The heart is situated in the thoracic cavity, on the anterior and inferior side of the mediastinum (the potential space between the lungs)."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:856#4",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 816",
+    "quote": "The space between the lungs occupied mainly by the esophagus, trachea, large blood vessels, and heart is the mediastinum",
+    "t": "The space between the lungs occupied mainly by the esophagus, trachea, large blood vessels, and heart is the mediastinum (see Figure 35-18).",
+    "pg": 856,
+    "pp": 816,
+    "ch": 35
+   }
+  ],
+  "q39619c7eed": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#13",
+    "src": "CVS 1 learning page",
+    "quote": "There is no pump action behind it. The capillary beds and the many valves smooth out the flow.",
+    "t": "There is no pump action behind it. The capillary beds and the many valves smooth out the flow."
+   }
+  ],
+  "q3a5d9ac49e": [
+   {
+    "k": "patton",
+    "uid": "patton:687#38",
+    "src": "Patton 9e · Ch 28 Heart · p. 647",
+    "quote": "refer to the left anterior descending (LAD) artery and an anatomist would refer to the same vessel as the anterior interventricular artery.",
+    "t": "Thus a cardiologist would refer to the left anterior descending (LAD) artery and an anatomist would refer to the same vessel as the anterior interventricular artery.",
+    "pg": 687,
+    "pp": 647,
+    "ch": 28,
+    "fig": "28-10"
+   }
+  ],
+  "q3b8ae7e140": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#20",
+    "src": "CVS 2 learning page",
+    "quote": "The mitral (bicuspid) valve (on the left side) has 2 robust and",
+    "t": "The mitral (bicuspid) valve (on the left side) has 2 robust and large flaps (seen on image)(0.5)."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:684#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 644",
+    "quote": "has only two flaps and is therefore also called the bicuspid valve.",
+    "t": "The valve that guards the left atrioventricular opening is similar in structure to the right atrioventricular valve, except that it has only two flaps and is therefore also called the bicuspid valve.",
+    "pg": 684,
+    "pp": 644,
+    "ch": 28
+   }
+  ],
+  "q3c179ca1e9": [
+   {
+    "k": "patton",
+    "uid": "patton:878#5",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 838",
+    "quote": "holding the breath results in an increase in the CO2 content of the blood",
+    "t": "For example, one may stop breathing and do so for a few minutes, but holding the breath results in an increase in the CO2 content of the blood because it is not being removed by respirations.",
+    "pg": 878,
+    "pp": 838,
+    "ch": 36
+   }
+  ],
+  "q3c9a7e7ea8": [
+   {
+    "k": "patton",
+    "uid": "patton:875#8",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 835",
+    "quote": "Air in the thoracic cavity is a condition known as pneumothorax",
+    "t": "Air in the thoracic cavity is a condition known as pneumothorax (see figure).",
+    "pg": 875,
+    "pp": 835,
+    "ch": 36
+   }
+  ],
+  "q3ebc77bc2d": [
+   {
+    "k": "patton",
+    "uid": "patton:747#33",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 707",
+    "quote": "because there is more resistance in the arterioles, blood flow in the arteries backs up and thus increases arterial blood pressure. The purple line shows that vasodilation of the arterioles increases blood flow from the arteries and therefore reduces arterial blood pressure.",
+    "t": "Note that because there is more resistance in the arterioles, blood flow in the arteries backs up and thus increases arterial blood pressure. The purple line shows that vasodilation of the arterioles increases blood flow from the arteries and therefore reduces arterial blood pressure.",
+    "pg": 747,
+    "pp": 707,
+    "ch": 30,
+    "fig": "30-11"
+   }
+  ],
+  "q3ee9938b1d": [
+   {
+    "k": "patton",
+    "uid": "patton:872#6",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 832",
+    "quote": "premature infants often do not have enough surfactant. The deficiency of surfactant in premature infants is called hyaline membrane disease",
+    "t": "However, because surfactant formation is not fully under way until the seventh or eighth month of prenatal development, premature infants often do not have enough surfactant. The deficiency of surfactant in premature infants is called hyaline membrane disease (HMD).",
+    "pg": 872,
+    "pp": 832,
+    "ch": 36
+   }
+  ],
+  "q3ef7a912b4": [
+   {
+    "k": "patton",
+    "uid": "patton:849#35",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 809",
+    "quote": "are therefore spoken of as the bronchial tree (Figure 35-12).",
+    "t": "The trachea and the two primary bronchi and their many branches resemble an inverted tree trunk with its branches and are therefore spoken of as the bronchial tree (Figure 35-12).",
+    "pg": 849,
+    "pp": 809,
+    "ch": 35
+   }
+  ],
+  "q401ca9cc16": [
+   {
+    "k": "patton",
+    "uid": "patton:684#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 644",
+    "quote": "right atrioventricular valve has three flaps or cusps, it is also called the tricuspid valve.",
+    "t": "Because the right atrioventricular valve has three flaps or cusps, it is also called the tricuspid valve.",
+    "pg": 684,
+    "pp": 644,
+    "ch": 28
+   }
+  ],
+  "q42a7a7e41e": [
+   {
+    "k": "patton",
+    "uid": "patton:880#24",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 840",
+    "quote": "central chemoreceptors are best at detecting longer-term changes in CO2 than rapid changes in CO2 or pH",
+    "t": "However, because the movement of CO2 across the BBB is slow, the central chemoreceptors are best at detecting longer-term changes in CO2 than rapid changes in CO2 or pH.",
+    "pg": 880,
+    "pp": 840,
+    "ch": 36,
+    "fig": "36-15",
+    "assigned": true
+   }
+  ],
+  "q441c19cb56": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#6",
+    "src": "2024 Revision mod 1 16 slide deck · slide 6",
+    "quote": "Juxtaglomerular cells makes renin in response to l ow blood pressure i n afferent arteriole",
+    "t": "…rate (HR) (chronotropic effect) & force of contraction (positive inotropic effect) Vasoconstriction  increasing peripheral resistance ( PR ) LONG-TERM – RENAL (RAAAAAAS): Enzymes & hormones involved Juxtaglomerular cells makes renin in response to l ow blood pressure i n afferent arteriole MD Monitors blood Na+ content Pressure in afferent arteriole picked up by renal baroreceptors (stretch) ACE inhibitors can prevent this step BP = CO X PR PR =…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 6
+   },
+   {
+    "k": "patton",
+    "uid": "patton:754#3",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 714",
+    "quote": "the enzyme renin is released when blood pressure in the kidney is low",
+    "t": "You may want to turn back to Figure 26-19 (p. 594) to see that the enzyme renin is released when blood pressure in the kidney is low.",
+    "pg": 754,
+    "pp": 714,
+    "ch": 30
+   }
+  ],
+  "q444e4c00db": [
+   {
+    "k": "her",
+    "uid": "am:4#4",
+    "src": "Anatomy Mondays 4",
+    "quote": "Daltons Law of partial pressures states that in a mixture, each gas has it's own pressure that is related to it's percentage",
+    "t": "ATMOSPHERE ALVEOLAR AIR SYSTEMIC ARTERIAL BLOOD SYSTEMIC VENOUS BLOOD Po2 160/21.3 100/13.3 100/13.3 40/5.3 Pco2 0.2/0.03 40/5.3 40/5.3 46/6.1 As we've spoken about, Daltons Law of partial pressures states that in a mixture, each gas has it's own pressure that is related to it's percentage in the air."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:866#18",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 826",
+    "quote": "Dalton’s law, also known as the law of partial pressures, is used to determine the partial pressure of oxygen (Po2) in air, for example. Because the partial pressure of a gas is determined by its relative concentration",
+    "t": "Dalton’s law, also known as the law of partial pressures, is used to determine the partial pressure of oxygen (Po2) in air, for example. Because the partial pressure of a gas is determined by its relative concentration in the mixture of gases, partial pressure values can be used in much the same way as concentration values in determining the direction of net diffusion.",
+    "pg": 866,
+    "pp": 826,
+    "ch": 36
+   }
+  ],
+  "q44798189ba": [
+   {
+    "k": "patton",
+    "uid": "patton:683#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "Because each intercalated disk includes many gap junctions, large areas of cardiac muscle are",
+    "t": "Because each intercalated disk includes many gap junctions, large areas of cardiac muscle are electrically coupled into a single functional unit called a syncytium (meaning “joined cells”).",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "q44cad813d3": [
+   {
+    "k": "patton",
+    "uid": "patton:690#8",
+    "src": "Patton 9e · Ch 28 Heart · p. 650",
+    "quote": "if for any reason the SA node loses its ability to generate an impulse, pacemaker activity will shift to another excitable component",
+    "t": "However, if for any reason the SA node loses its ability to generate an impulse, pacemaker activity will shift to another excitable component of the conduction system, such as the AV node or the subendocardial branches (Purkinje fibers).",
+    "pg": 690,
+    "pp": 650,
+    "ch": 28
+   }
+  ],
+  "q44e580932a": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-System-4-2#26",
+    "src": "2026 Cardiovascular System 4-2 deck · slide 26",
+    "quote": "Norepinephrine (noradrenaline) + inotropic ( mild + chronotropic ) Strong β₁ stimulation increases contractility; reflex bradycardia may limit HR increase Acetylcholine Negative chronotropic Parasympathetic neurotransmitter",
+    "t": "…chronotropic (also negative inotropic) Block sympathetic stimulation → ↓ heart rate and ↓ contractility Classification of Cardiac Drugs Epinephrine (adrenaline) + inotropic & + chronotropic Stimulates β₁-adrenergic receptors → ↑ heart rate and ↑ force of contraction Norepinephrine (noradrenaline) + inotropic ( mild + chronotropic ) Strong β₁ stimulation increases contractility; reflex bradycardia may limit HR increase Acetylcholine Negative chronotropic Parasympathetic neurotransmitter → slows SA node firing and AV conduction",
+    "slug": "2026-Cardiovascular-System-4-2",
+    "n": 26
+   }
+  ],
+  "q4550e37b96": [
+   {
+    "k": "her",
+    "uid": "page:RESP 3#0",
+    "src": "RESP 3 learning page",
+    "quote": "Carbon dioxide is carried, bound to the amino groups, as carbaminohemoglobin, whereas the majority of the oxygen is carried bound to the heme groups",
+    "t": "Around 30-40% of the Carbon dioxide is carried, bound to the amino groups, as carbaminohemoglobin, whereas the majority of the oxygen is carried bound to the heme groups as oxyhemoglobin."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:655#16",
+    "src": "Patton 9e · Ch 27 Blood · p. 615",
+    "quote": "Carbon dioxide (CO2) can bind to amino acids in the globin part or oxygen (O2) may bind to the heme groups.",
+    "t": "Carbon dioxide (CO2) can bind to amino acids in the globin part or oxygen (O2) may bind to the heme groups.",
+    "pg": 655,
+    "pp": 615,
+    "ch": 27,
+    "fig": "27-5"
+   }
+  ],
+  "q4744a0b93e": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#11",
+    "src": "2024 Revision mod 1 16 slide deck · slide 11",
+    "quote": "Send impulses via phrenic nerve to diaphragm and via intercostal nerve to external intercostal",
+    "t": "Respiratory centre activity Movement of air into lungs Quiet inspiration For example: Question Ventral respirational Centre (VRC ) in medulla oblongata involved during quiet inspiration Initiates basic respiratory rhythm - self-exciting at a rate of 12-20 breaths/minute Send impulses via phrenic nerve to diaphragm and via intercostal nerve to external intercostal muscles The muscles contract lowering dome of diaphragm & moving ribcage forward & out enlarging thoracic cavity .",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 11
+   }
+  ],
+  "q48cd527298": [
+   {
+    "k": "patton",
+    "uid": "patton:871#4",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 831",
+    "quote": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "t": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "pg": 871,
+    "pp": 831,
+    "ch": 36
+   }
+  ],
+  "q4be7d1967b": [
+   {
+    "k": "slide",
+    "uid": "slide:2019-S2-Resp-4-1#8",
+    "src": "2019 S2 Resp 4-1 deck · slide 8",
+    "quote": "During forced inspiration, muscles of the neck, including the scalenes , contract and lift",
+    "t": "During forced inspiration, muscles of the neck, including the scalenes , contract and lift the thoracic wall, increasing lung volume.",
+    "slug": "2019-S2-Resp-4-1",
+    "n": 8
+   }
+  ],
+  "q4f54c9b881": [
+   {
+    "k": "patton",
+    "uid": "patton:766#1",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 726",
+    "quote": "Pulse pressure (PP)—difference between systolic and diastolic blood pressure",
+    "t": "Pulse pressure (PP)—difference between systolic and diastolic blood pressure",
+    "pg": 766,
+    "pp": 726,
+    "ch": 30
+   }
+  ],
+  "q50b86bf459": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#17",
+    "src": "2026 RESP4-1 deck · slide 17",
+    "quote": "Increases the rate and depth of breathing. Blows off carbon dioxide Reduces H + levels",
+    "t": "Periods of apnea may occur until arterial P CO2 rises again & stimulates respiration. 1.2 Arterial pH changes Acidosis (excess H + ions - low arterial blood pH ) Excites inspiratory centre Increases the rate and depth of breathing. Blows off carbon dioxide Reduces H + levels in the blood.",
+    "slug": "2026-RESP4-1",
+    "n": 17
+   },
+   {
+    "k": "her",
+    "uid": "page:RESP 4#8",
+    "src": "RESP 4 learning page",
+    "quote": "Acidosis excess H+ ions - low arterial blood pH Excites inspiratory centre Increases the rate",
+    "t": "Acidosis excess H+ ions - low arterial blood pH Excites inspiratory centre Increases the rate and depth of breathing."
+   }
+  ],
+  "q514a96de87": [
+   {
+    "k": "patton",
+    "uid": "patton:682#35",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "Visceral layer (epicardium)—adhering to the outside of the heart; between visceral and parietal layers",
+    "t": "Visceral layer (epicardium)—adhering to the outside of the heart; between visceral and parietal layers is a space, the pericardial space, that contains a few drops of pericardial fluid Function of the Heart Coverings The fibrous pericardial sac with its smooth, well-lubricated lining provides protection against friction.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "q5250fbe1eb": [
+   {
+    "k": "patton",
+    "uid": "patton:681#36",
+    "src": "Patton 9e · Ch 28 Heart · p. 641",
+    "quote": "Posterior interventricular branch of right coronary artery",
+    "t": "Right pulmonary artery Left pulmonary artery Posterior interventricular sulcus Right ventricle Posterior interventricular branch of right coronary artery (in interventricular sulcus) Posterior artery and vein of left ventricle",
+    "pg": 681,
+    "pp": 641,
+    "ch": 28
+   }
+  ],
+  "q535170b50f": [
+   {
+    "k": "patton",
+    "uid": "patton:868#35",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 828",
+    "quote": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity. This increase in volume results in a decrease in pressure",
+    "t": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity. This increase in volume results in a decrease in pressure, which causes air to rush into the lungs.",
+    "pg": 868,
+    "pp": 828,
+    "ch": 36,
+    "fig": "36-4"
+   }
+  ],
+  "q559c794c2c": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#12",
+    "src": "2026 CVS 3 deck · slide 12",
+    "quote": "ECG is the recording of electrical activity of the heart",
+    "t": "12 ECG is the recording of electrical activity of the heart by placing electrodes on the surface of the body Electrocardiogram (ECG) Susan Duraisamy, M.I.T., 2008 T QRS P R",
+    "slug": "2026-CVS-3",
+    "n": 12
+   },
+   {
+    "k": "her",
+    "uid": "page:CVS 3#6",
+    "src": "CVS 3 learning page",
+    "quote": "ECG (Electrocardiogram) is a non-invasive test to record the electrical activity of the heart",
+    "t": "ECG (Electrocardiogram) is a non-invasive test to record the electrical activity of the heart."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:691#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 651",
+    "quote": "The electrocardiogram (ECG when written or EKG when spoken) is a graphic record of the heart’s electrical activity",
+    "t": "The electrocardiogram (ECG when written or EKG when spoken) is a graphic record of the heart’s electrical activity, its conduction of impulses.",
+    "pg": 691,
+    "pp": 651,
+    "ch": 28
+   }
+  ],
+  "q55b0adf4b0": [
+   {
+    "k": "her",
+    "uid": "page:MODULE 1.1#5",
+    "src": "MODULE 1.1 page",
+    "quote": "in neurogenic shock due to spinal injury above T6. Blood vessel diameter is maintained",
+    "t": "NEUROGENIC: Any condition that leads to massive vasodilation as in neurogenic shock due to spinal injury above T6. Blood vessel diameter is maintained by a balance of stimulation from the sympathetic and parasympathetic divisions of the autonomic nervous system."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:761#12",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 721",
+    "quote": "If sympathetic stimulation is disrupted by an injury to the spinal cord or medulla,",
+    "t": "If sympathetic stimulation is disrupted by an injury to the spinal cord or medulla, depressive drugs, emotional stress, or some other factor, blood vessels dilate significantly.",
+    "pg": 761,
+    "pp": 721,
+    "ch": 30
+   }
+  ],
+  "q5638309942": [
+   {
+    "k": "patton",
+    "uid": "patton:874#36",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 834",
+    "quote": "Vital capacity is the amount of air that can be forcibly expired after a maximal inspiration",
+    "t": "Vital capacity is the amount of air that can be forcibly expired after a maximal inspiration and therefore indicates the largest amount of air that can enter and leave the lungs during respiration.",
+    "pg": 874,
+    "pp": 834,
+    "ch": 36,
+    "fig": "36-10"
+   }
+  ],
+  "q570d8d5a52": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-3#34",
+    "src": "2026 Cardiovascular system 2-3 deck · slide 34",
+    "quote": "CO =Cardiac output = blood delivered by heart per minute SV =Stroke volume= blood delivered by heart",
+    "t": "BIG FORMULAE OF HEART FUNCTION CO = SV x HR CO =Cardiac output = blood delivered by heart per minute SV =Stroke volume= blood delivered by heart per beat HR =Heart rate = beats per minute BP = CO x PR CO =Cardiac output = blood delivered by heart per minute BP = Blood pressure in mmHg – Pressure of blood against arterial walls PR = Peripheral Resistance = push…",
+    "slug": "2026-Cardiovascular-system-2-3",
+    "n": 34
+   }
+  ],
+  "q57900fcdcf": [
+   {
+    "k": "patton",
+    "uid": "patton:761#8",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 721",
+    "quote": "circulatory shock refers to the failure of the circulatory system to adequately deliver oxygen to",
+    "t": "What we have seen in this chapter is a wonderfully complex array of mechanisms that work together in concert with the actions of other systems to maintain the constancy of the milieu intérieur—the internal environment. • The term circulatory shock refers to the failure of the circulatory system to adequately deliver oxygen to the tissues, resulting in the impairment of cell function throughout the body.",
+    "pg": 761,
+    "pp": 721,
+    "ch": 30
+   }
+  ],
+  "q590203b4c5": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#16",
+    "src": "2026 RESP4-1 deck · slide 16",
+    "quote": "Peripheral (arterial) Chemoreceptors - in aortic bodies & carotid bodies",
+    "t": "…of Rate & Depth of Breathing Chemoreceptors Aortic body Carotid body Central chemoreceptors in brain stem Peripheral chemoreceptors Changes in chemical composition of blood affect rate & depth of breathing Peripheral (arterial) Chemoreceptors - in aortic bodies & carotid bodies Detect changes in Pco 2 , Po 2, H + ions levels in arterial blood Central Chemoreceptors in brainstem Detect changes in Pco 2 & H + ions levels in…",
+    "slug": "2026-RESP4-1",
+    "n": 16
+   },
+   {
+    "k": "her",
+    "uid": "page:RESP 4#24",
+    "src": "RESP 4 learning page",
+    "quote": "peripheral chemoreceptors in the carotid sinus and aorta.",
+    "t": "->detected by central chemoreceptors in the brain and perhaps peripheral chemoreceptors in the carotid sinus and aorta. -->Feedback information is relayed to integrators in the brainstem that respond to the increase in P co 2 above the setpoint value by sending nervous correction signals to the respiratory muscles, which act as effectors."
+   }
+  ],
+  "q59658364be": [
+   {
+    "k": "patton",
+    "uid": "patton:684#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 644",
+    "quote": "left AV valve is called the mitral valve—a name it gets from its resemblance",
+    "t": "Most commonly, however, the left AV valve is called the mitral valve—a name it gets from its resemblance to the miter, a double-cusp hat worn by bishops.",
+    "pg": 684,
+    "pp": 644,
+    "ch": 28
+   }
+  ],
+  "q59a2713249": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#13",
+    "src": "CVS 1 learning page",
+    "quote": "Veins are low pressure blood vessels returning blood to the heart. Bleeding from a",
+    "t": "Veins are low pressure blood vessels returning blood to the heart. Bleeding from a vein would flow smoothly."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:759#1",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 719",
+    "quote": "It gradually dissipates as it travels, disappearing entirely in the capillaries.",
+    "t": "Pulse Wave Each ventricular systole starts a new pulse that proceeds as a wave of expansion throughout the arteries and is known as the pulse wave. It gradually dissipates as it travels, disappearing entirely in the capillaries.",
+    "pg": 759,
+    "pp": 719,
+    "ch": 30
+   }
+  ],
+  "q5be4da7842": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#27",
+    "src": "2026 CVS 3 deck · slide 27",
+    "quote": "CO = 70ml/beat x 75 beats/min = 5.25L/min",
+    "t": "= volume of blood pumped out from each ventricle in one minute CO = SV x HR Cardiac output = stroke volume x heart rate CARDIAC OUTPUT CO = 70ml/beat x 75 beats/min = 5.25L/min",
+    "slug": "2026-CVS-3",
+    "n": 27
+   }
+  ],
+  "q5dd41f30eb": [
+   {
+    "k": "her",
+    "uid": "page:MODULE 1.1#9",
+    "src": "MODULE 1.1 page",
+    "quote": "breathing is stimulated by the sympathetic nervous system to try to get more oxygen",
+    "t": "a rapid heart rate (the heart is stimulated by the sympathetic nervous system to restore blood flow);(Exception: \"Neurogenic shock\" with bradycardia due to loss of sympathetic tone); is breathing fast and shallow (breathing is stimulated by the sympathetic nervous system to try to get more oxygen in the body);"
+   }
+  ],
+  "q5e2fe89d7f": [
+   {
+    "k": "her",
+    "uid": "page:RESP 4#1",
+    "src": "RESP 4 learning page",
+    "quote": "Brain stem Medulla oblongata CVS cardio-acceleratory inhibitory centres",
+    "t": "Parts of brain mentioned in the first module: Cerebrum Conscious control of breathing Limbic part of cerebrum when emotions influence breathing Diencephalon Hypothalamus Brain stem Medulla oblongata CVS cardio-acceleratory inhibitory centres"
+   }
+  ],
+  "q5f899c1227": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#8",
+    "src": "2026 CVS 3 deck · slide 8",
+    "quote": "AV node -40- 60 b/min Bundle of His - 30 b/min Bundle branches Purkinje fibres",
+    "t": "…++ ions till threshold is reached) CONDUCTION FIBRES conduct these impulses (action potentials) to the myocardium in a carefully coordinated manner 8 *SA node – 70 b/min AV node -40- 60 b/min Bundle of His - 30 b/min Bundle branches Purkinje fibres Heart muscle walls are self exciting- 20 b/min – not sufficient To have the impulses in right sequence at right times Coordination crucial *SA node is pacemaker- others…",
+    "slug": "2026-CVS-3",
+    "n": 8
+   }
+  ],
+  "q60d3966358": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-2#3",
+    "src": "2026 CIRCULATION VESSELS CV1-2 deck · slide 3",
+    "quote": "In Humans: Closed blood system Blood never leaves the blood system Try to figure out: What is a portal vein? THE CVS In Humans: Double circulation",
+    "t": "Oxygenated blood Deoxygenated blood SYSTEMIC TO & FROM BODY PULMONARY TO & FROM LUNGS In Humans: Closed blood system Blood never leaves the blood system Try to figure out: What is a portal vein? THE CVS In Humans: Double circulation Pulmonary & Systemic",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-2",
+    "n": 3
+   },
+   {
+    "k": "her",
+    "uid": "page:CVS 1#4",
+    "src": "CVS 1 learning page",
+    "quote": "Humans have a closed blood system. Blood is circulated around and around in a loop and used over and over. Humans further have a double circulation.",
+    "t": "Humans have a closed blood system. Blood is circulated around and around in a loop and used over and over. Humans further have a double circulation."
+   }
+  ],
+  "q6163782c06": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#12",
+    "src": "2026 RESP 3 deck · slide 12",
+    "quote": "98.5% is bound to hemoglobin (Hb) - transported as oxyhemoglobin",
+    "t": "Transport of gases in the blood Oxygen Transport Molecular oxygen is carried in blood: HbO 2 = 98.5% is bound to hemoglobin (Hb) - transported as oxyhemoglobin within red blood cells O 2 < 1.5% is dissolved in plasma",
+    "slug": "2026-RESP-3",
+    "n": 12
+   }
+  ],
+  "q64194f2d3a": [
+   {
+    "k": "patton",
+    "uid": "patton:851#8",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 811",
+    "quote": "movement of mucus toward the pharynx—a mechanism sometimes called the ciliary escalator",
+    "t": "The result is movement of mucus toward the pharynx—a mechanism sometimes called the ciliary escalator.",
+    "pg": 851,
+    "pp": 811,
+    "ch": 35
+   }
+  ],
+  "q65dbdbd292": [
+   {
+    "k": "patton",
+    "uid": "patton:779#3",
+    "src": "Patton 9e · Ch 31 Lymphatic System · p. 739",
+    "quote": "biopsy to determine whether cancer cells are present—showing that the cancer has metastasized.",
+    "t": "When a tumor is detected, the nearby SLN may be identified and examined in a biopsy to determine whether cancer cells are present—showing that the cancer has metastasized.",
+    "pg": 779,
+    "pp": 739,
+    "ch": 31
+   }
+  ],
+  "q66478f26a0": [
+   {
+    "k": "patton",
+    "uid": "patton:892#30",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 852",
+    "quote": "Carbon monoxide (CO) is a molecule produced by incomplete combustion in furnaces, engines, and other circumstances. This invisible, odorless gas binds to Hb more than 200 times more strongly than O2 does.",
+    "t": "Carbon monoxide (CO) is a molecule produced by incomplete combustion in furnaces, engines, and other circumstances. This invisible, odorless gas binds to Hb more than 200 times more strongly than O2 does.",
+    "pg": 892,
+    "pp": 852,
+    "ch": 37
+   }
+  ],
+  "q67f10cb5df": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#20",
+    "src": "2026 RESP2 deck · slide 20",
+    "quote": "quiet expiration / exhalation is passive relies on elastic recoil of stretched lungs",
+    "t": "Expiration In healthy people quiet expiration / exhalation is passive relies on elastic recoil of stretched lungs as inspiratory muscles relax, rather than on muscle contraction.",
+    "slug": "2026-RESP2",
+    "n": 20
+   }
+  ],
+  "q68e361690d": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#14",
+    "src": "2026 CVS 3 deck · slide 14",
+    "quote": "P- wave – atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation",
+    "t": "14 Electrocardiogram (ECG) P- wave – atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation causes contraction T -wave – ventricular re polarisation (electrical inactivation) causes relaxation A normal ECG with U-wave Patton: FIGURE 28-17 The U wave.",
+    "slug": "2026-CVS-3",
+    "n": 14
+   },
+   {
+    "k": "patton",
+    "uid": "patton:703#21",
+    "src": "Patton 9e · Ch 28 Heart · p. 663",
+    "quote": "P wave—represents depolarization of the atria b. QRS complex—represents depolarization of the ventricles",
+    "t": "P wave—represents depolarization of the atria b. QRS complex—represents depolarization of the ventricles and repolarization of the atria",
+    "pg": 703,
+    "pp": 663,
+    "ch": 28
+   }
+  ],
+  "q68fac3dfe9": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#24",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 24",
+    "quote": "Papillary muscle anchor chordae tendinea to heart wall",
+    "t": "4 Valves Tricuspid & Bicuspid (Mitral) Chordae tendineae prevent AV valve flaps from opening to wrong side Papillary muscle anchor chordae tendinea to heart wall Heart Valves AV valves?",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:683#21",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "anchored to the papillary muscles of the right ventricle by several tendinous cords that are more often called chordae tendineae",
+    "t": "The free edge of each flap is anchored to the papillary muscles of the right ventricle by several tendinous cords that are more often called chordae tendineae.",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "q6994c1e695": [
+   {
+    "k": "her",
+    "uid": "page:CVS 4#28",
+    "src": "CVS 4 learning page",
+    "quote": "CHEMORECEPTORS: CAROTID & AORTIC BODIES (little tongues tasting the blood - blood pH",
+    "t": "CHEMORECEPTORS: CAROTID & AORTIC BODIES (little tongues tasting the blood - blood pH (H+ concentration), CO2 concentration, O2 concentration)-also called vasomotor chemoreceptors."
+   }
+  ],
+  "q6a24b4f4eb": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#6",
+    "src": "CVS 1 learning page",
+    "quote": "Those bringing blood to the heart = veins",
+    "t": "Basically we have three kinds of blood vessels: Those taking blood away from the heart = arteries Those bringing blood to the heart = veins Those connecting the arteries and the veins = capillaries."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:707#4",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 667",
+    "quote": "A vein is a vessel that carries blood toward the heart.",
+    "t": "Veins A vein is a vessel that carries blood toward the heart.",
+    "pg": 707,
+    "pp": 667,
+    "ch": 29
+   }
+  ],
+  "q6a824d19a5": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#30",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 30",
+    "quote": "Jugular veins return blood from head and neck. Carotid arteries take blood",
+    "t": "Jugular veins return blood from head and neck. Carotid arteries take blood to the head and neck",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 30
+   },
+   {
+    "k": "her",
+    "uid": "lab:2026#32",
+    "src": "Lab workbook 2026",
+    "quote": "Neck A. L External jugular vein B. Common carotid artery",
+    "t": "Find and label the following blood vessels in the different regions on the diagram: Neck A. L External jugular vein B. Common carotid artery Shoulder C."
+   }
+  ],
+  "q6c57918df2": [
+   {
+    "k": "patton",
+    "uid": "patton:746#9",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 706",
+    "quote": "the increase in vessel diameter caused by relaxation of vascular muscles, decreases resistance to blood flow,",
+    "t": "Vasodilation, the increase in vessel diameter caused by relaxation of vascular muscles, decreases resistance to blood flow, and thus blood flow into the tissue increases.",
+    "pg": 746,
+    "pp": 706,
+    "ch": 30
+   }
+  ],
+  "q6d6b3a6134": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#22",
+    "src": "CVS 2 learning page",
+    "quote": "the L & R coronary arteries are the first vessels branching off the aorta (0.5) (see image below) through openings called ostia",
+    "t": "the L & R coronary arteries are the first vessels branching off the aorta (0.5) (see image below) through openings called ostia (0.5) located just distal to the aortic semi lunar valve flaps (0.5)"
+   }
+  ],
+  "q6e3f7b1492": [
+   {
+    "k": "her",
+    "uid": "lab:2026#175",
+    "src": "Lab workbook 2026",
+    "quote": "Rest, digest, Freeze • Decreased heart rate • Decreased blood pressure • Vasoconstriction to skeletal muscles • Vasodilation to gut • Increased digestion & salivation • Decreased breathing rate • Pupils constricted • Erection #Chemicals used Norepinephrine & Acetylcholine Sympathetic: [CNS] --(Acetylcholine)--> [Ganglion] --(Norepinephrine)--> [Organ] Only Acetyl choline Parasympathetic:",
+    "t": "…salivation • Increased breathing rate • Pupils dilated • Ejaculation Rest, digest, Freeze • Decreased heart rate • Decreased blood pressure • Vasoconstriction to skeletal muscles • Vasodilation to gut • Increased digestion & salivation • Decreased breathing rate • Pupils constricted • Erection #Chemicals used Norepinephrine & Acetylcholine Sympathetic: [CNS] --(Acetylcholine)--> [Ganglion] --(Norepinephrine)--> [Organ] Only Acetyl choline Parasympathetic: [CNS] --(Acetylcholine)-- > [Ganglion] ----(Acetylcholine)---> [Organ] $ Receptors at organ Mostly…"
+   }
+  ],
+  "q70c2ffa9d5": [
+   {
+    "k": "patton",
+    "uid": "patton:748#13",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 708",
+    "quote": "Note that at rest most of the body’s blood supply is in the systemic veins and venules.",
+    "t": "Note that at rest most of the body’s blood supply is in the systemic veins and venules.",
+    "pg": 748,
+    "pp": 708,
+    "ch": 30,
+    "fig": "30-12"
+   }
+  ],
+  "q71dce49f5c": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#22",
+    "src": "2026 RESP 3 deck · slide 22",
+    "quote": "Bicarbonate ions in plasma – 70% is transported as bicarbonate",
+    "t": "Bicarbonate ions in plasma – 70% is transported as bicarbonate (HCO 3 – ) 2 .",
+    "slug": "2026-RESP-3",
+    "n": 22
+   },
+   {
+    "k": "patton",
+    "uid": "patton:895#24",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 855",
+    "quote": "70% transported as HCO3 (bicarbonate) dissolved in plasma",
+    "t": "70% transported as HCO3 (bicarbonate) dissolved in plasma 10% transported as CO2 dissolved in plasma 20% transported as HbCO2 (carbaminohemoglobin)",
+    "pg": 895,
+    "pp": 855,
+    "ch": 37
+   }
+  ],
+  "q728fc5f303": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#2",
+    "src": "2024 Revision mod 1 16 slide deck · slide 2",
+    "quote": "Arteries (tunica intima with prominent elastic lamina), media (thick SMC)",
+    "t": "Cardiovascular system: Blood vessels Blood vessels – difference in histology & functions of Arteries (tunica intima with prominent elastic lamina), media (thick SMC), externa(adventitia) Veins (tunica intima with less prominent elastic lamina), media (thinner SMC), externa(adventitia) -thick Capillaries (only tunica intima- Continuous (e.g. blood brain barrier, lungs), Fenestrated (e.g. small intestine, muscles), Discontinuous e.g. liver, bone marrow and spleen) Pressure differences in arteries in veins In capillaries Arterial side: high…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 2
+   }
+  ],
+  "q7427da6e5c": [
+   {
+    "k": "patton",
+    "uid": "patton:849#37",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 809",
+    "quote": "terminal bronchioles divide into respiratory bronchioles that have thin, gas-exchanging walls",
+    "t": "The terminal bronchioles divide into respiratory bronchioles that have thin, gas-exchanging walls.",
+    "pg": 849,
+    "pp": 809,
+    "ch": 35
+   }
+  ],
+  "q748a1d0d4c": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#6",
+    "src": "2024 Revision mod 1 16 slide deck · slide 6",
+    "quote": "Pressure in afferent arteriole picked up by renal baroreceptors (stretch)",
+    "t": "…PR ) LONG-TERM – RENAL (RAAAAAAS): Enzymes & hormones involved Juxtaglomerular cells makes renin in response to l ow blood pressure i n afferent arteriole MD Monitors blood Na+ content Pressure in afferent arteriole picked up by renal baroreceptors (stretch) ACE inhibitors can prevent this step BP = CO X PR PR = PERIFERAL RESISTANCE = PUSH BACK BY BLOODVESSELS CO =BP/PR =SV x HR Taking it down Bringing it…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 6
+   }
+  ],
+  "q752f4ada20": [
+   {
+    "k": "patton",
+    "uid": "patton:688#20",
+    "src": "Patton 9e · Ch 28 Heart · p. 648",
+    "quote": "LAD coronary artery is sometimes called the “widow maker” because complete occlusion of this artery results in a massive heart attack",
+    "t": "Partial or complete occlusion of the LAD coronary artery is sometimes called the “widow maker” because complete occlusion of this artery results in a massive heart attack and sudden death—often occurring in men in their 50s.",
+    "pg": 688,
+    "pp": 648,
+    "ch": 28
+   }
+  ],
+  "q79a622f2bb": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#24",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 24",
+    "quote": "Chordae tendineae prevent AV valve flaps from opening to wrong side",
+    "t": "4 Valves Tricuspid & Bicuspid (Mitral) Chordae tendineae prevent AV valve flaps from opening to wrong side Papillary muscle anchor chordae tendinea to heart wall Heart Valves AV valves?",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:702#34",
+    "src": "Patton 9e · Ch 28 Heart · p. 662",
+    "quote": "Atrioventricular (AV) valves—prevent blood from flowing back into the atria from the ventricles",
+    "t": "Atrioventricular (AV) valves—prevent blood from flowing back into the atria from the ventricles when the ventricles contract (1) Tricuspid valve (right AV valve)—guards the right atrioventricular orifice; free edges of three flaps of endocardium are attached to papillary muscles by chordae tendineae (2) Bicuspid, or mitral, valve (left AV valve)—similar in structure to tricuspid valve except has only two flaps",
+    "pg": 702,
+    "pp": 662,
+    "ch": 28
+   }
+  ],
+  "q79cfb6dd01": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#32",
+    "src": "2026 RESP 3 deck · slide 32",
+    "quote": "Normal pH acidotic  7.35-7.45  alkalotic",
+    "t": "…Normal Base pH PaCO 2 HCO 3 Acid Normal Base PaCO 2 pH HCO 3 Acid Normal Base pH HCO 3 PaCO 2 Acid Normal Base HCO 3 pH PaCO 2 Normal pH acidotic  7.35-7.45  alkalotic PaCO 2 acidotic  45-35  alkalotic HCO 3 acidotic 22-26 alkalotic Metabolic (HCO 3 ) Acidosis (low pH) Diabetic ketoacidosis Lactic acidosis Alcohol Metabolic (HCO 3 ) Alkalosis(high pH) Severe vomiting-loss…",
+    "slug": "2026-RESP-3",
+    "n": 32
+   }
+  ],
+  "q7b72ff42d1": [
+   {
+    "k": "patton",
+    "uid": "patton:731#4",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 691",
+    "quote": "foramen ovale becomes a mere depression (fossa ovalis) in the wall of the right atrial septum",
+    "t": "Eventually, the foramen ovale becomes a mere depression (fossa ovalis) in the wall of the right atrial septum.",
+    "pg": 731,
+    "pp": 691,
+    "ch": 29
+   }
+  ],
+  "q7c06c45075": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#16",
+    "src": "2026 RESP4-1 deck · slide 16",
+    "quote": "Central Chemoreceptors in brainstem Detect changes in Pco 2 & H + ions levels in arterial blood",
+    "t": "…breathing Peripheral (arterial) Chemoreceptors - in aortic bodies & carotid bodies Detect changes in Pco 2 , Po 2, H + ions levels in arterial blood Central Chemoreceptors in brainstem Detect changes in Pco 2 & H + ions levels in arterial blood Chemoreceptors Send appropriate impulses to inspiratory centre (DRG) in MO Modify rate & depth of breathing Chemical Factors = Pco 2 , Po 2, H + ions…",
+    "slug": "2026-RESP4-1",
+    "n": 16
+   }
+  ],
+  "q7c36f41ee6": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#30",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 30",
+    "quote": "Jugular veins return blood from head and neck. Carotid arteries",
+    "t": "Jugular veins return blood from head and neck. Carotid arteries take blood to the head and neck",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 30
+   },
+   {
+    "k": "her",
+    "uid": "lab:2026#32",
+    "src": "Lab workbook 2026",
+    "quote": "Neck A. L External jugular vein B. Common carotid artery",
+    "t": "Find and label the following blood vessels in the different regions on the diagram: Neck A. L External jugular vein B. Common carotid artery Shoulder C."
+   }
+  ],
+  "q7d5529138c": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#18",
+    "src": "2026 CVS 3 deck · slide 18",
+    "quote": "ECG detects changes in: Normal sinus rhythm Junctional rhythm Partial Heart block Ventricular fibrillation",
+    "t": "Uses of Electrocardiogram ECG detects changes in: Normal sinus rhythm Junctional rhythm Partial Heart block Ventricular fibrillation Heart Rate Tachy cardia (>100b/m) Brady cardia (<60 b/m) Heart rhythm – a rrhythmias Blood flow to the heart – e.g . ischemia, myocardial infarction, etc.",
+    "slug": "2026-CVS-3",
+    "n": 18
+   },
+   {
+    "k": "patton",
+    "uid": "patton:698#13",
+    "src": "Patton 9e · Ch 28 Heart · p. 658",
+    "quote": "FIGURE 28-24 Electrocardiogram (ECG) strip chart recordings. A, Normal ECG. B, AV node block.",
+    "t": "FIGURE 28-24 Electrocardiogram (ECG) strip chart recordings. A, Normal ECG. B, AV node block. Very slow ventricular contraction (25 to 45 beats/min at rest); P waves widely separated from peaks of QRS complexes.",
+    "pg": 698,
+    "pp": 658,
+    "ch": 28,
+    "fig": "28-24",
+    "assigned": true
+   }
+  ],
+  "q7e050a0e92": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#8",
+    "src": "2026 CVS 3 deck · slide 8",
+    "quote": "PACEMAKER FIBRES initiate signals = generate action potentials (electrical impulses) ( leaKage of K",
+    "t": "Control of electrical activity: Intrinsic Conduction System of the Heart Highly specialised non-contractile tissue PACEMAKER FIBRES initiate signals = generate action potentials (electrical impulses) ( leaKage of K + ions out of the cell & an increasing inflow of Na + & Ca ++ ions till threshold is reached) CONDUCTION FIBRES conduct these impulses (action potentials) to the myocardium in a carefully coordinated manner 8 *SA node – 70 b/min…",
+    "slug": "2026-CVS-3",
+    "n": 8
+   },
+   {
+    "k": "patton",
+    "uid": "patton:689#3",
+    "src": "Patton 9e · Ch 28 Heart · p. 649",
+    "quote": "The myocardium is autorhythmic and can thus produce its own action potentials without the influence of afferent nerve signals.",
+    "t": "Nerve Supply of the Heart The myocardium is autorhythmic and can thus produce its own action potentials without the influence of afferent nerve signals.",
+    "pg": 689,
+    "pp": 649,
+    "ch": 28
+   }
+  ],
+  "q7f4f9ec27a": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-1#20",
+    "src": "2026 RESP 1 deck · slide 20",
+    "quote": "The three functions of the larynx are: Provide a patent air passageway",
+    "t": "Larynx (Voice Box) The three functions of the larynx are: Provide a patent air passageway Diverts food into the esophagus Sound production Explain how the larynx diverts the food to the oesophagus during swallowing.",
+    "slug": "2026-RESP-1",
+    "n": 20
+   }
+  ],
+  "q7f6b9f0f58": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#7",
+    "src": "2026 RESP 3 deck · slide 7",
+    "quote": "Explains why CO 2 can diffuse so well even with low concentration gradient –its highly soluble",
+    "t": "Boyle’s law At constant temperature: a Gas’s concentration in a solution depends on The partial pressure of the gas Solubility of the gas Explains why CO 2 can diffuse so well even with low concentration gradient –its highly soluble P gas x solubility Volume = 1/Pressure At constant temperature: A gas’s volume is inversely proportional to its pressure and vv Explains why pressure in the lungs drop when the thoracic…",
+    "slug": "2026-RESP-3",
+    "n": 7
+   }
+  ],
+  "q81fd72b9f6": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#14",
+    "src": "2026 CVS 3 deck · slide 14",
+    "quote": "P- wave – atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation causes contraction",
+    "t": "14 Electrocardiogram (ECG) P- wave – atrial depolarisation (electrical excitation) causes contraction QRS- complex – ventricular depolarisation causes contraction T -wave – ventricular re polarisation (electrical inactivation) causes relaxation A normal ECG with U-wave Patton: FIGURE 28-17 The U wave.",
+    "slug": "2026-CVS-3",
+    "n": 14
+   }
+  ],
+  "q830c03babe": [
+   {
+    "k": "patton",
+    "uid": "patton:728#12",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 688",
+    "quote": "One of them (the ductus venosus) serves as a detour by which most of the blood returning from the placenta bypasses the fetal liver",
+    "t": "One of them (the ductus venosus) serves as a detour by which most of the blood returning from the placenta bypasses the fetal liver.",
+    "pg": 728,
+    "pp": 688,
+    "ch": 29
+   }
+  ],
+  "q84719448cd": [
+   {
+    "k": "her",
+    "uid": "am:4#4",
+    "src": "Anatomy Mondays 4",
+    "quote": "Daltons Law of partial pressures states that in a mixture, each gas has",
+    "t": "ATMOSPHERE ALVEOLAR AIR SYSTEMIC ARTERIAL BLOOD SYSTEMIC VENOUS BLOOD Po2 160/21.3 100/13.3 100/13.3 40/5.3 Pco2 0.2/0.03 40/5.3 40/5.3 46/6.1 As we've spoken about, Daltons Law of partial pressures states that in a mixture, each gas has it's own pressure that is related to it's percentage in the air."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:898#23",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 858",
+    "quote": "Law of partial pressures (Dalton’s law)—the partial pressure of a gas in a mixture",
+    "t": "Law of partial pressures (Dalton’s law)—the partial pressure of a gas in a mixture of gases is directly related to the concentration of that gas in the mixture and to the total pressure of the mixture",
+    "pg": 898,
+    "pp": 858,
+    "ch": 37
+   }
+  ],
+  "q850dd958b9": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#22",
+    "src": "2026 RESP 3 deck · slide 22",
+    "quote": "Bicarbonate ions in plasma – 70% is transported as bicarbonate",
+    "t": "Bicarbonate ions in plasma – 70% is transported as bicarbonate (HCO 3 – ) 2 .",
+    "slug": "2026-RESP-3",
+    "n": 22
+   },
+   {
+    "k": "patton",
+    "uid": "patton:895#24",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 855",
+    "quote": "70% transported as HCO3 (bicarbonate) dissolved in plasma",
+    "t": "70% transported as HCO3 (bicarbonate) dissolved in plasma 10% transported as CO2 dissolved in plasma 20% transported as HbCO2 (carbaminohemoglobin)",
+    "pg": 895,
+    "pp": 855,
+    "ch": 37
+   }
+  ],
+  "q88a5cbf8cb": [
+   {
+    "k": "patton",
+    "uid": "patton:683#11",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "two superior chambers of the heart—the atria—are separated into left and right chambers by the interatrial septum.",
+    "t": "Atria The two superior chambers of the heart—the atria—are separated into left and right chambers by the interatrial septum.",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "q89bedfeb5a": [
+   {
+    "k": "patton",
+    "uid": "patton:874#36",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 834",
+    "quote": "Vital capacity is the amount of air that can be forcibly expired after a maximal inspiration",
+    "t": "Vital capacity is the amount of air that can be forcibly expired after a maximal inspiration and therefore indicates the largest amount of air that can enter and leave the lungs during respiration.",
+    "pg": 874,
+    "pp": 834,
+    "ch": 36,
+    "fig": "36-10"
+   }
+  ],
+  "q8d2434450a": [
+   {
+    "k": "patton",
+    "uid": "patton:868#35",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 828",
+    "quote": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity.",
+    "t": "During inspiration, the diaphragm contracts, increasing the volume of the thoracic cavity.",
+    "pg": 868,
+    "pp": 828,
+    "ch": 36,
+    "fig": "36-4"
+   }
+  ],
+  "q8d858145a7": [
+   {
+    "k": "patton",
+    "uid": "patton:683#18",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "where the trunk of the pulmonary artery joins the right ventricle (pulmonary valve)",
+    "t": "The other two heart valves, the heart’s semilunar (SL) valves, are located where the trunk of the pulmonary artery joins the right ventricle (pulmonary valve) and where the aorta joins the left ventricle (aortic valve).",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "q8e8d048a4a": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#25",
+    "src": "2026 RESP2 deck · slide 25",
+    "quote": "Air in the pleural cavity (pneumo- thorax) leads to collapse of the lungs (atelectasis)",
+    "t": "Negative intra pleural pressure (NIP) NIP tightly couples the lungs to the thoracic wall Air in the pleural cavity (pneumo- thorax) leads to collapse of the lungs (atelectasis) as it breaks the coupling",
+    "slug": "2026-RESP2",
+    "n": 25
+   }
+  ],
+  "q8f379a7fe0": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#18",
+    "src": "2026 CVS 3 deck · slide 18",
+    "quote": "ECG detects changes in: Normal sinus rhythm Junctional rhythm Partial Heart block Ventricular fibrillation",
+    "t": "Uses of Electrocardiogram ECG detects changes in: Normal sinus rhythm Junctional rhythm Partial Heart block Ventricular fibrillation Heart Rate Tachy cardia (>100b/m) Brady cardia (<60 b/m) Heart rhythm – a rrhythmias Blood flow to the heart – e.g . ischemia, myocardial infarction, etc.",
+    "slug": "2026-CVS-3",
+    "n": 18
+   }
+  ],
+  "q90deec5346": [
+   {
+    "k": "patton",
+    "uid": "patton:861#6",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 821",
+    "quote": "Alveoli—sacs that serve as gas exchangers; all other parts of respiratory system serve as air distributors",
+    "t": "Alveoli—sacs that serve as gas exchangers; all other parts of respiratory system serve as air distributors",
+    "pg": 861,
+    "pp": 821,
+    "ch": 35
+   }
+  ],
+  "q91ce03712c": [
+   {
+    "k": "her",
+    "uid": "page:RESP 4#12",
+    "src": "RESP 4 learning page",
+    "quote": "DRG (Dorsal respiratory group) VRG (Ventral respiratory group)= PACEMAKER",
+    "t": "1.The rhythmicity centre in the medulla oblongata: DRG (Dorsal respiratory group) VRG (Ventral respiratory group)= PACEMAKER 2.The pneumotaxic centre (off-switch\" for inspiration) = PRG (Pontine respiratory group) 3.The apneustic (gasping) centrein the pons"
+   }
+  ],
+  "q92e47364d1": [
+   {
+    "k": "her",
+    "uid": "page:CVS 1#21",
+    "src": "CVS 1 learning page",
+    "quote": "hydrostatic pressure is high due to the pumping force of the heart. This forces more fluid to leak out of the blood vessels into the interstitium",
+    "t": "EXCHANGE OVERACAPILLARY On the arterial side of the capillary bed the hydrostatic pressure is high due to the pumping force of the heart. This forces more fluid to leak out of the blood vessels into the interstitium than can return: leading to a net loss of fluid."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:753#3",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 713",
+    "quote": "outwardly directed forces at the arterial end of a capillary drive fluids out of the blood vessel and into the surrounding IF",
+    "t": "At the arterial end of a capillary, the blood pressure in the vessel is much greater than the hydrostatic pressure of the interstitial fluid (IF), thus generating a very large, outwardly directed force. In short, the stronger, outwardly directed forces at the arterial end of a capillary drive fluids out of the blood vessel and into the surrounding IF—producing a net loss of blood volume.",
+    "pg": 753,
+    "pp": 713,
+    "ch": 30
+   }
+  ],
+  "q93d1649cf3": [
+   {
+    "k": "patton",
+    "uid": "patton:881#23",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 841",
+    "quote": "the lower the pH goes, the higher the ventilation rate rises.",
+    "t": "As the graph shows, the lower the pH goes, the higher the ventilation rate rises.",
+    "pg": 881,
+    "pp": 841,
+    "ch": 36,
+    "fig": "36-16"
+   }
+  ],
+  "q962112e511": [
+   {
+    "k": "patton",
+    "uid": "patton:715#22",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 675",
+    "quote": "The right side of the head and neck are supplied by the brachiocephalic artery, which branches to become the right subclavian artery and right common carotid artery",
+    "t": "The right side of the head and neck are supplied by the brachiocephalic artery, which branches to become the right subclavian artery and right common carotid artery.",
+    "pg": 715,
+    "pp": 675,
+    "ch": 29
+   }
+  ],
+  "q97035fd683": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#25",
+    "src": "2026 RESP2 deck · slide 25",
+    "quote": "leads to collapse of the lungs (atelectasis) as it breaks the coupling",
+    "t": "Negative intra pleural pressure (NIP) NIP tightly couples the lungs to the thoracic wall Air in the pleural cavity (pneumo- thorax) leads to collapse of the lungs (atelectasis) as it breaks the coupling",
+    "slug": "2026-RESP2",
+    "n": 25
+   }
+  ],
+  "q98e787410a": [
+   {
+    "k": "slide",
+    "uid": "slide:Respiratory-Regulation-and-AcidBase-Balance#22",
+    "src": "Respiratory Regulation and AcidBase Balance deck · slide 22",
+    "quote": "Inflation reflex – stretch receptors in the lungs are stimulated by lung inflation which inhibit inspiratory center",
+    "t": "Receptors in the lungs – these send messages to the dorsal bundle (DRG) Inflation reflex – stretch receptors in the lungs are stimulated by lung inflation which inhibit inspiratory center and allow expiration Inflation reflex is a protective mechanism to prevent over inflation of the lungs Pulmonary irritant reflexes – irritants like dust, mucus, fumes, etc. in the lungs stimulate receptors in the lungs which inhibit the inspiratory centre and…",
+    "slug": "Respiratory-Regulation-and-AcidBase-Balance",
+    "n": 22
+   },
+   {
+    "k": "patton",
+    "uid": "patton:881#3",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 841",
+    "quote": "when a large tidal volume of air has been inspired, the lungs are expanded enough to stimulate stretch receptors",
+    "t": "Presumably, when a large tidal volume of air has been inspired, the lungs are expanded enough to stimulate stretch receptors located within them.",
+    "pg": 881,
+    "pp": 841,
+    "ch": 36
+   }
+  ],
+  "q9a9c2b34f0": [
+   {
+    "k": "her",
+    "uid": "page:CVS 4#30",
+    "src": "CVS 4 learning page",
+    "quote": "Carotid sinus and aortic baroreceptors detect changes in blood pressure and feed the information back to the INTEGRATION: cardiac control centre and the vasomotor centre in the medulla.",
+    "t": "RECEPTORS: Carotid sinus and aortic baroreceptors detect changes in blood pressure and feed the information back to the INTEGRATION: cardiac control centre and the vasomotor centre in the medulla."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:744#2",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 704",
+    "quote": "Receptors sensitive to changes in pressure (baroreceptors) are located in two places near the heart (Figure 30-7). Called the aortic baroreceptors and carotid baroreceptors, they send afferent nerve fibers to cardiac control centers in the medulla oblongata.",
+    "t": "Cardiac Pressoreflexes Receptors sensitive to changes in pressure (baroreceptors) are located in two places near the heart (Figure 30-7). Called the aortic baroreceptors and carotid baroreceptors, they send afferent nerve fibers to cardiac control centers in the medulla oblongata.",
+    "pg": 744,
+    "pp": 704,
+    "ch": 30
+   }
+  ],
+  "q9b7067d83b": [
+   {
+    "k": "patton",
+    "uid": "patton:702#34",
+    "src": "Patton 9e · Ch 28 Heart · p. 662",
+    "quote": "attached to papillary muscles by chordae tendineae",
+    "t": "Atrioventricular (AV) valves—prevent blood from flowing back into the atria from the ventricles when the ventricles contract (1) Tricuspid valve (right AV valve)—guards the right atrioventricular orifice; free edges of three flaps of endocardium are attached to papillary muscles by chordae tendineae (2) Bicuspid, or mitral, valve (left AV valve)—similar in structure to tricuspid valve except has only two flaps",
+    "pg": 702,
+    "pp": 662,
+    "ch": 28
+   }
+  ],
+  "q9ed20aa288": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#19",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 19",
+    "quote": "Coronary veins  Coronary sinus  Right atrium",
+    "t": "Blood vessels of the heart: posterior view CORONARY CIRCULATION Aorta  Ostia  Coronary arteries  Capillaries  Coronary veins  Coronary sinus  Right atrium VESSELS Aorta Pulmonary veins Coronary arteries Pulmonary artery Superior & inferior vena cavae Coronary veins Coronary sinus 1 2 3 4 5 5 6 7 2",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 19
+   },
+   {
+    "k": "patton",
+    "uid": "patton:689#1",
+    "src": "Patton 9e · Ch 28 Heart · p. 649",
+    "quote": "enters a series of cardiac veins before draining into the right atrium through a common venous channel called the coronary sinus",
+    "t": "Cardiac Veins After blood has passed through capillary networks in the myocardium, it enters a series of cardiac veins before draining into the right atrium through a common venous channel called the coronary sinus.",
+    "pg": 689,
+    "pp": 649,
+    "ch": 28
+   }
+  ],
+  "qa254d0ab06": [
+   {
+    "k": "her",
+    "uid": "page:RESP 1#13",
+    "src": "RESP 1 learning page",
+    "quote": "alveoli (with cell type 1 for diffusion), Cell type 2 (for making surfactant",
+    "t": "Gaseous exchange between blood and air Respiratory bronchiole, alveolar sacs, alveoli (with cell type 1 for diffusion), Cell type 2 (for making surfactant, Macrophages for mopping up particles and germs"
+   }
+  ],
+  "qa26946a645": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-1#24",
+    "src": "2026 RESP 1 deck · slide 24",
+    "quote": "Bronchioles have: more smooth muscle than bronchi No mucus secreting cells No cartilage",
+    "t": "Bronchi  Bronchiole T & R Bronchiole Alveolar ducts Bronchi become smaller and smaller  very small tubes called bronchioles Lose columnar epithelia and cartilage 24 L.O. 2, 3, 4   Bronchioles have: more smooth muscle than bronchi No mucus secreting cells No cartilage Cuboidal epithelium Alveolar duct many alveoli open in it Terminal bronchioles  Respiratory bronchioles",
+    "slug": "2026-RESP-1",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:850#2",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 810",
+    "quote": "cartilaginous rings become irregular and disappear entirely into the smaller bronchioles",
+    "t": "The cartilaginous rings become irregular and disappear entirely into the smaller bronchioles.",
+    "pg": 850,
+    "pp": 810,
+    "ch": 35
+   }
+  ],
+  "qa592267a7a": [
+   {
+    "k": "patton",
+    "uid": "patton:703#21",
+    "src": "Patton 9e · Ch 28 Heart · p. 663",
+    "quote": "P wave—represents depolarization of the atria b. QRS complex—represents depolarization of the ventricles",
+    "t": "P wave—represents depolarization of the atria b. QRS complex—represents depolarization of the ventricles and repolarization of the atria",
+    "pg": 703,
+    "pp": 663,
+    "ch": 28
+   }
+  ],
+  "qa7e317cc22": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#30",
+    "src": "2026 CVS 3 deck · slide 30",
+    "quote": "Adrenaline Catechol amines - epinephrine & norepinephrine from sympathetic nervous system (SNS) INCREASES HEART RATE",
+    "t": "Chemical Control of Heart Rate: Adrenaline Catechol amines - epinephrine & norepinephrine from sympathetic nervous system (SNS) INCREASES HEART RATE Hormone from Thyroid gland INCREASES HEART RATE Excess K + = hyperkalemia SLOWS DOWN HEART Excess Ca ++ = hypercalcemia - increase in contractility - INCREASES HEART RATE Hormone released by parasympathetic nervous system (PNS) SLOWS DOWN HEART RATE Acetylcholine Other factors",
+    "slug": "2026-CVS-3",
+    "n": 30
+   },
+   {
+    "k": "patton",
+    "uid": "patton:825#29",
+    "src": "Patton 9e · Ch 34 Stress · p. 785",
+    "quote": "adrenaline levels rise, blood pressure and heart rate increase",
+    "t": "As a result, adrenaline levels rise, blood pressure and heart rate increase, and breathing patterns change.",
+    "pg": 825,
+    "pp": 785,
+    "ch": 34
+   }
+  ],
+  "qa915f2b409": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#31",
+    "src": "2026 CVS 3 deck · slide 31",
+    "quote": "The volume of blood pumped out from each ventricle per beat",
+    "t": "STROKE VOLUME The volume of blood pumped out from each ventricle per beat - approx. 70 mL The ventricles do not pump out all the blood it receives 2/3 of the blood - approx. 70 mL/beat Fraction of blood pumped out = EJECTION FRACTION Normal EF = 55% to 70% In healthy heart - SV is relatively constant",
+    "slug": "2026-CVS-3",
+    "n": 31
+   },
+   {
+    "k": "patton",
+    "uid": "patton:742#2",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 702",
+    "quote": "volume of blood pumped out of a ventricle by each beat (stroke volume,",
+    "t": "Cardiac output is determined by the volume of blood pumped out of a ventricle by each beat (stroke volume, or SV) and by heart rate (HR).",
+    "pg": 742,
+    "pp": 702,
+    "ch": 30
+   }
+  ],
+  "qac000f1f2c": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#8",
+    "src": "2024 Revision mod 1 16 slide deck · slide 8",
+    "quote": "Type II cells – surfactant- reduces surface tension to keep alveoli open",
+    "t": "…the above relax FORCED Inspiration : Sternocleidomastoid & scalene muscles contract- lift upper ribs Expiration: Internal intercostals & abdominal muscles Transport of CO 2 - Blood Bicarbonate Carboxihemoglobin Carbonic acid Transport of O 2 - Blood Oxihemoglobin Internal respiration - Tissues External respiration - ALVEOLI Type 1 cells - squamous epithelial cells-external respiration Macrophages – keeps alveoli healthy Type II cells – surfactant- reduces surface tension to keep alveoli open",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 8
+   },
+   {
+    "k": "patton",
+    "uid": "patton:872#3",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 832",
+    "quote": "Surfactant is formed from the protein and phospholipid secretions of type II cells in the wall of each alveolus",
+    "t": "Surfactant is formed from the protein and phospholipid secretions of type II cells in the wall of each alveolus.",
+    "pg": 872,
+    "pp": 832,
+    "ch": 36
+   }
+  ],
+  "qac09650676": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-System-4-2#16",
+    "src": "2026 Cardiovascular System 4-2 deck · slide 16",
+    "quote": "Direct: Lower BP  lower blood flow to kidney  lower filtration rate  lower urine output  Blood volume goes up  BP increases VV for high BP",
+    "t": "…Faster Indirect: Slow but powerful RAAS Enzyme Renin converts angiotensinogen to Angiotensin I converted by ACE  Angiotensin II Vasoconstriction, Stimulates secretion of Aldosterone (Na + retention) & ADH (H 2 O retention) Renal - mainly alter blood volume Direct: Lower BP  lower blood flow to kidney  lower filtration rate  lower urine output  Blood volume goes up  BP increases VV for high BP BP control",
+    "slug": "2026-Cardiovascular-System-4-2",
+    "n": 16
+   }
+  ],
+  "qadbc1afeed": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#22",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 22",
+    "quote": "Blood supply to and from the myocardium Coronary arteries – Coronary Ostia from Aorta",
+    "t": "Coronary Circulation Blood supply to and from the myocardium Coronary arteries – Coronary Ostia from Aorta Coronary sinus opens into the right atrium Why does the myocardium need a separate circulation?",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 22
+   },
+   {
+    "k": "patton",
+    "uid": "patton:687#10",
+    "src": "Patton 9e · Ch 28 Heart · p. 647",
+    "quote": "they come off the aorta at its very beginning and are its first branches.",
+    "t": "Coronary means “crown”—an apt name when you visualize the position of the left and right coronary arteries encircling the myocardium along a coronary sulcus, much as a crown encircles the head (Figure 28-10, A). Because the openings into these vitally important vessels lie behind leaflets of the aortic semilunar valve, they come off the aorta at its very beginning and are its first branches.",
+    "pg": 687,
+    "pp": 647,
+    "ch": 28
+   }
+  ],
+  "qb0822429de": [
+   {
+    "k": "patton",
+    "uid": "patton:854#11",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 814",
+    "quote": "Primary bronchi Left and right branch from trachea, one to each lung",
+    "t": "…individual airways Supported by cartilage rings (incomplete outside lungs; complete inside lungs) Lined with respiratory mucosa (pseudostratified ciliated columnar Conduct air between trachea and lungs Ciliary escalator removes contaminants Primary bronchi Left and right branch from trachea, one to each lung Conduct air to/from the lungs Branches of the primary bronchi; three from the right, two from Branches of the secondary bronchi Conduct air to/from the various bronchopulmonary Bronchioles Smallest…",
+    "pg": 854,
+    "pp": 814,
+    "ch": 35
+   }
+  ],
+  "qb1c9f7e292": [
+   {
+    "k": "patton",
+    "uid": "patton:759#1",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 719",
+    "quote": "It gradually dissipates as it travels, disappearing entirely in the capillaries.",
+    "t": "Pulse Wave Each ventricular systole starts a new pulse that proceeds as a wave of expansion throughout the arteries and is known as the pulse wave. It gradually dissipates as it travels, disappearing entirely in the capillaries.",
+    "pg": 759,
+    "pp": 719,
+    "ch": 30
+   }
+  ],
+  "qb27faf3123": [
+   {
+    "k": "patton",
+    "uid": "patton:728#36",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 688",
+    "quote": "The foramen ovale is an opening in the septum between the right and left atria",
+    "t": "The foramen ovale is an opening in the septum between the right and left atria.",
+    "pg": 728,
+    "pp": 688,
+    "ch": 29,
+    "fig": "29-21"
+   }
+  ],
+  "qb4c4c68a31": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#20",
+    "src": "CVS 2 learning page",
+    "quote": "The mitral (bicuspid) valve (on the left side) has 2 robust and large flaps",
+    "t": "The mitral (bicuspid) valve (on the left side) has 2 robust and large flaps (seen on image)(0.5)."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:684#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 644",
+    "quote": "except that it has only two flaps and is therefore also called the bicuspid valve. Most commonly, however, the left AV valve is called the mitral valve",
+    "t": "The valve that guards the left atrioventricular opening is similar in structure to the right atrioventricular valve, except that it has only two flaps and is therefore also called the bicuspid valve. Most commonly, however, the left AV valve is called the mitral valve—a name it gets from its resemblance to the miter, a double-cusp hat worn by bishops.",
+    "pg": 684,
+    "pp": 644,
+    "ch": 28
+   }
+  ],
+  "qb5c8d5b677": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#25",
+    "src": "2026 RESP2 deck · slide 25",
+    "quote": "Air in the pleural cavity (pneumo- thorax) leads to collapse of the lungs (atelectasis)",
+    "t": "Negative intra pleural pressure (NIP) NIP tightly couples the lungs to the thoracic wall Air in the pleural cavity (pneumo- thorax) leads to collapse of the lungs (atelectasis) as it breaks the coupling",
+    "slug": "2026-RESP2",
+    "n": 25
+   }
+  ],
+  "qb7d81fe0de": [
+   {
+    "k": "patton",
+    "uid": "patton:702#11",
+    "src": "Patton 9e · Ch 28 Heart · p. 662",
+    "quote": "parietal layer lies inside the fibrous pericardium, and visceral layer (epicardium) adheres to the outside",
+    "t": "In adults, the shape of the heart tends to resemble that of (1) Fibrous pericardium—tough, loose-fitting inextensible sac (2) Serous pericardium—parietal layer lies inside the fibrous pericardium, and visceral layer (epicardium) adheres to the outside of the heart (3) Pericardial space—lies between visceral and parietal layers and contains 10 to 15 ml of pericardial fluid",
+    "pg": 702,
+    "pp": 662,
+    "ch": 28
+   }
+  ],
+  "qb84e734849": [
+   {
+    "k": "patton",
+    "uid": "patton:682#31",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "This space is called the pericardial space. It contains 10 to 15",
+    "t": "This space is called the pericardial space. It contains 10 to 15 ml of pericardial fluid, a lubricating fluid secreted by the serous membrane.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qb949a00fe4": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#3",
+    "src": "2026 RESP 3 deck · slide 3",
+    "quote": "the negative intrapleural pressure (parietal & visceral pleural membranes cling to one another)",
+    "t": "…& intercostal nerves stimulate diaphragm & external intercostals respectively to contract  Ribs rise & thoracic cavity floor pulls downwards  I ntrathoracic volume increases  Because of the negative intrapleural pressure (parietal & visceral pleural membranes cling to one another) the lung tissue follows thoracic cavity walls  Lung tissues are stretched  increasing the intrapulmonary (alveolar) volume  Leading to decreased intrapulmonary pressure (Boyle’s Law)  Leading to…",
+    "slug": "2026-RESP-3",
+    "n": 3
+   },
+   {
+    "k": "her",
+    "uid": "page:RESP 1#11",
+    "src": "RESP 1 learning page",
+    "quote": "negative pressure to help the lung move with the thoracic space",
+    "t": "Visceral pleura clings to lungs Parietal pleura clings to the inside of the thoracic wall Interpleural space between the two pleural layers - negative pressure to help the lung move with the thoracic space Pneumothorax = when air leaks into interpleural space and lungs cannot not expand"
+   }
+  ],
+  "qb94e544d5b": [
+   {
+    "k": "her",
+    "uid": "page:CVS 3#3",
+    "src": "CVS 3 learning page",
+    "quote": "features ofautomaticity (theyspontaneously and rhythmically generate action potentials)",
+    "t": "They possess the features ofautomaticity (theyspontaneously and rhythmically generate action potentials)(0.5)"
+   }
+  ],
+  "qbc8a537c1d": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Cardiovascular-system-2-2#24",
+    "src": "2026 Cardiovascular system 2-2 deck · slide 24",
+    "quote": "Papillary muscle anchor chordae tendinea to heart wall",
+    "t": "4 Valves Tricuspid & Bicuspid (Mitral) Chordae tendineae prevent AV valve flaps from opening to wrong side Papillary muscle anchor chordae tendinea to heart wall Heart Valves AV valves?",
+    "slug": "2026-Cardiovascular-system-2-2",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:684#4",
+    "src": "Patton 9e · Ch 28 Heart · p. 644",
+    "quote": "The papillary muscles contract along with the rest of the ventricular myocardium, thus pulling on the edges of the cusps by way of the chordae tendineae.",
+    "t": "The papillary muscles contract along with the rest of the ventricular myocardium, thus pulling on the edges of the cusps by way of the chordae tendineae.",
+    "pg": 684,
+    "pp": 644,
+    "ch": 28
+   }
+  ],
+  "qbd80478744": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#37",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 37",
+    "quote": "Superior vena cava  Right atrium Tricuspid valve Right ventricle Pulmonary valve Pulmonary artery Lungs Pulmonary vein Left atrium Bicuspid valve Left ventricle Aortic valve Aorta",
+    "t": "Starting with the Superior Vena Cava, place the following items in the correct order of blood flow. aorta bicuspid valve left atrium left ventricle lungs Pulmonary valve Aortic valve Pulmonary artery pulmonary vein right atrium right ventricle tricuspid valve Superior vena cava  Right atrium Tricuspid valve Right ventricle Pulmonary valve Pulmonary artery Lungs Pulmonary vein Left atrium Bicuspid valve Left ventricle Aortic valve Aorta REVISE & APPLY",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 37
+   }
+  ],
+  "qbe81316f91": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#7",
+    "src": "2026 RESP 3 deck · slide 7",
+    "quote": "diffuse so well even with low concentration gradient –its highly soluble",
+    "t": "Boyle’s law At constant temperature: a Gas’s concentration in a solution depends on The partial pressure of the gas Solubility of the gas Explains why CO 2 can diffuse so well even with low concentration gradient –its highly soluble P gas x solubility Volume = 1/Pressure At constant temperature: A gas’s volume is inversely proportional to its pressure and vv Explains why pressure in the lungs drop when the thoracic…",
+    "slug": "2026-RESP-3",
+    "n": 7
+   }
+  ],
+  "qbe972aad80": [
+   {
+    "k": "her",
+    "uid": "page:RESP 1#21",
+    "src": "RESP 1 learning page",
+    "quote": "The cartilage structures: larynx, epiglottis and trachea and the main, secondary and other bronchi",
+    "t": "The hard and soft palate and uvula The lung lobes, the base and apex of the lung, the mediastinum, the cardiac notch, hilum and root The cartilage structures: larynx, epiglottis and trachea and the main, secondary and other bronchi as well as the sensitive carina"
+   }
+  ],
+  "qbebb57e18c": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#30",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 30",
+    "quote": "Jugular veins return blood from head and neck. Carotid arteries take blood to the head",
+    "t": "Jugular veins return blood from head and neck. Carotid arteries take blood to the head and neck",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 30
+   },
+   {
+    "k": "her",
+    "uid": "lab:2026#32",
+    "src": "Lab workbook 2026",
+    "quote": "Neck A. L External jugular vein B. Common carotid artery",
+    "t": "Find and label the following blood vessels in the different regions on the diagram: Neck A. L External jugular vein B. Common carotid artery Shoulder C."
+   }
+  ],
+  "qc0053416ec": [
+   {
+    "k": "patton",
+    "uid": "patton:699#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 659",
+    "quote": "Slight bradycardia is normal during sleep and in conditioned athletes while they are awake",
+    "t": "Slight bradycardia is normal during sleep and in conditioned athletes while they are awake (but at rest).",
+    "pg": 699,
+    "pp": 659,
+    "ch": 28
+   }
+  ],
+  "qc19409af45": [
+   {
+    "k": "patton",
+    "uid": "patton:889#12",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 849",
+    "quote": "760 mm 592.8 mm 159.6 mm 0.2 mm 7.4 mm (100%) (78%) (21%)",
+    "t": "Total atmospheric pressure PN2 PO2 PCO2 Pother 760 mm 592.8 mm 159.6 mm 0.2 mm 7.4 mm (100%) (78%) (21%) (0.03%) (0.97%)",
+    "pg": 889,
+    "pp": 849,
+    "ch": 37
+   }
+  ],
+  "qc1d6e590b2": [
+   {
+    "k": "patton",
+    "uid": "patton:682#42",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "The bulk of the heart wall is the thick, contractile, middle layer",
+    "t": "The bulk of the heart wall is the thick, contractile, middle layer of specially constructed and arranged cardiac muscle cells called the myocardium.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qc33ce52f9d": [
+   {
+    "k": "her",
+    "uid": "page:CVS 3#8",
+    "src": "CVS 3 learning page",
+    "quote": "P wave = atrial depolarisation (Contraction)brought about by in flow of sodium ions",
+    "t": "P wave = atrial depolarisation (Contraction)brought about by in flow of sodium ions ions into the myocardial cells."
+   }
+  ],
+  "qc48d3f7a5e": [
+   {
+    "k": "patton",
+    "uid": "patton:687#2",
+    "src": "Patton 9e · Ch 28 Heart · p. 647",
+    "quote": "The pulmonary trunk branches to form the left and right pulmonary arteries, which conduct blood to",
+    "t": "The pulmonary trunk branches to form the left and right pulmonary arteries, which conduct blood to the gas exchange tissues of the lung.",
+    "pg": 687,
+    "pp": 647,
+    "ch": 28
+   }
+  ],
+  "qc4c1b1c370": [
+   {
+    "k": "patton",
+    "uid": "patton:871#4",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 831",
+    "quote": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "t": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "pg": 871,
+    "pp": 831,
+    "ch": 36
+   }
+  ],
+  "qca33af1cee": [
+   {
+    "k": "patton",
+    "uid": "patton:850#2",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 810",
+    "quote": "cartilaginous rings become irregular and disappear entirely into the smaller bronchioles",
+    "t": "The cartilaginous rings become irregular and disappear entirely into the smaller bronchioles.",
+    "pg": 850,
+    "pp": 810,
+    "ch": 35
+   }
+  ],
+  "qcaa78ffe65": [
+   {
+    "k": "patton",
+    "uid": "patton:728#13",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 688",
+    "quote": "umbilical vein returns oxygenated blood from the placenta, enters the fetal body through the umbilicus, extends up to the undersurface of the liver where it gives off two or three branches to the liver, and then continues on as the ductus venosus",
+    "t": "The umbilical vein returns oxygenated blood from the placenta, enters the fetal body through the umbilicus, extends up to the undersurface of the liver where it gives off two or three branches to the liver, and then continues on as the ductus venosus.",
+    "pg": 728,
+    "pp": 688,
+    "ch": 29
+   }
+  ],
+  "qcb617f293d": [
+   {
+    "k": "patton",
+    "uid": "patton:856#5",
+    "src": "Patton 9e · Ch 35 Respiratory Tract · p. 816",
+    "quote": "outer surface of each lung is covered by the visceral layer of the pleura",
+    "t": "Because the outer surface of each lung is covered by the visceral layer of the pleura, the visceral pleura lies against the parietal pleura, separated only by a potential space (pleural space) that contains just enough pleural fluid for lubrication (see Figure 35-18).",
+    "pg": 856,
+    "pp": 816,
+    "ch": 35
+   }
+  ],
+  "qcd0a3cbedf": [
+   {
+    "k": "her",
+    "uid": "lab:2026#116",
+    "src": "Lab workbook 2026",
+    "quote": "Tendons are made of parallel collagen fibres.",
+    "t": "Tendons are made of parallel collagen fibres."
+   }
+  ],
+  "qcd21c2cdf7": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CVS-3#35",
+    "src": "2026 CVS 3 deck · slide 35",
+    "quote": "Venous Return Stress Exercise CO HR SV",
+    "t": "35 Venous Return Venous Return Stress Exercise CO HR SV Ca 2+ Plasma electrolytes K + (Hyperkalemia) Plasma electrolytes Ca 2+(Hypercalcemia) Heart cells less contractile Slowed conduction More blood in heart Increased SV Heart cells more contractile Pacing decreases but can also increase Variable",
+    "slug": "2026-CVS-3",
+    "n": 35
+   }
+  ],
+  "qcd6cc3477a": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#20",
+    "src": "2026 RESP2 deck · slide 20",
+    "quote": "quiet expiration / exhalation is passive relies on elastic recoil of stretched lungs",
+    "t": "Expiration In healthy people quiet expiration / exhalation is passive relies on elastic recoil of stretched lungs as inspiratory muscles relax, rather than on muscle contraction.",
+    "slug": "2026-RESP2",
+    "n": 20
+   },
+   {
+    "k": "patton",
+    "uid": "patton:870#1",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 830",
+    "quote": "tendency of the thorax and lungs to return to their preinspira- tion volume is a physical phenomenon called elastic recoil.",
+    "t": "The tendency of the thorax and lungs to return to their preinspira- tion volume is a physical phenomenon called elastic recoil.",
+    "pg": 870,
+    "pp": 830,
+    "ch": 36
+   }
+  ],
+  "qce795b1c3c": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#6",
+    "src": "2024 Revision mod 1 16 slide deck · slide 6",
+    "quote": "ACE inhibitors can prevent this step",
+    "t": "…) LONG-TERM – RENAL (RAAAAAAS): Enzymes & hormones involved Juxtaglomerular cells makes renin in response to l ow blood pressure i n afferent arteriole MD Monitors blood Na+ content Pressure in afferent arteriole picked up by renal baroreceptors (stretch) ACE inhibitors can prevent this step BP = CO X PR PR = PERIFERAL RESISTANCE = PUSH BACK BY BLOODVESSELS CO =BP/PR =SV x HR Taking it down Bringing it up",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 6
+   }
+  ],
+  "qd17e49e612": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#16",
+    "src": "2024 Revision mod 1 16 slide deck · slide 16",
+    "quote": "FIRST FEW LYMPH NODES INTO WHICH A TUMOR DRAINS",
+    "t": "FIRST FEW LYMPH NODES INTO WHICH A TUMOR DRAINS",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 16
+   }
+  ],
+  "qd281112b71": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#25",
+    "src": "2026 RESP2 deck · slide 25",
+    "quote": "Lung Compliance: Ease with which lungs can expand",
+    "t": "Lung Compliance: Ease with which lungs can expand Distensibility of lung tissue & surrounding thoracic cage Factors that diminish lung compliance decrease pulmonary ventilation, e.g. scar tissue or fibrosis reduces natural resilience of lungs decreased flexibility of thoracic cage or its decreased ability to expand blockage of smaller respiratory passages with mucus or fluid",
+    "slug": "2026-RESP2",
+    "n": 25
+   },
+   {
+    "k": "patton",
+    "uid": "patton:872#1",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 832",
+    "quote": "lungs and thorax having the ability to stretch—a characteristic called compliance.",
+    "t": "BOX 36-2 surfactant and lung compliance | As we have discussed already, inspiration cannot occur without the lungs and thorax having the ability to stretch—a characteristic called compliance.",
+    "pg": 872,
+    "pp": 832,
+    "ch": 36
+   }
+  ],
+  "qd3bf05c8e4": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#10",
+    "src": "2024 Revision mod 1 16 slide deck · slide 10",
+    "quote": "Quiet inspiration ACTIVE 2 sec PASSIVE 3 sec Diaphragm & External intercostals contract",
+    "t": "…Active in inspiration = active process Pace maker Self exciting – neurons that discharge spontaneously Sends impulses via phrenic & intercostal nerves to inspiratory muscles Respiratory Centre Normal Quiet inspiration ACTIVE 2 sec PASSIVE 3 sec Diaphragm & External intercostals contract Increased space Decreased pressure Diaphragm & External intercostals relax  elastic recoil of lungs INSPIRATORY AREA Normal Quiet expiration Forced inspiration ACTIVE ACTIVE Diaphragm, sternocleidomastoids & scalenes contract to…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 10
+   }
+  ],
+  "qd4a71ab0a1": [
+   {
+    "k": "her",
+    "uid": "am:2#9",
+    "src": "Anatomy Mondays 2",
+    "quote": "One of the key roles of the lymphatics is fluid balance",
+    "t": "One of the key roles of the lymphatics is fluid balance, in preparation for talking about this function, you should review this TEXTBOOK READING General principles of Fluid Balance: Patton and Thibodeau."
+   }
+  ],
+  "qd6dfc77d9f": [
+   {
+    "k": "her",
+    "uid": "page:CVS 4#10",
+    "src": "CVS 4 learning page",
+    "quote": "CO = SV x HR BP =CO x PR BP = SV x HR x PR",
+    "t": "Relationships CO = SV x HR BP =CO x PR BP = SV x HR x PR HR, PR & SV are influenced by: Activity - lowest when we sleep"
+   }
+  ],
+  "qd74db826d8": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#10",
+    "src": "2024 Revision mod 1 16 slide deck · slide 10",
+    "quote": "Inspiratory Center VRG Ventral Respiratory group (Anterior) Active in inspiration = active process",
+    "t": "…(Posterior) receives impulses from stretch and chemo receptors Active: Forced expiration Pontine centre (PRG) Pontine Respiratory group Protect lungs from over inflation Fine-tunes breathing rhythm making it smooth Inspiratory Center VRG Ventral Respiratory group (Anterior) Active in inspiration = active process Pace maker Self exciting – neurons that discharge spontaneously Sends impulses via phrenic & intercostal nerves to inspiratory muscles Respiratory Centre Normal Quiet inspiration ACTIVE 2 sec PASSIVE 3…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 10
+   }
+  ],
+  "qdb0eee30d4": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-CIRCULATION-VESSELS-CV1-1#37",
+    "src": "2026 CIRCULATION VESSELS CV1-1 deck · slide 37",
+    "quote": "Superior vena cava  Right atrium Tricuspid valve Right ventricle Pulmonary valve",
+    "t": "Starting with the Superior Vena Cava, place the following items in the correct order of blood flow. aorta bicuspid valve left atrium left ventricle lungs Pulmonary valve Aortic valve Pulmonary artery pulmonary vein right atrium right ventricle tricuspid valve Superior vena cava  Right atrium Tricuspid valve Right ventricle Pulmonary valve Pulmonary artery Lungs Pulmonary vein Left atrium Bicuspid valve Left ventricle Aortic valve Aorta REVISE & APPLY",
+    "slug": "2026-CIRCULATION-VESSELS-CV1-1",
+    "n": 37
+   }
+  ],
+  "qdbcbc7f60d": [
+   {
+    "k": "patton",
+    "uid": "patton:748#4",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 708",
+    "quote": "particularly sensitive to excess blood carbon dioxide (hypercapnia) and somewhat less sensitive to a deficiency of blood oxygen",
+    "t": "Vasomotor Chemoreflexes Chemoreceptors located in the aortic and carotid bodies are particularly sensitive to excess blood carbon dioxide (hypercapnia) and somewhat less sensitive to a deficiency of blood oxygen (hypoxia) and to decreased arterial blood pH.",
+    "pg": 748,
+    "pp": 708,
+    "ch": 30
+   }
+  ],
+  "qddde17c5e6": [
+   {
+    "k": "patton",
+    "uid": "patton:871#4",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 831",
+    "quote": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "t": "Inspiratory reserve volume (IRV) is the amount of air that can be forcibly inspired over and above a normal inspiration.",
+    "pg": 871,
+    "pp": 831,
+    "ch": 36
+   }
+  ],
+  "qde24b8f42e": [
+   {
+    "k": "patton",
+    "uid": "patton:748#2",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 708",
+    "quote": "A decrease in arterial pressure causes the aortic and carotid baroreceptors to send fewer impulses",
+    "t": "A decrease in arterial pressure causes the aortic and carotid baroreceptors to send fewer impulses to the medulla’s vasoconstrictor centers, signaling the change in blood pressure.",
+    "pg": 748,
+    "pp": 708,
+    "ch": 30
+   }
+  ],
+  "qde41854d84": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#2",
+    "src": "2024 Revision mod 1 16 slide deck · slide 2",
+    "quote": "Arterial side: high  hydrostatic pressure  drives filtration Venous side: low  oncotic pressure",
+    "t": "…media (thick SMC), externa(adventitia) Veins (tunica intima with less prominent elastic lamina), media (thinner SMC), externa(adventitia) -thick Capillaries (only tunica intima- Continuous (e.g. blood brain barrier, lungs), Fenestrated (e.g. small intestine, muscles), Discontinuous e.g. liver, bone marrow and spleen) Pressure differences in arteries in veins In capillaries Arterial side: high  hydrostatic pressure  drives filtration Venous side: low  oncotic pressure due to proteins & solutes  drives absorption",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 2
+   }
+  ],
+  "qdfe62ea8f2": [
+   {
+    "k": "patton",
+    "uid": "patton:723#48",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 683",
+    "quote": "Each external jugular vein terminates in a subclavian vein.",
+    "t": "Each external jugular vein terminates in a subclavian vein.",
+    "pg": 723,
+    "pp": 683,
+    "ch": 29
+   }
+  ],
+  "qe15e931ac3": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#20",
+    "src": "2026 RESP4-1 deck · slide 20",
+    "quote": "allow forceful expiration (cough- trachealis muscle contracts)",
+    "t": "…(PRG) Inflation reflex -a protective mechanism to prevent over-inflation of lungs Pulmonary stretch receptors on wall of bronchi & bronchioles are stimulated by lung inflation Inhibit inspiratory center & allow expiration Pulmonary irritant reflexes –involves Carina irritants like dust, mucus, fumes, etc. in the lungs stimulate receptors in the lungs inhibit inspiratory centre allow forceful expiration (cough- trachealis muscle contracts) causes constriction of air passages ( bronchoconstriction ) increase ventilation",
+    "slug": "2026-RESP4-1",
+    "n": 20
+   }
+  ],
+  "qe2e45b5cdc": [
+   {
+    "k": "patton",
+    "uid": "patton:682#40",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "The outer layer of the heart wall is called the epicardium",
+    "t": "Epicardium The outer layer of the heart wall is called the epicardium, a name that literally means “on the heart.” The epicardium is actually the visceral layer of the serous pericardium already described.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qe33cec4d7f": [
+   {
+    "k": "patton",
+    "uid": "patton:715#22",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 675",
+    "quote": "The right side of the head and neck are supplied by the brachiocephalic artery,",
+    "t": "The right side of the head and neck are supplied by the brachiocephalic artery, which branches to become the right subclavian artery and right common carotid artery.",
+    "pg": 715,
+    "pp": 675,
+    "ch": 29
+   }
+  ],
+  "qe534856e4d": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#6",
+    "src": "2024 Revision mod 1 16 slide deck · slide 6",
+    "quote": "ACE inhibitors can prevent this step BP = CO X PR PR = PERIFERAL RESISTANCE = PUSH BACK BY BLOODVESSELS",
+    "t": "…) LONG-TERM – RENAL (RAAAAAAS): Enzymes & hormones involved Juxtaglomerular cells makes renin in response to l ow blood pressure i n afferent arteriole MD Monitors blood Na+ content Pressure in afferent arteriole picked up by renal baroreceptors (stretch) ACE inhibitors can prevent this step BP = CO X PR PR = PERIFERAL RESISTANCE = PUSH BACK BY BLOODVESSELS CO =BP/PR =SV x HR Taking it down Bringing it up",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 6
+   }
+  ],
+  "qe559a684ed": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#24",
+    "src": "2026 RESP2 deck · slide 24",
+    "quote": "Surfactant, a detergent-like complex, reduces surface tension and helps keep the alveoli from collapsing Deficiency of surfactant will cause the alveoli to collapse, e.g. premature infants",
+    "t": "Alveolar Surface Tension - attraction of liquid molecules to one another at the liquid-air interface Surfactant, a detergent-like complex, reduces surface tension and helps keep the alveoli from collapsing Deficiency of surfactant will cause the alveoli to collapse, e.g. premature infants What is infant respiratory distress syndrome (IRDS)?",
+    "slug": "2026-RESP2",
+    "n": 24
+   },
+   {
+    "k": "patton",
+    "uid": "patton:872#7",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 832",
+    "quote": "Surfactants are also used commonly to prevent or treat IRDS. The surfactant is delivered through a tube directly into the airways—a method called intratracheal injection. • Attractive forces create high surface tension, pulling molecules together Attractive forces at surface disrupted, reducing surface tension",
+    "t": "Synthetic surfactants are also used commonly to prevent or treat IRDS. The surfactant is delivered through a tube directly into the airways—a method called intratracheal injection. • Attractive forces create high surface tension, pulling molecules together Attractive forces at surface disrupted, reducing surface tension A, Role of surfactant.",
+    "pg": 872,
+    "pp": 832,
+    "ch": 36
+   }
+  ],
+  "qe65632cdcc": [
+   {
+    "k": "her",
+    "uid": "page:CVS 4#10",
+    "src": "CVS 4 learning page",
+    "quote": "BP =CO x PR",
+    "t": "Relationships CO = SV x HR BP =CO x PR BP = SV x HR x PR HR, PR & SV are influenced by: Activity - lowest when we sleep"
+   }
+  ],
+  "qe8315a6371": [
+   {
+    "k": "her",
+    "uid": "page:MODULE 1.1#3",
+    "src": "MODULE 1.1 page",
+    "quote": "OBSTRUCTIVE: flow to heart and/or from it is blocked",
+    "t": "OBSTRUCTIVE: flow to heart and/or from it is blocked e.g. by blood clots in the vessels to or from the lungs or body or the heart prevented from filling as in cardiac tamponade."
+   }
+  ],
+  "qe8ba0e3783": [
+   {
+    "k": "patton",
+    "uid": "patton:709#3",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 669",
+    "quote": "Valves keep blood moving toward the heart and prevent its potential backflow.",
+    "t": "The peripheral veins in the extremities have more valves than other veins of the body. Valves keep blood moving toward the heart and prevent its potential backflow.",
+    "pg": 709,
+    "pp": 669,
+    "ch": 29
+   }
+  ],
+  "qea4f155465": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP4-1#20",
+    "src": "2026 RESP4-1 deck · slide 20",
+    "quote": "irritants like dust, mucus, fumes, etc. in the lungs stimulate receptors in the lungs inhibit inspiratory centre allow forceful expiration (cough- trachealis muscle contracts)",
+    "t": "…(PRG) Inflation reflex -a protective mechanism to prevent over-inflation of lungs Pulmonary stretch receptors on wall of bronchi & bronchioles are stimulated by lung inflation Inhibit inspiratory center & allow expiration Pulmonary irritant reflexes –involves Carina irritants like dust, mucus, fumes, etc. in the lungs stimulate receptors in the lungs inhibit inspiratory centre allow forceful expiration (cough- trachealis muscle contracts) causes constriction of air passages ( bronchoconstriction ) increase ventilation",
+    "slug": "2026-RESP4-1",
+    "n": 20
+   }
+  ],
+  "qec3aaaa1fd": [
+   {
+    "k": "her",
+    "uid": "lab:2026#43",
+    "src": "Lab workbook 2026",
+    "quote": "namely the epicardium (visceral pericardium) and the parietal pericardium",
+    "t": "EXTERNAL FEATURES 3.1 1.1 Describe the membranous coverings of the heart, namely the epicardium (visceral pericardium) and the parietal pericardium and the fluid between them."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:682#30",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "visceral layer of the serous pericardium or the epicardium.",
+    "t": "This covering layer is known as the visceral layer of the serous pericardium or the epicardium.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qec993a430c": [
+   {
+    "k": "her",
+    "uid": "lab:2026#45",
+    "src": "Lab workbook 2026",
+    "quote": "It returns blood from the coronary circulation to the right atrium.",
+    "t": "It returns blood from the coronary circulation to the right atrium."
+   }
+  ],
+  "qed987e85aa": [
+   {
+    "k": "patton",
+    "uid": "patton:869#3",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 829",
+    "quote": "forced expiration, contraction of the abdominal and internal intercostal muscles can increase",
+    "t": "In forced expiration, contraction of the abdominal and internal intercostal muscles can increase alveolar pressure tremendously—creating a very large air pressure gradient.",
+    "pg": 869,
+    "pp": 829,
+    "ch": 36
+   }
+  ],
+  "qf09dfbd945": [
+   {
+    "k": "patton",
+    "uid": "patton:741#3",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 701",
+    "quote": "progressive fall in pressure from a midpoint of 100 mmHg in the aorta down to 0 mmHg by the time blood reaches the venae cavae",
+    "t": "Figure 30-2 shows the systolic and diastolic pressures in the arterial system and illustrates the progressive fall in pressure from a midpoint of 100 mmHg in the aorta down to 0 mmHg by the time blood reaches the venae cavae and right atrium.",
+    "pg": 741,
+    "pp": 701,
+    "ch": 30
+   }
+  ],
+  "qf09f3ffd11": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#14",
+    "src": "CVS 2 learning page",
+    "quote": "making it four chambers (0.5). The two upper chambers, the atria,",
+    "t": "making it four chambers (0.5). The two upper chambers, the atria, (0.5) are thin walled (0.5) and receive blood (0.5) and send it through the Atrio Ventricular (AV)valves (0.5) to the lower thick walled chambers, the ventricles (0.5)."
+   },
+   {
+    "k": "patton",
+    "uid": "patton:683#10",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "interior of the heart is divided into four cavities, or heart chambers",
+    "t": "Chambers of the Heart The interior of the heart is divided into four cavities, or heart chambers (Figure 28-6).",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "qf118c30eb4": [
+   {
+    "k": "slide",
+    "uid": "slide:2024-Revision-mod-1-16-slide#6",
+    "src": "2024 Revision mod 1 16 slide deck · slide 6",
+    "quote": "Angioten sin II range of BP increasing effects such as stimulating: Aldoster one release",
+    "t": "SHORT TERM DIRECT NEURAL MECHANISM: Neural control of blood pressure Cardiovascular system: control of blood pressure Renin Angiotensinogen Angioten sin I ACE (Angiotensin Converting Enzyme) Angioten sin II range of BP increasing effects such as stimulating: Aldoster one release(Adrenal glands  Na + retention  H 2 O retention increasing SV) ADH =Vasopres sin release (Posterior Pituitary  H 2 O retention –Stroke volume ( SV) increases  Cardiac output…",
+    "slug": "2024-Revision-mod-1-16-slide",
+    "n": 6
+   }
+  ],
+  "qf1f0a2f075": [
+   {
+    "k": "patton",
+    "uid": "patton:682#30",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "This covering layer is known as the visceral layer of the serous pericardium or the epicardium",
+    "t": "This covering layer is known as the visceral layer of the serous pericardium or the epicardium.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qf3c3c8b48f": [
+   {
+    "k": "patton",
+    "uid": "patton:682#35",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "fibrous pericardial sac with its smooth, well-lubricated lining provides protection against friction.",
+    "t": "Visceral layer (epicardium)—adhering to the outside of the heart; between visceral and parietal layers is a space, the pericardial space, that contains a few drops of pericardial fluid Function of the Heart Coverings The fibrous pericardial sac with its smooth, well-lubricated lining provides protection against friction.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qf41e8746af": [
+   {
+    "k": "patton",
+    "uid": "patton:702#34",
+    "src": "Patton 9e · Ch 28 Heart · p. 662",
+    "quote": "Tricuspid valve (right AV valve)—guards the right atrioventricular orifice; free edges of three flaps",
+    "t": "Atrioventricular (AV) valves—prevent blood from flowing back into the atria from the ventricles when the ventricles contract (1) Tricuspid valve (right AV valve)—guards the right atrioventricular orifice; free edges of three flaps of endocardium are attached to papillary muscles by chordae tendineae (2) Bicuspid, or mitral, valve (left AV valve)—similar in structure to tricuspid valve except has only two flaps",
+    "pg": 702,
+    "pp": 662,
+    "ch": 28
+   }
+  ],
+  "qf5c6853d54": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-Resp-2-2#26",
+    "src": "2026 Resp 2-2 deck · slide 26",
+    "quote": "diffusion rate is affected by surface area (A), solubility (S) of the gas, membrane thickness",
+    "t": "…Respiratory Membrane Respiratory membrane is 0.5 to 1  m thick, allowing for efficient gas exchange increase thickness of the respiratory membrane e.g. pneumonia, reduces the efficiency of external respiration decrease in surface area reduce gas exchange, e.g. emphysema, the walls of adjacent alveoli break down the membrane diffusion rate is affected by surface area (A), solubility (S) of the gas, membrane thickness (t), and the partial pressure (P) gradient.",
+    "slug": "2026-Resp-2-2",
+    "n": 26
+   }
+  ],
+  "qf6fc8c5a13": [
+   {
+    "k": "patton",
+    "uid": "patton:682#35",
+    "src": "Patton 9e · Ch 28 Heart · p. 642",
+    "quote": "Parietal layer—lining inside the fibrous pericardium 2. Visceral layer (epicardium)—adhering to the outside of the heart;",
+    "t": "Parietal layer—lining inside the fibrous pericardium 2. Visceral layer (epicardium)—adhering to the outside of the heart; between visceral and parietal layers is a space, the pericardial space, that contains a few drops of pericardial fluid Function of the Heart Coverings The fibrous pericardial sac with its smooth, well-lubricated lining provides protection against friction.",
+    "pg": 682,
+    "pp": 642,
+    "ch": 28
+   }
+  ],
+  "qf76114e1cc": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#23",
+    "src": "CVS 2 learning page",
+    "quote": "circumflex artery from the left coronary artery",
+    "t": "the L & R coronary arteries branch to form other coronary arteries like the LAD (left anterior descending coronary artery),and the circumflex artery from the left coronary artery (0.5) and the marginal artery from the right coronary artery (0.5)."
+   }
+  ],
+  "qfa265e2184": [
+   {
+    "k": "her",
+    "uid": "page:CVS 2#17",
+    "src": "CVS 2 learning page",
+    "quote": "telling us that this is the aortic valve and not the pulmonary valve.",
+    "t": "We can clearly see the ostea above the flaps telling us that this is the aortic valve and not the pulmonary valve."
+   }
+  ],
+  "qfbe2f24241": [
+   {
+    "k": "patton",
+    "uid": "patton:683#18",
+    "src": "Patton 9e · Ch 28 Heart · p. 643",
+    "quote": "joins the right ventricle (pulmonary valve) and where the aorta joins the left ventricle",
+    "t": "The other two heart valves, the heart’s semilunar (SL) valves, are located where the trunk of the pulmonary artery joins the right ventricle (pulmonary valve) and where the aorta joins the left ventricle (aortic valve).",
+    "pg": 683,
+    "pp": 643,
+    "ch": 28
+   }
+  ],
+  "qfc03c61d2f": [
+   {
+    "k": "patton",
+    "uid": "patton:878#5",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 838",
+    "quote": "holding the breath results in an increase in the CO2 content of the blood",
+    "t": "For example, one may stop breathing and do so for a few minutes, but holding the breath results in an increase in the CO2 content of the blood because it is not being removed by respirations.",
+    "pg": 878,
+    "pp": 838,
+    "ch": 36
+   }
+  ],
+  "q0abc67318d": [
+   {
+    "k": "patton",
+    "uid": "patton:702#34",
+    "src": "Patton 9e · Ch 28 Heart · p. 662",
+    "quote": "free edges of three flaps of endocardium are attached to papillary muscles",
+    "t": "Atrioventricular (AV) valves—prevent blood from flowing back into the atria from the ventricles when the ventricles contract (1) Tricuspid valve (right AV valve)—guards the right atrioventricular orifice; free edges of three flaps of endocardium are attached to papillary muscles by chordae tendineae (2) Bicuspid, or mitral, valve (left AV valve)—similar in structure to tricuspid valve except has only two flaps",
+    "pg": 702,
+    "pp": 662,
+    "ch": 28
+   }
+  ],
+  "q1cb683131a": [
+   {
+    "k": "patton",
+    "uid": "patton:773#4",
+    "src": "Patton 9e · Ch 31 Lymphatic System · p. 733",
+    "quote": "causes intraabdominal pressure to increase as intrathoracic pressure decreases",
+    "t": "The mechanism of inspiration, resulting from the descent of the diaphragm, causes intraabdominal pressure to increase as intrathoracic pressure decreases.",
+    "pg": 773,
+    "pp": 733,
+    "ch": 31
+   }
+  ],
+  "q25650249d5": [
+   {
+    "k": "patton",
+    "uid": "patton:748#43",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 708",
+    "quote": "vasomotor center of the medulla sends sympathetic signals to certain blood vessels",
+    "t": "During exercise, the vasomotor center of the medulla sends sympathetic signals to certain blood vessels to change diameter and thus shunt blood away from “maintenance” organs, such as the digestive organs in the abdomen, and toward the skeletal muscles.",
+    "pg": 748,
+    "pp": 708,
+    "ch": 30,
+    "fig": "30-13"
+   }
+  ],
+  "q2610b388e1": [
+   {
+    "k": "patton",
+    "uid": "patton:696#4",
+    "src": "Patton 9e · Ch 28 Heart · p. 656",
+    "quote": "incomplete closing of the valves (valvular insufficiency) or stenosis (constriction, or narrowing) of them.",
+    "t": "It is sometimes described as a “swishing” sound that may signify incomplete closing of the valves (valvular insufficiency) or stenosis (constriction, or narrowing) of them.",
+    "pg": 696,
+    "pp": 656,
+    "ch": 28
+   }
+  ],
+  "q4d54509a13": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP2#15",
+    "src": "2026 RESP2 deck · slide 15",
+    "quote": "P A , Alveolar pressure = intrapulmonary pressure",
+    "t": "P A , Alveolar pressure = intrapulmonary pressure P B , Barometric pressure= atmospheric pressure P IP , Intrapleural pressure = P A < P B; P IP < P B P A = P B; P IP < P B P A > P B; P IP < P B P A = P B; P IP < P B",
+    "slug": "2026-RESP2",
+    "n": 15
+   },
+   {
+    "k": "patton",
+    "uid": "patton:866#12",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 826",
+    "quote": "Alveolar pressure (PA) is intrapulmonary pressure—the pressure at the far end of the internal airways.",
+    "t": "Alveolar pressure (PA) is intrapulmonary pressure—the pressure at the far end of the internal airways.",
+    "pg": 866,
+    "pp": 826,
+    "ch": 36,
+    "fig": "36-2"
+   }
+  ],
+  "q6ff6ada641": [
+   {
+    "k": "slide",
+    "uid": "slide:2026-RESP-3#32",
+    "src": "2026 RESP 3 deck · slide 32",
+    "quote": "Respiratory (PaCO 2 ) acidosis (low pH)",
+    "t": "…alkalotic HCO 3 acidotic 22-26 alkalotic Metabolic (HCO 3 ) Acidosis (low pH) Diabetic ketoacidosis Lactic acidosis Alcohol Metabolic (HCO 3 ) Alkalosis(high pH) Severe vomiting-loss of acid Loss of Potassium Respiratory (PaCO 2 ) acidosis (low pH) e.g. severe Asthma, Pneumonia, Hypoventilation Respiratory (PaCO 2 ) Alkalosis(high pH Hyperventilation Panic attack Acid Normal Base HCO 3 pH PaCO 2 Acid Normal Base PaCO 2 pH HCO 3 Acid Normal…",
+    "slug": "2026-RESP-3",
+    "n": 32
+   }
+  ],
+  "q95f949735b": [
+   {
+    "k": "patton",
+    "uid": "patton:893#24",
+    "src": "Patton 9e · Ch 37 Gas Exchange and Transport · p. 853",
+    "quote": "If blood consisted only of plasma, the maximum oxygen that could be transported would be only about 0.3 ml",
+    "t": "If blood consisted only of plasma, the maximum oxygen that could be transported would be only about 0.3 ml of O2 per 100 ml of blood.",
+    "pg": 893,
+    "pp": 853,
+    "ch": 37,
+    "fig": "37-7"
+   }
+  ],
+  "qc7e3923d97": [
+   {
+    "k": "patton",
+    "uid": "patton:754#4",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 714",
+    "quote": "useful in reducing abnormally high blood pressure (hypertension).",
+    "t": "Because angiotensin-converting enzyme (ACE) regulates the amount of available angiotensin II, drugs that act as ACE inhibitors can reduce angiotensin II and thus block vasoconstriction—an effect that is useful in reducing abnormally high blood pressure (hypertension).",
+    "pg": 754,
+    "pp": 714,
+    "ch": 30
+   }
+  ],
+  "qcba59a0c25": [
+   {
+    "k": "patton",
+    "uid": "patton:865#29",
+    "src": "Patton 9e · Ch 36 Ventilation · p. 825",
+    "quote": "external respiration (ventilation and pulmonary gas exchange), transport of gases by blood, and internal respiration",
+    "t": "This chapter and the next are organized around the principle that respiratory function includes external respiration (ventilation and pulmonary gas exchange), transport of gases by blood, and internal respiration (systemic tissue gas exchange and cellular respiration).",
+    "pg": 865,
+    "pp": 825,
+    "ch": 36,
+    "fig": "36-1"
+   }
+  ],
+  "qee1ee274dc": [
+   {
+    "k": "patton",
+    "uid": "patton:750#11",
+    "src": "Patton 9e · Ch 30 Circulation of Blood · p. 710",
+    "quote": "cardiac control center and the vasomotor center in the medulla.",
+    "t": "Carotid sinus and aortic baroreceptors detect changes in blood pressure and feed the information back to the cardiac control center and the vasomotor center in the medulla.",
+    "pg": 750,
+    "pp": 710,
+    "ch": 30,
+    "fig": "30-14",
+    "assigned": true
+   }
+  ],
+  "qef65834634": [
+   {
+    "k": "patton",
+    "uid": "patton:731#4",
+    "src": "Patton 9e · Ch 29 Blood Vessels · p. 691",
+    "quote": "foramen ovale normally becomes functionally closed soon after a newborn takes the first breath",
+    "t": "The foramen ovale normally becomes functionally closed soon after a newborn takes the first breath and full circulation through the lungs becomes established.",
+    "pg": 731,
+    "pp": 691,
+    "ch": 29
+   }
+  ]
+ }
+}

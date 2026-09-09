@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { CHAINS } from './content/chains.js';
 import { CASES } from './content/cases.js';
 import { SAQ_ANSWERS, norm } from './content/saq-answers.js';
-import { loadVideos, loadVideoMatches, loadPassages, matchVideo, matchPassage } from './content/explain.mjs';
+import { loadVideos, loadVideoMatches, loadRefMatches, matchVideo, matchRefs } from './content/explain.mjs';
 import { structuredStems, plainText } from './stem-html.mjs';
 import { OVERRIDES } from './content/overrides.js';
 
@@ -193,36 +193,39 @@ for (const z of bank.quizzes) {
   if (kept) quizzes.push({ id: fid, name: qname, sys: qsys, n: kept });
 }
 
-/* ── the explain layer: video + verbatim passage per question ──────── */
+/* ── the explain layer: video + judged text references per question ── */
 const videos = loadVideos(path.join(HERE, 'content'));
 const vmatches = loadVideoMatches(path.join(HERE, 'content'), videos);
-const passages = loadPassages();
+const rmatches = loadRefMatches(path.join(HERE, 'content'));
 const SLIDESRC = path.join(CAP, 'slides');
-let nVid = 0, nRef = 0, nSlide = 0;
-const usedSlides = new Set(), vmUsed = new Set();
+let nVid = 0, nRef = 0, nSlide = 0, nSlideText = 0, nHer = 0, nPat = 0, nPatOnly = 0;
+const usedSlides = new Set(), vmUsed = new Set(), rmUsed = new Set();
 for (const q of questions) {
   const v = matchVideo(q, videos, vmatches); if (v) { q.vid = v; nVid++; vmUsed.add(q.id); }
-  const r = matchPassage(q, passages);
-  if (r) {
-    /* A question that carries its OWN image is its own authority — a retrieved
-       slide with a different letter/label scheme beside it contradicts the
-       figure the student just answered on (the label-the-glands bug). Such
-       questions get text quotes only, never a second figure. */
-    if (r.slug && q.imgs.length) { /* drop the slide ref */ }
-    else if (r.slug) {
+  const refs = [];
+  for (const r of matchRefs(q, rmatches)) {
+    rmUsed.add(q.id);
+    if (r.k === 'slide') {
+      /* A question that carries its OWN image is its own authority — a retrieved
+         slide with a different letter/label scheme beside it contradicts the
+         figure the student just answered on (the label-the-glands bug). Such
+         questions keep text references only, never a second figure. */
+      if (q.imgs.length) continue;
       const png = path.join(SLIDESRC, r.slug, `slide-${r.n}.png`);
       if (fs.existsSync(png)) {
         const name = `${r.slug}-${r.n}.jpg`;
         usedSlides.add(JSON.stringify([png, name]));
-        q.ref = { src: r.src, slide: name }; nSlide++;
-      } else if (r.t) q.ref = { t: r.t, src: r.src }; /* Module 1 has no rendered decks: quote
-        the slide's own text instead — never point at a picture we can't show */
-    } else q.ref = { t: r.t, src: r.src };
-    if (q.ref) nRef++;
+        refs.push({ k: 'slide', src: r.src, slide: name }); nSlide++;
+      } else if (r.t) { refs.push({ k: 'slide', src: r.src, t: r.t }); nSlideText++; }   /* deck not rendered: quote the slide's own words — never point at a picture we can't show */
+    } else {
+      refs.push(r);
+      if (r.k === 'her') nHer++; else nPat++;
+    }
   }
+  if (refs.length) { q.refs = refs; nRef++; if (refs.every(r => r.k === 'patton')) nPatOnly++; }
 }
-console.log(`explain layer: ${nVid}/${questions.length} questions matched a video (${Math.round(100 * nVid / questions.length)}%), ` +
-  `${nRef} matched her material (${nSlide} as real slide images) — from ${videos.length} videos, ${passages.length} passages`);
+console.log(`explain layer: ${nVid}/${questions.length} questions matched a video (${Math.round(100 * nVid / questions.length)}%); ` +
+  `${nRef} carry a judged reference (${nSlide} her slide images + ${nSlideText} slides quoted as text, ${nHer} her prose, ${nPat} Patton excerpts; ${nPatOnly} Patton-only) — from ${videos.length} videos`);
 /* compress + ship only the referenced slides */
 const SLIDEOUT = path.join(HERE, 'img', 'slides');
 fs.mkdirSync(SLIDEOUT, { recursive: true });
@@ -235,6 +238,7 @@ for (const a of SAQ_ANSWERS) if (!saqUsed.has(a.k)) fails.push('saq-answers entr
 /* a verified video match whose question id no longer exists is stale evidence,
    not a harmless extra — same rule as an override that matched nothing */
 for (const qid of Object.keys(vmatches)) if (!vmUsed.has(qid)) fails.push('video-matches entry matched NO question: ' + qid);
+for (const qid of Object.keys(rmatches)) if (!rmUsed.has(qid)) fails.push('ref-matches entry matched NO question: ' + qid);
 /* identical content captured twice (review quizzes repeat questions) — keep one */
 const dup = new Set(); let dropped = 0;
 for (let i = questions.length - 1; i >= 0; i--) {
@@ -268,7 +272,9 @@ const DATA = {
   built: new Date().toISOString().slice(0, 10),
   stats: { n: questions.length, held: held.length, videos: videos.length, videosReached: reached.size,
     videosFill: videos.filter(v => v.ch).length,
-    withVideo: questions.filter(q => q.vid).length },
+    withVideo: questions.filter(q => q.vid).length,
+    withRef: nRef, withHer: questions.filter(q => q.refs && q.refs.some(r => r.k !== 'patton')).length,
+    withPatton: nPat, pattonOnly: nPatOnly },
   quizzes: quizzes.sort((a, b) => a.sys.localeCompare(b.sys) || a.name.localeCompare(b.name)),
   questions, chains: CHAINS, cases: CASES, held,
 };

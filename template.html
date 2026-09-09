@@ -112,6 +112,8 @@ textarea{min-height:120px}
 .steps label{display:flex;gap:8px;align-items:flex-start;margin:6px 0;cursor:pointer}
 .refq{font-size:.85rem;color:var(--muted-fg);margin:8px 0 2px;padding:8px 10px;background:var(--muted);border-radius:8px}
 .refq.slide{padding:6px}
+.refq.patton{border-left:3px solid var(--primary)}
+.refq i{color:var(--fg)}
 .slideimg{max-width:100%;background:#fff;border-radius:6px;display:block;margin:0 0 4px}
 .keyrows{margin:6px 0}
 .krow{font-size:.85rem;padding:3px 0;border-bottom:1px dashed var(--border)}
@@ -187,6 +189,10 @@ a{color:var(--primary)}
 
 <script>
 const DATA = /*@BANK@*/;
+/* references: q.refs = [{k:'slide'|'her'|'patton', src, slide|t, ...}] in authority order —
+   her slide, her prose, Patton. A bank built with the older single q.ref still renders. */
+for(const q of DATA.questions){ if(!q.refs) q.refs = q.ref ? [{k:q.ref.slide?'slide':'her', ...q.ref}] : []; }
+const REF = {slide:{ic:'📖',lbl:'Her slide'}, her:{ic:'✍',lbl:'Her notes'}, patton:{ic:'📕',lbl:'Patton'}};
 /* ── state ─────────────────────────────────────────────────────────── */
 const LS = k => { try { return JSON.parse(localStorage.getItem('hs2m1.'+k)) } catch(e){ return null } };
 const SV = (k,v) => { try { localStorage.setItem('hs2m1.'+k, JSON.stringify(v)) } catch(e){} };
@@ -526,9 +532,9 @@ function saveAns(){
 function learnChipsHTML(q){
   const chips=[];
   if(q.vid)chips.push(`<button class="qa" data-act="vid">▶ Video · from ${mmss(Number.isInteger(q.vid.at)?q.vid.at:0)}</button>`);
-  if(q.ref)chips.push(`<button class="qa" data-act="slide">📖 ${q.ref.slide?'Her slide':'Her notes'}</button>`);
+  for(const r of q.refs)chips.push(`<button class="qa" data-act="${r.k}">${REF[r.k].ic} ${REF[r.k].lbl}${r.k==='patton'?' p. '+r.pp:''}</button>`);
   const hint=chips.length?(SIT.chk[q.id]?'':'<span class="hint">open before or after you answer</span>')
-    :'<span class="hint">no video or slide matched this one — the answer shows on Check</span>';
+    :'<span class="hint">nothing of hers or Patton’s states this one outright — the answer shows on Check</span>';
   return `<div class="lres" data-qid="${q.id}">${chips.join('')}${hint}<div class="qr-pane" hidden></div></div>`;
 }
 /* resources open by themselves for: written questions, skipped ones, anything not fully right */
@@ -560,7 +566,7 @@ function learnMkHTML(q,chk){
   const body=!r
     ? `${a&&a.text?'':'<div class="you">— nothing written — read the model, then say it out loud</div>'}<div class="steps">${q.saq.steps.map((s,i)=>`<label><input type="checkbox" data-lsaq ${chk.ticks.includes(i)?'checked':''}> <span>${esc(s)}</span></label>`).join('')}</div><div class="refsrc">${esc(q.saq.src)}</div>`
     : keyHTML(q,a);
-  const res=learnOpen(q,chk)?(q.ref?slideHTML(q):'')+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
+  const res=learnOpen(q,chk)?refsHTML(q)+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
   return `<div class="mk ${cls}"><div class="verdict">${verdict}</div>${body}${res}${r?`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`:''}</div>`;
 }
 /* lock the widgets and colour them: the key green, a wrong pick red, per part for matching and blanks */
@@ -589,7 +595,7 @@ function learnDone(){
   const btn=(k,lbl)=>`<button class="qa" data-act="${k}">${lbl}</button>`;
   const row=(q,cls,mk)=>`<div class="qr ${cls}" data-qid="${q.id}">
       <div class="qr-head"><span class="qr-mk">${mk}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
-      <div class="qr-acts">${q.type==='essay'?'':btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div><div class="qr-pane" hidden></div></div>`;
+      <div class="qr-acts">${q.type==='essay'?'':btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div><div class="qr-pane" hidden></div></div>`;
   $('#view').innerHTML=`<div class="card">
     <div class="score-hero">${closed.length?`${first.length} / ${closed.length}`:`✍ ${saqs.length} written`}</div>
     <div class="score-sub">${closed.length?'right first go':'self-marked'} · learn mode · ${esc(SIT.label)} · ${Math.round((Date.now()-SIT.t0)/60000)} min</div>
@@ -658,11 +664,11 @@ function mark(){
         <div class="qr-head"><span class="qr-mk mk-p" id="mk${i}">✍ /${q.pts}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
         ${a&&a.text?`<div class="you">You wrote: ${esc(a.text.slice(0,240)).replace(/\n/g,' ')}${a.text.length>240?'…':''}</div>`:'<div class="you">— no answer written —</div>'}
         <div class="steps">${q.saq.steps.map(s=>`<label><input type="checkbox" data-saq="${i}" data-pt="${q.pts/q.saq.steps.length}"> <span>${esc(s)}</span></label>`).join('')}</div>
-        <div class="qr-acts"><span class="src">${esc(q.saq.src)}</span>${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div><div class="qr-pane" hidden></div></div>`}
+        <div class="qr-acts"><span class="src">${esc(q.saq.src)}</span>${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div><div class="qr-pane" hidden></div></div>`}
       const pct=r.got/r.tot, cls=pct>=1?'right':pct>0?'partial':'wrong';
       return `<div class="qr ${cls}" data-qid="${q.id}" data-sys="${q.sys}" data-wrong="${pct<1?1:0}">
         <div class="qr-head"><span class="qr-mk">${(+r.got.toFixed(1))}/${r.tot}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
-        <div class="qr-acts">${btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${q.ref?btn('slide','📖 Slide'):''}</div>
+        <div class="qr-acts">${btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div>
         <div class="qr-pane" hidden></div></div>`}).join('')}
     ${weakSpotsHTML(rows)}
     <button class="btn primary wide" id="doneB">Save score & finish</button></div>`;
@@ -688,14 +694,21 @@ function mark(){
    the same row forward to the question itself. */
 /* the review is an accordion: each question collapses to a mark + one-line stem, and
    the answer / video / slide open ON DEMAND below the row — never all at once. */
-function slideHTML(q){
-  if(q.ref&&q.ref.slide)return `<div class="refq slide"><a href="img/slides/${q.ref.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${q.ref.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(q.ref.src)} — tap to open full size</span></div>`;
-  if(q.ref)return `<div class="refq">📖 <i>“${esc(q.ref.t)}”</i><span class="refsrc"> — ${esc(q.ref.src)}</span></div>`;
-  return '<div class="refsrc">No slide or passage matched this one.</div>';
+/* one reference, by kind: her slide is the rendered image (or, for a deck never rendered,
+   the slide's own words); her prose and Patton are the sentence(s) the judge quoted,
+   verbatim, with the source named. Every reference in the bank was judged to STATE the
+   keyed fact and carries a quote re-found in the source at build time — same standard as
+   the videos. Where Patton and Hannetjie disagree, she wins: her references sit above his. */
+function refHTML(r){
+  if(r.k==='slide'&&r.slide)return `<div class="refq slide"><a href="img/slides/${r.slide}" target="_blank" rel="noopener"><img class="slideimg" src="img/slides/${r.slide}" alt="her slide" loading="lazy"></a><span class="refsrc">📖 ${esc(r.src)} — tap to open full size</span></div>`;
+  if(r.k==='patton')return `<div class="refq patton">📕 <i>“${esc(r.t)}”</i><span class="refsrc"> — ${esc(r.src)}${r.fig?` · Figure ${esc(r.fig)}${r.assigned?' (a figure she set in her learning page)':''}`:''}</span></div>`;
+  return `<div class="refq">${REF[r.k].ic} <i>“${esc(r.t)}”</i><span class="refsrc"> — ${esc(r.src)}</span></div>`;
 }
+function refsHTML(q){ return q.refs.length?q.refs.map(refHTML).join(''):''; }
+function refBtns(q,btn){ return q.refs.map(r=>btn(r.k,`${REF[r.k].ic} ${REF[r.k].lbl}`)).join(''); }
 function paneHTML(q,act){
   if(act==='vid')return q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):'';
-  if(act==='slide')return slideHTML(q);
+  if(REF[act]){const r=q.refs.find(x=>x.k===act);return r?refHTML(r):''}
   return keyHTML(q,SIT.ans[q.id])+`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
 }
 /* a video link opens at the moment its captions say the tested point is taught —
@@ -779,10 +792,22 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   are the estate's Module 1 guide chains — scaffolds built from her material, not her material.</p>
   <h3>Learn mode</h3>
   <p><b>Learn as you go</b> (and the <b>Learn</b> button beside each quiz) marks every question the moment you
-  press Check and shows the answer, her notes and the matched video right there — you can open the notes or
-  video before answering. Check with nothing picked just shows you. Nothing from Learn mode goes on the score
-  chart; a wrong or skipped question still joins your misses pile, and a right answer after a peek does not
-  clear it. <b>Sit</b> is the test version: the same questions, nothing shown until the end.</p>
+  press Check and shows the answer, her slide or notes, the Patton passage and the matched video right there —
+  you can open any of them before answering. Check with nothing picked just shows you. Nothing from Learn mode
+  goes on the score chart; a wrong or skipped question still joins your misses pile, and a right answer after a
+  peek does not clear it. <b>Sit</b> is the test version: the same questions, nothing shown until the end.</p>
+  <h3>Where the explanations come from</h3>
+  <p>Every reference under a question was checked to <b>state the keyed fact</b>, not just share its topic: each
+  of her CVS, respiratory and lymphatic slides, learning-page paragraphs, Anatomy Monday answers, the lab
+  workbook and the Module 1 chapters of Patton (27–37) was shortlisted by keyword, read by a model that had to
+  quote the exact words that state the answer, that quote was re-found in the source by a script, and a second
+  pass tried to knock each match down. ${DATA.stats.withRef} of the ${DATA.stats.n} questions carry at least one —
+  ${DATA.stats.withHer} from her own material, ${DATA.stats.withPatton} with a Patton passage
+  (${DATA.stats.pattonOnly} have only Patton). A question with nothing is a question nothing states outright, and
+  no reference beats a wrong one. Patton passages are short excerpts (a sentence or two, never more than 70 words)
+  from <i>Patton &amp; Thibodeau, Anatomy &amp; Physiology, 9th ed.</i> (Elsevier, 2016), quoted for study with
+  the page named; the course’s ClinicalKey copy is the 2019 edition, so figure numbers may differ. Where Patton
+  and Hannetjie disagree, she wins.</p>
   <h3>What’s held out</h3>
   <p>${DATA.held.length} questions are excluded, each with its reason in the repo's held.json: mostly figures
   that did not survive the export, and the whole “1.1 &amp; 3.3 Biophysical Principles” quiz, which was

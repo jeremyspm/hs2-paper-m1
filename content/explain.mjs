@@ -1,21 +1,17 @@
 /* The explain layer, computed at BUILD time — retrieval, not generation.
-   For each question: (1) the best-matching Dr Matt & Dr Mike video, ranked
-   concept-first and duration-aware; (2) the best verbatim passage from HER
-   Module 1 material (learning pages preferred over deck fragments — a choppy
-   slide table does not retrieve or read). Module 1's decks are not rendered to
-   images, so a deck hit is quoted as text (build.mjs decides which). Below threshold -> nothing: no video
-   beats a wrong video, and absence is the information. Nothing here writes
-   prose; passages are quoted verbatim with their source named. */
+   For each question: (1) the video whose captions were judged to teach the
+   keyed fact (content/video-matches.json); (2) up to three text references —
+   her slide, her prose, a Patton paragraph — each judged to STATE the keyed
+   fact and carrying a verbatim quote that this file re-finds in the shipped
+   excerpt (content/ref-matches.json). Below the bar -> nothing: no reference
+   beats a wrong one, and absence is the information. Nothing here writes
+   prose; excerpts are quoted verbatim with their source named. */
 import fs from 'node:fs';
 import path from 'node:path';
-
-const TXT = 'C:/Users/USER/Desktop/github/canvas-harvest/CanvasArchive/2026/Health Science 2 (722.541-26-MC-21) - Health Science 2 (61986)/text';
 
 const STOP = new Set(('the and for with which following are was were this that from into onto your their been have has ' +
   'correct answer true false statement statements system systems body called known example examples describe explain ' +
   'identify select choose match mix nervous muscular skeletal endocrine musculoskeletal anatomy physiology overview ' +
-  'cardiovascular respiratory lymphatic circulatory ' +
-  'cardiovascular respiratory lymphatic circulatory ' +
   'these those there where when what while would could should more most much many some also then than each other ' +
   'made make making used uses using type types kind kinds part parts main within between because during').split(' '));
 const KEEP = new Set('atp csf pth tsh adh ach ecg cns pns ans dna gh fsh lh t3 t4 apc bbb'.split(' '));
@@ -35,74 +31,6 @@ export function loadVideos(dir) {
     .map(v => ({ ...v, m: mins(v.d), terms: terms(v.t.replace(/\|.*$/, '')) }));
 }
 
-export function loadPassages() {
-  const passages = [];
-  const pageDir = path.join(TXT, 'pages'), fileDir = path.join(TXT, 'files');
-  for (const f of fs.readdirSync(pageDir)) {
-    if (!/^LEARNING PAGE (CVS|RESP)\b|^LEARNING PAGE- Lymphatic|^MODULE 1\.1- Circulatory Shock/i.test(f)) continue;
-    const src = /Circulatory Shock/.test(f) ? 'Circulatory Shock page'
-      : f.replace(/^LEARNING PAGE[- ]+/, '').replace(/\.txt$/, '').replace(/-.*$/, '').trim() + ' learning page';
-    const text = fs.readFileSync(path.join(pageDir, f), 'utf8');
-    let buf = [];
-    for (const para of text.split(/\n\s*\n/)) {
-      const p = para.replace(/\s+/g, ' ').trim();
-      if (!p) continue;
-      buf.push(p);
-      const joined = buf.join(' ');
-      if (joined.split(' ').length >= 30) {
-        /* question blocks, reading lists and link cruft ask/point rather than teach */
-        const cruft = /(links to an external site|chapter \d+|check your understanding|scroll through|patton (and|&) thibodeau|\bquiz\b|questions? can you|_{3,}|\[ select \]|wordlist)/i;
-        if (joined.length > 40 && (joined.match(/\?/g) || []).length < 3 && !/\[image:/i.test(joined) && !cruft.test(joined))
-          passages.push({ t: joined.replace(/https?:\/\/\S+/g, ' ').slice(0, 420), src, page: true });
-        buf = [];
-      }
-    }
-  }
-  for (const f of fs.readdirSync(fileDir)) {
-    /* the 2026 Module 1 teaching decks plus the older decks she still links
-       (2024 revision + lymphatic, 2019 Resp 4, the acid-base tutorial deck) —
-       named by their own file names, no invented year */
-    if (!/^(2026 (CIRCULATION|CVS|Cardiovascular|Lymphatic|RESP|Resp|Respiration)|2024 Revision mod 1|2024 Lymphatic|2019 S2 Resp|Respiratory Regulation and AcidBase)/i.test(f)) continue;
-    const base = f.replace(/\.pptx\.txt$/, '');
-    const deck = base.replace(/^2026 /, '');
-    const text = fs.readFileSync(path.join(fileDir, f), 'utf8');
-    for (const m of text.split(/--- slide (\d+) ---/).slice(1).reduce((a, v, i, arr) => (i % 2 === 0 && a.push([v, arr[i + 1] || '']), a), [])) {
-      const [n, body] = m;
-      const clean = body.replace(/\[speaker notes[^\]]*\][^\n]*/g, '').replace(/\s+/g, ' ').trim();
-      if (clean.split(' ').length < 15) continue;
-      /* objective-list and question slides ASK, they don't TEACH — never quote them */
-      if ((clean.match(/\b(Describe|Explain|Identify|Differentiate)\b/g) || []).length >= 2) continue;
-      if ((clean.match(/\?/g) || []).length >= 3) continue;
-      if (/_{3,}|\[ Select \]|\bWORDLIST\b/.test(clean)) continue;   // a blank-filling exercise, not teaching
-      if (/(links to an external site|chapter \d+|check your understanding|patton box)/i.test(clean)) continue;
-      const slug = base.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      passages.push({ t: clean.replace(/https?:\/\/\S+/g, ' ').slice(0, 420), src: `${base} deck · slide ${n}`, page: false, slug, n: +n });
-    }
-  }
-  for (const p of passages) p.terms = terms(p.t);
-  return passages;
-}
-
-/* score a candidate's term-set against a question: key terms weigh double.
-   A candidate term also hits when it is a stem of a question term (recept ⊂
-   receptors, nocicept ⊂ nociceptors) — light stemming beats none. */
-const stemOf = (t) => t.replace(/s$/, '');
-function inSet(set, t) {
-  if (set.has(t) || set.has(stemOf(t))) return true;
-  /* substring credit needs BOTH sides >=8 chars — 'adrenal' must not buy 'adrenaline' */
-  const ts = stemOf(t);
-  if (ts.length >= 8) for (const q of set) { const qs = stemOf(q);
-    if (qs.length >= 8 && (qs.includes(ts) || ts.includes(qs))) return true; }
-  return false;
-}
-function score(cand, keyT, stemT) {
-  let s = 0, hits = 0, big = 0;
-  for (const t of cand) {
-    if (inSet(keyT, t)) { s += 2; hits++; if (t.length >= 8) big++; }
-    else if (inSet(stemT, t)) { s += 1; hits++; if (t.length >= 8) big++; }
-  }
-  return { s, hits, big };
-}
 /* The video per question is a LOOKUP into content/video-matches.json, not a
    title match. Until 2026-09-06 this function scored each video's TITLE against
    the question's key + stem terms; it attached 163 videos and roughly a third
@@ -142,18 +70,56 @@ export function matchVideo(q, videos, matches) {
   return { ...shape(list[0]), ...(list[1] ? { alt: shape(list[1]) } : {}) };
 }
 
-export function matchPassage(q, passages) {
-  const keyT = terms((q.key || []).concat(q.pairs ? q.pairs.map(p => p.left + ' ' + p.right) : [],
-    q.blanks ? q.blanks.map(b => b.correct) : [], q.saq ? q.saq.steps : []).join(' '));
-  const stemT = terms(q.q);
-  let best = null;
-  for (const p of passages) {
-    const { s, hits } = score(p.terms, keyT, stemT);
-    if (hits < 3) continue;                       // a quote must really be about it
-    const rank = s * (p.page ? 1.15 : 1);         // clean prose beats slide fragments
-    if (!best || rank > best.rank) best = p.page
-      ? { rank, t: p.t, src: p.src }
-      : { rank, t: p.t, src: p.src, slug: p.slug, n: p.n };  // deck ref -> the SLIDE when one is rendered, else its text
+/* Text references are a LOOKUP into content/ref-matches.json, built outside
+   this repo (estate scripts/text-refs): every unit of her slides, learning
+   pages, Anatomy Monday answers, the lab workbook and Patton 9e chapters 11-26
+   is BM25-shortlisted per question (Module 1: her CVS/RESP/lymphatic decks, learning pages,
+   Anatomy Mondays 1-4, the lab workbook, Patton ch. 27-37), a model judges from the unit's text whether
+   it STATES the keyed fact, every "yes" must carry a 6-15 word quote re-found
+   verbatim in the unit, and an adversarial pass tries to refute each survivor.
+   Until 2026-09-09 this file picked the ONE passage sharing the most words with
+   the stem: 102 of its 347 picks shared no word at all with the keyed answer.
+   Each entry: k = slide | her | patton; slides carry slug + n (the rendered
+   image is the reference), text kinds carry t (the sentence(s) around the
+   quote, <=70 words) — Patton entries also pg/pp/ch and, for figure captions,
+   fig and whether she assigned that figure in her own learning pages. */
+const normTok = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+export function loadRefMatches(dir) {
+  const j = JSON.parse(fs.readFileSync(path.join(dir, 'ref-matches.json'), 'utf8'));
+  const fail = [];
+  for (const [qid, list] of Object.entries(j.matches || {})) {
+    if (!Array.isArray(list) || !list.length) { fail.push(`${qid}: empty ref list`); continue; }
+    const kinds = new Set();
+    for (const r of list) {
+      if (!['slide', 'her', 'patton'].includes(r.k)) { fail.push(`${qid}: unknown kind ${r.k}`); continue; }
+      if (kinds.has(r.k)) fail.push(`${qid}: two ${r.k} refs`); kinds.add(r.k);
+      if (!r.src) fail.push(`${qid}: ${r.uid} has no source label`);
+      const q = normTok(r.quote);
+      if (q.length < 4) { fail.push(`${qid}: ${r.uid} has no provenance quote`); continue; }
+      if (r.k === 'slide') { if (!r.slug || !Number.isInteger(r.n)) fail.push(`${qid}: slide ref without slug/n`); continue; }
+      if (!r.t || r.t.split(/\s+/).length > 80) { fail.push(`${qid}: ${r.uid} excerpt missing or over 80 words`); continue; }
+      /* the quote must sit inside the excerpt that ships — the excerpt IS the evidence */
+      const t = normTok(r.t).join(' ');
+      if (!t.includes(q.join(' '))) {
+        // the excerpt may have been trimmed with an ellipsis through the quote's edge; accept >=85% of the quote's tokens in order
+        const hit = q.filter(w => t.includes(w)).length / q.length;
+        if (hit < 0.85) fail.push(`${qid}: ${r.uid} quote is not in its excerpt: "${r.quote}"`);
+      }
+      if (r.k === 'patton' && !(Number.isInteger(r.pg) && Number.isInteger(r.pp) && Number.isInteger(r.ch))) fail.push(`${qid}: ${r.uid} Patton ref without page/chapter`);
+    }
   }
-  return best && (best.slug ? { t: best.t, src: best.src, slug: best.slug, n: best.n } : { t: best.t, src: best.src });
+  if (fail.length) throw new Error('ref-matches.json failed its gates:\n  ' + fail.join('\n  '));
+  return j.matches;
+}
+
+export function matchRefs(q, matches) {
+  const list = matches[q.id];
+  if (!list) return [];
+  return list.map(r => {
+    const out = { k: r.k, src: r.src };
+    if (r.k === 'slide') { out.slug = r.slug; out.n = r.n; }
+    else out.t = r.t;
+    if (r.k === 'patton') { out.pp = r.pp; out.ch = r.ch; if (r.fig) out.fig = r.fig; if (r.assigned) out.assigned = true; }
+    return out;
+  });
 }
