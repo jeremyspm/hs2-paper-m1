@@ -125,6 +125,8 @@ textarea{min-height:120px}
 .vidrow a{font-weight:600}
 .askai{padding:3px 10px;font-size:.76rem;margin-top:6px}
 .aitext{flex-basis:100%;width:100%;min-height:150px;font-size:.78rem;margin-top:6px}
+.aisplit{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-top:6px}
+.aisplit .askai{margin-top:0}
 .vclip{margin:.5rem 0}
 .vframe{position:relative;aspect-ratio:16/9;width:100%;max-width:460px;background:#000;border-radius:8px;overflow:hidden;cursor:pointer}
 .vframe img,.vframe iframe{width:100%;height:100%;display:block;border:0;object-fit:cover}
@@ -786,7 +788,7 @@ const AI_CTX='I’m a first-year nursing student studying Health Science 2, Modu
 const AI_LBL='🤖 Explain like I’m stupid + quiz me';
 const AI_SHAPE={mcq:'multiple choice',tf:'true or false',multi:'tick every answer that applies',match:'matching',cloze:'fill the blanks / dropdowns',essay:'a written answer marked one mark per step'};
 const aiSteps=(extra,shape,stop)=>`Do this, in order:\n1. Explain it like I’m stupid: one everyday analogy, then map every part of the analogy back to the real term.\n2. Use my lecturer’s exact terms from above. Those words earn the marks; the analogy is scaffolding.\n${extra?'3. '+extra+'\n':''}${extra?4:3}. Then give me a 5-question blind quiz on it, ONE question at a time, with instant feedback after each answer, ${shape}.\n${stop}`;
-function aiQuestionPrompt(q){
+function aiQuestionPrompt(q,withFig){
   const a=SIT.ans[q.id];
   const you=a?(a.text||((a.sel||[]).map(i=>optLabel(q,q.opts[i])).join(', ')||Object.values(a.pick||{}).join(', '))):'';
   const L=[AI_CTX+' This is one of my lecturer’s own practice questions. I want to understand it, not memorise the answer.','',`Question: ${flatStem(q)}`];
@@ -794,24 +796,64 @@ function aiQuestionPrompt(q){
   if(q.saq)L.push('Her model answer, one mark per step: '+q.saq.steps.map((s,i)=>`(${i+1}) ${s}`).join(' '));
   else L.push(`Correct answer: ${keyText(q)}`);
   L.push(`My answer: ${you||'(none — I didn’t know)'}`);
-  if(q.imgs&&q.imgs.length)L.push('This question has a diagram I can’t paste. Don’t guess what it shows; work from the text.');
+  if(q.imgs&&q.imgs.length)L.push(withFig?'The question’s figure is pasted with this message. Read it before answering — the question is about it.':'This question has a diagram I can’t paste. Don’t guess what it shows; work from the text.');
   for(const r of q.refs||[]){
     if(r.t)L.push(`${r.k==='patton'?'The textbook says':'My lecturer’s notes say'} (verbatim): “${r.t}” — ${r.src}`);
-    else if(r.k==='slide')L.push(`My lecturer’s slide on this: ${r.src} (an image, I can’t paste it).`);
+    else if(r.k==='slide')L.push(withFig?`My lecturer’s slide on this is pasted with this message — ${r.src}. Her wording on it is what earns the marks.`:`My lecturer’s slide on this: ${r.src} (an image, I can’t paste it).`);
   }
   L.push('',aiSteps(you?'In one line, say what misconception my answer suggests.':'',`in the shape she uses (${AI_SHAPE[q.type]||'multiple choice'})`,'Stay inside this question and her notes. Don’t teach past them.'));
   return L.join('\n');
 }
-function copyPrompt(btn,text){
-  const done=ok=>{btn.textContent=ok?'Copied ✓ now paste it into Gemini (or any AI)':'Copy blocked — select the text below and copy it';
+/* the question's own figures — or, when it has none, her slide (the build guarantees a
+   question never carries both) — drawn onto ONE white png, each with its label, so a single
+   paste lands every picture the AI needs. Same-origin images, so the canvas stays clean. */
+function aiFigures(q){
+  const f=[];
+  for(const n of q.imgs||[])f.push({src:'img/'+n,label:q.imgs.length>1?'Question figure '+(f.length+1):'Question figure'});
+  for(const r of q.refs||[])if(r.k==='slide'&&r.slide)f.push({src:'img/slides/'+r.slide,label:'My lecturer’s slide — '+r.src});
+  return f;
+}
+function aiFigureBlob(q){
+  const srcs=aiFigures(q); if(!srcs.length)return Promise.resolve(null);
+  return Promise.all(srcs.map(s=>new Promise(res=>{const im=new Image();im.onload=()=>res({im,label:s.label});im.onerror=()=>res(null);im.src=s.src}))).then(all=>{
+    const ok=all.filter(Boolean); if(!ok.length)return null;
+    const PAD=16,LH=30,W=Math.min(1200,Math.max(...ok.map(x=>x.im.naturalWidth||900)));
+    const rows=ok.map(x=>{const w=x.im.naturalWidth||900,h=x.im.naturalHeight||Math.round(w*0.7),s=Math.min(1,W/w);return {im:x.im,label:x.label,w:Math.round(w*s),h:Math.round(h*s)}});
+    const c=document.createElement('canvas');c.width=W+PAD*2;c.height=rows.reduce((a,r)=>a+LH+r.h+PAD,PAD);
+    const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);
+    let y=PAD;for(const r of rows){g.fillStyle='#222';g.font='bold 17px system-ui,Segoe UI,sans-serif';g.fillText(r.label,PAD,y+20);y+=LH;g.drawImage(r.im,PAD+Math.round((W-r.w)/2),y,r.w,r.h);y+=r.h+PAD}
+    return new Promise(res=>c.toBlob(res,'image/png'));
+  });
+}
+/* copy: text + png in ONE clipboard item where the browser allows it (Chrome, Edge, Safari,
+   Android Chrome), built inside the tap so Safari's gesture rule holds — the png is a promise
+   because the figures are still being drawn. Anything else falls back to text only, and the
+   text then says the picture could not come along. After a combined copy two small buttons
+   let you re-copy just the text or just the figure, for an AI that keeps only one of them. */
+function copyPrompt(btn,textFor,figP){
+  const text=typeof textFor==='function'?textFor:()=>textFor;
+  const done=(ok,fig)=>{btn.textContent=ok?(fig?'Copied ✓ prompt + figure — paste into Gemini (or any AI)':'Copied ✓ now paste it into Gemini (or any AI)'):'Copy blocked — select the text below and copy it';
     const nx=btn.nextElementSibling;
-    if(!ok&&!(nx&&nx.classList.contains('aitext'))){const ta=document.createElement('textarea');ta.className='aitext';ta.readOnly=true;ta.value=text;btn.after(ta);ta.focus();ta.select()}
-    setTimeout(()=>btn.textContent=AI_LBL,3500)};
-  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject())
-    .then(()=>done(true))
-    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    if(!ok&&!(nx&&nx.classList.contains('aitext'))){const ta=document.createElement('textarea');ta.className='aitext';ta.readOnly=true;ta.value=text(false);btn.after(ta);ta.focus();ta.select()}
+    if(fig&&!(nx&&nx.classList.contains('aisplit'))){const d=document.createElement('div');d.className='aisplit refsrc';d._btn=btn;
+      d.innerHTML='Only one of them landed? <button class="btn ghost askai" data-aitext="1">📋 text only</button> <button class="btn ghost askai" data-aifig="1">🖼 figure only</button>';btn.after(d)}
+    setTimeout(()=>btn.textContent=AI_LBL,4000)};
+  const textOnly=()=>(navigator.clipboard?navigator.clipboard.writeText(text(false)):Promise.reject())
+    .then(()=>done(true,false))
+    .catch(()=>{const ta=document.createElement('textarea');ta.value=text(false);ta.style.position='fixed';ta.style.opacity='0';
       document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}
-      ta.remove();done(ok)});
+      ta.remove();done(ok,false)});
+  if(figP&&navigator.clipboard&&navigator.clipboard.write&&window.ClipboardItem){
+    let item=null;
+    try{item=new ClipboardItem({'text/plain':new Blob([text(true)],{type:'text/plain'}),'image/png':figP.then(b=>{if(!b)throw new Error('no figure');return b})})}catch(_){}
+    if(item){navigator.clipboard.write([item]).then(()=>{btn._aiFig=figP;btn._aiText=text(true);done(true,true)}).catch(textOnly);return}
+  }
+  textOnly();
+}
+function aiSplitCopy(s){
+  const b=s.closest('.aisplit')._btn, was=s.textContent, flash=t=>{s.textContent=t;setTimeout(()=>s.textContent=was,2500)};
+  const p=s.dataset.aitext?navigator.clipboard.writeText(b._aiText):navigator.clipboard.write([new ClipboardItem({'image/png':b._aiFig})]);
+  p.then(()=>flash('Copied ✓')).catch(()=>flash('Copy blocked'));
 }
 /* ── chrome ────────────────────────────────────────────────────────── */
 $('#countdown').textContent=`${daysLeft()}d to the exam`;
@@ -853,8 +895,11 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   <p>Under every marked question, <b>${AI_LBL}</b> copies a ready-made prompt to paste into Gemini (or any
   AI chat). It asks for one everyday analogy mapped back to the real terms, in <b>her</b> words, then a
   five-question blind quiz with instant feedback — and it carries her key and her notes, so the AI teaches to
-  her paper and stops where she stops. This page sends nothing anywhere; you paste it yourself. An AI’s quiz
-  checks that the analogy landed. Only her questions here check that it would earn marks — come back and sit them.</p>
+  her paper and stops where she stops. If the question has a figure, or her slide is its reference, the copy
+  carries that too, as one picture: paste once and the prompt and the picture both land; if your AI keeps only
+  one of them, two small buttons appear to re-copy just the text or just the figure. This page sends nothing
+  anywhere; you paste it yourself. An AI’s quiz checks that the analogy landed. Only her questions here check
+  that it would earn marks — come back and sit them.</p>
   <h3>What’s held out</h3>
   <p>${DATA.held.length} questions are excluded, each with its reason in the repo's held.json: mostly figures
   that did not survive the export, and the whole “1.1 &amp; 3.3 Biophysical Principles” quiz, which was
@@ -876,7 +921,8 @@ document.addEventListener('click',e=>{
     if(row.classList.contains('lres')&&!SIT.chk[q.id])SIT.peek[q.id]=true;
     pane.innerHTML=paneHTML(q,act);pane.hidden=false;pane.dataset.act=act;return}
   const ask=e.target.closest('[data-ask]');
-  if(ask){copyPrompt(ask,aiQuestionPrompt(SIT.deck.find(x=>x.id===ask.dataset.ask)));return}
+  if(ask){const q=SIT.deck.find(x=>x.id===ask.dataset.ask);copyPrompt(ask,w=>aiQuestionPrompt(q,w),aiFigures(q).length?aiFigureBlob(q):null);return}
+  const sp=e.target.closest('[data-aitext],[data-aifig]'); if(sp){aiSplitCopy(sp);return}
   if(e.target.id==='shareBtn'){
   const l=S.scores[S.scores.length-1];
   const line=`HS2 Paper Sim M1 — ${l.got}/${l.tot} (${Math.round(100*l.got/l.tot)}%) · ${l.label} · ${daysLeft()}d to the exam`;
