@@ -124,6 +124,7 @@ textarea{min-height:120px}
 .vidrow{font-size:.86rem;margin:6px 0}
 .vidrow a{font-weight:600}
 .askai{padding:3px 10px;font-size:.76rem;margin-top:6px}
+.aitext{flex-basis:100%;width:100%;min-height:150px;font-size:.78rem;margin-top:6px}
 .vclip{margin:.5rem 0}
 .vframe{position:relative;aspect-ratio:16/9;width:100%;max-width:460px;background:#000;border-radius:8px;overflow:hidden;cursor:pointer}
 .vframe img,.vframe iframe{width:100%;height:100%;display:block;border:0;object-fit:cover}
@@ -567,7 +568,7 @@ function learnMkHTML(q,chk){
     ? `${a&&a.text?'':'<div class="you">— nothing written — read the model, then say it out loud</div>'}<div class="steps">${q.saq.steps.map((s,i)=>`<label><input type="checkbox" data-lsaq ${chk.ticks.includes(i)?'checked':''}> <span>${esc(s)}</span></label>`).join('')}</div><div class="refsrc">${esc(q.saq.src)}</div>`
     : keyHTML(q,a);
   const res=learnOpen(q,chk)?refsHTML(q)+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
-  return `<div class="mk ${cls}"><div class="verdict">${verdict}</div>${body}${res}${r?`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`:''}</div>`;
+  return `<div class="mk ${cls}"><div class="verdict">${verdict}</div>${body}${res}${r?`<button class="btn ghost askai" data-ask="${q.id}">${AI_LBL}</button>`:''}</div>`;
 }
 /* lock the widgets and colour them: the key green, a wrong pick red, per part for matching and blanks */
 function paintChecked(q){
@@ -709,7 +710,7 @@ function refBtns(q,btn){ return q.refs.map(r=>btn(r.k,`${REF[r.k].ic} ${REF[r.k]
 function paneHTML(q,act){
   if(act==='vid')return q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):'';
   if(REF[act]){const r=q.refs.find(x=>x.k===act);return r?refHTML(r):''}
-  return keyHTML(q,SIT.ans[q.id])+`<button class="btn ghost askai" data-ask="${q.id}">🤖 Copy for AI</button>`;
+  return keyHTML(q,SIT.ans[q.id])+`<button class="btn ghost askai" data-ask="${q.id}">${AI_LBL}</button>`;
 }
 /* a video link opens at the moment its captions say the tested point is taught —
    `at` is where the verifying quote was found, not a guess */
@@ -772,6 +773,46 @@ function keyText(q){
 function optLabel(q,o){return q.ol&&q.ol[o]?`${o}. ${q.ol[o]}`:o}
 /* the flat stem carries Canvas's literal "[ Select ]" where each dropdown sat */
 const flatStem=q=>q.qt||String(q.q||'').replace(/\[ Select \]/g,'____');
+/* ── ask an AI ────────────────────────────────────────────────────────
+   The button composes a prompt and copies it; this page sends nothing anywhere —
+   you paste it into Gemini (or any AI chat) yourself. The shape is the one that
+   gets a frozen brain moving: explain it like I'm stupid (one everyday analogy,
+   mapped back to the real terms), in HER words, then a five-question blind quiz
+   with instant feedback. The prompt carries her key and her notes so the AI
+   teaches to her paper and stops where she stops. An AI's quiz checks the
+   analogy landed; only her questions here check that it would earn marks.
+   Ported from hs2-test2 (which also has a topic-first button on its focus list). */
+const AI_CTX='I’m a first-year nursing student studying Health Science 2, Module 1 (cardiovascular, respiratory, lymphatic) for the final exam.';
+const AI_LBL='🤖 Explain like I’m stupid + quiz me';
+const AI_SHAPE={mcq:'multiple choice',tf:'true or false',multi:'tick every answer that applies',match:'matching',cloze:'fill the blanks / dropdowns',essay:'a written answer marked one mark per step'};
+const aiSteps=(extra,shape,stop)=>`Do this, in order:\n1. Explain it like I’m stupid: one everyday analogy, then map every part of the analogy back to the real term.\n2. Use my lecturer’s exact terms from above. Those words earn the marks; the analogy is scaffolding.\n${extra?'3. '+extra+'\n':''}${extra?4:3}. Then give me a 5-question blind quiz on it, ONE question at a time, with instant feedback after each answer, ${shape}.\n${stop}`;
+function aiQuestionPrompt(q){
+  const a=SIT.ans[q.id];
+  const you=a?(a.text||((a.sel||[]).map(i=>optLabel(q,q.opts[i])).join(', ')||Object.values(a.pick||{}).join(', '))):'';
+  const L=[AI_CTX+' This is one of my lecturer’s own practice questions. I want to understand it, not memorise the answer.','',`Question: ${flatStem(q)}`];
+  if(q.opts&&q.opts.length)L.push(`Options: ${q.opts.map(o=>optLabel(q,o)).join(' | ')}`);
+  if(q.saq)L.push('Her model answer, one mark per step: '+q.saq.steps.map((s,i)=>`(${i+1}) ${s}`).join(' '));
+  else L.push(`Correct answer: ${keyText(q)}`);
+  L.push(`My answer: ${you||'(none — I didn’t know)'}`);
+  if(q.imgs&&q.imgs.length)L.push('This question has a diagram I can’t paste. Don’t guess what it shows; work from the text.');
+  for(const r of q.refs||[]){
+    if(r.t)L.push(`${r.k==='patton'?'The textbook says':'My lecturer’s notes say'} (verbatim): “${r.t}” — ${r.src}`);
+    else if(r.k==='slide')L.push(`My lecturer’s slide on this: ${r.src} (an image, I can’t paste it).`);
+  }
+  L.push('',aiSteps(you?'In one line, say what misconception my answer suggests.':'',`in the shape she uses (${AI_SHAPE[q.type]||'multiple choice'})`,'Stay inside this question and her notes. Don’t teach past them.'));
+  return L.join('\n');
+}
+function copyPrompt(btn,text){
+  const done=ok=>{btn.textContent=ok?'Copied ✓ now paste it into Gemini (or any AI)':'Copy blocked — select the text below and copy it';
+    const nx=btn.nextElementSibling;
+    if(!ok&&!(nx&&nx.classList.contains('aitext'))){const ta=document.createElement('textarea');ta.className='aitext';ta.readOnly=true;ta.value=text;btn.after(ta);ta.focus();ta.select()}
+    setTimeout(()=>btn.textContent=AI_LBL,3500)};
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject())
+    .then(()=>done(true))
+    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}
+      ta.remove();done(ok)});
+}
 /* ── chrome ────────────────────────────────────────────────────────── */
 $('#countdown').textContent=`${daysLeft()}d to the exam`;
 $('#themeBtn').onclick=()=>{const r=document.documentElement;
@@ -808,6 +849,12 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   from <i>Patton &amp; Thibodeau, Anatomy &amp; Physiology, 9th ed.</i> (Elsevier, 2016), quoted for study with
   the page named; the course’s ClinicalKey copy is the 2019 edition, so figure numbers may differ. Where Patton
   and Hannetjie disagree, she wins.</p>
+  <h3>Ask an AI — the 🤖 button</h3>
+  <p>Under every marked question, <b>${AI_LBL}</b> copies a ready-made prompt to paste into Gemini (or any
+  AI chat). It asks for one everyday analogy mapped back to the real terms, in <b>her</b> words, then a
+  five-question blind quiz with instant feedback — and it carries her key and her notes, so the AI teaches to
+  her paper and stops where she stops. This page sends nothing anywhere; you paste it yourself. An AI’s quiz
+  checks that the analogy landed. Only her questions here check that it would earn marks — come back and sit them.</p>
   <h3>What’s held out</h3>
   <p>${DATA.held.length} questions are excluded, each with its reason in the repo's held.json: mostly figures
   that did not survive the export, and the whole “1.1 &amp; 3.3 Biophysical Principles” quiz, which was
@@ -828,19 +875,8 @@ document.addEventListener('click',e=>{
     /* opening a resource on an unchecked learn-mode question is a peek */
     if(row.classList.contains('lres')&&!SIT.chk[q.id])SIT.peek[q.id]=true;
     pane.innerHTML=paneHTML(q,act);pane.hidden=false;pane.dataset.act=act;return}
-  if(e.target.dataset&&e.target.dataset.ask){
-    const q=SIT.deck.find(x=>x.id===e.target.dataset.ask);
-    const a=SIT.ans[q.id];
-    const you=a?(a.text||((a.sel||[]).map(i=>q.opts[i]).join(', ')||Object.values(a.pick||{}).join(', '))):'(no answer)';
-    const prompt=`I'm a first-year nursing student studying for an anatomy & physiology test. I got this practice question wrong and want to understand the concept, not just the answer.\n\nQuestion: ${flatStem(q)}\n`+(q.opts?`Options: ${q.opts.join(' | ')}\n`:'')+`Correct answer: ${keyText(q)}\nMy answer: ${you}\n\nExplain why the correct answer is right, step by step, and what misconception my answer suggests.`;
-    const btn=e.target, done=ok=>{btn.textContent=ok?'Copied ✓ paste into any AI chat':'Copy blocked — long-press the text to copy';
-      setTimeout(()=>btn.textContent='🤖 Copy for AI',3000)};
-    (navigator.clipboard?navigator.clipboard.writeText(prompt):Promise.reject())
-      .then(()=>done(true))
-      .catch(()=>{const ta=document.createElement('textarea');ta.value=prompt;ta.style.position='fixed';ta.style.opacity='0';
-        document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}
-        ta.remove();done(ok)});
-    return}
+  const ask=e.target.closest('[data-ask]');
+  if(ask){copyPrompt(ask,aiQuestionPrompt(SIT.deck.find(x=>x.id===ask.dataset.ask)));return}
   if(e.target.id==='shareBtn'){
   const l=S.scores[S.scores.length-1];
   const line=`HS2 Paper Sim M1 — ${l.got}/${l.tot} (${Math.round(100*l.got/l.tot)}%) · ${l.label} · ${daysLeft()}d to the exam`;
