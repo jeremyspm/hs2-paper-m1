@@ -95,6 +95,14 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
   and a right answer after a peek does not clear a miss. Check with nothing picked = “show me” = a miss. Learn sittings feed the
   misses pile and the least-seen dealer, never the score chart. Ported from hs2-test2 on 2026-09-08,
   same code apart from the system names and the door copy.
+- **How many, and which quizzes** (ported from hs2-test2, 2026-09-18): the Learn door's *How many
+  at a time* chips (12 · 25 · 50 · 100 · All, saved as `n`) size every dealt Learn set and the
+  CVS / Resp / Lymph sets; All is the whole pool through the least-seen dealer. Under *Pick my rep*
+  every quiz row has a tick (saved as `pick`), the All / CVS / Resp / Lymph chips tick a whole
+  system, and the bottom bar runs the ticked quizzes as ONE deck — Learn or Sit, every question of
+  every ticked quiz, list order. A Learn run is saved after every Check (`resume`: deck ids +
+  marks); home offers to pick it up, finishing or starting another Learn run clears it. Mock tests
+  keep their 12 / 35.
 - `resplice.mjs` — re-splices `template.html` onto the bank already inside `index.html` (a
   chrome-only change, no export needed), and fails if the bank is not one JSON value, the marker is
   not exactly once, or the page script does not parse.
