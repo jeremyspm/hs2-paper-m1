@@ -72,14 +72,16 @@ export function matchVideo(q, videos, matches) {
 
 /* Text references are a LOOKUP into content/ref-matches.json, built outside
    this repo (estate scripts/text-refs): every unit of her slides, learning
-   pages, Anatomy Monday answers, the lab workbook and Patton 9e chapters 11-26
-   is BM25-shortlisted per question (Module 1: her CVS/RESP/lymphatic decks, learning pages,
-   Anatomy Mondays 1-4, the lab workbook, Patton ch. 27-37), a model judges from the unit's text whether
+   pages, Anatomy Monday answers, the lab workbook, the discussion boards and
+   helpline answers she posted, her recorded lecture, the other lecture files
+   posted in the course and the whole of Patton 9e is BM25-shortlisted per
+   question (three lanes: hers, course files, Patton), a model judges from the unit's text whether
    it STATES the keyed fact, every "yes" must carry a 6-15 word quote re-found
    verbatim in the unit, and an adversarial pass tries to refute each survivor.
    Until 2026-09-09 this file picked the ONE passage sharing the most words with
    the stem: 102 of its 347 picks shared no word at all with the keyed answer.
-   Each entry: k = slide | her | patton; slides carry slug + n (the rendered
+   Each entry: k = slide | her | course | patton (course = a file another lecturer
+   posted in the course, shown as a course file, never as hers); slides carry slug + n (the rendered
    image is the reference), text kinds carry t (the sentence(s) around the
    quote, <=70 words) — Patton entries also pg/pp/ch and, for figure captions,
    fig and whether she assigned that figure in her own learning pages. */
@@ -91,7 +93,7 @@ export function loadRefMatches(dir) {
     if (!Array.isArray(list) || !list.length) { fail.push(`${qid}: empty ref list`); continue; }
     const kinds = new Set();
     for (const r of list) {
-      if (!['slide', 'her', 'patton'].includes(r.k)) { fail.push(`${qid}: unknown kind ${r.k}`); continue; }
+      if (!['slide', 'her', 'course', 'patton'].includes(r.k)) { fail.push(`${qid}: unknown kind ${r.k}`); continue; }
       if (kinds.has(r.k)) fail.push(`${qid}: two ${r.k} refs`); kinds.add(r.k);
       if (!r.src) fail.push(`${qid}: ${r.uid} has no source label`);
       const q = normTok(r.quote);
@@ -117,7 +119,7 @@ export function matchRefs(q, matches) {
   if (!list) return [];
   return list.map(r => {
     const out = { k: r.k, src: r.src };
-    if (r.k === 'slide') { out.slug = r.slug; out.n = r.n; }
+    if (r.k === 'slide') { out.slug = r.slug; out.n = r.n; if (r.t) out.t = r.t; }   /* t rides along so an unrendered deck can be quoted */
     else out.t = r.t;
     if (r.k === 'patton') { out.pp = r.pp; out.ch = r.ch; if (r.fig) out.fig = r.fig; if (r.assigned) out.assigned = true; }
     return out;

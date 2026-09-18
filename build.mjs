@@ -198,7 +198,7 @@ const videos = loadVideos(path.join(HERE, 'content'));
 const vmatches = loadVideoMatches(path.join(HERE, 'content'), videos);
 const rmatches = loadRefMatches(path.join(HERE, 'content'));
 const SLIDESRC = path.join(CAP, 'slides');
-let nVid = 0, nRef = 0, nSlide = 0, nSlideText = 0, nHer = 0, nPat = 0, nPatOnly = 0;
+let nVid = 0, nRef = 0, nSlide = 0, nSlideText = 0, nHer = 0, nCourse = 0, nPat = 0, nPatOnly = 0;
 const usedSlides = new Set(), vmUsed = new Set(), rmUsed = new Set();
 for (const q of questions) {
   const v = matchVideo(q, videos, vmatches); if (v) { q.vid = v; nVid++; vmUsed.add(q.id); }
@@ -219,13 +219,13 @@ for (const q of questions) {
       } else if (r.t) { refs.push({ k: 'slide', src: r.src, t: r.t }); nSlideText++; }   /* deck not rendered: quote the slide's own words — never point at a picture we can't show */
     } else {
       refs.push(r);
-      if (r.k === 'her') nHer++; else nPat++;
+      if (r.k === 'her') nHer++; else if (r.k === 'course') nCourse++; else nPat++;
     }
   }
   if (refs.length) { q.refs = refs; nRef++; if (refs.every(r => r.k === 'patton')) nPatOnly++; }
 }
 console.log(`explain layer: ${nVid}/${questions.length} questions matched a video (${Math.round(100 * nVid / questions.length)}%); ` +
-  `${nRef} carry a judged reference (${nSlide} her slide images + ${nSlideText} slides quoted as text, ${nHer} her prose, ${nPat} Patton excerpts; ${nPatOnly} Patton-only) — from ${videos.length} videos`);
+  `${nRef} carry a judged reference (${nSlide} her slide images + ${nSlideText} slides quoted as text, ${nHer} her prose, ${nCourse} course files, ${nPat} Patton excerpts; ${nPatOnly} Patton-only) — from ${videos.length} videos`);
 /* compress + ship only the referenced slides */
 const SLIDEOUT = path.join(HERE, 'img', 'slides');
 fs.mkdirSync(SLIDEOUT, { recursive: true });
@@ -273,7 +273,7 @@ const DATA = {
   stats: { n: questions.length, held: held.length, videos: videos.length, videosReached: reached.size,
     videosFill: videos.filter(v => v.ch).length,
     withVideo: questions.filter(q => q.vid).length,
-    withRef: nRef, withHer: questions.filter(q => q.refs && q.refs.some(r => r.k !== 'patton')).length,
+    withRef: nRef, withHer: questions.filter(q => q.refs && q.refs.some(r => r.k === 'slide' || r.k === 'her')).length, withCourse: nCourse,
     withPatton: nPat, pattonOnly: nPatOnly },
   quizzes: quizzes.sort((a, b) => a.sys.localeCompare(b.sys) || a.name.localeCompare(b.name)),
   questions, chains: CHAINS, cases: CASES, held,

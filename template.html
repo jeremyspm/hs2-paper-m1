@@ -204,7 +204,7 @@ const DATA = /*@BANK@*/;
 /* references: q.refs = [{k:'slide'|'her'|'patton', src, slide|t, ...}] in authority order —
    her slide, her prose, Patton. A bank built with the older single q.ref still renders. */
 for(const q of DATA.questions){ if(!q.refs) q.refs = q.ref ? [{k:q.ref.slide?'slide':'her', ...q.ref}] : []; }
-const REF = {slide:{ic:'📖',lbl:'Her slide'}, her:{ic:'✍',lbl:'Her notes'}, patton:{ic:'📕',lbl:'Patton'}};
+const REF = {slide:{ic:'📖',lbl:'Her slide'}, her:{ic:'✍',lbl:'Her notes'}, course:{ic:'📄',lbl:'Course file'}, patton:{ic:'📕',lbl:'Patton'}};
 /* ── state ─────────────────────────────────────────────────────────── */
 const LS = k => { try { return JSON.parse(localStorage.getItem('hs2m1.'+k)) } catch(e){ return null } };
 const SV = (k,v) => { try { localStorage.setItem('hs2m1.'+k, JSON.stringify(v)) } catch(e){} };
@@ -887,7 +887,7 @@ function aiQuestionPrompt(q,withFig){
   L.push(`My answer: ${you||'(none — I didn’t know)'}`);
   if(q.imgs&&q.imgs.length)L.push(withFig?'The question’s figure is pasted with this message. Read it before answering — the question is about it.':'This question has a diagram I can’t paste. Don’t guess what it shows; work from the text.');
   for(const r of q.refs||[]){
-    if(r.t)L.push(`${r.k==='patton'?'The textbook says':'My lecturer’s notes say'} (verbatim): “${r.t}” — ${r.src}`);
+    if(r.t)L.push(`${r.k==='patton'?'The textbook says':r.k==='course'?'A file posted in my course (not by my lecturer) says':'My lecturer’s notes say'} (verbatim): “${r.t}” — ${r.src}`);
     else if(r.k==='slide')L.push(withFig?`My lecturer’s slide on this is pasted with this message — ${r.src}. Her wording on it is what earns the marks.`:`My lecturer’s slide on this: ${r.src} (an image, I can’t paste it).`);
   }
   L.push('',aiSteps(you?'In one line, say what misconception my answer suggests.':'',`in the shape she uses (${AI_SHAPE[q.type]||'multiple choice'})`,'Stay inside this question and her notes. Don’t teach past them.'));
@@ -976,9 +976,11 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   <h3>Where the explanations come from</h3>
   <p>Every reference under a question was checked to <b>state the keyed fact</b>, not just share its topic: each
   of her CVS, respiratory and lymphatic slides, learning-page paragraphs, Anatomy Monday answers, the lab
-  workbook and the Module 1 chapters of Patton (27–37) was shortlisted by keyword, read by a model that had to
-  quote the exact words that state the answer, that quote was re-found in the source by a script, and a second
-  pass tried to knock each match down. ${DATA.stats.withRef} of the ${DATA.stats.n} questions carry at least one —
+  workbook, the discussion boards she posted, the other lecture files posted in the course (shown as 📄 Course
+  file, never as hers) and the whole of Patton was shortlisted by keyword, read by a model that had to quote the
+  exact words that state the answer, that quote was re-found in the source by a script, and a second pass tried
+  to knock each match down. For a matching question with many pairs, a table that states at least half of them
+  counts. ${DATA.stats.withRef} of the ${DATA.stats.n} questions carry at least one —
   ${DATA.stats.withHer} from her own material, ${DATA.stats.withPatton} with a Patton passage
   (${DATA.stats.pattonOnly} have only Patton). A question with nothing is a question nothing states outright, and
   no reference beats a wrong one. Patton passages are short excerpts (a sentence or two, never more than 70 words)
