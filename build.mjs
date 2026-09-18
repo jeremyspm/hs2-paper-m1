@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { CHAINS } from './content/chains.js';
 import { CASES } from './content/cases.js';
 import { SAQ_ANSWERS, norm } from './content/saq-answers.js';
-import { loadVideos, loadVideoMatches, loadRefMatches, matchVideo, matchRefs } from './content/explain.mjs';
+import { loadVideos, loadVideoMatches, loadRefMatches, loadPartRefs, matchVideo, matchRefs, matchParts } from './content/explain.mjs';
 import { structuredStems, plainText } from './stem-html.mjs';
 import { OVERRIDES } from './content/overrides.js';
 
@@ -197,6 +197,8 @@ for (const z of bank.quizzes) {
 const videos = loadVideos(path.join(HERE, 'content'));
 const vmatches = loadVideoMatches(path.join(HERE, 'content'), videos);
 const rmatches = loadRefMatches(path.join(HERE, 'content'));
+const pmatches = loadPartRefs(path.join(HERE, 'content'));
+let nPartQ = 0, nPartRefs = 0; const pmUsed = new Set();
 const SLIDESRC = path.join(CAP, 'slides');
 let nVid = 0, nRef = 0, nSlide = 0, nSlideText = 0, nHer = 0, nCourse = 0, nPat = 0, nPatOnly = 0;
 const usedSlides = new Set(), vmUsed = new Set(), rmUsed = new Set();
@@ -223,7 +225,10 @@ for (const q of questions) {
     }
   }
   if (refs.length) { q.refs = refs; nRef++; if (refs.every(r => r.k === 'patton')) nPatOnly++; }
+  const prefs = matchParts(q, pmatches);
+  if (prefs.length) { q.prefs = prefs; nPartQ++; nPartRefs += prefs.length; pmUsed.add(q.id); }
 }
+console.log(`references per part: ${nPartRefs} parts referenced over ${nPartQ} multi-part questions`);
 console.log(`explain layer: ${nVid}/${questions.length} questions matched a video (${Math.round(100 * nVid / questions.length)}%); ` +
   `${nRef} carry a judged reference (${nSlide} her slide images + ${nSlideText} slides quoted as text, ${nHer} her prose, ${nCourse} course files, ${nPat} Patton excerpts; ${nPatOnly} Patton-only) — from ${videos.length} videos`);
 /* compress + ship only the referenced slides */
@@ -239,6 +244,7 @@ for (const a of SAQ_ANSWERS) if (!saqUsed.has(a.k)) fails.push('saq-answers entr
    not a harmless extra — same rule as an override that matched nothing */
 for (const qid of Object.keys(vmatches)) if (!vmUsed.has(qid)) fails.push('video-matches entry matched NO question: ' + qid);
 for (const qid of Object.keys(rmatches)) if (!rmUsed.has(qid)) fails.push('ref-matches entry matched NO question: ' + qid);
+for (const qid of Object.keys(pmatches)) if (!pmUsed.has(qid)) fails.push('part-refs entry matched NO question: ' + qid);
 /* identical content captured twice (review quizzes repeat questions) — keep one */
 const dup = new Set(); let dropped = 0;
 for (let i = questions.length - 1; i >= 0; i--) {
@@ -274,7 +280,7 @@ const DATA = {
     videosFill: videos.filter(v => v.ch).length,
     withVideo: questions.filter(q => q.vid).length,
     withRef: nRef, withHer: questions.filter(q => q.refs && q.refs.some(r => r.k === 'slide' || r.k === 'her')).length, withCourse: nCourse,
-    withPatton: nPat, pattonOnly: nPatOnly },
+    withPatton: nPat, pattonOnly: nPatOnly, partQ: nPartQ, partRefs: nPartRefs },
   quizzes: quizzes.sort((a, b) => a.sys.localeCompare(b.sys) || a.name.localeCompare(b.name)),
   questions, chains: CHAINS, cases: CASES, held,
 };

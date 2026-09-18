@@ -114,6 +114,48 @@ export function loadRefMatches(dir) {
   return j.matches;
 }
 
+/* References PER PART (content/part-refs.json, built by estate scripts/text-refs/parts.py):
+   for matching / cloze / written questions with 3+ parts, each pair / blank / model step
+   can carry the one sentence that states it. Same standard as the whole-question refs -
+   judged, a 6-15 word quote re-found in the source, refuted - but the unit is the part,
+   because a ten-pair table never has one passage stating half of it while every pair is
+   stated somewhere one sentence at a time. Entries: i (1-based part index), k, src, t
+   (<=45 words), Patton pg/pp/ch. Slides ship as their words here, never as an image. */
+export function loadPartRefs(dir) {
+  const f = path.join(dir, 'part-refs.json');
+  if (!fs.existsSync(f)) return {};
+  const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+  const fail = [];
+  for (const [qid, list] of Object.entries(j.parts || {})) {
+    if (!Array.isArray(list) || !list.length) { fail.push(`${qid}: empty part list`); continue; }
+    const seen = new Set();
+    for (const r of list) {
+      if (!['slide', 'her', 'course', 'patton'].includes(r.k)) { fail.push(`${qid}: unknown kind ${r.k}`); continue; }
+      if (!Number.isInteger(r.i) || r.i < 1) fail.push(`${qid}: bad part index ${r.i}`);
+      if (seen.has(r.i)) fail.push(`${qid}: two refs for part ${r.i}`); seen.add(r.i);
+      if (!r.src) fail.push(`${qid}: part ${r.i} has no source label`);
+      const q = normTok(r.quote);
+      if (q.length < 4) { fail.push(`${qid}: part ${r.i} has no provenance quote`); continue; }
+      if (!r.t || r.t.split(/\s+/).length > 60) { fail.push(`${qid}: part ${r.i} excerpt missing or over 60 words`); continue; }
+      const t = normTok(r.t).join(' ');
+      if (!t.includes(q.join(' ')) && q.filter(w => t.includes(w)).length / q.length < 0.85) fail.push(`${qid}: part ${r.i} quote is not in its excerpt`);
+      if (r.k === 'patton' && !(Number.isInteger(r.pg) && Number.isInteger(r.pp) && Number.isInteger(r.ch))) fail.push(`${qid}: part ${r.i} Patton ref without page/chapter`);
+    }
+  }
+  if (fail.length) throw new Error('part-refs.json failed its gates:\n  ' + fail.join('\n  '));
+  return j.parts;
+}
+export function matchParts(q, prefs) {
+  const list = prefs[q.id];
+  if (!list) return [];
+  const n = (q.pairs || q.blanks || (q.saq && q.saq.steps) || []).length;
+  return list.filter(r => r.i <= n).map(r => {
+    const out = { i: r.i, k: r.k, src: r.src, t: r.t };
+    if (r.k === 'patton') { out.pp = r.pp; out.ch = r.ch; }
+    return out;
+  });
+}
+
 export function matchRefs(q, matches) {
   const list = matches[q.id];
   if (!list) return [];
