@@ -624,6 +624,7 @@ function learnChipsHTML(q){
   const chips=[];
   if(q.vid)chips.push(`<button class="qa" data-act="vid">▶ Video · from ${mmss(Number.isInteger(q.vid.at)?q.vid.at:0)}</button>`);
   for(const r of q.refs)chips.push(`<button class="qa" data-act="${r.k}">${REF[r.k].ic} ${REF[r.k].lbl}${r.k==='patton'?' p. '+r.pp:''}</button>`);
+  if(hasHer(q))chips.push('<button class="qa" data-act="hl">✅ Her worked answer</button>');
   const hint=chips.length?(SIT.chk[q.id]?'':'<span class="hint">open before or after you answer</span>')
     :'<span class="hint">nothing of hers or Patton’s states this one outright — the answer shows on Check</span>';
   return `<div class="lres" data-qid="${q.id}">${chips.join('')}${hint}<div class="qr-pane" hidden></div></div>`;
@@ -657,7 +658,7 @@ function learnMkHTML(q,chk){
   const body=!r
     ? `${a&&a.text?'':'<div class="you">— nothing written — read the model, then say it out loud</div>'}<div class="steps">${q.saq.steps.map((s,i)=>`<label><input type="checkbox" data-lsaq ${chk.ticks.includes(i)?'checked':''}> <span>${esc(s)}</span></label>`).join('')}</div><div class="refsrc">${esc(q.saq.src)}</div>`
     : keyHTML(q,a);
-  const res=learnOpen(q,chk)?refsHTML(q)+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
+  const res=learnOpen(q,chk)?(hasHer(q)?herAnswer(q.hl):'')+refsHTML(q)+(q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):''):'';
   return `<div class="mk ${cls}"><div class="verdict">${verdict}</div>${body}${res}${r?`<button class="btn ghost askai" data-ask="${q.id}">${AI_LBL}</button>`:''}</div>`;
 }
 /* lock the widgets and colour them: the key green, a wrong pick red, per part for matching and blanks */
@@ -687,7 +688,7 @@ function learnDone(){
   const btn=(k,lbl)=>`<button class="qa" data-act="${k}">${lbl}</button>`;
   const row=(q,cls,mk)=>`<div class="qr ${cls}" data-qid="${q.id}">
       <div class="qr-head"><span class="qr-mk">${mk}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
-      <div class="qr-acts">${q.type==='essay'?'':btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div><div class="qr-pane" hidden></div></div>`;
+      <div class="qr-acts">${q.type==='essay'?'':btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}${hasHer(q)?btn('hl','✅ Her answer'):''}</div><div class="qr-pane" hidden></div></div>`;
   $('#view').innerHTML=`<div class="card">
     <div class="score-hero">${closed.length?`${first.length} / ${closed.length}`:`✍ ${saqs.length} written`}</div>
     <div class="score-sub">${closed.length?'right first go':'self-marked'} · learn mode · ${esc(SIT.label)} · ${Math.round((Date.now()-SIT.t0)/60000)} min</div>
@@ -756,11 +757,11 @@ function mark(){
         <div class="qr-head"><span class="qr-mk mk-p" id="mk${i}">✍ /${q.pts}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
         ${a&&a.text?`<div class="you">You wrote: ${esc(a.text.slice(0,240)).replace(/\n/g,' ')}${a.text.length>240?'…':''}</div>`:'<div class="you">— no answer written —</div>'}
         <div class="steps">${q.saq.steps.map(s=>`<label><input type="checkbox" data-saq="${i}" data-pt="${q.pts/q.saq.steps.length}"> <span>${esc(s)}</span></label>`).join('')}</div>
-        <div class="qr-acts"><span class="src">${esc(q.saq.src)}</span>${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div><div class="qr-pane" hidden></div></div>`}
+        <div class="qr-acts"><span class="src">${esc(q.saq.src)}</span>${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}${hasHer(q)?btn('hl','✅ Her answer'):''}</div><div class="qr-pane" hidden></div></div>`}
       const pct=r.got/r.tot, cls=pct>=1?'right':pct>0?'partial':'wrong';
       return `<div class="qr ${cls}" data-qid="${q.id}" data-sys="${q.sys}" data-wrong="${pct<1?1:0}">
         <div class="qr-head"><span class="qr-mk">${(+r.got.toFixed(1))}/${r.tot}</span><span class="qr-stem">${esc(flatStem(q)).slice(0,140)}</span></div>
-        <div class="qr-acts">${btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}</div>
+        <div class="qr-acts">${btn('ans','✓ Answer')}${q.vid?btn('vid','▶ Video'):''}${refBtns(q,btn)}${hasHer(q)?btn('hl','✅ Her answer'):''}</div>
         <div class="qr-pane" hidden></div></div>`}).join('')}
     ${weakSpotsHTML(rows)}
     <button class="btn primary wide" id="doneB">Save score & finish</button></div>`;
@@ -797,9 +798,13 @@ function refHTML(r){
   return `<div class="refq">${REF[r.k].ic} <i>“${esc(r.t)}”</i><span class="refsrc"> — ${esc(r.src)}</span></div>`;
 }
 function refsHTML(q){ return q.refs.length?q.refs.map(refHTML).join(''):''; }
+/* her worked helpline answer under a question: only where the bank tagged the question to a
+   topic that has one (q.hl, content/qtopic.js) and the sim ships that section */
+function hasHer(q){ return !!(q.hl&&typeof herAnswer==='function'&&(DATA.helpline||{})[q.hl]); }
 function refBtns(q,btn){ return q.refs.map(r=>btn(r.k,`${REF[r.k].ic} ${REF[r.k].lbl}`)).join(''); }
 function paneHTML(q,act){
   if(act==='vid')return q.vid?vidClipHTML(q.vid)+(q.vid.alt?vidRowHTML(q.vid.alt,'also · '):''):'';
+  if(act==='hl')return hasHer(q)?herAnswer(q.hl):'';
   if(REF[act]){const r=q.refs.find(x=>x.k===act);return r?refHTML(r):''}
   return keyHTML(q,SIT.ans[q.id])+`<button class="btn ghost askai" data-ask="${q.id}">${AI_LBL}</button>`;
 }
