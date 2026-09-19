@@ -826,8 +826,11 @@ function vidClipHTML(v){
     <div class="vmeta"><span class="vch">${who}</span><a href="https://www.youtube.com/watch?v=${v.id}&t=${at}s" target="_blank" rel="noopener">${esc(v.t)}</a><span class="refsrc">${esc(v.d)}</span><button class="btn ghost vfull">▶ Watch the full video</button></div>
   </div>`;
 }
+/* youtube-nocookie, NOT www.youtube.com: with uBlock Origin + BlockTube both on (his Firefox),
+   BlockTube's embed-only XHR hook breaks and a www.youtube.com/embed player stays black for good.
+   BlockTube doesn't run on youtube-nocookie. Keep it that way. */
 function loadVid(c,at,end){
-  const src='https://www.youtube.com/embed/'+c.dataset.id+'?start='+at+(end?'&end='+end:'')+'&rel=0&modestbranding=1&autoplay=1';
+  const src='https://www.youtube-nocookie.com/embed/'+c.dataset.id+'?start='+at+(end?'&end='+end:'')+'&rel=0&modestbranding=1&autoplay=1';
   c.querySelector('.vframe').innerHTML='<iframe src="'+src+'" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
 }
 function vidRowHTML(v,who){
