@@ -884,16 +884,29 @@ const flatStem=q=>q.qt||String(q.q||'').replace(/\[ Select \]/g,'____');
 /* ── ask an AI ────────────────────────────────────────────────────────
    The button composes a prompt and copies it; this page sends nothing anywhere —
    you paste it into Gemini (or any AI chat) yourself. The shape is the one that
-   gets a frozen brain moving: explain it like I'm stupid (one everyday analogy,
-   mapped back to the real terms), in HER words, then a five-question blind quiz
-   with instant feedback. The prompt carries her key and her notes so the AI
+   gets a frozen brain moving: SHOW it first (a text sketch, a real image if the AI
+   can), explain it like I'm stupid (one everyday analogy, mapped back to the real
+   terms), in HER words, stop until he says "ready", then a five-question blind quiz
+   with instant feedback, easiest first. The prompt carries her key and her notes so the AI
    teaches to her paper and stops where she stops. An AI's quiz checks the
    analogy landed; only her questions here check that it would earn marks.
    Ported from hs2-test2 (which also has a topic-first button on its focus list). */
 const AI_CTX='I’m a first-year nursing student studying Health Science 2, Module 1 (cardiovascular, respiratory, lymphatic) for the final exam.';
 const AI_LBL='🤖 Explain like I’m stupid + quiz me';
 const AI_SHAPE={mcq:'multiple choice',tf:'true or false',multi:'tick every answer that applies',match:'matching',cloze:'fill the blanks / dropdowns',essay:'a written answer marked one mark per step'};
-const aiSteps=(extra,shape,stop)=>`Do this, in order:\n1. Explain it like I’m stupid: one everyday analogy, then map every part of the analogy back to the real term.\n2. Use my lecturer’s exact terms from above. Those words earn the marks; the analogy is scaffolding.\n${extra?'3. '+extra+'\n':''}${extra?4:3}. Then give me a 5-question blind quiz on it, ONE question at a time, with instant feedback after each answer, ${shape}.\n${stop}`;
+/* 2026-09-19, his verdict on the first shape: “how do I learn this with no visual input, it’s quizzing me
+   on shit I don’t even have a functioning anything of.” So the order is now SEE it → explain it → say it back →
+   and only on “ready”, the quiz, easiest question first. `fig` = a picture went with the paste. */
+const aiSteps=(extra,shape,stop,fig)=>{
+  const S=[
+    (fig?'SHOW me first. A picture is pasted with this message: start there and tell me exactly where to look on it. Then':'SHOW me first. Before any explanation,')+' draw it as a simple labelled sketch made of text — boxes and arrows for a process, a front / side / top layout for where things sit in the body — so I can SEE what is where, or what leads to what. If you can show or generate a real image, add ONE simple one with few labels, and check every label is right. Then give me one exact phrase to type into Google Images for a proper labelled diagram.',
+    'Explain it like I’m stupid, pointing at the sketch: one everyday analogy, then map every part of the analogy back to the real term.',
+    'Use my lecturer’s exact terms from above. Those words earn the marks; the analogy is scaffolding.'];
+  if(extra)S.push(extra);
+  S.push('Then STOP. Do NOT quiz me in the same message. Ask me to say it back in my own words, or to type “ready”. If what I say back is wrong, fix that one piece — on the sketch — before going on.',
+    `Only when I say ready: a 5-question blind quiz, ONE question at a time, instant feedback after each answer, ${shape}. Start with the easiest question you can write and build up. If I miss one, re-explain that piece before the next question.`);
+  return 'I am starting from ZERO on this. Build it up for me; don’t test me on it cold.\nDo this, in order:\n'+S.map((x,i)=>`${i+1}. ${x}`).join('\n')+'\n'+stop;
+};
 function aiQuestionPrompt(q,withFig){
   const a=SIT.ans[q.id];
   const you=a?(a.text||((a.sel||[]).map(i=>optLabel(q,q.opts[i])).join(', ')||Object.values(a.pick||{}).join(', '))):'';
@@ -907,7 +920,7 @@ function aiQuestionPrompt(q,withFig){
     if(r.t)L.push(`${r.k==='patton'?'The textbook says':r.k==='course'?'A file posted in my course (not by my lecturer) says':'My lecturer’s notes say'} (verbatim): “${r.t}” — ${r.src}`);
     else if(r.k==='slide')L.push(withFig?`My lecturer’s slide on this is pasted with this message — ${r.src}. Her wording on it is what earns the marks.`:`My lecturer’s slide on this: ${r.src} (an image, I can’t paste it).`);
   }
-  L.push('',aiSteps(you?'In one line, say what misconception my answer suggests.':'',`in the shape she uses (${AI_SHAPE[q.type]||'multiple choice'})`,'Stay inside this question and her notes. Don’t teach past them.'));
+  L.push('',aiSteps(you?'In one line, say what misconception my answer suggests.':'',`in the shape she uses (${AI_SHAPE[q.type]||'multiple choice'})`,'Stay inside this question and her notes. Don’t teach past them.',!!withFig&&aiFigures(q).length>0));
   return L.join('\n');
 }
 /* the question's own figures — or, when it has none, her slide (the build guarantees a
@@ -1006,8 +1019,10 @@ $('#helpBtn').onclick=()=>{$('#help').innerHTML=`
   and Hannetjie disagree, she wins.</p>
   <h3>Ask an AI — the 🤖 button</h3>
   <p>Under every marked question, <b>${AI_LBL}</b> copies a ready-made prompt to paste into Gemini (or any
-  AI chat). It asks for one everyday analogy mapped back to the real terms, in <b>her</b> words, then a
-  five-question blind quiz with instant feedback — and it carries her key and her notes, so the AI teaches to
+  AI chat). It asks the AI to <b>show it first</b> (a labelled
+  sketch, a real image if it can, and what to search for a proper diagram), then one everyday analogy mapped back to the
+  real terms, in <b>her</b> words — and to <b>stop there</b> until you type “ready”. Only then does it run a five-question
+  blind quiz with instant feedback, easiest question first. It carries her key and her notes, so the AI teaches to
   her paper and stops where she stops. If the question has a figure, or her slide is its reference, the copy
   carries that too, as one picture: paste once and the prompt and the picture both land; if your AI keeps only
   one of them, two small buttons appear to re-copy just the text or just the figure. This page sends nothing
