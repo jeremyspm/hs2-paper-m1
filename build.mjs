@@ -351,6 +351,12 @@ const DATA = {
   questions, chains: CHAINS, cases: CASES, focus: focusOut, held,
 };
 const tpl = fs.readFileSync(path.join(HERE, 'template.html'), 'utf8');
+/* An unbalanced <details> fails silently: a stray </details> closed the focus checklist right after its intro, so
+   all 37 rows sat outside it and the card could not be folded (hs2-test3 and hs2-paper-m1, 2026-09-21). */
+{
+  const open = (tpl.match(/<details\b/g) || []).length, shut = (tpl.match(/<\/details>/g) || []).length;
+  if (open !== shut) { console.error(`BUILD FAILED: template.html opens ${open} <details> and closes ${shut}`); process.exit(1); }
+}
 const marker = '/*@BANK@*/';
 if (tpl.split(marker).length !== 2) { console.error('BUILD FAILED: expected exactly one ' + marker); process.exit(1); }
 const out = tpl.replace(marker, JSON.stringify(DATA));
