@@ -1,15 +1,5 @@
 [
  {
-  "quiz": "Heart Anatomy (40 mk)",
-  "why": "image did not survive capture",
-  "q": "Anatomical Structures of the Heart Match the items to correctly identify the str"
- },
- {
-  "quiz": "Heart Anatomy (40 mk)",
-  "why": "image did not survive capture",
-  "q": "Anatomical Structures of the Heart Match the items to correctly identify the str"
- },
- {
   "quiz": "Lymphatic: Diseases & Terminology",
   "why": "image did not survive capture",
   "q": "Check the image in the linked article . What types of blood cells predominate in"
@@ -25,64 +15,9 @@
   "q": "Check the image in the linked article . Afferent lymphatic vessels lead into a l"
  },
  {
-  "quiz": "Lymphatic: Diseases & Terminology",
-  "why": "image did not survive capture",
-  "q": "Where are Peyer's patches found and are they part of the MALT system?"
- },
- {
-  "quiz": "Lymphatic: Diseases & Terminology",
-  "why": "image did not survive capture",
-  "q": "Which statement is not true? The thymus differs from the other lymphatic organs "
- },
- {
-  "quiz": "Practice Lab 1: SAQ & MC (20 mk)",
-  "why": "image did not survive capture",
-  "q": "Image Source:"
- },
- {
-  "quiz": "Practice Lab 1: SAQ & MC (20 mk)",
-  "why": "image did not survive capture",
-  "q": "Image Source: Which valve is closed as the left ventricle begins to contract?"
- },
- {
-  "quiz": "CVS2: The Heart (25 mk)",
-  "why": "image did not survive capture",
-  "q": "The P wave on the electrocardiogram is associated with"
- },
- {
-  "quiz": "CVS2: The Heart (25 mk)",
-  "why": "image did not survive capture",
-  "q": "The first heart sound on the phono-cardiogram is associated with the"
- },
- {
-  "quiz": "CVS2: The Heart (25 mk)",
-  "why": "image did not survive capture",
-  "q": "The QRS wave of the electrocardiogram represents the electrical impulse going th"
- },
- {
-  "quiz": "CVS2: The Heart (25 mk)",
-  "why": "image did not survive capture",
-  "q": "The second heart sound on the phono-cardiogram is associated with the"
- },
- {
-  "quiz": "CVS2: The Heart (25 mk)",
-  "why": "image did not survive capture",
-  "q": "The aortic pressure is the highest when:"
- },
- {
-  "quiz": "Respiration: Blood Carrying Gases",
-  "why": "letter-only options with no lettered stem or image",
-  "q": "Normal blood pH is"
- },
- {
   "quiz": "Respiratory Khan",
   "why": "essay with no authored model answer",
   "q": "Do the linked quiz. It requires a lot of thinking. Record your quiz result out o"
- },
- {
-  "quiz": "Resp: Basic Physiology",
-  "why": "letter-only options with no lettered stem or image",
-  "q": "Hemoglobin molecules are fully saturated when bound to ____molecule(s) of O 2 ."
  },
  {
   "quiz": "Resp: Basic Physiology",
@@ -192,25 +127,5 @@
   "quiz": "Biophysical Principles of Blood Flow & Pressure",
   "why": "no extracted key",
   "q": "Select the false statement on action potential."
- },
- {
-  "quiz": "Resp: Basic Anatomy",
-  "why": "image did not survive capture",
-  "q": "Infection of this part is clled bronchiolitis."
- },
- {
-  "quiz": "Resp: Basic Anatomy",
-  "why": "image did not survive capture",
-  "q": "Infection of this part is called pneumonia."
- },
- {
-  "quiz": "Resp: Basic Anatomy",
-  "why": "image did not survive capture",
-  "q": "Inflammation of these parts is called bronchitis."
- },
- {
-  "quiz": "CVS4: Blood Pressure",
-  "why": "letter-only options with no lettered stem or image",
-  "q": "Cardiac output is determined by________. A.Heart Rate B. Stroke volume C. Cardia"
  }
 ]

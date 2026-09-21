@@ -32,6 +32,31 @@ const CAP = 'C:/Users/USER/Desktop/github/_inbox/HS2 Module 1 Capture';
 const HOST = 'https://m1-export.local/img/';   // never fetched; a key into ext-manifest.json
 
 const bank = JSON.parse(fs.readFileSync(BANK, 'utf8'));
+
+/* SingleFile stores a picture the page uses MORE THAN ONCE in a CSS variable (--sf-img-N: url("data:…")) and leaves the <img>
+   holding an empty SVG plus background-image:var(--sf-img-N). Read naively (as step 3 below did until 21 Sep 2026), that is a
+   picture that "never loaded", and 14 of Module 1's question figures were held for it. Copied byte for byte from hs2-test2's
+   stem-html.mjs (393dab6); it puts the real data URI back into src before any image is read. */
+function inlineSfImages(html) {
+  const defs = {};
+  for (const m of html.matchAll(/(--sf-img-\d+)\s*:\s*url\(\s*["']?(data:[^"')]+)["']?\s*\)/g)) defs[m[1]] = m[2];
+  if (!Object.keys(defs).length) return html;
+  /* each <img> is cut out by a quote-aware scan, not [^>]*: the placeholder's src holds an <svg> with ">" in it, and
+     SingleFile writes attributes in any order (id= or style= can come before src=) */
+  let out = '', pos = 0;
+  for (const m of html.matchAll(/<img\b/gi)) {
+    if (m.index < pos) continue;
+    let i = m.index + 4, q = null;
+    for (; i < html.length; i++) { const c = html[i]; if (q) { if (c === q) q = null; } else if (c === '"' || c === "'") q = c; else if (c === '>') break; }
+    const tag = html.slice(m.index, i + 1);
+    const v = (tag.match(/background-image:var\((--sf-img-\d+)\)/) || [])[1];
+    const src = tag.match(/\ssrc\s*=\s*(?:'data:image\/svg\+xml,[^']*'|"data:image\/svg\+xml,[^"]*")/);
+    if (!v || !defs[v] || !src) continue;
+    out += html.slice(pos, m.index) + tag.replace(src[0], ' src="' + defs[v] + '"');
+    pos = i + 1;
+  }
+  return pos ? out + html.slice(pos) : html;
+}
 fs.mkdirSync(path.join(CAP, 'images'), { recursive: true });
 
 const EXT = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/jpg': 'jpg', 'image/gif': 'gif', 'image/webp': 'webp' };
@@ -52,7 +77,7 @@ function segments(html) {
 
 for (const z of bank.quizzes) {
   const src = path.join(EXPORT, z.file);
-  let html = fs.readFileSync(src, 'utf8');
+  let html = inlineSfImages(fs.readFileSync(src, 'utf8'));
   const ids = [...new Set([...html.matchAll(/quizzes\/(\d+)/g)].map(m => m[1]))];
   if (ids.length !== 1) throw new Error(`${z.file}: expected one Canvas quiz id, found [${ids}]`);
   const qid = ids[0];

@@ -89,6 +89,14 @@ if (held.length) console.log(`${held.length} source matches belong to questions 
 
 const vids = new Set(); let n = 0;
 for (const l of Object.values(matches)) for (const m of l) { vids.add(m.id); n++; }
+/* content/video-matches.json has since been extended IN PLACE (rescue matches, Ninja Nerd, AnatomyZone/IHA/Armando gap-fills,
+   the relevance pass: 241 questions by 21 Sep 2026) and this script's source knows only the first 137. Run as the README once
+   said, it silently cut 243 questions' videos to 131. It now refuses to write a file that carries fewer questions. */
+{
+  const cur = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { matches: {} };
+  const had = Object.keys(cur.matches || {}).length, would = Object.keys(matches).length;
+  if (would < had) { console.error(`✗ refusing to write ${OUT}: it carries ${had} questions' videos, this remap would leave ${would}. The file has been extended in place since the remap; edit it directly.`); process.exit(1); }
+}
 fs.writeFileSync(OUT, JSON.stringify({
   built: src.built, module: 'm1',
   method: src.method + ` Re-keyed to hs2-paper-m1's question ids by remap-video-matches.mjs (${how.exact} joined on the exact stem, ${how.byQuiz} on stem + quiz, ${how.fuzzy} on token overlap after the capture adapter removed embedded-player text from the stem); the match lists themselves are unchanged.`,

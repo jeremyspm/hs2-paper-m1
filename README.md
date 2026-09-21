@@ -109,7 +109,11 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
 - Rebuild: `node prep-capture.mjs` (only when the export changes) → the parser
   (`HS2_EXPORT="…/HS2 Module 1 Capture" HS2_OUT="…/hs2-anki/m1" node ../hs2-test1/audit/parse-quizzes.mjs`)
   → `node bind-images.mjs` → `node port-shelf.mjs && node port-chains.mjs` (when the hub
-  shelf or the guide changes) → `node build.mjs && node remap-video-matches.mjs && node build.mjs`.
+  shelf or the guide changes) → `node build.mjs`. **Do not run `remap-video-matches.mjs` any more**: the
+  video file has been extended in place since (241 questions), the remap only knows the first 137, and on
+  21 Sep 2026 it cut the file to 131 before it was restored. It now refuses to write a smaller file. When a
+  question's id changes (its key grew), move its entries in `content/video-matches.json` and
+  `content/part-refs.json` by hand or by a one-off script that carries each part by its pair text.
   Serve: any static server; state is per-browser localStorage (`hs2m1.*`).
 
 ## Differences from hs2-test2, all declared
