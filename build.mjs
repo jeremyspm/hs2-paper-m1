@@ -13,6 +13,9 @@ import { SAQ_ANSWERS, norm } from './content/saq-answers.js';
 import { loadVideos, loadVideoMatches, loadRefMatches, loadPartRefs, matchVideo, matchRefs, matchParts } from './content/explain.mjs';
 import { structuredStems, plainText } from './stem-html.mjs';
 import { OVERRIDES } from './content/overrides.js';
+import { FOCUS } from './content/focus.js';
+import { QROW } from './content/qrow.js';
+import { rowOf } from './content/topics.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const M1 = 'C:/Users/USER/Desktop/github/hs2-anki/m1';           // parse-quizzes.mjs over the capture below
@@ -76,6 +79,19 @@ const stripImgRefs = (s) => s
   .replace(/Minimize embedded content\.?/gi, ' ')
   .replace(/\s+/g, ' ').trim();
 
+/* Her OWN Canvas key, read off his graded page, where it contradicts the science: held with the reason rather than taught
+   (hs2-test2 holds two PNS plexus questions for the same kind of fault). Matched by quiz + normalised stem prefix; an entry
+   that matches nothing fails the build. */
+const EXCLUDE = [
+  /* 211019 Q5: pH 7.52, PaCO2 30 mmHg, HCO3- 24 mmol/L. Canvas marks "metabolic alkalosis" correct (weight 100, class
+     correct_answer). High pH with LOW CO2 and NORMAL bicarbonate is a respiratory alkalosis, and "respiratory alkalosis" is
+     one of her options. */
+  { quiz: '211019', k: 'a patient has the following arterial blood gas results ph 7 52', why: 'her Canvas key marks pH 7.52 / PaCO2 30 / HCO3- 24 as "metabolic alkalosis"; low CO2 with normal bicarbonate is a respiratory alkalosis, which is one of her options' },
+  /* 211085 Q3, true/false: "A blood pH of 7.5 due to vomiting would be called metabolic acidosis." Canvas marks TRUE. pH 7.5 is an
+     alkalosis, and losing stomach acid by vomiting is the textbook metabolic ALKALOSIS. */
+  { quiz: '211085', k: 'a blood ph of 7 5 due to vomiting would be called metabolic acidosis', why: 'her Canvas key marks "pH 7.5 due to vomiting would be called metabolic acidosis" TRUE; pH 7.5 from vomiting is a metabolic alkalosis' },
+];
+const excludeUsed = new Set();
 const questions = [], held = [], quizzes = [];
 const saqUsed = new Set();
 const structFails = []; let nInline = 0;
@@ -95,6 +111,8 @@ for (const z of bank.quizzes) {
     if (!stem && q.key && q.key.kind === 'pairs' && q.key.pairs.length >= 2)
       stem = 'Match each item with its correct partner.';
     if (!stem) { held.push({ quiz: qname, why: 'empty stem' }); return; }
+    const ex = EXCLUDE.find(e => e.quiz === fid && norm(stem).startsWith(e.k));
+    if (ex) { excludeUsed.add(ex); held.push({ quiz: qname, why: ex.why, q: stem.slice(0, 80) }); return; }
     const imgs = ((imgBind[path.basename(z.file)] || {})[idx] || []);
     const needsImg = /\[\[IMG/.test(stemRaw) || /\b(image|diagram|picture|micrograph|labell?ed|figure) (above|below|shown)\b/i.test(stem);
     if (needsImg && !imgs.length) { held.push({ quiz: qname, why: 'image did not survive capture', q: stem.slice(0, 80) }); return; }
@@ -258,6 +276,44 @@ for (let i = questions.length - 1; i >= 0; i--) {
   else dup.add(questions[i].id);
 }
 if (dropped) console.log('deduped', dropped, 'identical duplicate captures');
+/* ── the focus checklist, counted (ported byte for byte from hs2-test3/build.mjs, 21 Sep 2026) ── */
+/* the shipped bank as plain text, for the topic tagger (tag-topics.mjs) and for reading by eye — never shipped */
+fs.writeFileSync(path.join(HERE, 'bank-dump.json'), JSON.stringify(questions.map(q => ({ id: q.id, quiz: q.quiz, sys: q.sys, type: q.type, pts: q.pts, t: [q.q, (Array.isArray(q.key) ? q.key : q.key != null ? [q.key] : []).join(' | ')      /* the CORRECT answer only: distractors would drag a question onto the wrong row */, (q.pairs || []).map(p => (p.left || '') + ' => ' + (p.right || '')).join(' | '), (q.blanks || []).map(x => x.correct).join(' | '), q.saq ? q.saq.steps.join(' ') : ''].join(' ## ').replace(/\s+/g, ' ') })), null, 0));
+/* "Learn her N questions on this": each focus row named in content/qrow.js carries `qs`,
+   the ids it deals. Gated both ways like every other join; exact repeats (one question
+   captured in two quizzes) are dropped so the button's count is what he will actually sit,
+   and one-tap questions lead so a run starts in the shallow end and ends on the written ones. */
+const TYPE_RANK = { mcq: 0, tf: 0, multi: 1, match: 2, cloze: 3, essay: 4 };
+/* THE FOCUS CHECKLIST IS COUNTED HERE, never by hand. content/topics.js puts each shipped question on ONE row (a row = one of her
+   numbered criteria); a question with no row, or a row that is not in focus.js, fails the build. */
+const ASSIGN = {}, dumpText = q => [q.q, (Array.isArray(q.key) ? q.key : q.key != null ? [q.key] : []).join(' | '), (q.pairs || []).map(p => (p.left || '') + ' => ' + (p.right || '')).join(' | '), (q.blanks || []).map(x => x.correct).join(' | '), q.saq ? q.saq.steps.join(' ') : ''].join(' ## ').replace(/\s+/g, ' ');
+for (const q of questions) { const r = rowOf({ id: q.id, t: dumpText(q) }); if (!r) { fails.push('question on NO focus row: ' + q.id + ' "' + q.q.slice(0, 60) + '"'); continue; } if (!FOCUS.some(f => f.id === r)) { fails.push('topics.js names a row that focus.js does not have: ' + r); continue; } (ASSIGN[r] = ASSIGN[r] || []).push(q.id); }
+const sigOf = q => q.type + '|' + norm(q.q) + '|' + JSON.stringify(q.key || q.pairs || (q.blanks || []).map(b => b.correct));      /* the SAME repeat rule the Learn-by-row button uses below, so a row's count and its button agree */
+for (const f of FOCUS) { const qs = (ASSIGN[f.id] || []).map(id => questions.find(q => q.id === id)), uniq = new Map(); for (const q of qs) if (!uniq.has(sigOf(q))) uniq.set(sigOf(q), q);
+  f.all = qs.length; f.n = uniq.size; f.pts = +[...uniq.values()].reduce((a, q) => a + (q.pts || 0), 0).toFixed(1); f.qz = new Set(qs.map(q => q.quiz)).size; f.saq = [...uniq.values()].filter(q => q.type === 'essay' || q.type === 'cloze').length;
+  if (f.tier !== 0) f.tier = f.pts >= 30 ? 1 : f.pts >= 12 ? 2 : 3; }
+/* the exam-cases row counts HER three case packs (content/cases.js), not bank questions: the full mock test deals them */
+{ const ec = FOCUS.find(f => f.id === 'exam-cases'), cq = CASES.flatMap(c => c.questions || []);
+  if (ec) { ec.n = ec.all = cq.length; ec.pts = cq.reduce((a, q) => a + (+q.marks || 0), 0); ec.qz = CASES.length; ec.saq = cq.length; } }
+const byId = new Map(questions.map(q => [q.id, q]));
+const rowQs = {}; let nRowQ = 0;
+for (const [rid, ids] of Object.entries({ ...ASSIGN, ...QROW })) {
+  if (!FOCUS.some(f => f.id === rid)) { fails.push('qrow row is not a focus row: ' + rid); continue; }
+  const seenId = new Set(), seenSig = new Set(), keep = [];
+  for (const id of ids) {
+    const q = byId.get(id);
+    if (!q) { fails.push(`qrow entry matched NO question: ${id} (${rid})`); continue; }
+    if (seenId.has(id)) { fails.push(`qrow lists ${id} twice under ${rid}`); continue; }
+    seenId.add(id);
+    const sig = q.type + '|' + norm(q.q) + '|' + JSON.stringify(q.key || q.pairs || (q.blanks || []).map(b => b.correct));
+    if (seenSig.has(sig)) continue;
+    seenSig.add(sig); keep.push(q);
+  }
+  if (!keep.length) fails.push('qrow row deals nothing: ' + rid);
+  rowQs[rid] = keep.map((q, i) => [q, i]).sort((a, b) => (TYPE_RANK[a[0].type] ?? 5) - (TYPE_RANK[b[0].type] ?? 5) || a[1] - b[1]).map(x => x[0].id);
+  nRowQ += rowQs[rid].length;
+}
+const focusOut = FOCUS.map(f => rowQs[f.id] ? { ...f, qs: rowQs[f.id] } : f);
 for (const q of questions) for (const f of q.imgs) if (!fs.existsSync(path.join(CAP, 'images', f))) fails.push('missing image file ' + f);
 for (const c of CHAINS) if (c.beads.filter(b => b.t).length < 4) fails.push('chain too short: ' + c.id);
 /* an exam case ships only whole: scenario, and every question with steps and a named source */
@@ -270,12 +326,14 @@ for (const c of CASES) {
    layer exists to kill, so it fails the build rather than falling back quietly */
 for (const s of structFails) fails.push('stem structure: ' + s);
 for (const o of OVERRIDES) if (!overridesUsed.has(o)) fails.push(`override matched nothing: ${o.id} blank ${o.blank} "${o.correct}"`);
+for (const e of EXCLUDE) if (!excludeUsed.has(e)) fails.push(`exclude matched NO question: ${e.quiz} "${e.k}"`);
 /* an option must not carry Canvas's marks or the dot its title appends: either one tells the answer apart by its shape */
 for (const q of questions) for (const o of [...(q.opts || []), ...(q.key || [])]) if (typeof o === 'string' && (/you selected this answer|this was the correct answer/i.test(o) || /^[^\s.]{2}\.$/.test(o))) fails.push(`option carries a Canvas title mark: ${q.id} "${o}"`);
 for (const q of questions) if (!q.qh) fails.push('no structured stem for ' + q.id + ' "' + q.q.slice(0, 60) + '"');
 for (const q of questions) if (q.qh && /\[\[(?!IMG:|BLANK:\d+\]\])/.test(q.qh)) fails.push('stray marker in ' + q.id);
 if (fails.length) { console.error('BUILD FAILED:\n  ' + fails.join('\n  ')); process.exit(1); }
 console.log(`structured stems: ${questions.filter(q => q.qh).length}/${questions.length} · blanks placed inline in ${nInline} cloze questions`);
+console.log(`focus checklist: ${FOCUS.length} rows · ${Object.values(ASSIGN).reduce((a, l) => a + l.length, 0)} questions placed · learn-by-row ${nRowQ} slots · tiers ` + [0, 1, 2, 3].map(t => t + ':' + FOCUS.filter(f => f.tier === t).length).join(' '));
 
 /* ── emit ──────────────────────────────────────────────────────────── */
 /* video reach is a stat, not a sentence: the template reads these so the home
@@ -290,7 +348,7 @@ const DATA = {
     withRef: nRef, withHer: questions.filter(q => q.refs && q.refs.some(r => r.k === 'slide' || r.k === 'her')).length, withCourse: nCourse,
     withPatton: nPat, pattonOnly: nPatOnly, partQ: nPartQ, partRefs: nPartRefs },
   quizzes: quizzes.sort((a, b) => a.sys.localeCompare(b.sys) || a.name.localeCompare(b.name)),
-  questions, chains: CHAINS, cases: CASES, held,
+  questions, chains: CHAINS, cases: CASES, focus: focusOut, held,
 };
 const tpl = fs.readFileSync(path.join(HERE, 'template.html'), 'utf8');
 const marker = '/*@BANK@*/';

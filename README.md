@@ -44,12 +44,32 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
 - Grading: her dropdowns mark only her keyed option right; her typed blanks accept any
   of her listed spellings (case-insensitive, curly apostrophes normalised).
   `content/overrides.js` is empty for now.
-- `held.json` — every excluded question with its reason (43 of 407). 21 are the whole
-  "MODULE 1.1 & 3.3: Biophysical Principles" quiz, captured before submission and so
-  carrying no key (re-capture after submitting and they join); 17 are figures the export
-  never had (five heart/ECG questions, three lung-anatomy labels, five lymph-node figures,
-  two heart-structure labels, two pericardium/lymph links); 3 are letter-only options with
-  no lettered stem; 1 is the Khan "record your score" item; 1 an empty stem.
+- `held.json` — every excluded question with its reason (28, on 21 Sep 2026: **378 ship**). 21 are the whole
+  "MODULE 1.1 & 3.3: Biophysical Principles" quiz, captured before submission and so carrying no key (re-capture
+  after submitting and they join); 3 are figures broken on Canvas itself (`data:,` — the lymph-node articles);
+  **2 are her own Canvas keys that contradict the science** (`EXCLUDE` in `build.mjs`, gated both ways): the blood
+  gas pH 7.52 / PaCO2 30 / HCO3- 24 keyed "metabolic alkalosis" (it is respiratory), and "pH 7.5 due to vomiting
+  would be called metabolic acidosis" keyed TRUE (it is an alkalosis); 1 is the Khan "record your score" item; 1 an
+  empty stem.
+- 21 Sep 2026: 17 questions that were held came back. 14 figures were in the capture all along — SingleFile keeps
+  a picture used twice in a CSS variable, which `prep-capture.mjs` read as "never loaded" (`inlineSfImages()`,
+  byte-identical to hs2-test2/hs2-test3's); 3 were "letter-only" holds on real answers ("7", "1"–"4"). The bank was
+  re-parsed with the current parser, which gives back the matching pairs he answered correctly (210992 #10 has 10
+  pairs, was 7; 211076 #1 has 15, was 10). An option read from Canvas's title no longer keeps Canvas's marks or its
+  trailing dot ("7. You selected this answer" was about to ship as a key); a gate fails the build on either.
+
+## The focus checklist (21 Sep 2026)
+
+40 rows. 38 are HER numbered Module 1 criteria (Continuous Tests and Exam Focus Points, `Science 2 Detailed
+Content.docx`: Cardiovascular 1-15 with 5 in its three parts, Respiratory 1-17, Lymphatic 1-4 — the same list as her
+"Module 1: Learning checklist" page, which she said "limits what I may ask"), each carrying her exact wording. Two say
+plainly that they are not criteria: `exam-cases` (tier 0: her day-one post says the exam "is based on all the *starred
+case studies"; it counts her three case packs) and `fluid-balance` (her Module 1.3 quiz asks it, her criteria never name
+it). `content/topics.js` puts every shipped question on exactly one row (rules over the stem + the CORRECT answer, all 379
+read in their groups, 123 moved by hand); `node tag-topics.mjs [row|--none|--counts]` prints a row for reading. The build
+counts each row and fails on a question with no row. `done / ask / cap` are the tool's reading and say so on the page.
+When she posts exam pointers (the exam case-study helpline opens Mon 19 Oct), move what she names to tier 0.
+The card, the Learn-by-row button and the topic-first 🤖 prompt are hs2-test3's code, copied.
 - `index.html` is exactly `template.html` with `/*@BANK@*/` replaced by the bank JSON —
   so a chrome-only change can be re-spliced onto the bank already in `index.html` without
   the Canvas export on hand. Anything that touches a QUESTION needs the real `node build.mjs`.
@@ -124,4 +144,5 @@ at the end, and every one is a consequence of the Module 1 capture, not a redesi
 | `stem-html.mjs` | `answer_for_<id>` fallback for the blank id | the raw export has no `blank_id` span |
 | `build.mjs` | paths, QUIZ map, cvs/resp/lymph routing, `cases` for `case7`, a slide quoted as text if its deck were unrendered (none is, since 2026-09-09), "Her own answer" label | Module 1 inputs; three exam cases instead of one; most answers are hers |
 | `content/explain.mjs` | identical to hs2-test2's (a lookup into `ref-matches.json`; the module's sources live in the estate pipeline, not here) | — |
-| `template.html` | chrome only: titles, her learning checklist card, systems, Test 1's 34-question shape, exam-case rotation, `hs2m1.` keys, exam countdown | Module 1 has no upcoming test; the exam is the target |
+| `template.html` | chrome only: titles, systems, Test 1's 34-question shape, exam-case rotation, `hs2m1.` keys, exam countdown; the focus card's intro, tier-0 line and sources | Module 1 has no upcoming test; the exam is the target |
+| `remap-video-matches.mjs` | retired from the rebuild; refuses to write a smaller file | the video file was extended in place after it (243 questions) |

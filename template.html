@@ -142,6 +142,44 @@ textarea{min-height:120px}
 .refsrc{font-size:.74rem;color:var(--muted-fg);opacity:.8}
 .vidrow{font-size:.86rem;margin:6px 0}
 .vidrow a{font-weight:600}
+/* ── focus checklist ─────────────────────────────────────────────────── */
+.fhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:2px 0 8px}
+.fbar{height:6px;border-radius:99px;background:var(--accent);overflow:hidden;flex:1 1 140px;min-width:120px}
+.fbar i{display:block;height:100%;background:var(--ok);transition:width .25s}
+.ftier{font-weight:700;font-size:.82rem;margin:14px 0 6px;display:flex;align-items:center;gap:8px}
+.ftier b{font-weight:700}
+.ftier .fnum{font-weight:400;color:var(--muted-fg)}
+.frow{display:flex;gap:9px;align-items:flex-start;padding:8px 10px;margin-bottom:6px;
+  border:1px solid var(--border);border-radius:var(--radius);background:var(--muted);
+  border-left:3px solid var(--tc,var(--border))}
+.frow.on{opacity:.62}
+.frow.on .ft{text-decoration:line-through}
+.frow>input.fchk{flex:0 0 auto;width:18px;height:18px;margin-top:2px;accent-color:var(--ok);cursor:pointer}
+.fbody{flex:1 1 auto;min-width:0}
+.fbody>summary{cursor:pointer;list-style:none;display:block}
+.fbody>summary::-webkit-details-marker{display:none}
+.ft{font-weight:650;font-size:.92rem;display:block}
+.fmeta{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.fchip{font-size:.68rem;padding:1px 7px;border-radius:99px;background:var(--accent);color:var(--muted-fg);white-space:nowrap}
+.fchip.her{background:hsl(38 92% 55% / .18);color:var(--warn)}
+.fchip.tape{background:hsl(0 84% 60% / .16);color:var(--danger)}
+.fchip.saq{background:hsl(218 91% 64% / .16);color:var(--primary)}
+.fchip.sys{background:transparent;border:1px solid var(--border)}
+.fchip.hl{background:hsl(158 64% 42% / .2);color:var(--ok);font-weight:650}
+.fchip.rev{background:hsl(158 64% 42% / .12);color:var(--ok)}
+.fchip.kh{background:hsl(280 60% 60% / .16);color:hsl(280 70% 72%)}
+.hlans{margin-top:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);overflow:hidden}
+.hlans>summary{cursor:pointer;padding:7px 10px;font-weight:650;font-size:.84rem;color:var(--ok);list-style:none}
+.hlans>summary::-webkit-details-marker{display:none}
+.hlans .hlbody{padding:0 10px 10px;font-size:.83rem;line-height:1.55;white-space:pre-wrap}
+.hlans .hlh{font-weight:700;margin:8px 0 4px;font-size:.8rem;letter-spacing:.02em}
+.fdet{font-size:.85rem;line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.fdet p{margin:0 0 7px}
+.fdet .fcap{color:var(--muted-fg)}
+.fwhy{font-size:.8rem;line-height:1.5;color:var(--muted-fg);margin:0 0 4px}
+@media(max-width:400px){ .ft{font-size:.88rem} .fdet{font-size:.82rem} }
+.learnrow{padding:7px 12px;font-size:.84rem;margin-top:6px}
+.aiwrap{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:8px 0 4px}
 .askai{padding:3px 10px;font-size:.76rem;margin-top:6px}
 .aitext{flex-basis:100%;width:100%;min-height:150px;font-size:.78rem;margin-top:6px}
 .aisplit{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-top:6px}
@@ -222,6 +260,7 @@ let S = {
   scores: LS('scores')||[],   // {t, mode, got, tot, label}
   miss:   LS('miss')  ||{},   // qid -> wrong count
   seen:   LS('seen')  ||{},   // qid -> sittings
+  mastery:LS('mastery')||{}, // focus topic id -> 1 when he can do it
   n:      LS('n')||12,       // how many a Learn deal hands out: 12 | 25 | 50 | 100 | 'all'
   pick:   LS('pick')||[],    // quiz ids ticked under Pick my rep, in tick order
 };
@@ -299,6 +338,101 @@ function dealPick(){
 }
 
 /* ── home ──────────────────────────────────────────────────────────── */
+/* ── focus checklist ───────────────────────────────────────────────────
+   Her focus post names topics in one or two words. DATA.focus says how far
+   each one goes and how heavily her own bank drills it, so a tick is a real
+   claim rather than a shrug. Ticks are per-browser (localStorage). */
+const FTIER = {
+  0:{n:'She has said the exam is built on these', c:'var(--ok)',
+     w:'Her own words, not a count: her day-one post says the on-campus exam “is based on all the *starred case studies”, and Module 1’s are cases 2, 3 and 4. When she posts exam pointers (the exam case-study helpline opens Mon 19 Oct), whatever she names moves up here. It does not mean biggest: the rows below still carry the most marks.'},
+  1:{n:'Do these first',    c:'var(--danger)', w:'Biggest blocks of marks in her bank, or she named them out loud.'},
+  2:{n:'Then these',        c:'var(--warn)',   w:'Real marks, but they will not decide the paper on their own.'},
+  3:{n:"Know it, don't camp", c:'var(--muted-fg)', w:'Thin in her bank. Read it once so it cannot blindside you, then leave it.'},
+};
+const FLAGN = {D:'her diagrams row', P:'her processes row', R:'her reasoning row', T:'her terminology row'};
+
+function focusStats(){
+  const F = DATA.focus, done = F.filter(f=>S.mastery[f.id]);
+  return { n:F.length, d:done.length,
+           pts:F.reduce((a,b)=>a+b.pts,0), dpts:done.reduce((a,b)=>a+b.pts,0) };
+}
+function focusHead(){
+  const st = focusStats(), pc = st.pts ? Math.round(st.dpts/st.pts*100) : 0;
+  return `<b>${st.d} of ${st.n} topics</b>
+    <span class="fbar"><i style="width:${pc}%"></i></span>
+    <span class="hist">${st.dpts} of ${st.pts} marks of her bank covered</span>`;
+}
+function focusCard(){
+  if(!DATA.focus.length) return '';
+  const rows = t => DATA.focus.filter(f=>f.tier===t).map(f=>{
+    const on = !!S.mastery[f.id], chips = [];
+    (f.flag||'').split(' ').filter(Boolean).forEach(x=>{
+      if(x==='tape') chips.push('<span class="fchip tape">🎤 she said it in class</span>');
+      else if(FLAGN[x]) chips.push(`<span class="fchip her">📌 ${FLAGN[x]}</span>`);
+    });
+    if(f.hl)  chips.push('<span class="fchip hl">🆘 on her helpline</span>');
+    if(f.rev) chips.push(`<span class="fchip rev">🗓 revision ${esc(f.rev)}</span>`);
+    if(f.kh)  chips.push(`<span class="fchip kh">🎮 ${f.kh} in her Kahoots</span>`);
+    if(f.saq) chips.push(`<span class="fchip saq">✍️ ${f.saq} written / dropdown</span>`);
+    return `<div class="frow${on?' on':''}" style="--tc:${FTIER[f.tier].c}" data-fid="${f.id}">
+      <input type="checkbox" class="fchk" ${on?'checked':''} aria-label="I can do this: ${esc(f.t)}">
+      <details class="fbody"><summary>
+        <span class="ft">${esc(f.t)}</span>
+        <span class="fmeta"><span class="fchip sys">${SYS[f.sys]}</span><span class="fchip">${f.n} questions</span><span class="fchip">${f.pts} marks</span><span class="fchip">${f.qz} quizzes</span>${chips.join('')}</span>
+      </summary>
+      <div class="fdet">
+        <p><b>Done when you can:</b> ${esc(f.done)}</p>
+        <p><b>How she asks it:</b> ${esc(f.ask)}</p>
+        ${f.hl ? `<p><b>Her helpline section:</b> “${esc(f.hl)}” — she posts <a href="${esc(f.hlUrl)}" target="_blank" rel="noopener">her own worked answers</a> for it.</p>` : ''}
+        ${f.cap ? `<p class="fcap"><b>Where it ends:</b> ${esc(f.cap)}</p>` : ''}
+        ${herAnswer(f.id)}
+        ${f.qs&&f.qs.length?`<div class="aiwrap"><button class="btn primary learnrow" data-learnf="${f.id}">📖 Learn her ${f.qs.length} question${f.qs.length>1?'s':''} on this</button><span class="refsrc">only her questions on this topic, marked one at a time with her answer, slide and video in place — one-tap questions first, written ones last</span></div>`:''}
+        <div class="aiwrap"><button class="btn ghost askai" data-askf="${f.id}">${AI_LBL}</button><span class="refsrc">copies a prompt for Gemini (or any AI) — her level, her wording and her “where it ends” line go with it</span></div>
+        <div class="refsrc">Her criterion · ${esc(f.crit)}</div>
+      </div></details></div>`;
+  }).join('');
+  const tier = t => `<div class="ftier" style="color:${FTIER[t].c}">${FTIER[t].n}
+      <span class="fnum">· ${DATA.focus.filter(f=>f.tier===t).length} topics</span></div>
+    <div class="fwhy">${FTIER[t].w}</div>${rows(t)}`;
+  return `<div class="card" style="border-left:4px solid var(--warn)">
+    <details>
+      <summary style="cursor:pointer;font-weight:700">🎯 What to learn, and how far · <span id="fsum">${focusStats().d}/${focusStats().n}</span></summary>
+      <div style="margin-top:10px">
+        <div class="fhead" id="fhead">${focusHead()}</div>
+        <p class="fwhy">Asked “where is the list of questions that will be in the test?”, she answered: <i>“There is no such list. The closest to such a list is the assessment criteria … it limits what I may ask.”</i> Every row is one of <b>those criteria</b> for Module 1 (Cardiovascular 1–15, Respiratory 1–17, Lymphatic 1–4), with her own wording at the bottom of each row; two rows say plainly that they are not criteria (her exam cases, and her fluid-balance quiz). Every one of her ${DATA.stats.n} questions in this tool sits on exactly one row; the tool sorted them, then every group was read by hand. <b>Questions</b> and <b>marks</b> count unique items, with repeats across quizzes merged, and are counted by the build, not by a person. Ranking is her bank's marks — except where she said something herself, which overrides the count. <b>✍️</b> counts essays and drop-downs. <b>done / how she asks it / where it stops</b> are this tool's reading of her questions; the questions themselves, and the model answers under the written ones, are hers. A row with 0 questions is on her criteria list but in none of her quizzes. Two of her questions are held because her Canvas key contradicts the science (see the held list). This is the best available read on her emphasis, not a leaked paper.</p>
+        </details>
+        ${tier(0)}${tier(1)}${tier(2)}${tier(3)}
+        <div class="refsrc" style="margin-top:10px">Sources: her <b>Continuous Tests and Exam Focus Points</b> criteria doc (Science 2 Detailed Content.docx), the same list as her Canvas page “Module 1: Learning checklist” · her ${DATA.quizzes.length} Module 1 quizzes and her own model answers · her three starred exam cases and her model answers to them. Ticks are saved in this browser only.</div>
+      </div>
+    </details>
+  </div>`;
+}
+/* her own worked answer for this topic, verbatim from the helpline answers board.
+   Her CAPITALISED terms are the mark-earning words — left exactly as she wrote them. */
+function herAnswer(id){
+  const h = (DATA.helpline||{})[id];
+  if(!h) return '';
+  const body = h.parts.map(p=>`<div class="hlh">${esc(p.h)}</div>${esc(p.t)}`).join(String.fromCharCode(10));
+  return `<details class="hlans"><summary>✅ Her own worked answer — open it</summary>
+    <div class="hlbody">${body}
+<span class="refsrc">Verbatim from her MODULE 2 HELPLINE: LET US REFLECT (answers) board. The words she put in CAPITALS are the ones carrying the marks. <a href="${esc(h.url)}" target="_blank" rel="noopener">Open it on Canvas</a> for her figures.</span></div></details>`;
+}
+
+function bindFocus(){
+  document.querySelectorAll('.frow').forEach(r=>{
+    const cb = r.querySelector('.fchk');
+    if(!cb) return;
+    cb.onchange = () => {
+      if(cb.checked) S.mastery[r.dataset.fid] = 1; else delete S.mastery[r.dataset.fid];
+      SV('mastery', S.mastery);
+      r.classList.toggle('on', cb.checked);
+      const h = $('#fhead'); if(h) h.innerHTML = focusHead();
+      const sm = $('#fsum'); if(sm){ const st=focusStats(); sm.textContent = st.d+'/'+st.n }
+    };
+  });
+}
+
+
 function home(){
   $('#footbar').classList.remove('on');
   const last = S.scores[S.scores.length-1];
@@ -306,60 +440,7 @@ function home(){
   const nLbl = s => { const pool=CLOSED.filter(q=>q.sys===s).length, n=howMany(pool); return n===pool?`all ${n}`:n };
   document.getElementById('view').innerHTML = `
   ${sparkCard()}
-  <div class="card" style="border-left:4px solid var(--warn)">
-    <details>
-      <summary style="cursor:pointer;font-weight:700">📋 Her Module 1 learning checklist — the only list that limits what she can ask</summary>
-      <div class="hist" style="margin-top:8px">
-        Asked “where is the list of questions that will be in the test?”, she answered: <i>“There is no such list. The closest to such a list is the assessment criteria listed in Module 1: Learning checklist … it limits what I may ask.”</i> This is that checklist, her wording.
-        <br><br><b>Cardiovascular</b>
-        <ol style="margin:.3em 0;padding-left:1.4em">
-          <li>Describe the function of the cardiovascular system</li>
-          <li>Describe the structural and functional differences between the artery, vein and capillary</li>
-          <li>Outline the factors involved in capillary fluid movement – including hydrostatic and oncotic pressures</li>
-          <li>Describe the relationship between blood pressure, blood flow, peripheral resistance, and velocity of blood flow</li>
-          <li>Describe the functional anatomy of the heart and its major vessels: location and orientation · the coverings · the walls, chambers and valves</li>
-          <li>Describe the blood flow through the heart, systemic circuit, pulmonary circuit, and coronary circulation</li>
-          <li>Describe the sounds the heart makes and the best places to detect them</li>
-          <li>Describe the generation and conduction of the basic rhythm in relation to the cardiac cycle and the ECG</li>
-          <li>Discuss the homeostatic control of heart rate, stroke volume and cardiac output (neural and hormonal)</li>
-          <li>Explain the effect of general factors on heart rate, stroke volume and cardiac output</li>
-          <li>Describe the effect of venous return, plasma electrolytes, stress and exercise on cardiac function</li>
-          <li>Discuss the short-term and long-term control of blood pressure (baroreceptors, vasomotor and cardiac centres, reflex control; renal and hormonal control incl. adrenaline and renin-angiotensin-aldosterone)</li>
-          <li>Describe how blood pressure is affected by stress, exercise etc.</li>
-          <li>Define circulatory shock; the types, and the signs and events of hypovolaemic shock</li>
-          <li>Explain the terms: pulse · cardiac output · blood pressure · blood flow · peripheral resistance · tissue perfusion · vasoconstriction/vasodilation · pressure points · ECG · coronary arteries and circulation · heart attack / myocardial infarction · ischaemia · myocardium · atrial and ventricular systole and diastole · pericarditis, myocarditis, endocarditis · angina pectoris · asystole · bradycardia, tachycardia · positive and negative inotropic and chronotropic action · congestive heart failure · ventricular fibrillation · hypertension, hypotension</li>
-        </ol>
-        <b>Respiratory</b>
-        <ol style="margin:.3em 0;padding-left:1.4em">
-          <li>Explain the function of the respiratory system and the processes of respiration: pulmonary ventilation, external and internal respiration, transport of blood gases, cellular respiration</li>
-          <li>Describe the functional anatomy of the nose and sinuses, pharynx, larynx, trachea, bronchial tree, lungs and pleural membranes</li>
-          <li>Differentiate the conducting and respiratory zones, and the upper and lower respiratory tract</li>
-          <li>Describe the pathway of air from the nose to the lungs: conduction, protective mechanisms, production of sound</li>
-          <li>Describe the structure of the alveoli: alveoli, respiratory membrane, surfactant, in relation to protection and gas exchange</li>
-          <li>Define the lung volumes and capacities and their clinical significance</li>
-          <li>Describe pulmonary ventilation in terms of pressure and volume changes, and the factors that affect it: airway resistance, surface tension, lung compliance, negative intrapleural pressure</li>
-          <li>Explain the difference between atmospheric and alveolar air</li>
-          <li>Describe external respiration and the factors that affect gas exchange</li>
-          <li>Describe internal respiration and the factors that affect gas exchange</li>
-          <li>Describe the transport of oxygen in the blood and the factors that affect it</li>
-          <li>Describe the transport of carbon dioxide in the blood and the factors that affect it</li>
-          <li>Describe the generation of the basic respiratory rhythm and its control: the medullary and pontine respiratory groups</li>
-          <li>Discuss the chemical factors that influence rate and depth of ventilation: PCO₂, pH, PO₂</li>
-          <li>Discuss the effect of emotions and conscious control on breathing: hypothalamic and cortical control</li>
-          <li>Discuss the effect of exercise, body temperature, pain and irritation of the air passages on ventilation</li>
-          <li>Explain the terms: alveoli · asthma · chronic bronchitis · bronchodilator · negative and positive pressure · cellular respiration · pleural pressure · atmospheric pressure at sea level · partial pressure · Boyle’s law · Henry’s law · hypoxia · hypocapnia, hypercapnia · dyspnoea · apnoea · emphysema · tuberculosis · eupnoea · tachypnoea · hyperventilation</li>
-        </ol>
-        <b>Lymphatic</b>
-        <ol style="margin:.3em 0;padding-left:1.4em">
-          <li>Describe the functions of the lymphatic system: immunity and body defence, fluid volume, absorption and transport of lipid</li>
-          <li>Functional anatomy of its components: lymphoid organs, lymph nodes, spleen, lymphatic capillaries and vessels</li>
-          <li>Describe the relationship between the cardiovascular and lymphatic systems in the transport and drainage of lymph</li>
-          <li>Explain the terms: buboes · lymphoedema · lymphangitis · Hodgkin’s disease · splenectomy · tonsillitis · sentinel node · swollen glands · ruptured spleen</li>
-        </ol>
-        <div class="refsrc" style="margin-top:6px">Source: her Canvas page “Module 1: Learning checklist” and her post “What will be in Test 1?”, both in the export of 11 Aug 2026. The exam’s Module 1 case studies are the three starred ones: lymph node removal, asthma, panic attack — they are in the full mock test.</div>
-      </div>
-    </details>
-  </div>
+  ${focusCard()}
   <div class="card door" style="border-left:4px solid var(--ok)">
     <h2>📖 Learn as you go</h2>
     <p>Not a test. Every question marks itself the moment you press <b>Check</b>, and the answer, her notes and the matched video open right under it before you move on — you can open the notes or video <i>before</i> you answer, too. Press Check with nothing picked and it just shows you. Nothing here goes on the score chart; a wrong or skipped one still joins your misses pile. Start here when the quizzes feel like deep water.</p>
@@ -403,6 +484,7 @@ function home(){
       <span class="acts"><span class="m">${z.n} Q</span><button class="btn ghost learn" data-quiz="${z.id}" data-learn="1">Learn</button><button class="btn ghost" data-quiz="${z.id}">Sit</button></span></div>`).join('')}
     </div>
   </div>`;
+  bindFocus();
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>start(b.dataset.go,!!b.dataset.learn));
   document.querySelectorAll('[data-quiz]').forEach(b=>b.onclick=()=>start('quiz:'+b.dataset.quiz,!!b.dataset.learn));
   document.querySelectorAll('[data-sys]').forEach(b=>b.onclick=()=>start('sys:'+b.dataset.sys,!!b.dataset.learn));
@@ -493,6 +575,10 @@ function start(mode,learn=false){
     label=k===1?(DATA.quizzes.find(z=>z.id===S.pick[0])||{}).name||'1 quiz':`${k} quizzes · ${deck.length} Q`}
   else if(mode.startsWith('quiz:')){const z=DATA.quizzes.find(x=>x.id===mode.slice(5));
     deck=DATA.questions.filter(q=>q.quiz===z.id);label=z.name}
+  else if(mode.startsWith('topic:')){const f=DATA.focus.find(x=>x.id===mode.slice(6));
+    /* a focus row's own questions (content/qrow.js, read by hand), in the row's order */
+    const byId=new Map(DATA.questions.map(q=>[q.id,q]));
+    deck=((f&&f.qs)||[]).map(id=>byId.get(id)).filter(Boolean);label=f?f.t:'topic'}
   else if(mode.startsWith('sys:')){const s=mode.slice(4), pool=CLOSED.filter(q=>q.sys===s).length;
     deck=dealSys(s,howMany(pool));label=`${deck.length===pool?'all ':''}${deck.length} ${s}`}
   if(!deck||!deck.length){alert('Nothing to deal here yet.');return}
@@ -914,6 +1000,15 @@ const aiSteps=(extra,shape,stop,fig)=>{
     `Only when I say ready: a 5-question blind quiz, ONE question at a time, instant feedback after each answer, ${shape}. Start with the easiest question you can write and build up. If I miss one, re-explain that piece before the next question.`);
   return 'I am starting from ZERO on this. Build it up for me; don’t test me on it cold.\nDo this, in order:\n'+S.map((x,i)=>`${i+1}. ${x}`).join('\n')+'\n'+stop;
 };
+function aiTopicPrompt(f){
+  const L=[AI_CTX+` Topic: ${f.t} (${SYS[f.sys]||f.sys}).`,'','My lecturer set the level. Here is exactly what I have to be able to DO, in her words:',`“${f.done}”`,`How she asks it in tests: “${f.ask}”`];
+  if(f.cap)L.push(`Where it ends — do NOT go past this: “${f.cap}”`);
+  const h=(DATA.helpline||{})[f.id];
+  if(h){let t=h.parts.map(p=>p.h+'\n'+p.t).join('\n');if(t.length>3000)t=t.slice(0,3000)+' …(trimmed)';
+    L.push('','Her own worked answer for this topic, verbatim (her CAPITALS are the mark-earning words):',t);}
+  L.push('',aiSteps('','in the shapes she uses (see “how she asks it” above)','Stay inside her level. Don’t teach past the “where it ends” line.'));
+  return L.join('\n');
+}
 function aiQuestionPrompt(q,withFig){
   const a=SIT.ans[q.id];
   const you=a?(a.text||((a.sel||[]).map(i=>optLabel(q,q.opts[i])).join(', ')||Object.values(a.pick||{}).join(', '))):'';
@@ -1055,8 +1150,12 @@ document.addEventListener('click',e=>{
     /* opening a resource on an unchecked learn-mode question is a peek */
     if(row.classList.contains('lres')&&!SIT.chk[q.id]){SIT.peek[q.id]=true;saveRun()}
     pane.innerHTML=paneHTML(q,act);pane.hidden=false;pane.dataset.act=act;return}
-  const ask=e.target.closest('[data-ask]');
-  if(ask){const q=SIT.deck.find(x=>x.id===ask.dataset.ask);copyPrompt(ask,w=>aiQuestionPrompt(q,w),aiFigures(q).length?aiFigureBlob(q):null);return}
+  const lf=e.target.closest('[data-learnf]'); if(lf){start('topic:'+lf.dataset.learnf,true);window.scrollTo(0,0);return}
+  const ask=e.target.closest('[data-ask],[data-askf]');
+  if(ask){
+    if(ask.dataset.ask){const q=SIT.deck.find(x=>x.id===ask.dataset.ask);copyPrompt(ask,w=>aiQuestionPrompt(q,w),aiFigures(q).length?aiFigureBlob(q):null)}
+    else copyPrompt(ask,aiTopicPrompt(DATA.focus.find(f=>f.id===ask.dataset.askf)),null);
+    return}
   const sp=e.target.closest('[data-aitext],[data-aifig]'); if(sp){aiSplitCopy(sp);return}
   if(e.target.id==='shareBtn'){
   const l=S.scores[S.scores.length-1];
