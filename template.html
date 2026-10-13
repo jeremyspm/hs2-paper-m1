@@ -637,7 +637,7 @@ function renderQ(){
   /* the blank widget, inline where Canvas put it: her dropdown stays a dropdown
      (choices shuffled per sitting), her typed blank stays typed */
   const widget=(b,i)=> q.bk==='dd'
-    ? `<select class="inl" data-i="${i}" aria-label="blank ${i+1}"><option value="">— choose —</option>${shuffleStable(q.id+i,b.options).map(o=>`<option ${a&&a.pick&&a.pick[i]===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`
+    ? `<select class="inl" data-i="${i}" aria-label="blank ${i+1}"><option value="">— choose —</option>${shuffleStable(q.id+i,b.options).map(o=>`<option value="${esc(o)}" ${a&&a.pick&&sameAns(a.pick[i],o)?'selected':''}>${esc(o)}</option>`).join('')}</select>`
     : `<input type="text" class="inl" data-i="${i}" style="width:${Math.min(26,Math.max(7,Math.max(...b.options.map(o=>o.length))+3))}ch" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type…" aria-label="blank ${i+1}" value="${a&&a.pick?esc(a.pick[i]||''):''}">`;
   /* structured stem: her paragraphs, lists and table rows, with [[IMG:…]] and
      [[BLANK:k]] markers resolved in place. Images the stem did not place still show
@@ -660,7 +660,7 @@ function renderQ(){
     const bank=shuffleStable(q.id,[...new Set(q.pairs.map(p=>p.right))]); // a right-hand item used twice is still ONE option
     body=q.pairs.map((p,i)=>`<div class="blankrow"><label>${esc(p.left)}</label>
       <select data-i="${i}"><option value="">— choose —</option>
-      ${bank.map(r=>`<option ${a&&a.pick&&a.pick[i]===r?'selected':''}>${esc(r)}</option>`).join('')}</select></div>`).join('');
+      ${bank.map(r=>`<option value="${esc(r)}" ${a&&a.pick&&sameAns(a.pick[i],r)?'selected':''}>${esc(r)}</option>`).join('')}</select></div>`).join('');
   } else if(q.type==='cloze'){
     body=inlineBlanks
       ? `<div class="note">${q.bk==='dd'?'Pick from each dropdown in the text.':'Type into each blank in the text — spelling counts, capitals don’t.'}</div>`
@@ -765,7 +765,7 @@ function paintChecked(q){
       if(q.key.includes(opt))o.classList.add('k');else if(inp.checked)o.classList.add('x')});
   } else if(q.type==='match'||q.type==='cloze'){
     document.querySelectorAll('[data-i]').forEach(el=>{const i=+el.dataset.i,v=(a.pick||{})[i];el.disabled=true;
-      const ok=q.type==='match'?v===q.pairs[i].right:blankOK(q,q.blanks[i],v);
+      const ok=q.type==='match'?sameAns(v,q.pairs[i].right):blankOK(q,q.blanks[i],v);
       el.style.borderColor=ok?'var(--ok)':'var(--danger)'});
   } else if(q.type==='essay'){const t=document.querySelector('[data-essay]');if(t)t.readOnly=true}
 }
@@ -811,7 +811,7 @@ function markQ(q,a){
     const right=chosen.length===q.key.length&&q.key.every(k=>chosen.includes(k));
     return{got:right?q.pts:0,tot:q.pts,you:chosen.map(o=>optLabel(q,o)).join(' · ')}}
   if(q.type==='match'){
-    let got=0;q.pairs.forEach((p,i)=>{if((a.pick||{})[i]===p.right)got++});
+    let got=0;q.pairs.forEach((p,i)=>{if(sameAns((a.pick||{})[i],p.right))got++});
     return{got:got*q.pts/q.pairs.length,tot:q.pts,you:q.pairs.map((p,i)=>(a.pick||{})[i]||'—').join(' · ')}}
   if(q.type==='cloze'){
     let got=0;
@@ -819,6 +819,9 @@ function markQ(q,a){
     return{got:got*q.pts/q.blanks.length,tot:q.pts,you:q.blanks.map((b,i)=>(a.pick||{})[i]||'—').join(' · ')}}
 }
 /* dropdown: only her marked option is right. Typed: every accepted spelling is. */
+/* her Canvas text can carry a double space ("behind the  retina"); a browser collapses it when it
+   reads an option back, so match picks compare with whitespace squashed */
+function sameAns(x,y){const s=v=>String(v||'').replace(/\s+/g,' ').trim();return !!s(x)&&s(x)===s(y)}
 function blankOK(q,b,v){
   /* phones type curly quotes; a trailing full stop is not a wrong answer */
   const nrm=s=>String(s||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().replace(/[.]+$/,'');
@@ -949,8 +952,8 @@ function weakSpotsHTML(rows){
    annotated with what you picked — never a run-on paragraph */
 function keyHTML(q,a){
   if(q.type==='match')return `<div class="keyrows">${q.pairs.map((p,i)=>{
-    const yours=(a&&a.pick||{})[i];const wrong=yours&&yours!==p.right;
-    return `<div class="krow ${yours===p.right?'kok':''}">${esc(p.left)} <b>→ ${esc(p.right)}</b>${wrong?` <span class="kyou">you: ${esc(yours)}</span>`:yours?'':' <span class="kyou">unanswered</span>'}</div>${yours===p.right?'':partRefHTML(q,i)}`}).join('')}</div>`;
+    const yours=(a&&a.pick||{})[i];const ok=sameAns(yours,p.right),wrong=yours&&!ok;
+    return `<div class="krow ${ok?'kok':''}">${esc(p.left)} <b>→ ${esc(p.right)}</b>${wrong?` <span class="kyou">you: ${esc(yours)}</span>`:yours?'':' <span class="kyou">unanswered</span>'}</div>${ok?'':partRefHTML(q,i)}`}).join('')}</div>`;
   if(q.type==='cloze')return `<div class="keyrows">${q.blanks.map((b,i)=>{
     const yours=(a&&a.pick||{})[i];
     const right=blankOK(q,b,yours);
